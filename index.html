@@ -6,31 +6,35 @@
 <title>AVYRA</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
 
 :root{
  --red:#ff1744;
- --bg:#080808;
+ --bg:#090909;
  --card:#151515;
- --card2:#1d1d1d;
+ --card2:#1c1c1c;
  --border:#292929;
- --text:#fff;
  --muted:#999;
 }
 
-html{scroll-behavior:smooth}
-
 body{
  background:var(--bg);
- color:var(--text);
+ color:white;
  font-family:Arial,sans-serif;
  padding-bottom:70px;
 }
 
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+button,input,textarea,select{
+ font:inherit;
+}
 
-button:active{transform:scale(.97)}
+button{
+ cursor:pointer;
+}
 
 header{
  height:62px;
@@ -39,19 +43,21 @@ header{
  display:flex;
  align-items:center;
  justify-content:space-between;
- padding:0 16px;
+ padding:0 5%;
  position:sticky;
  top:0;
- z-index:50;
+ z-index:20;
 }
 
 .logo{
- font-size:23px;
+ font-size:24px;
  font-weight:900;
  letter-spacing:2px;
 }
 
-.logo span{color:var(--red)}
+.logo span{
+ color:var(--red);
+}
 
 .headerBtns{
  display:flex;
@@ -59,36 +65,29 @@ header{
 }
 
 .headerBtns button{
- background:#181818;
- border:1px solid #303030;
+ background:#171717;
+ border:1px solid #333;
  color:white;
- padding:8px 10px;
+ padding:8px 11px;
  border-radius:8px;
-}
-
-.page{
- display:none;
-}
-
-.page.active{
- display:block;
 }
 
 .hero{
  text-align:center;
- padding:42px 16px 30px;
- background:radial-gradient(circle at top,#3b0715,#080808 65%);
+ padding:40px 18px;
 }
 
 .hero h1{
- font-size:clamp(38px,10vw,65px);
+ font-size:clamp(40px,10vw,65px);
 }
 
-.hero h1 span{color:var(--red)}
+.hero h1 span{
+ color:var(--red);
+}
 
 .hero p{
  color:#999;
- margin:9px 0 22px;
+ margin:10px 0 22px;
 }
 
 .search{
@@ -99,7 +98,6 @@ header{
  border:1px solid #333;
  border-radius:10px;
  overflow:hidden;
- position:relative;
 }
 
 .search input{
@@ -114,21 +112,20 @@ header{
 
 .search button{
  background:var(--red);
- border:0;
  color:white;
+ border:0;
  padding:0 17px;
 }
 
-.suggestions{
- position:absolute;
- top:50px;
- left:0;
- right:0;
- background:#171717;
+.searchSuggestions{
+ max-width:700px;
+ margin:5px auto 0;
+ background:#151515;
  border:1px solid #333;
- z-index:20;
- text-align:left;
+ border-radius:9px;
+ overflow:hidden;
  display:none;
+ text-align:left;
 }
 
 .suggestion{
@@ -138,12 +135,12 @@ header{
 }
 
 .suggestion:hover{
- background:#242424;
+ background:#222;
 }
 
 .container{
- width:92%;
- max-width:1150px;
+ width:90%;
+ max-width:1200px;
  margin:auto;
 }
 
@@ -152,7 +149,7 @@ header{
 }
 
 .title{
- margin-bottom:14px;
+ margin-bottom:15px;
 }
 
 .categories{
@@ -162,13 +159,12 @@ header{
 }
 
 .category{
- min-width:95px;
- padding:13px 8px;
+ min-width:100px;
  background:var(--card);
  border:1px solid var(--border);
- border-radius:11px;
+ border-radius:10px;
+ padding:14px 8px;
  text-align:center;
- cursor:pointer;
 }
 
 .category div{
@@ -177,20 +173,20 @@ header{
 }
 
 .category p{
- color:#aaa;
  font-size:12px;
+ color:#aaa;
 }
 
 .products{
  display:grid;
  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
- gap:12px;
+ gap:13px;
 }
 
 .product{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:13px;
+ border-radius:12px;
  overflow:hidden;
 }
 
@@ -249,26 +245,20 @@ header{
  border:0;
 }
 
-.primary{
+.messageBtn{
  background:var(--red);
  color:white;
 }
 
-.secondary{
+.deleteBtn{
  background:#292929;
- color:white;
-}
-
-.delete{
- background:#292929;
- color:#ff5270;
- border:0;
+ color:#ff5570;
 }
 
 .reviewBtn{
  width:100%;
- padding:9px;
  margin-top:7px;
+ padding:9px;
  background:#292929;
  color:white;
  border:0;
@@ -280,15 +270,15 @@ header{
  align-items:center;
  gap:11px;
  padding:12px;
- margin-bottom:8px;
+ margin-bottom:9px;
  background:var(--card);
  border:1px solid var(--border);
- border-radius:12px;
+ border-radius:11px;
 }
 
 .avatar{
- width:47px;
- height:47px;
+ width:48px;
+ height:48px;
  border-radius:50%;
  background:#333;
  display:flex;
@@ -307,7 +297,6 @@ header{
 
 .sellerInfo{
  flex:1;
- min-width:0;
 }
 
 .sellerInfo small{
@@ -321,29 +310,62 @@ header{
  color:var(--red);
  border:1px solid var(--red);
  padding:8px 11px;
- border-radius:8px;
+ border-radius:7px;
+}
+
+.bottomNav{
+ position:fixed;
+ left:0;
+ right:0;
+ bottom:0;
+ height:64px;
+ background:#101010;
+ border-top:1px solid #292929;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:30;
+}
+
+.bottomNav button{
+ background:none;
+ border:0;
+ color:#aaa;
+ font-size:11px;
+}
+
+.bottomNav button span{
+ font-size:19px;
+}
+
+.page{
+ display:none;
+}
+
+.page.active{
+ display:block;
 }
 
 .pageHeader{
- padding:22px 0 12px;
  display:flex;
  align-items:center;
- gap:10px;
+ gap:12px;
+ margin:20px 0;
 }
 
-.pageHeader button{
- background:#292929;
+.backBtn{
+ background:#222;
  color:white;
  border:0;
- border-radius:8px;
- padding:8px 11px;
+ padding:9px 12px;
+ border-radius:7px;
 }
 
-.accountCard{
+.profileCard{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:15px;
- padding:18px;
+ border-radius:13px;
+ padding:20px;
 }
 
 .profileTop{
@@ -353,116 +375,168 @@ header{
 }
 
 .bigAvatar{
- width:82px;
- height:82px;
+ width:85px;
+ height:85px;
  border-radius:50%;
  object-fit:cover;
  background:#222;
 }
 
-.profileInfo{
+.profileTopInfo{
  flex:1;
 }
 
-.username{
- color:#888;
- margin-top:4px;
-}
-
-.edit{
- background:#292929;
- border:0;
- color:white;
- padding:9px 11px;
- border-radius:8px;
-}
-
-.stats{
+.profileStats{
  display:flex;
- justify-content:space-around;
- margin:20px 0;
- padding:15px 0;
- border-top:1px solid #292929;
- border-bottom:1px solid #292929;
+ gap:30px;
+ margin-top:18px;
 }
 
-.stats div{
+.profileStats div{
  text-align:center;
 }
 
-.stats b{
+.profileStats b{
  display:block;
  font-size:18px;
 }
 
-.stats span{
- color:#888;
+.profileStats span{
  font-size:12px;
+ color:#888;
 }
 
 .bio{
  color:#aaa;
+ margin-top:14px;
  line-height:1.5;
- margin-bottom:15px;
+}
+
+.pageBtn{
+ width:100%;
+ padding:12px;
+ margin-top:9px;
+ background:#222;
+ color:white;
+ border:1px solid #333;
+ border-radius:8px;
+ text-align:left;
+}
+
+.pageBtn:hover{
+ background:#292929;
 }
 
 .profileProducts{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:9px;
+ gap:10px;
+ margin-top:15px;
 }
 
-.profileProduct{
- background:#202020;
- border-radius:9px;
- overflow:hidden;
-}
-
-.profileProduct img,
-.profileProduct .productPlaceholder{
- height:130px;
-}
-
-.profileProductInfo{
- padding:9px;
-}
-
-.messagesPage{
- min-height:calc(100vh - 130px);
-}
-
-.messageLayout{
+.settingsList{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:14px;
+ border-radius:12px;
  overflow:hidden;
- min-height:70vh;
- display:flex;
- flex-direction:column;
 }
 
-.messageTop{
- padding:15px;
+.setting{
+ padding:16px;
  border-bottom:1px solid #292929;
- font-weight:bold;
+ cursor:pointer;
 }
 
-.conversationList{
- flex:1;
- overflow-y:auto;
+.setting:last-child{
+ border-bottom:0;
+}
+
+.setting small{
+ display:block;
+ color:#777;
+ margin-top:5px;
+}
+
+.setting:hover{
+ background:#1d1d1d;
+}
+
+.form{
+ background:var(--card);
+ padding:18px;
+ border:1px solid var(--border);
+ border-radius:12px;
+}
+
+.form input,
+.form textarea,
+.form select{
+ width:100%;
+ padding:12px;
+ margin:7px 0;
+ background:#090909;
+ border:1px solid #333;
+ color:white;
+ border-radius:8px;
+ outline:none;
+}
+
+.form textarea{
+ min-height:90px;
+ resize:vertical;
+}
+
+.primary{
+ width:100%;
+ padding:12px;
+ margin-top:8px;
+ border:0;
+ border-radius:8px;
+ background:var(--red);
+ color:white;
+}
+
+.secondary{
+ width:100%;
+ padding:12px;
+ margin-top:8px;
+ border:0;
+ border-radius:8px;
+ background:#292929;
+ color:white;
+}
+
+.phoneRow{
+ display:flex;
+ gap:7px;
+}
+
+.phoneRow select{
+ width:38%;
+}
+
+.phoneRow input{
+ width:62%;
+}
+
+.notification{
+ padding:14px;
+ background:var(--card);
+ border-bottom:1px solid #292929;
+}
+
+.notification small{
+ color:#777;
 }
 
 .conversation{
  display:flex;
- gap:10px;
  align-items:center;
+ gap:10px;
  padding:13px;
- border-bottom:1px solid #242424;
+ background:var(--card);
+ border-bottom:1px solid #292929;
  cursor:pointer;
-}
-
-.conversation:hover{
- background:#202020;
 }
 
 .conversationText{
@@ -480,50 +554,27 @@ header{
 
 .chat{
  display:none;
- flex-direction:column;
- min-height:70vh;
 }
 
-.chatHeader{
- padding:12px;
- border-bottom:1px solid #292929;
- display:flex;
- align-items:center;
- gap:10px;
-}
-
-.chatHeader button{
- background:#292929;
- color:white;
- border:0;
- padding:7px 10px;
- border-radius:7px;
-}
-
-.chatHeaderInfo{
- flex:1;
-}
-
-.chatHeaderInfo small{
+.chat.active{
  display:block;
- color:#777;
- margin-top:3px;
 }
 
 .chatMessages{
- flex:1;
+ height:55vh;
  overflow-y:auto;
- padding:14px;
+ padding:12px;
  display:flex;
  flex-direction:column;
  gap:7px;
+ background:#0d0d0d;
 }
 
 .chatMessage{
  max-width:78%;
- background:#292929;
  padding:9px 12px;
- border-radius:16px;
+ background:#292929;
+ border-radius:15px;
  align-self:flex-start;
  word-break:break-word;
 }
@@ -533,51 +584,33 @@ header{
  align-self:flex-end;
 }
 
-.messageTime{
- font-size:9px;
- opacity:.6;
- margin-top:3px;
-}
-
 .composer{
  display:flex;
  gap:7px;
- padding:9px;
- border-top:1px solid #292929;
+ margin-top:7px;
 }
 
 .composer input{
  flex:1;
- padding:11px;
- background:#090909;
+ padding:12px;
+ background:#111;
  border:1px solid #333;
  color:white;
  border-radius:8px;
- outline:0;
 }
 
 .composer button{
- border:0;
+ padding:10px 15px;
  background:var(--red);
  color:white;
- padding:0 15px;
+ border:0;
  border-radius:8px;
 }
 
-.notifications{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:13px;
- overflow:hidden;
-}
-
-.notification{
- padding:13px;
- border-bottom:1px solid #292929;
-}
-
-.notification small{
+.empty{
  color:#777;
+ text-align:center;
+ padding:25px;
 }
 
 .review{
@@ -591,75 +624,26 @@ header{
  color:#ffd000;
 }
 
-.empty{
- text-align:center;
- color:#777;
- padding:25px;
-}
-
-.bottomNav{
- position:fixed;
- left:0;
- right:0;
- bottom:0;
- height:64px;
- background:#101010;
- border-top:1px solid #292929;
- display:flex;
- justify-content:space-around;
- align-items:center;
- z-index:60;
-}
-
-.bottomNav button{
- background:none;
- border:0;
- color:#aaa;
- font-size:11px;
-}
-
-.bottomNav button.active{
- color:white;
-}
-
-.bottomNav span{
- font-size:19px;
- display:block;
- margin-bottom:2px;
-}
-
 .modal{
  display:none;
  position:fixed;
  inset:0;
- background:#000c;
+ background:#000b;
  z-index:100;
  align-items:center;
  justify-content:center;
- padding:14px;
-}
-
-.modal.show{
- display:flex;
+ padding:15px;
 }
 
 .box{
  width:100%;
- max-width:470px;
- max-height:92vh;
+ max-width:450px;
+ max-height:90vh;
  overflow-y:auto;
  background:#181818;
  border:1px solid #333;
- border-radius:15px;
- padding:19px;
-}
-
-.box h2{
- margin-bottom:8px;
-}
-
-.box p{
- color:#888;
+ border-radius:14px;
+ padding:20px;
 }
 
 .box input,
@@ -667,58 +651,15 @@ header{
 .box select{
  width:100%;
  padding:12px;
- margin:6px 0;
+ margin:7px 0;
  background:#090909;
  border:1px solid #333;
  color:white;
  border-radius:8px;
- outline:0;
-}
-
-.box textarea{
- min-height:80px;
- resize:vertical;
-}
-
-.box button{
- width:100%;
- padding:11px;
- margin-top:7px;
- border-radius:8px;
- border:0;
-}
-
-.google{
- background:white;
- color:black;
-}
-
-.close{
- background:#292929;
- color:white;
-}
-
-.phoneRow{
- display:flex;
- gap:6px;
-}
-
-.country{
- width:105px!important;
- flex:none;
-}
-
-.phone{
- flex:1;
-}
-
-.loading{
- text-align:center;
- color:#777;
- padding:25px;
 }
 
 @media(max-width:600px){
+
  .products{
   grid-template-columns:repeat(2,1fr);
   gap:8px;
@@ -733,8 +674,8 @@ header{
   width:94%;
  }
 
- .hero{
-  padding-top:32px;
+ .profileStats{
+  gap:20px;
  }
 }
 </style>
@@ -743,818 +684,650 @@ header{
 <body>
 
 <header>
- <div class="logo"><span>AV</span>YRA</div>
+
+ <div class="logo">
+  <span>AV</span>YRA
+ </div>
 
  <div class="headerBtns">
   <button onclick="openNotifications()">🔔</button>
-  <button onclick="openAccount()">👤 <span id="headerName">Sign in</span></button>
+  <button onclick="openAccount()">👤</button>
  </div>
+
 </header>
 
 
 <!-- HOME -->
 
-<section id="homePage" class="page active">
+<main id="homePage" class="page active">
 
- <section class="hero">
-  <h1>Welcome to <span>AVYRA</span></h1>
-  <p>Buy. Sell. Connect. Worldwide. 🌍</p>
+<section class="hero">
 
-  <div class="search">
+ <h1>Welcome to <span>AVYRA</span></h1>
 
-   <input
-    id="searchInput"
-    placeholder="Search products, sellers or locations..."
-    autocomplete="off">
+ <p>Buy. Sell. Connect. Worldwide. 🌍</p>
 
-   <button onclick="searchProducts()">Search</button>
-
-   <div id="suggestions" class="suggestions"></div>
-
-  </div>
- </section>
-
-
- <main class="container">
-
-  <section class="section">
-
-   <div class="title">
-    <h2>Explore Categories</h2>
-   </div>
-
-   <div class="categories">
-
-    <div class="category" onclick="categorySearch('Phones')">
-     <div>📱</div>
-     <p>Phones</p>
-    </div>
-
-    <div class="category" onclick="categorySearch('Computers')">
-     <div>💻</div>
-     <p>Computers</p>
-    </div>
-
-    <div class="category" onclick="categorySearch('Gaming')">
-     <div>🎮</div>
-     <p>Gaming</p>
-    </div>
-
-    <div class="category" onclick="categorySearch('Fashion')">
-     <div>👕</div>
-     <p>Fashion</p>
-    </div>
-
-    <div class="category" onclick="categorySearch('Vehicles')">
-     <div>🚗</div>
-     <p>Vehicles</p>
-    </div>
-
-    <div class="category" onclick="categorySearch('Home')">
-     <div>🏠</div>
-     <p>Home</p>
-    </div>
-
-   </div>
-
-  </section>
-
-
-  <section class="section">
-
-   <div class="title">
-    <h2>🔥 Marketplace</h2>
-   </div>
-
-   <div id="products" class="products">
-    <div class="loading">Loading products...</div>
-   </div>
-
-  </section>
-
-
-  <section class="section">
-
-   <div class="title">
-    <h2>⭐ Sellers</h2>
-   </div>
-
-   <div id="sellers">
-    <div class="loading">Loading sellers...</div>
-   </div>
-
-  </section>
-
- </main>
-
-</section>
-
-
-<!-- ACCOUNT PAGE -->
-
-<section id="accountPage" class="page">
-
- <main class="container">
-
-  <div class="pageHeader">
-   <button onclick="showPage('homePage')">←</button>
-   <h2>My Account</h2>
-  </div>
-
-  <div class="accountCard">
-
-   <div class="profileTop">
-
-    <img id="profilePhoto" class="bigAvatar">
-
-    <div class="profileInfo">
-
-     <h2 id="profileDisplayName">AVYRA User</h2>
-
-     <div class="username" id="profileUsername">
-      @username
-     </div>
-
-     <div class="username" id="profileEmail"></div>
-
-    </div>
-
-    <button class="edit" onclick="openEditProfile()">✏️</button>
-
-   </div>
-
-
-   <div class="stats">
-
-    <div>
-     <b id="myFollowers">0</b>
-     <span>Followers</span>
-    </div>
-
-    <div>
-     <b id="myFollowing">0</b>
-     <span>Following</span>
-    </div>
-
-    <div>
-     <b id="myItems">0</b>
-     <span>Listings</span>
-    </div>
-
-   </div>
-
-
-   <div id="profileBio" class="bio">
-    No bio yet.
-   </div>
-
-
-   <button class="primary" onclick="openAddItem()">
-    + Sell Something
-   </button>
-
-   <button class="secondary" onclick="openMessages()">
-    💬 Messages
-   </button>
-
-   <button class="secondary" onclick="logout()">
-    Sign Out
-   </button>
-
-
-   <h3 style="margin:24px 0 10px">
-    Your Listings
-   </h3>
-
-   <div id="myProducts" class="profileProducts"></div>
-
-  </div>
-
- </main>
-
-</section>
-
-
-<!-- MESSAGES PAGE -->
-
-<section id="messagesPage" class="page">
-
- <main class="container">
-
-  <div class="pageHeader">
-   <button onclick="showPage('homePage')">←</button>
-   <h2>Messages</h2>
-  </div>
-
-  <div class="messageLayout">
-
-   <div id="conversationArea">
-
-    <div class="messageTop">
-     Your conversations
-    </div>
-
-    <div id="conversationList" class="conversationList">
-     <div class="empty">No conversations yet.</div>
-    </div>
-
-   </div>
-
-
-   <div id="chatArea" class="chat">
-
-    <div class="chatHeader">
-
-     <button onclick="showConversationList()">←</button>
-
-     <div class="chatHeaderInfo">
-      <b id="chatName">User</b>
-      <small>AVYRA</small>
-     </div>
-
-    </div>
-
-
-    <div id="chatMessages" class="chatMessages"></div>
-
-
-    <div class="composer">
-
-     <input
-      id="messageInput"
-      placeholder="Message...">
-
-     <button onclick="sendMessage()">➤</button>
-
-    </div>
-
-   </div>
-
-  </div>
-
- </main>
-
-</section>
-
-
-<!-- NOTIFICATIONS PAGE -->
-
-<section id="notificationsPage" class="page">
-
- <main class="container">
-
-  <div class="pageHeader">
-   <button onclick="showPage('homePage')">←</button>
-   <h2>Notifications</h2>
-  </div>
-
-  <div id="notifications" class="notifications">
-   <div class="empty">No notifications yet.</div>
-  </div>
-
- </main>
-
-</section>
-
-
-<!-- LOGIN / SIGN UP -->
-
-<div id="loginModal" class="modal">
-
- <div class="box">
-
-  <h2 id="authTitle">Welcome to AVYRA</h2>
-
-  <p id="authSubtitle">
-   Sign in to buy, sell and connect.
-  </p>
-
-
-  <div id="signupFields" style="display:none">
-
-   <input
-    id="signupUsername"
-    placeholder="Username">
-
-   <input
-    id="signupDisplayName"
-    placeholder="Display name">
-
-   <div class="phoneRow">
-
-    <select id="signupCountry" class="country">
-
-     <option value="+254">🇰🇪 +254</option>
-     <option value="+256">🇺🇬 +256</option>
-     <option value="+255">🇹🇿 +255</option>
-     <option value="+250">🇷🇼 +250</option>
-     <option value="+1">🇺🇸 +1</option>
-     <option value="+44">🇬🇧 +44</option>
-     <option value="+91">🇮🇳 +91</option>
-     <option value="+971">🇦🇪 +971</option>
-
-    </select>
-
-    <input
-     id="signupPhone"
-     class="phone"
-     type="tel"
-     placeholder="Phone number">
-
-   </div>
-
-  </div>
-
+ <div class="search">
 
   <input
-   id="email"
-   type="email"
-   placeholder="Email">
+   id="searchInput"
+   placeholder="Search products, sellers or locations..."
+   autocomplete="off">
 
-  <input
-   id="password"
-   type="password"
-   placeholder="Password">
+  <button onclick="searchProducts()">Search</button>
 
+ </div>
 
-  <button
-   id="authButton"
-   class="primary"
-   onclick="emailLogin()">
-   Sign In
-  </button>
+ <div id="searchSuggestions" class="searchSuggestions"></div>
+
+</section>
 
 
-  <button
-   class="google"
-   onclick="googleLogin()">
-   Continue with Google
-  </button>
+<div class="container">
 
+<section class="section">
 
-  <button
-   class="secondary"
-   onclick="toggleAuthMode()">
+ <div class="title">
+  <h2>Explore Categories</h2>
+ </div>
 
-   <span id="toggleAuthText">
-    Create an account
-   </span>
+ <div class="categories">
 
-  </button>
+  <div class="category">
+   <div>📱</div>
+   <p>Phones</p>
+  </div>
 
+  <div class="category">
+   <div>💻</div>
+   <p>Computers</p>
+  </div>
 
-  <button
-   class="close"
-   onclick="closeModal('loginModal')">
-   Close
-  </button>
+  <div class="category">
+   <div>🎮</div>
+   <p>Gaming</p>
+  </div>
 
+  <div class="category">
+   <div>👕</div>
+   <p>Fashion</p>
+  </div>
 
-  <div
-   id="status"
-   style="color:#aaa;margin-top:10px">
+  <div class="category">
+   <div>🚗</div>
+   <p>Vehicles</p>
+  </div>
+
+  <div class="category">
+   <div>🏠</div>
+   <p>Home</p>
   </div>
 
  </div>
+
+</section>
+
+
+<section class="section">
+
+ <div class="title">
+  <h2>🔥 Marketplace</h2>
+ </div>
+
+ <div id="products" class="products">
+  <div class="empty">Loading...</div>
+ </div>
+
+</section>
+
+
+<section class="section">
+
+ <div class="title">
+  <h2>⭐ Sellers</h2>
+ </div>
+
+ <div id="sellers">
+  <div class="empty">Loading...</div>
+ </div>
+
+</section>
+
+</div>
+
+</main>
+
+
+<!-- ACCOUNT -->
+
+<main id="accountPage" class="page">
+
+<div class="container">
+
+<div class="pageHeader">
+ <button class="backBtn" onclick="showPage('homePage')">←</button>
+ <h2>Account</h2>
+</div>
+
+<div class="profileCard">
+
+<div class="profileTop">
+
+<img id="profilePhoto" class="bigAvatar">
+
+<div class="profileTopInfo">
+
+<h2 id="profileName">AVYRA User</h2>
+
+<p id="profileUsername" style="color:#777">
+@username
+</p>
+
+</div>
 
 </div>
 
 
-<!-- EDIT PROFILE -->
+<div class="profileStats">
 
-<div id="editModal" class="modal">
+<div>
+ <b id="myFollowers">0</b>
+ <span>Followers</span>
+</div>
 
- <div class="box">
+<div>
+ <b id="myFollowing">0</b>
+ <span>Following</span>
+</div>
 
-  <h2>Edit Profile</h2>
-
-  <input
-   id="editUsername"
-   placeholder="Username">
-
-  <input
-   id="editDisplayName"
-   placeholder="Display name">
-
-  <textarea
-   id="editBio"
-   placeholder="Bio">
-  </textarea>
-
-
-  <label style="display:block;color:#aaa;margin-top:8px">
-   Profile picture
-  </label>
-
-  <input
-   id="editPhoto"
-   type="file"
-   accept="image/*">
-
-
-  <button
-   class="primary"
-   onclick="saveProfile()">
-   Save Changes
-  </button>
-
-  <button
-   class="close"
-   onclick="closeModal('editModal')">
-   Cancel
-  </button>
-
-  <div
-   id="editStatus"
-   style="color:#aaa;margin-top:8px">
-  </div>
-
- </div>
+<div>
+ <b id="myItems">0</b>
+ <span>Listings</span>
+</div>
 
 </div>
 
 
-<!-- SELL ITEM -->
-
-<div id="itemModal" class="modal">
-
- <div class="box">
-
-  <h2>Sell Something</h2>
-
-  <input
-   id="itemName"
-   placeholder="Product name">
-
-  <input
-   id="itemPrice"
-   type="number"
-   placeholder="Price">
-
-  <input
-   id="itemCurrency"
-   placeholder="Currency — KES, USD, EUR...">
-
-  <input
-   id="itemLocation"
-   placeholder="Location">
-
-  <textarea
-   id="itemDescription"
-   placeholder="Description">
-  </textarea>
-
-  <input
-   id="itemPhoto"
-   type="file"
-   accept="image/*">
+<div class="bio" id="profileBio">
+ No bio yet.
+</div>
 
 
-  <button
-   class="primary"
-   onclick="addItem()">
-   Publish
-  </button>
+<button class="pageBtn" onclick="openSettings()">
+ ⚙️ Settings
+</button>
 
-  <button
-   class="close"
-   onclick="closeModal('itemModal')">
-   Cancel
-  </button>
+<button class="pageBtn" onclick="openMessages()">
+ 💬 Messages
+</button>
 
-  <div
-   id="itemStatus"
-   style="color:#aaa;margin-top:8px">
-  </div>
+<button class="pageBtn" onclick="openAddItem()">
+ ➕ Sell something
+</button>
 
- </div>
+
+<h3 style="margin-top:25px">
+ Your Listings
+</h3>
+
+<div id="myProducts" class="profileProducts"></div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- SETTINGS -->
+
+<main id="settingsPage" class="page">
+
+<div class="container">
+
+<div class="pageHeader">
+
+<button class="backBtn" onclick="showPage('accountPage')">
+ ←
+</button>
+
+<h2>Settings</h2>
+
+</div>
+
+
+<div class="settingsList">
+
+<div class="setting" onclick="editProfile()">
+ <b>✏️ Edit profile</b>
+ <small>Change your name, username, bio and profile picture</small>
+</div>
+
+<div class="setting" onclick="editPhone()">
+ <b>📱 Phone number</b>
+ <small id="settingsPhone">Not added</small>
+</div>
+
+<div class="setting" onclick="showAccountDetails()">
+ <b>👤 Account details</b>
+ <small>View your AVYRA account information</small>
+</div>
+
+<div class="setting" onclick="logout()">
+ <b style="color:#ff5570">🚪 Sign out</b>
+ <small>Sign out of this device</small>
+</div>
+
+</div>
+
+
+<div id="settingsForms" style="margin-top:15px"></div>
+
+</div>
+
+</main>
+
+
+<!-- MESSAGES -->
+
+<main id="messagesPage" class="page">
+
+<div class="container">
+
+<div class="pageHeader">
+
+<button class="backBtn" onclick="showPage('accountPage')">
+ ←
+</button>
+
+<h2>Messages</h2>
+
+</div>
+
+
+<div id="conversationList"></div>
+
+
+<div id="chat" class="chat">
+
+<div style="
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-bottom:8px;
+">
+
+<button class="backBtn" onclick="closeChat()">
+ ←
+</button>
+
+<h3 id="chatName">
+ Chat
+</h3>
+
+</div>
+
+
+<div id="chatMessages" class="chatMessages"></div>
+
+
+<div class="composer">
+
+<input id="messageInput"
+ placeholder="Message...">
+
+<button onclick="sendMessage()">
+ ➤
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- NOTIFICATIONS -->
+
+<main id="notificationsPage" class="page">
+
+<div class="container">
+
+<div class="pageHeader">
+
+<button class="backBtn" onclick="showPage('homePage')">
+ ←
+</button>
+
+<h2>Notifications</h2>
+
+</div>
+
+<div id="notifications">
+ <div class="empty">Loading...</div>
+</div>
+
+</div>
+
+</main>
+
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+
+<div class="box">
+
+<h2>Welcome to AVYRA</h2>
+
+<p style="color:#888;margin:8px 0">
+Sign in to buy, sell and connect.
+</p>
+
+<input id="email"
+ type="email"
+ placeholder="Email">
+
+<input id="password"
+ type="password"
+ placeholder="Password">
+
+<input id="loginPhone"
+ type="tel"
+ placeholder="Phone number (optional)">
+
+<button class="primary" onclick="emailLogin()">
+ Sign In
+</button>
+
+<button
+ class="secondary"
+ onclick="googleLogin()">
+ Continue with Google
+</button>
+
+<button
+ class="secondary"
+ onclick="closeLogin()">
+ Close
+</button>
+
+<div id="status"
+ style="color:#aaa;margin-top:10px">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ADD ITEM -->
+
+<div class="modal" id="itemModal">
+
+<div class="box">
+
+<h2>Sell Something</h2>
+
+<input id="itemName"
+ placeholder="Product name">
+
+<input id="itemPrice"
+ type="number"
+ placeholder="Price">
+
+<input id="itemCurrency"
+ placeholder="Currency — KES, USD, EUR...">
+
+<input id="itemLocation"
+ placeholder="Location">
+
+<textarea id="itemDescription"
+ placeholder="Description"></textarea>
+
+<input id="itemPhoto"
+ type="file"
+ accept="image/*">
+
+<button class="primary" onclick="addItem()">
+ Publish
+</button>
+
+<button class="secondary"
+ onclick="closeModal('itemModal')">
+ Cancel
+</button>
+
+<div id="itemStatus"
+ style="color:#aaa;margin-top:10px">
+</div>
+
+</div>
 
 </div>
 
 
 <!-- REVIEW -->
 
-<div id="reviewModal" class="modal">
+<div class="modal" id="reviewModal">
 
- <div class="box">
+<div class="box">
 
-  <h2>Review Seller</h2>
+<h2>Review Seller</h2>
 
-  <p id="reviewSellerName"></p>
+<p id="reviewSellerName"
+ style="color:#aaa;margin:8px 0">
+</p>
 
-  <select id="reviewRating">
+<select id="reviewRating">
 
-   <option value="5">⭐⭐⭐⭐⭐ — 5</option>
-   <option value="4">⭐⭐⭐⭐ — 4</option>
-   <option value="3">⭐⭐⭐ — 3</option>
-   <option value="2">⭐⭐ — 2</option>
-   <option value="1">⭐ — 1</option>
+<option value="5">⭐⭐⭐⭐⭐ — 5</option>
+<option value="4">⭐⭐⭐⭐ — 4</option>
+<option value="3">⭐⭐⭐ — 3</option>
+<option value="2">⭐⭐ — 2</option>
+<option value="1">⭐ — 1</option>
 
-  </select>
+</select>
 
-  <textarea
-   id="reviewText"
-   placeholder="Write your review...">
-  </textarea>
+<textarea id="reviewText"
+ placeholder="Write your review...">
+</textarea>
 
-  <button
-   class="primary"
-   onclick="submitReview()">
-   Submit Review
-  </button>
+<button class="primary"
+ onclick="submitReview()">
+ Submit Review
+</button>
 
-  <button
-   class="close"
-   onclick="closeModal('reviewModal')">
-   Cancel
-  </button>
+<button class="secondary"
+ onclick="closeModal('reviewModal')">
+ Cancel
+</button>
 
- </div>
+</div>
 
 </div>
 
 
+<nav class="bottomNav">
+
+<button onclick="showPage('homePage')">
+ <span>🏠</span><br>Home
+</button>
+
+<button onclick="focusSearch()">
+ <span>🔎</span><br>Search
+</button>
+
+<button onclick="openAddItem()">
+ <span>➕</span><br>Sell
+</button>
+
+<button onclick="openMessages()">
+ <span>💬</span><br>Messages
+</button>
+
+<button onclick="openAccount()">
+ <span>👤</span><br>Account
+</button>
+
+</nav>
+
+
 <script type="module">
 
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 import {
- auth,
- db,
- googleProvider,
+ getAuth,
+ GoogleAuthProvider,
+ setPersistence,
+ browserLocalPersistence,
  signInWithPopup,
  signInWithEmailAndPassword,
  onAuthStateChanged,
  signOut
 }
-from "./firebase.js";
-
-
-import {
- createUserWithEmailAndPassword,
- updateProfile
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
+ getFirestore,
  collection,
- addDoc,
+ doc,
+ setDoc,
  getDoc,
  getDocs,
- setDoc,
+ addDoc,
  updateDoc,
  deleteDoc,
- doc,
  query,
  where,
  onSnapshot,
  serverTimestamp,
  increment
 }
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+ apiKey:"AIzaSyCfxi6jdRj1EAhUtOjg-ChRSuZTXPkWIDI",
+
+ authDomain:"avyra-666da.firebaseapp.com",
+
+ projectId:"avyra-666da",
+
+ storageBucket:"avyra-666da.firebasestorage.app",
+
+ messagingSenderId:"238523673454",
+
+ appId:"1:238523673454:web:afc7dea15dff6afc756f7f",
+
+ measurementId:"G-XZ996JZR6N"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+
+const auth=getAuth(app);
+
+const db=getFirestore(app);
+
+const googleProvider=new GoogleAuthProvider();
+
+
+await setPersistence(
+ auth,
+ browserLocalPersistence
+);
 
 
 let currentUser=null;
 let allProducts=[];
 let activeChatUser=null;
-let unsubscribeChat=null;
 let unsubscribeMessages=null;
+let unsubscribeConversation=null;
 let reviewSellerId=null;
-let signupMode=false;
 
 
-/* =========================
-   PAGE SYSTEM
-========================= */
+/* PAGE SYSTEM */
 
-window.showPage=function(id){
+window.showPage=function(page){
 
- document.querySelectorAll(".page").forEach(page=>{
-  page.classList.remove("active");
- });
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.remove("active"));
 
- const page=document.getElementById(id);
+ const el=document.getElementById(page);
 
- if(page)page.classList.add("active");
+ if(el)el.classList.add("active");
 
  window.scrollTo({
   top:0,
   behavior:"smooth"
  });
 
- if(id==="accountPage"){
-  loadProfile();
-  loadMyProducts();
- }
-
- if(id==="messagesPage"){
-  loadConversations();
- }
 };
 
 
-/* =========================
-   MODALS
-========================= */
-
-window.closeModal=function(id){
- const modal=document.getElementById(id);
- if(modal)modal.classList.remove("show");
-};
-
-function openModal(id){
- document.getElementById(id).classList.add("show");
-}
-
-
-/* =========================
-   AUTH
-========================= */
-
-window.openAccount=function(){
-
- if(!currentUser){
-  openModal("loginModal");
-  return;
- }
-
- showPage("accountPage");
-};
-
-
-window.openMessages=function(){
-
- if(!currentUser){
-  openModal("loginModal");
-  return;
- }
-
- showPage("messagesPage");
-};
-
-
-window.openNotifications=function(){
-
- if(!currentUser){
-  openModal("loginModal");
-  return;
- }
-
- showPage("notificationsPage");
-};
-
-
-window.toggleAuthMode=function(){
-
- signupMode=!signupMode;
-
- document.getElementById("signupFields").style.display=
-  signupMode?"block":"none";
-
- document.getElementById("authTitle").innerText=
-  signupMode
-  ?"Create your AVYRA account"
-  :"Welcome to AVYRA";
-
- document.getElementById("authSubtitle").innerText=
-  signupMode
-  ?"Create an account to buy and sell."
-  :"Sign in to buy, sell and connect.";
-
- document.getElementById("authButton").innerText=
-  signupMode?"Create Account":"Sign In";
-
- document.getElementById("toggleAuthText").innerText=
-  signupMode
-  ?"Already have an account? Sign in"
-  :"Create an account";
-
- document.getElementById("status").innerText="";
-};
-
+/* AUTH */
 
 window.googleLogin=async function(){
 
  try{
-
-  document.getElementById("status").innerText=
-   "Signing in...";
 
   await signInWithPopup(
    auth,
    googleProvider
   );
 
- }catch(error){
+ }catch(e){
 
-  document.getElementById("status").innerText=
-   error.message;
+  document.getElementById("status")
+  .innerText=e.message;
+
  }
+
 };
 
 
 window.emailLogin=async function(){
 
  const email=
-  document.getElementById("email").value.trim();
+  document.getElementById("email")
+  .value.trim();
 
  const password=
-  document.getElementById("password").value;
-
+  document.getElementById("password")
+  .value;
 
  if(!email||!password){
 
-  document.getElementById("status").innerText=
-   "Enter your email and password.";
+  document.getElementById("status")
+  .innerText="Enter your email and password.";
 
   return;
  }
 
-
  try{
 
-  document.getElementById("status").innerText=
-   signupMode
-   ?"Creating account..."
-   :"Signing in...";
+  await signInWithEmailAndPassword(
+   auth,
+   email,
+   password
+  );
 
+ }catch(e){
 
-  if(signupMode){
+  document.getElementById("status")
+  .innerText=e.message;
 
-   const username=
-    document.getElementById("signupUsername")
-     .value.trim()
-     .toLowerCase();
-
-   const displayName=
-    document.getElementById("signupDisplayName")
-     .value.trim();
-
-   const country=
-    document.getElementById("signupCountry").value;
-
-   const phone=
-    document.getElementById("signupPhone")
-     .value.trim();
-
-
-   if(!username||!displayName||!phone){
-
-    document.getElementById("status").innerText=
-     "Username, display name and phone are required.";
-
-    return;
-   }
-
-
-   const credential=
-    await createUserWithEmailAndPassword(
-     auth,
-     email,
-     password
-    );
-
-
-   await updateProfile(
-    credential.user,
-    {
-     displayName:displayName
-    }
-   );
-
-
-   await createProfile(
-    credential.user,
-    {
-     username,
-     name:displayName,
-     phone:country+phone
-    }
-   );
-
-
-  }else{
-
-   await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-   );
-
-  }
-
- }catch(error){
-
-  document.getElementById("status").innerText=
-   error.message;
  }
+
 };
 
-
-/* =========================
-   AUTH STATE
-========================= */
 
 onAuthStateChanged(auth,async user=>{
 
@@ -1562,19 +1335,15 @@ onAuthStateChanged(auth,async user=>{
 
  if(!user){
 
-  document.getElementById("headerName").innerText=
-   "Sign in";
+  document.getElementById("headerName")
+  ?.innerText;
+
+  loadProducts();
 
   return;
  }
 
-
- closeModal("loginModal");
-
-
- document.getElementById("headerName").innerText=
-  user.displayName||"Account";
-
+ closeLogin();
 
  await createProfile(user);
 
@@ -1589,18 +1358,17 @@ onAuthStateChanged(auth,async user=>{
 });
 
 
-/* =========================
-   PROFILE CREATION
-========================= */
+/* PROFILE */
 
-async function createProfile(user,extra={}){
+async function createProfile(user){
 
- const ref=
-  doc(db,"users",user.uid);
+ const ref=doc(
+  db,
+  "users",
+  user.uid
+ );
 
- const snap=
-  await getDoc(ref);
-
+ const snap=await getDoc(ref);
 
  if(!snap.exists()){
 
@@ -1608,23 +1376,18 @@ async function createProfile(user,extra={}){
 
    uid:user.uid,
 
+   name:user.displayName||"AVYRA User",
+
    username:
-    extra.username||
-    createUsername(user.displayName,user.email),
+    makeUsername(user.displayName||"user"),
 
-   name:
-    extra.name||
-    user.displayName||
-    "AVYRA User",
+   email:user.email||"",
 
-   email:
-    user.email||"",
+   phone:"",
 
-   phone:
-    extra.phone||"",
+   countryCode:"+254",
 
-   photo:
-    user.photoURL||"",
+   photo:user.photoURL||"",
 
    bio:"",
 
@@ -1632,141 +1395,135 @@ async function createProfile(user,extra={}){
 
    following:0,
 
-   createdAt:
-    serverTimestamp()
+   createdAt:serverTimestamp()
 
   });
-
- }else{
-
-  /*
-   This is important.
-   setDoc with merge prevents
-   "document does not exist" errors.
-  */
-
-  await setDoc(ref,{
-
-   uid:user.uid,
-
-   email:user.email||snap.data().email||""
-
-  },{merge:true});
 
  }
 
 }
 
 
-function createUsername(name,email){
+function makeUsername(name){
 
- let value=
-  (name||email||"user")
-  .split("@")[0]
-  .replace(/[^a-zA-Z0-9]/g,"")
-  .toLowerCase();
+ return name
+  .toLowerCase()
+  .replace(/[^a-z0-9]/g,"")
+  .slice(0,15)||"user";
 
- return value+"_"+Math.floor(Math.random()*9999);
 }
 
-
-/* =========================
-   LOAD PROFILE
-========================= */
 
 async function loadProfile(){
 
  if(!currentUser)return;
 
+ const ref=doc(
+  db,
+  "users",
+  currentUser.uid
+ );
 
- const ref=
-  doc(db,"users",currentUser.uid);
-
- const snap=
-  await getDoc(ref);
-
+ let snap=await getDoc(ref);
 
  if(!snap.exists()){
 
   await createProfile(currentUser);
 
-  return loadProfile();
- }
+  snap=await getDoc(ref);
 
+ }
 
  const d=snap.data();
 
+ document.getElementById("profileName")
+ .innerText=d.name||"AVYRA User";
 
- document.getElementById("profileDisplayName").innerText=
-  d.name||"AVYRA User";
+ document.getElementById("profileUsername")
+ .innerText="@"+(d.username||"user");
 
+ document.getElementById("profileBio")
+ .innerText=d.bio||"No bio yet.";
 
- document.getElementById("profileUsername").innerText=
-  "@"+(d.username||"user");
+ document.getElementById("myFollowers")
+ .innerText=d.followers||0;
 
+ document.getElementById("myFollowing")
+ .innerText=d.following||0;
 
- document.getElementById("profileEmail").innerText=
-  d.email||currentUser.email||"";
+ document.getElementById("settingsPhone")
+ .innerText=
+  d.phone
+  ?`${d.countryCode||""} ${d.phone}`
+  :"Not added";
 
+ const photo=document.getElementById("profilePhoto");
 
- document.getElementById("profileBio").innerText=
-  d.bio||"No bio yet.";
+ if(d.photo){
 
+  photo.src=d.photo;
 
- document.getElementById("myFollowers").innerText=
-  d.followers||0;
+ }else{
 
+  photo.src=
+   "https://placehold.co/200x200/222/fff?text=AVYRA";
 
- document.getElementById("myFollowing").innerText=
-  d.following||0;
+ }
 
+ loadMyProducts();
 
- const photo=
-  d.photo||currentUser.photoURL;
-
-
- document.getElementById("profilePhoto").src=
-  photo||
-  "https://placehold.co/200x200/222/fff?text=AVYRA";
 }
 
 
-/* =========================
-   EDIT PROFILE
-========================= */
+/* EDIT PROFILE */
 
-window.openEditProfile=async function(){
+window.editProfile=async function(){
 
- if(!currentUser){
+ const snap=await getDoc(
+  doc(db,"users",currentUser.uid)
+ );
 
-  openModal("loginModal");
+ const d=snap.data()||{};
 
-  return;
- }
+ document.getElementById("settingsForms")
+ .innerHTML=`
 
+ <div class="form">
 
- const snap=
-  await getDoc(
-   doc(db,"users",currentUser.uid)
-  );
+  <h3>Edit Profile</h3>
 
+  <input id="newName"
+   placeholder="Display name"
+   value="${esc(d.name||"")}">
 
- const d=snap.exists()?snap.data():{};
+  <input id="newUsername"
+   placeholder="Username"
+   value="${esc(d.username||"")}">
 
+  <textarea id="newBio"
+   placeholder="Bio">${esc(d.bio||"")}</textarea>
 
- document.getElementById("editUsername").value=
-  d.username||"";
+  <label style="color:#aaa">
+   Profile picture
+  </label>
 
+  <input id="newPhoto"
+   type="file"
+   accept="image/*">
 
- document.getElementById("editDisplayName").value=
-  d.name||"";
+  <button class="primary"
+   onclick="saveProfile()">
+   Save Changes
+  </button>
 
+  <div id="profileStatus"
+   style="color:#aaa;margin-top:8px">
+  </div>
 
- document.getElementById("editBio").value=
-  d.bio||"";
+ </div>
 
+ `;
 
- openModal("editModal");
 };
 
 
@@ -1774,79 +1531,66 @@ window.saveProfile=async function(){
 
  if(!currentUser)return;
 
-
  const status=
-  document.getElementById("editStatus");
-
-
- status.innerText="Saving...";
-
+  document.getElementById("profileStatus");
 
  try{
 
-  const username=
-   document.getElementById("editUsername")
-    .value.trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9_]/g,"");
-
-
   const name=
-   document.getElementById("editDisplayName")
-    .value.trim();
+   document.getElementById("newName")
+   .value.trim()||"AVYRA User";
 
+  let username=
+   document.getElementById("newUsername")
+   .value.trim()
+   .toLowerCase()
+   .replace(/[^a-z0-9_]/g,"");
 
-  const bio=
-   document.getElementById("editBio")
-    .value.trim();
+  if(!username){
 
+   username="user";
 
-  if(!username||!name){
-
-   status.innerText=
-    "Username and display name are required.";
-
-   return;
   }
 
+  const bio=
+   document.getElementById("newBio")
+   .value.trim();
 
   const file=
-   document.getElementById("editPhoto")
-    .files[0];
-
+   document.getElementById("newPhoto")
+   .files[0];
 
   let photo=null;
 
-
   if(file){
 
-   photo=
-    await compressImage(
-     file,
-     300,
-     300
-    );
+   if(file.size>3*1024*1024){
+
+    status.innerText=
+     "Picture is too large. Choose one under 3MB.";
+
+    return;
+
+   }
+
+   photo=await compressImage(
+    file,
+    500,
+    500
+   );
 
   }
 
-
   const data={
-   username,
    name,
+   username,
    bio,
    updatedAt:serverTimestamp()
   };
 
-
   if(photo){
    data.photo=photo;
   }
-
-
-  /*
-   setDoc + merge works even if
-   the profile document doesn't exist.
-  */
 
   await setDoc(
    doc(db,"users",currentUser.uid),
@@ -1854,100 +1598,222 @@ window.saveProfile=async function(){
    {merge:true}
   );
 
+  /* Update names on user's listings */
 
-  /*
-   Also update Firebase Auth's
-   display name.
-  */
-
-  await updateProfile(
-   currentUser,
-   {
-    displayName:name
-   }
+  const products=await getDocs(
+   query(
+    collection(db,"products"),
+    where("sellerId","==",currentUser.uid)
+   )
   );
 
+  for(const p of products.docs){
 
-  status.innerText="Saved!";
+   await updateDoc(
+    doc(db,"products",p.id),
+    {
+     sellerName:name
+    }
+   );
 
+  }
+
+  status.innerText="Saved successfully.";
 
   await loadProfile();
 
-  loadSellers();
-
   loadProducts();
 
+  loadSellers();
 
-  setTimeout(()=>{
-   closeModal("editModal");
-  },500);
-
-
- }catch(error){
+ }catch(e){
 
   status.innerText=
-   "Could not save: "+error.message;
+   "Could not save: "+e.message;
+
  }
+
 };
 
 
-/* =========================
-   IMAGE
-========================= */
+/* PHONE */
 
-function compressImage(file,maxWidth,maxHeight){
+window.editPhone=async function(){
+
+ const snap=await getDoc(
+  doc(db,"users",currentUser.uid)
+ );
+
+ const d=snap.data()||{};
+
+ document.getElementById("settingsForms")
+ .innerHTML=`
+
+ <div class="form">
+
+ <h3>Phone Number</h3>
+
+ <div class="phoneRow">
+
+ <select id="countryCode">
+
+  <option value="+254">🇰🇪 +254 Kenya</option>
+  <option value="+255">🇹🇿 +255 Tanzania</option>
+  <option value="+256">🇺🇬 +256 Uganda</option>
+  <option value="+1">🇺🇸 +1 USA</option>
+  <option value="+44">🇬🇧 +44 UK</option>
+  <option value="+27">🇿🇦 +27 South Africa</option>
+  <option value="+91">🇮🇳 +91 India</option>
+  <option value="+971">🇦🇪 +971 UAE</option>
+  <option value="+234">🇳🇬 +234 Nigeria</option>
+
+ </select>
+
+ <input
+  id="phoneNumber"
+  type="tel"
+  placeholder="Phone number"
+  value="${esc(d.phone||"")}">
+
+ </div>
+
+ <button class="primary"
+  onclick="savePhone()">
+  Save Phone
+ </button>
+
+ <div id="phoneStatus"
+  style="color:#aaa;margin-top:8px">
+ </div>
+
+ </div>
+
+ `;
+
+ document.getElementById("countryCode")
+ .value=d.countryCode||"+254";
+
+};
+
+
+window.savePhone=async function(){
+
+ try{
+
+  const code=
+   document.getElementById("countryCode")
+   .value;
+
+  const phone=
+   document.getElementById("phoneNumber")
+   .value.trim();
+
+  await setDoc(
+   doc(db,"users",currentUser.uid),
+   {
+    countryCode:code,
+    phone,
+    updatedAt:serverTimestamp()
+   },
+   {merge:true}
+  );
+
+  document.getElementById("phoneStatus")
+  .innerText="Phone number saved.";
+
+  loadProfile();
+
+ }catch(e){
+
+  document.getElementById("phoneStatus")
+  .innerText=e.message;
+
+ }
+
+};
+
+
+/* ACCOUNT DETAILS */
+
+window.showAccountDetails=async function(){
+
+ const snap=await getDoc(
+  doc(db,"users",currentUser.uid)
+ );
+
+ const d=snap.data();
+
+ document.getElementById("settingsForms")
+ .innerHTML=`
+
+ <div class="form">
+
+ <h3>Account Details</h3>
+
+ <p style="margin-top:10px;color:#aaa">
+ <b>Email:</b><br>
+ ${esc(d.email||currentUser.email||"")}
+ </p>
+
+ <p style="margin-top:12px;color:#aaa">
+ <b>Username:</b><br>
+ @${esc(d.username||"")}
+ </p>
+
+ <p style="margin-top:12px;color:#aaa">
+ <b>Phone:</b><br>
+ ${esc(d.countryCode||"")}
+ ${esc(d.phone||"Not added")}
+ </p>
+
+ </div>
+
+ `;
+
+};
+
+
+/* IMAGE */
+
+function compressImage(file,maxW,maxH){
 
  return new Promise((resolve,reject)=>{
 
   const reader=new FileReader();
 
-
-  reader.onload=function(event){
+  reader.onload=e=>{
 
    const img=new Image();
 
+   img.onload=()=>{
 
-   img.onload=function(){
+    let w=img.width;
+    let h=img.height;
 
-    let width=img.width;
-    let height=img.height;
+    const scale=Math.min(
+     1,
+     maxW/w,
+     maxH/h
+    );
 
-
-    const ratio=
-     Math.min(
-      maxWidth/width,
-      maxHeight/height,
-      1
-     );
-
-
-    width=
-     Math.round(width*ratio);
-
-    height=
-     Math.round(height*ratio);
-
+    w=Math.round(w*scale);
+    h=Math.round(h*scale);
 
     const canvas=
      document.createElement("canvas");
 
+    canvas.width=w;
+    canvas.height=h;
 
-    canvas.width=width;
-    canvas.height=height;
-
-
-    const ctx=
-     canvas.getContext("2d");
-
+    const ctx=canvas.getContext("2d");
 
     ctx.drawImage(
      img,
      0,
      0,
-     width,
-     height
+     w,
+     h
     );
-
 
     resolve(
      canvas.toDataURL(
@@ -1958,24 +1824,22 @@ function compressImage(file,maxWidth,maxHeight){
 
    };
 
-
    img.onerror=reject;
 
-   img.src=event.target.result;
-  };
+   img.src=e.target.result;
 
+  };
 
   reader.onerror=reject;
 
   reader.readAsDataURL(file);
 
  });
+
 }
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 function loadProducts(){
 
@@ -1985,19 +1849,14 @@ function loadProducts(){
 
    allProducts=[];
 
-
-   snapshot.forEach(item=>{
+   snapshot.forEach(d=>{
 
     allProducts.push({
-
-     id:item.id,
-
-     ...item.data()
-
+     id:d.id,
+     ...d.data()
     });
 
    });
-
 
    renderProducts(allProducts);
 
@@ -2006,15 +1865,15 @@ function loadProducts(){
   },
   error=>{
 
-   console.error(
-    "Products error:",
-    error
-   );
+   document.getElementById("products")
+   .innerHTML=
+   `<div class="empty">
+    Could not load products.
+   </div>`;
 
-   document.getElementById("products").innerHTML=
-    '<div class="empty">Could not load products.</div>';
   }
  );
+
 }
 
 
@@ -2023,35 +1882,56 @@ function renderProducts(products){
  const box=
   document.getElementById("products");
 
-
  box.innerHTML="";
-
 
  if(!products.length){
 
   box.innerHTML=
-   '<div class="empty">No products found.</div>';
+   `<div class="empty">
+    No products found.
+   </div>`;
 
   return;
- }
 
+ }
 
  products.forEach(p=>{
 
   const card=
    document.createElement("article");
 
-
   card.className="product";
 
+  const image=p.photo
+   ?`<img src="${p.photo}">`
+   :`<div class="productPlaceholder">🛍️</div>`;
 
-  const image=
-   p.photo
-   ?
-   `<img src="${p.photo}" loading="lazy">`
-   :
-   `<div class="productPlaceholder">🛍️</div>`;
+  let buttons=`
 
+   <button
+    class="messageBtn"
+    onclick="messageSeller('${p.sellerId}')">
+    💬 Message
+   </button>
+
+  `;
+
+  if(
+   currentUser &&
+   p.sellerId===currentUser.uid
+  ){
+
+   buttons+=`
+
+    <button
+     class="deleteBtn"
+     onclick="deleteProduct('${p.id}')">
+     🗑️ Delete
+    </button>
+
+   `;
+
+  }
 
   card.innerHTML=`
 
@@ -2059,69 +1939,46 @@ function renderProducts(products){
 
    <div class="productInfo">
 
-    <h3>
-     ${escapeHTML(p.name||"Item")}
-    </h3>
+    <h3>${esc(p.name||"Item")}</h3>
 
     <div class="price">
-     ${escapeHTML(p.currency||"")}
-     ${escapeHTML(String(p.price||0))}
+     ${esc(p.currency||"")}
+     ${esc(String(p.price||0))}
     </div>
 
     <div class="location">
-     📍 ${escapeHTML(p.location||"Worldwide")}
+     📍 ${esc(p.location||"Worldwide")}
     </div>
 
     <div class="sellerName">
-     Seller:
-     ${escapeHTML(p.sellerName||"AVYRA Seller")}
+     Seller: ${esc(p.sellerName||"Seller")}
     </div>
 
     <div class="desc">
-     ${escapeHTML(p.description||"")}
+     ${esc(p.description||"")}
     </div>
 
     <div class="cardBtns">
-
-     ${
-      currentUser &&
-      p.sellerId===currentUser.uid
-      ?
-      `<button
-       class="delete"
-       onclick="deleteProduct('${p.id}')">
-       Delete
-      </button>`
-      :
-      `<button
-       class="primary"
-       onclick="messageSeller('${p.sellerId}')">
-       Message
-      </button>`
-     }
-
+     ${buttons}
     </div>
 
     ${
      currentUser &&
      p.sellerId!==currentUser.uid
      ?
-     `<button
-      class="reviewBtn"
+     `<button class="reviewBtn"
       onclick="openReview(
        '${p.sellerId}',
-       '${escapeHTML(p.sellerName||"Seller")}'
+       '${esc(p.sellerName||"Seller")}'
       )">
       ⭐ Review Seller
      </button>`
-     :
-     ""
+     :""
     }
 
    </div>
 
   `;
-
 
   box.appendChild(card);
 
@@ -2130,264 +1987,247 @@ function renderProducts(products){
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
-document
- .getElementById("searchInput")
- .addEventListener(
-  "input",
-  function(){
+window.searchProducts=function(){
 
-   showSuggestions(this.value);
+ const input=
+  document.getElementById("searchInput");
 
-   searchProducts();
+ const text=
+  input.value.trim().toLowerCase();
 
-  }
- );
-
-
-function showSuggestions(text){
-
- const box=
-  document.getElementById("suggestions");
-
-
- text=text.trim().toLowerCase();
-
+ const suggestions=
+  document.getElementById("searchSuggestions");
 
  if(!text){
 
-  box.style.display="none";
+  renderProducts(allProducts);
+
+  suggestions.style.display="none";
 
   return;
+
  }
 
+ const results=
+  allProducts.filter(p=>{
 
- const matches=
-  allProducts
-   .filter(p=>
+   return (
+
     String(p.name||"")
      .toLowerCase()
      .includes(text)
-   )
-   .slice(0,6);
+
+    ||
+
+    String(p.description||"")
+     .toLowerCase()
+     .includes(text)
+
+    ||
+
+    String(p.location||"")
+     .toLowerCase()
+     .includes(text)
+
+    ||
+
+    String(p.sellerName||"")
+     .toLowerCase()
+     .includes(text)
+
+    ||
+
+    String(p.currency||"")
+     .toLowerCase()
+     .includes(text)
+
+   );
+
+  });
 
 
- if(!matches.length){
-
-  box.style.display="none";
-
-  return;
- }
+ renderProducts(results);
 
 
- box.innerHTML="";
+ /* suggestions */
 
+ suggestions.innerHTML="";
 
- matches.forEach(p=>{
+ const names=[];
+
+ results.forEach(p=>{
+
+  if(!names.includes(p.name))
+   names.push(p.name);
+
+ });
+
+ names.slice(0,5).forEach(name=>{
 
   const div=
    document.createElement("div");
 
   div.className="suggestion";
 
-  div.innerText=
-   p.name||"Product";
+  div.innerText="🔎 "+name;
 
   div.onclick=()=>{
 
-   document.getElementById("searchInput").value=
-    p.name||"";
-
-   box.style.display="none";
+   input.value=name;
 
    searchProducts();
 
   };
 
-
-  box.appendChild(div);
+  suggestions.appendChild(div);
 
  });
 
+ suggestions.style.display=
+  names.length?"block":"none";
 
- box.style.display="block";
-}
-
-
-window.searchProducts=function(){
-
- const text=
-  document
-   .getElementById("searchInput")
-   .value
-   .trim()
-   .toLowerCase();
+};
 
 
- if(!text){
+document.getElementById("searchInput")
+.addEventListener(
+ "input",
+ searchProducts
+);
 
-  renderProducts(allProducts);
+
+/* DELETE */
+
+window.deleteProduct=async function(id){
+
+ if(!currentUser)return;
+
+ const ref=
+  doc(db,"products",id);
+
+ const snap=await getDoc(ref);
+
+ if(!snap.exists()){
+
+  alert("Listing no longer exists.");
 
   return;
+
  }
 
+ if(
+  snap.data().sellerId!==currentUser.uid
+ ){
 
- const results=
-  allProducts.filter(p=>
+  alert("You can only delete your own listing.");
 
-   String(p.name||"")
-    .toLowerCase()
-    .includes(text)
+  return;
 
-   ||
+ }
 
-   String(p.description||"")
-    .toLowerCase()
-    .includes(text)
+ if(!confirm("Delete this listing?"))
+  return;
 
-   ||
+ try{
 
-   String(p.location||"")
-    .toLowerCase()
-    .includes(text)
+  await deleteDoc(ref);
 
-   ||
+ }catch(e){
 
-   String(p.sellerName||"")
-    .toLowerCase()
-    .includes(text)
-
-   ||
-
-   String(p.currency||"")
-    .toLowerCase()
-    .includes(text)
-
+  alert(
+   "Could not delete: "+e.message
   );
 
+ }
 
- renderProducts(results);
 };
 
 
-window.categorySearch=function(category){
-
- document.getElementById("searchInput").value=
-  category;
-
- searchProducts();
-
- window.scrollTo({
-  top:350,
-  behavior:"smooth"
- });
-};
-
-
-/* =========================
-   ADD PRODUCT
-========================= */
+/* ADD ITEM */
 
 window.openAddItem=function(){
 
  if(!currentUser){
 
-  openModal("loginModal");
+  openLogin();
 
   return;
+
  }
 
- openModal("itemModal");
+ document.getElementById("itemModal")
+ .style.display="flex";
+
 };
 
 
 window.addItem=async function(){
 
- if(!currentUser){
+ const name=
+  document.getElementById("itemName")
+  .value.trim();
 
-  openModal("loginModal");
+ const price=
+  document.getElementById("itemPrice")
+  .value;
+
+ const currency=
+  document.getElementById("itemCurrency")
+  .value.trim();
+
+ const location=
+  document.getElementById("itemLocation")
+  .value.trim();
+
+ const description=
+  document.getElementById("itemDescription")
+  .value.trim();
+
+ const file=
+  document.getElementById("itemPhoto")
+  .files[0];
+
+ if(!name||!price||!currency){
+
+  document.getElementById("itemStatus")
+  .innerText=
+   "Product, price and currency are required.";
 
   return;
+
  }
-
-
- const status=
-  document.getElementById("itemStatus");
-
-
- status.innerText="Publishing...";
-
 
  try{
 
-  const name=
-   document.getElementById("itemName")
-    .value.trim();
+  const snap=await getDoc(
+   doc(db,"users",currentUser.uid)
+  );
 
-
-  const price=
-   document.getElementById("itemPrice")
-    .value;
-
-
-  const currency=
-   document.getElementById("itemCurrency")
-    .value.trim();
-
-
-  const location=
-   document.getElementById("itemLocation")
-    .value.trim();
-
-
-  const description=
-   document.getElementById("itemDescription")
-    .value.trim();
-
-
-  const file=
-   document.getElementById("itemPhoto")
-    .files[0];
-
-
-  if(!name||!price||!currency){
-
-   status.innerText=
-    "Name, price and currency are required.";
-
-   return;
-  }
-
+  const u=snap.data()||{};
 
   let photo="";
 
-
   if(file){
 
-   photo=
-    await compressImage(
-     file,
-     600,
-     600
-    );
+   if(file.size>3*1024*1024){
 
-  }
+    document.getElementById("itemStatus")
+    .innerText=
+     "Image must be under 3MB.";
 
+    return;
 
-  const profile=
-   await getDoc(
-    doc(db,"users",currentUser.uid)
+   }
+
+   photo=await compressImage(
+    file,
+    700,
+    700
    );
 
-
-  const userData=
-   profile.exists()
-   ?profile.data()
-   :{};
-
+  }
 
   await addDoc(
    collection(db,"products"),
@@ -2396,9 +2236,7 @@ window.addItem=async function(){
     sellerId:currentUser.uid,
 
     sellerName:
-     userData.name||
-     currentUser.displayName||
-     "AVYRA Seller",
+     u.name||"AVYRA Seller",
 
     name,
 
@@ -2417,159 +2255,83 @@ window.addItem=async function(){
    }
   );
 
-
-  status.innerText="Published!";
-
-
-  document.getElementById("itemName").value="";
-  document.getElementById("itemPrice").value="";
-  document.getElementById("itemCurrency").value="";
-  document.getElementById("itemLocation").value="";
-  document.getElementById("itemDescription").value="";
-  document.getElementById("itemPhoto").value="";
-
+  document.getElementById("itemStatus")
+  .innerText="Published!";
 
   setTimeout(()=>{
+
    closeModal("itemModal");
+
   },600);
 
+ }catch(e){
 
- }catch(error){
+  document.getElementById("itemStatus")
+  .innerText=
+   "Could not publish: "+e.message;
 
-  status.innerText=
-   "Could not publish: "+error.message;
  }
+
 };
 
 
-/* =========================
-   DELETE PRODUCT
-========================= */
-
-window.deleteProduct=async function(id){
-
- if(!currentUser)return;
-
-
- if(!confirm("Delete this listing?"))return;
-
-
- try{
-
-  const ref=
-   doc(db,"products",id);
-
-
-  const snap=
-   await getDoc(ref);
-
-
-  if(!snap.exists()){
-
-   alert("This listing no longer exists.");
-
-   return;
-  }
-
-
-  if(
-   snap.data().sellerId!==
-   currentUser.uid
-  ){
-
-   alert(
-    "You can only delete your own listings."
-   );
-
-   return;
-  }
-
-
-  await deleteDoc(ref);
-
-
- }catch(error){
-
-  alert(
-   "Could not delete: "+
-   error.message
-  );
- }
-};
-
-
-/* =========================
-   MY PRODUCTS
-========================= */
+/* MY PRODUCTS */
 
 function loadMyProducts(){
 
  if(!currentUser)return;
-
 
  const mine=
   allProducts.filter(
    p=>p.sellerId===currentUser.uid
   );
 
-
- document.getElementById("myItems").innerText=
-  mine.length;
-
+ document.getElementById("myItems")
+ .innerText=mine.length;
 
  const box=
   document.getElementById("myProducts");
 
-
  box.innerHTML="";
-
 
  if(!mine.length){
 
   box.innerHTML=
-   '<div class="empty">You have no listings yet.</div>';
+   `<div class="empty">
+    No listings yet.
+   </div>`;
 
   return;
- }
 
+ }
 
  mine.forEach(p=>{
 
   const div=
    document.createElement("div");
 
-
-  div.className="profileProduct";
-
+  div.className="product";
 
   div.innerHTML=`
 
    ${
     p.photo
-    ?
-    `<img
-     src="${p.photo}"
-     loading="lazy">`
-    :
-    `<div class="productPlaceholder">
-     🛍️
-    </div>`
+    ?`<img src="${p.photo}">`
+    :`<div class="productPlaceholder">🛍️</div>`
    }
 
-   <div class="profileProductInfo">
+   <div class="productInfo">
 
-    <b>
-     ${escapeHTML(p.name||"Item")}
-    </b>
+    <h3>${esc(p.name)}</h3>
 
     <div class="price">
-     ${escapeHTML(p.currency||"")}
-     ${p.price}
+     ${esc(p.currency)}
+     ${esc(String(p.price))}
     </div>
 
     <button
-     class="delete"
-     style="width:100%;padding:8px;margin-top:6px"
+     class="deleteBtn"
+     style="width:100%;padding:9px;margin-top:8px"
      onclick="deleteProduct('${p.id}')">
      Delete
     </button>
@@ -2578,185 +2340,121 @@ function loadMyProducts(){
 
   `;
 
-
   box.appendChild(div);
 
  });
+
 }
 
 
-/* =========================
-   SELLERS
-========================= */
+/* SELLERS */
 
 async function loadSellers(){
 
  const box=
   document.getElementById("sellers");
 
+ if(!box)return;
 
- box.innerHTML=
-  '<div class="loading">Loading sellers...</div>';
+ const snap=
+  await getDocs(
+   collection(db,"users")
+  );
 
+ box.innerHTML="";
 
- try{
+ for(const d of snap.docs){
 
-  const snapshot=
-   await getDocs(
-    collection(db,"users")
-   );
+  const u=d.data();
 
+  if(!u.uid)continue;
 
-  box.innerHTML="";
+  if(
+   currentUser &&
+   u.uid===currentUser.uid
+  )continue;
 
+  const div=
+   document.createElement("div");
 
-  for(const item of snapshot.docs){
+  div.className="seller";
 
-   const u=item.data();
-
-
-   if(
-    !u.uid ||
-    (
-     currentUser &&
-     u.uid===currentUser.uid
-    )
-   )continue;
-
-
-   let following=false;
-
-
-   if(currentUser){
-
-    const follow=
-     await getDoc(
-      doc(
-       db,
-       "follows",
-       currentUser.uid+"_"+u.uid
-      )
-     );
-
-
-    following=follow.exists();
-
-   }
-
-
-   const div=
-    document.createElement("div");
-
-
-   div.className="seller";
-
-
-   const avatar=
-    u.photo
-    ?
-    `<div class="avatar">
+  const avatar=u.photo
+   ?`<div class="avatar">
       <img src="${u.photo}">
      </div>`
-    :
-    `<div class="avatar">
+   :`<div class="avatar">
       ${(u.name||"A")[0].toUpperCase()}
      </div>`;
 
+  div.innerHTML=`
 
-   div.innerHTML=`
+   ${avatar}
 
-    ${avatar}
+   <div class="sellerInfo">
 
-    <div class="sellerInfo">
+    <b>${esc(u.name||"User")}</b>
 
-     <b>
-      ${escapeHTML(u.name||"AVYRA User")}
-     </b>
+    <small>
+     @${esc(u.username||"user")}
+     ·
+     ${u.followers||0} followers
+    </small>
 
-     <small>
-      @${escapeHTML(u.username||"user")}
-      · ${u.followers||0} followers
-     </small>
+   </div>
 
-    </div>
+   <button class="follow"
+    onclick="followSeller('${u.uid}')">
+    Follow
+   </button>
 
-    <button
-     class="follow"
-     onclick="followSeller('${u.uid}')">
+  `;
 
-     ${following?"Following":"Follow"}
+  box.appendChild(div);
 
-    </button>
-
-   `;
-
-
-   box.appendChild(div);
-
-  }
-
-
- }catch(error){
-
-  box.innerHTML=
-   '<div class="empty">Could not load sellers.</div>';
-
-  console.error(error);
  }
+
 }
 
 
-/* =========================
-   FOLLOW
-========================= */
+/* FOLLOW */
 
-window.followSeller=async function(sellerId){
+window.followSeller=async function(id){
 
  if(!currentUser){
 
-  openModal("loginModal");
+  openLogin();
 
   return;
+
  }
 
+ if(id===currentUser.uid)return;
 
- if(sellerId===currentUser.uid)return;
-
-
- const id=
-  currentUser.uid+"_"+sellerId;
-
+ const followId=
+  currentUser.uid+"_"+id;
 
  const ref=
-  doc(db,"follows",id);
+  doc(db,"follows",followId);
 
+ const existing=
+  await getDoc(ref);
 
  try{
-
-  const existing=
-   await getDoc(ref);
-
 
   if(existing.exists()){
 
    await deleteDoc(ref);
 
-
    await updateDoc(
-    doc(db,"users",sellerId),
-    {
-     followers:increment(-1)
-    }
+    doc(db,"users",id),
+    {followers:increment(-1)}
    );
-
 
    await updateDoc(
     doc(db,"users",currentUser.uid),
-    {
-     following:increment(-1)
-    }
+    {following:increment(-1)}
    );
-
 
   }else{
 
@@ -2764,80 +2462,59 @@ window.followSeller=async function(sellerId){
     ref,
     {
      followerId:currentUser.uid,
-     sellerId,
+     sellerId:id,
      createdAt:serverTimestamp()
     }
    );
 
-
    await updateDoc(
-    doc(db,"users",sellerId),
-    {
-     followers:increment(1)
-    }
+    doc(db,"users",id),
+    {followers:increment(1)}
    );
-
 
    await updateDoc(
     doc(db,"users",currentUser.uid),
-    {
-     following:increment(1)
-    }
+    {following:increment(1)}
    );
 
-
    await addNotification(
-    sellerId,
-    (currentUser.displayName||"Someone")+
-    " followed you."
+    id,
+    `${currentUser.displayName||"Someone"} followed you.`
    );
 
   }
 
+  loadSellers();
 
-  await loadSellers();
+  loadProfile();
 
-  await loadProfile();
-
-
- }catch(error){
+ }catch(e){
 
   alert(
-   "Follow failed: "+
-   error.message
+   "Follow failed: "+e.message
   );
+
  }
+
 };
 
 
-/* =========================
-   NOTIFICATIONS
-========================= */
+/* NOTIFICATIONS */
 
 async function addNotification(
  userId,
  text
 ){
 
- try{
+ await addDoc(
+  collection(db,"notifications"),
+  {
+   userId,
+   text,
+   createdAt:serverTimestamp()
+  }
+ );
 
-  await addDoc(
-   collection(db,"notifications"),
-   {
-    userId,
-    text,
-    read:false,
-    createdAt:serverTimestamp()
-   }
-  );
-
- }catch(error){
-
-  console.error(
-   "Notification error:",
-   error
-  );
- }
 }
 
 
@@ -2845,67 +2522,59 @@ function loadNotifications(){
 
  if(!currentUser)return;
 
-
- const q=
-  query(
-   collection(db,"notifications"),
-   where(
-    "userId",
-    "==",
-    currentUser.uid
-   )
-  );
-
+ const q=query(
+  collection(db,"notifications"),
+  where(
+   "userId",
+   "==",
+   currentUser.uid
+  )
+ );
 
  onSnapshot(q,snapshot=>{
 
   const box=
-   document.getElementById("notifications");
-
+   document.getElementById(
+    "notifications"
+   );
 
   box.innerHTML="";
 
-
   const list=[];
 
+  snapshot.forEach(d=>{
 
-  snapshot.forEach(item=>{
-
-   list.push(item.data());
+   list.push(d.data());
 
   });
 
-
   list.sort(
    (a,b)=>
-   (b.createdAt?.seconds||0)-
-   (a.createdAt?.seconds||0)
+    (b.createdAt?.seconds||0)-
+    (a.createdAt?.seconds||0)
   );
-
 
   if(!list.length){
 
    box.innerHTML=
-    '<div class="empty">No notifications yet.</div>';
+    `<div class="empty">
+     No notifications yet.
+    </div>`;
 
    return;
-  }
 
+  }
 
   list.forEach(n=>{
 
    const div=
     document.createElement("div");
 
-
    div.className="notification";
-
 
    div.innerHTML=`
 
-    <div>
-     🔔 ${escapeHTML(n.text||"Notification")}
-    </div>
+    🔔 ${esc(n.text||"Notification")}
 
     <small>
      AVYRA
@@ -2913,18 +2582,31 @@ function loadNotifications(){
 
    `;
 
-
    box.appendChild(div);
 
   });
 
  });
+
 }
 
 
-/* =========================
-   REVIEWS
-========================= */
+window.openNotifications=function(){
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+
+ }
+
+ showPage("notificationsPage");
+
+};
+
+
+/* REVIEWS */
 
 window.openReview=function(
  sellerId,
@@ -2933,53 +2615,63 @@ window.openReview=function(
 
  if(!currentUser){
 
-  openModal("loginModal");
+  openLogin();
 
   return;
+
  }
 
-
  reviewSellerId=sellerId;
-
 
  document.getElementById(
   "reviewSellerName"
  ).innerText=
   "Reviewing "+sellerName;
 
+ document.getElementById(
+  "reviewModal"
+ ).style.display="flex";
 
- openModal("reviewModal");
 };
 
 
 window.submitReview=async function(){
 
- if(
-  !currentUser ||
-  !reviewSellerId
- )return;
-
+ if(!currentUser||!reviewSellerId)
+  return;
 
  const rating=
   Number(
-   document.getElementById("reviewRating").value
+   document.getElementById(
+    "reviewRating"
+   ).value
   );
 
-
  const text=
-  document.getElementById("reviewText")
-   .value.trim();
-
+  document.getElementById(
+   "reviewText"
+  ).value.trim();
 
  if(!text){
 
   alert("Write a review first.");
 
   return;
+
  }
 
-
  try{
+
+  const userSnap=
+   await getDoc(
+    doc(
+     db,
+     "users",
+     currentUser.uid
+    )
+   );
+
+  const u=userSnap.data()||{};
 
   await addDoc(
    collection(db,"reviews"),
@@ -2990,139 +2682,121 @@ window.submitReview=async function(){
     buyerId:currentUser.uid,
 
     buyerName:
-     currentUser.displayName||
-     "Buyer",
+     u.name||"Buyer",
 
     rating,
 
     text,
 
-    createdAt:
-     serverTimestamp()
+    createdAt:serverTimestamp()
 
    }
   );
 
-
   await addNotification(
    reviewSellerId,
-   (currentUser.displayName||"A buyer")+
-   " left you a "+
-   rating+
-   "-star review."
+   `${u.name||"A buyer"} left you a ${rating}-star review.`
   );
 
-
-  document.getElementById("reviewText").value="";
-
+  document.getElementById(
+   "reviewText"
+  ).value="";
 
   closeModal("reviewModal");
 
+  alert("Review submitted.");
 
-  alert("Review submitted!");
-
- }catch(error){
+ }catch(e){
 
   alert(
-   "Could not submit review: "+
-   error.message
+   "Review failed: "+e.message
   );
+
  }
+
 };
 
 
-/* =========================
-   MESSAGES
-========================= */
+/* MESSAGES */
 
-window.messageSeller=async function(
- sellerId
-){
+window.openMessages=function(){
 
  if(!currentUser){
 
-  openModal("loginModal");
+  openLogin();
 
   return;
+
  }
 
+ showPage("messagesPage");
 
- if(sellerId===currentUser.uid){
+ loadConversations();
 
-  openAccount();
+};
+
+
+window.messageSeller=async function(id){
+
+ if(!currentUser){
+
+  openLogin();
 
   return;
- }
 
+ }
 
  const snap=
   await getDoc(
-   doc(db,"users",sellerId)
+   doc(db,"users",id)
   );
-
 
  const user=
   snap.exists()
   ?snap.data()
-  :{name:"AVYRA User"};
-
+  :{name:"Seller"};
 
  showPage("messagesPage");
 
- openChat(
-  sellerId,
-  user
- );
+ openChat(id,user);
+
 };
 
 
 async function loadConversations(){
 
- if(!currentUser)return;
+ if(unsubscribeConversation)
+  unsubscribeConversation();
 
+ const q=query(
+  collection(db,"messages"),
+  where(
+   "participants",
+   "array-contains",
+   currentUser.uid
+  )
+ );
 
- if(unsubscribeMessages){
-  unsubscribeMessages();
- }
-
-
- const q=
-  query(
-   collection(db,"messages"),
-   where(
-    "participants",
-    "array-contains",
-    currentUser.uid
-   )
-  );
-
-
- unsubscribeMessages=
+ unsubscribeConversation=
   onSnapshot(q,async snapshot=>{
 
    const latest={};
 
+   snapshot.forEach(d=>{
 
-   snapshot.forEach(item=>{
-
-    const m=item.data();
-
+    const m=d.data();
 
     const other=
      m.senderId===currentUser.uid
      ?m.receiverId
      :m.senderId;
 
+    const time=
+     m.createdAt?.seconds||0;
 
     if(
-     !latest[other] ||
-     (
-      m.createdAt?.seconds||0
-     )>
-     (
-      latest[other]
-       .createdAt?.seconds||0
-     )
+     !latest[other]||
+     time>(latest[other].createdAt?.seconds||0)
     ){
 
      latest[other]={
@@ -3134,32 +2808,29 @@ async function loadConversations(){
 
    });
 
-
    const box=
     document.getElementById(
      "conversationList"
     );
 
-
    box.innerHTML="";
-
 
    const conversations=
     Object.values(latest);
 
-
    if(!conversations.length){
 
     box.innerHTML=
-     '<div class="empty">No conversations yet.</div>';
+     `<div class="empty">
+      No messages yet.
+     </div>`;
 
     return;
+
    }
 
-
    for(
-    const conversation
-    of conversations
+    const c of conversations
    ){
 
     const snap=
@@ -3167,25 +2838,19 @@ async function loadConversations(){
       doc(
        db,
        "users",
-       conversation.other
+       c.other
       )
      );
-
 
     const u=
      snap.exists()
      ?snap.data()
-     :{
-      name:"AVYRA User"
-     };
-
+     :{name:"User"};
 
     const div=
      document.createElement("div");
 
-
     div.className="conversation";
-
 
     div.innerHTML=`
 
@@ -3193,124 +2858,100 @@ async function loadConversations(){
 
       ${
        u.photo
-       ?
-       `<img src="${u.photo}">`
-       :
-       (u.name||"A")[0]
-        .toUpperCase()
+       ?`<img src="${u.photo}">`
+       :(u.name||"A")[0]
       }
 
      </div>
 
      <div class="conversationText">
 
-      <b>
-       ${escapeHTML(u.name||"User")}
-      </b>
+      <b>${esc(u.name||"User")}</b>
 
       <p>
-       ${escapeHTML(conversation.text||"")}
+       ${esc(c.text||"")}
       </p>
 
      </div>
 
     `;
 
-
-    div.onclick=()=>{
-     openChat(
-      conversation.other,
-      u
-     );
-    };
-
+    div.onclick=()=>
+     openChat(c.other,u);
 
     box.appendChild(div);
 
    }
 
   });
+
 }
 
 
-function showConversationList(){
+function openChat(id,user){
+
+ activeChatUser=id;
 
  document.getElementById(
-  "conversationArea"
- ).style.display="block";
-
-
- document.getElementById(
-  "chatArea"
+  "conversationList"
  ).style.display="none";
 
-
- activeChatUser=null;
-
- loadConversations();
-}
-
-
-window.showConversationList=
- showConversationList;
-
-
-function openChat(userId,user){
-
- activeChatUser=userId;
-
-
  document.getElementById(
-  "conversationArea"
- ).style.display="none";
-
-
- document.getElementById(
-  "chatArea"
- ).style.display="flex";
-
+  "chat"
+ ).classList.add("active");
 
  document.getElementById(
   "chatName"
  ).innerText=
-  user.name||"AVYRA User";
+  user.name||"User";
 
+ loadChat(id);
 
- loadChatMessages(userId);
 }
 
 
-function loadChatMessages(other){
+function closeChat(){
 
- if(unsubscribeChat){
-  unsubscribeChat();
- }
+ if(unsubscribeMessages)
+  unsubscribeMessages();
+
+ activeChatUser=null;
+
+ document.getElementById(
+  "chat"
+ ).classList.remove("active");
+
+ document.getElementById(
+  "conversationList"
+ ).style.display="block";
+
+}
 
 
- const q=
-  query(
-   collection(db,"messages"),
-   where(
-    "participants",
-    "array-contains",
-    currentUser.uid
-   )
-  );
+function loadChat(other){
 
+ if(unsubscribeMessages)
+  unsubscribeMessages();
 
- unsubscribeChat=
+ const q=query(
+  collection(db,"messages"),
+  where(
+   "participants",
+   "array-contains",
+   currentUser.uid
+  )
+ );
+
+ unsubscribeMessages=
   onSnapshot(q,snapshot=>{
 
    const messages=[];
 
+   snapshot.forEach(d=>{
 
-   snapshot.forEach(item=>{
-
-    const m=item.data();
-
+    const m=d.data();
 
     if(
-     m.participants &&
      m.participants.includes(other)
     ){
 
@@ -3320,101 +2961,63 @@ function loadChatMessages(other){
 
    });
 
-
    messages.sort(
     (a,b)=>
-    (a.createdAt?.seconds||0)-
-    (b.createdAt?.seconds||0)
+     (a.createdAt?.seconds||0)-
+     (b.createdAt?.seconds||0)
    );
-
 
    const box=
     document.getElementById(
      "chatMessages"
     );
 
-
    box.innerHTML="";
-
 
    messages.forEach(m=>{
 
     const div=
      document.createElement("div");
 
-
     div.className=
-     "chatMessage "+
+     "chatMessage"+
      (
       m.senderId===currentUser.uid
-      ?"mine"
+      ?" mine"
       :""
      );
 
-
-    const time=
-     m.createdAt
-     ?
-     new Date(
-      m.createdAt.seconds*1000
-     ).toLocaleTimeString(
-      [],
-      {
-       hour:"2-digit",
-       minute:"2-digit"
-      }
-     )
-     :"";
-
-
-    div.innerHTML=`
-
-     <div>
-      ${escapeHTML(m.text||"")}
-     </div>
-
-     <div class="messageTime">
-      ${time}
-     </div>
-
-    `;
-
+    div.innerText=
+     m.text||"";
 
     box.appendChild(div);
 
    });
 
-
    box.scrollTop=
     box.scrollHeight;
 
   });
+
 }
 
 
 window.sendMessage=async function(){
 
- if(
-  !currentUser ||
-  !activeChatUser
- )return;
-
+ if(!currentUser||!activeChatUser)
+  return;
 
  const input=
   document.getElementById(
    "messageInput"
   );
 
-
  const text=
   input.value.trim();
 
-
  if(!text)return;
 
-
  input.value="";
-
 
  try{
 
@@ -3426,60 +3029,87 @@ window.sendMessage=async function(){
 
     receiverId:activeChatUser,
 
-    text,
-
     participants:[
      currentUser.uid,
      activeChatUser
     ],
 
-    createdAt:
-     serverTimestamp()
+    text,
+
+    createdAt:serverTimestamp()
 
    }
   );
-
 
   await addNotification(
    activeChatUser,
-   (currentUser.displayName||"Someone")+
-   " sent you a message."
+   `${currentUser.displayName||"Someone"} sent you a message.`
   );
 
-
- }catch(error){
+ }catch(e){
 
   alert(
-   "Message failed: "+
-   error.message
+   "Message failed: "+e.message
   );
 
-  input.value=text;
  }
+
 };
 
 
-document
- .getElementById("messageInput")
- .addEventListener(
-  "keydown",
-  function(event){
+document.getElementById(
+ "messageInput"
+).addEventListener(
+ "keydown",
+ e=>{
 
-   if(event.key==="Enter"){
+  if(e.key==="Enter"){
 
-    event.preventDefault();
+   e.preventDefault();
 
-    sendMessage();
-
-   }
+   sendMessage();
 
   }
- );
+
+ }
+);
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* ACCOUNT */
+
+window.openAccount=function(){
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+
+ }
+
+ showPage("accountPage");
+
+ loadProfile();
+
+};
+
+
+window.openSettings=function(){
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+
+ }
+
+ showPage("settingsPage");
+
+ loadProfile();
+
+};
+
 
 window.logout=async function(){
 
@@ -3489,97 +3119,77 @@ window.logout=async function(){
 
   showPage("homePage");
 
-  location.reload();
+ }catch(e){
 
- }catch(error){
-
-  alert(error.message);
+  alert(e.message);
 
  }
+
 };
 
 
-/* =========================
-   HELPERS
-========================= */
+/* LOGIN */
 
-function escapeHTML(value){
+function openLogin(){
 
- return String(value)
+ document.getElementById(
+  "loginModal"
+ ).style.display="flex";
 
-  .replace(/&/g,"&amp;")
-
-  .replace(/</g,"&lt;")
-
-  .replace(/>/g,"&gt;")
-
-  .replace(/"/g,"&quot;")
-
-  .replace(/'/g,"&#039;");
 }
 
+window.openLogin=openLogin;
 
-/* =========================
-   BOTTOM NAV
-========================= */
 
-window.goHome=function(){
- showPage("homePage");
+window.closeLogin=function(){
+
+ document.getElementById(
+  "loginModal"
+ ).style.display="none";
+
 };
 
 
-</script>
+window.closeModal=function(id){
+
+ document.getElementById(id)
+ .style.display="none";
+
+};
 
 
-<nav class="bottomNav">
+/* SEARCH */
 
- <button onclick="showPage('homePage')">
-  <span>🏠</span>
-  Home
- </button>
-
- <button onclick="focusSearch()">
-  <span>🔎</span>
-  Search
- </button>
-
- <button onclick="openAddItem()">
-  <span>＋</span>
-  Sell
- </button>
-
- <button onclick="openMessages()">
-  <span>💬</span>
-  Messages
- </button>
-
- <button onclick="openAccount()">
-  <span>👤</span>
-  Account
- </button>
-
-</nav>
-
-
-<script>
-
-function focusSearch(){
+window.focusSearch=function(){
 
  showPage("homePage");
 
- setTimeout(()=>{
+ const input=
+  document.getElementById(
+   "searchInput"
+  );
 
-  const input=
-   document.getElementById("searchInput");
+ input.focus();
 
-  input.focus();
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
 
-  window.scrollTo({
-   top:0,
-   behavior:"smooth"
-  });
+};
 
- },100);
+
+/* ESCAPE */
+
+function esc(value){
+
+ return String(value||"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
 }
 
 </script>
