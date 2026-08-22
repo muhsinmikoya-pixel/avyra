@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVYRA — Buy. Sell. Connect.</title>
+
+<style>
+:root{
+  --bg:#080808;
+  --card:#151515;
+  --card2:#1b1b1b;
+  --red:#ff1744;
+  --red2:#ff3b5c;
+  --white:#fff;
+  --gray:#a7a7a7;
+  --yellow:#ffd54a;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,sans-serif;
+}
+
+/* HEADER */
+
+header{
+  height:70px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#0d0d0d;
+  border-bottom:1px solid #242424;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logoA{
+  width:35px;
+  height:35px;
+  background:var(--red);
+  clip-path:polygon(
+    50% 0,
+    100% 100%,
+    76% 100%,
+    67% 76%,
+    33% 76%,
+    24% 100%,
+    0 100%
+  );
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+nav button{
+  background:none;
+  color:white;
+  border:0;
+  padding:10px;
+  cursor:pointer;
+}
+
+.signin{
+  border:1px solid var(--red);
+  border-radius:9px;
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:70px 20px 50px;
+  background:
+  radial-gradient(
+    circle at top,
+    #3a0b17,
+    #080808 55%
+  );
+}
+
+.hero h1{
+  font-size:clamp(42px,10vw,75px);
+  font-weight:900;
+}
+
+.hero h1 span{
+  color:var(--red);
+}
+
+.hero p{
+  color:var(--gray);
+  margin:15px 0 28px;
+  font-size:17px;
+}
+
+.search{
+  max-width:700px;
+  margin:auto;
+  display:flex;
+  background:var(--card);
+  border:1px solid #333;
+  border-radius:13px;
+  overflow:hidden;
+}
+
+.search input{
+  flex:1;
+  padding:17px;
+  border:0;
+  outline:0;
+  background:none;
+  color:white;
+  font-size:15px;
+}
+
+.search button{
+  background:var(--red);
+  color:white;
+  border:0;
+  padding:0 22px;
+  font-weight:bold;
+}
+
+/* CONTENT */
+
+.container{
+  width:90%;
+  max-width:1250px;
+  margin:auto;
+}
+
+.section{
+  padding:35px 0;
+}
+
+.title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.title h2{
+  font-size:22px;
+}
+
+.title span{
+  color:var(--red);
+  font-size:13px;
+}
+
+/* CATEGORIES */
+
+.categories{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+}
+
+.category{
+  min-width:110px;
+  background:var(--card);
+  border:1px solid #252525;
+  border-radius:13px;
+  padding:16px 10px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.category:hover{
+  border-color:var(--red);
+}
+
+.category div{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.category p{
+  color:#ddd;
+  font-size:13px;
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fill,minmax(190px,1fr));
+  gap:17px;
+}
+
+.product{
+  background:var(--card);
+  border:1px solid #242424;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.2s;
+}
+
+.product:hover{
+  transform:translateY(-3px);
+  border-color:var(--red);
+}
+
+.productImage{
+  height:185px;
+  background:#202020;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:65px;
+}
+
+.productInfo{
+  padding:15px;
+}
+
+.productInfo h3{
+  font-size:15px;
+  margin-bottom:8px;
+}
+
+.price{
+  color:var(--red);
+  font-size:18px;
+  font-weight:bold;
+}
+
+.location{
+  color:#888;
+  font-size:12px;
+  margin-top:7px;
+}
+
+.rating{
+  color:var(--yellow);
+  margin-top:7px;
+  font-size:13px;
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+  margin-top:12px;
+}
+
+.actions button{
+  flex:1;
+  padding:9px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.message{
+  background:var(--red);
+  color:white;
+  border:0;
+}
+
+.save{
+  background:none;
+  color:white;
+  border:1px solid #333;
+}
+
+/* SELLERS */
+
+.seller{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  background:var(--card);
+  border:1px solid #252525;
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:12px;
+}
+
+.avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(
+    135deg,
+    var(--red),
+    var(--red2)
+  );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+
+.sellerInfo{
+  flex:1;
+}
+
+.sellerInfo h3{
+  font-size:15px;
+}
+
+.followers{
+  color:#888;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.follow{
+  background:none;
+  color:var(--red);
+  border:1px solid var(--red);
+  padding:9px 13px;
+  border-radius:8px;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.feature{
+  background:#111;
+  border:1px solid #222;
+  border-radius:15px;
+  padding:22px;
+}
+
+.featureIcon{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.feature p{
+  color:#888;
+  font-size:13px;
+  line-height:1.5;
+  margin-top:8px;
+}
+
+/* CTA */
+
+.cta{
+  margin:25px 0;
+  padding:40px 20px;
+  text-align:center;
+  background:
+  linear-gradient(
+    135deg,
+    #260914,
+    #100407
+  );
+  border:1px solid #42101c;
+  border-radius:20px;
+}
+
+.cta p{
+  color:#999;
+  margin:10px 0 20px;
+}
+
+.sell{
+  background:var(--red);
+  border:0;
+  color:white;
+  padding:13px 22px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+/* MOBILE NAV */
+
+.bottomNav{
+  display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  header{
+    padding:0 4%;
+  }
+
+  nav button:not(.signin){
+    display:none;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .productImage{
+    height:135px;
+  }
+
+  .productInfo{
+    padding:11px;
+  }
+
+  .productInfo h3{
+    font-size:13px;
+  }
+
+  .price{
+    font-size:16px;
+  }
+
+  .bottomNav{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:65px;
+    background:#0d0d0d;
+    border-top:1px solid #292929;
+    z-index:100;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .bottomNav button{
+    background:none;
+    border:0;
+    color:#aaa;
+    font-size:11px;
+  }
+
+  .bottomNav button:first-child{
+    color:var(--red);
+  }
+
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:200;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modalBox{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border:1px solid #333;
+  border-radius:17px;
+  padding:25px;
+}
+
+.modalBox h2{
+  margin-bottom:15px;
+}
+
+.modalBox input{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  background:#0d0d0d;
+  border:1px solid #333;
+  border-radius:8px;
+  color:white;
+}
+
+.modalBox button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border:0;
+  border-radius:8px;
+  background:var(--red);
+  color:white;
+}
+
+.close{
+  background:#222 !important;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    <div class="logoA"></div>
+    AVYRA
+  </div>
+
+  <nav>
+    <button onclick="notifications()">🔔</button>
+    <button onclick="messages()">💬</button>
+    <button onclick="account()">Account</button>
+    <button class="signin" onclick="openLogin()">
+      Sign in
+    </button>
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>
+    Welcome to <span>AVYRA</span>
+  </h1>
+
+  <p>
+    Buy. Sell. Connect. Worldwide. 🌍
+  </p>
+
+  <div class="search">
+
+    <input
+      id="search"
+      placeholder="Search products, sellers..."
+      oninput="searchProducts()"
+    >
+
+    <button onclick="searchProducts()">
+      Search
+    </button>
+
+  </div>
+
+</section>
+
+
+<main class="container">
+
+
+<section class="section">
+
+<div class="title">
+<h2>Explore Categories</h2>
+</div>
+
+<div class="categories">
+
+<div class="category"><div>📱</div><p>Phones</p></div>
+<div class="category"><div>💻</div><p>Computers</p></div>
+<div class="category"><div>🎮</div><p>Gaming</p></div>
+<div class="category"><div>👕</div><p>Fashion</p></div>
+<div class="category"><div>🚗</div><p>Vehicles</p></div>
+<div class="category"><div>🏠</div><p>Home</p></div>
+<div class="category"><div>⚽</div><p>Sports</p></div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="title">
+<h2>🔥 Trending Worldwide</h2>
+<span>Worldwide</span>
+</div>
+
+<div class="products" id="products">
+
+
+<div class="product">
+
+<div class="productImage">📱</div>
+
+<div class="productInfo">
+
+<h3>Galaxy Smartphone</h3>
+
+<div class="price">$420 USD</div>
+
+<div class="location">
+📍 Nairobi, Kenya
+</div>
+
+<div class="rating">
+★★★★★ 4.9
+</div>
+
+<div class="actions">
+
+<button
+class="message"
+onclick="openChat('Galaxy Smartphone')">
+Message
+</button>
+
+<button
+class="save"
+onclick="saveItem(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="product">
+
+<div class="productImage">🎮</div>
+
+<div class="productInfo">
+
+<h3>Gaming Controller</h3>
+
+<div class="price">$45 USD</div>
+
+<div class="location">
+📍 London, UK
+</div>
+
+<div class="rating">
+★★★★☆ 4.6
+</div>
+
+<div class="actions">
+
+<button
+class="message"
+onclick="openChat('Gaming Controller')">
+Message
+</button>
+
+<button
+class="save"
+onclick="saveItem(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="product">
+
+<div class="productImage">👟</div>
+
+<div class="productInfo">
+
+<h3>Sports Sneakers</h3>
+
+<div class="price">$65 USD</div>
+
+<div class="location">
+📍 Lagos, Nigeria
+</div>
+
+<div class="rating">
+★★★★★ 5.0
+</div>
+
+<div class="actions">
+
+<button
+class="message"
+onclick="openChat('Sports Sneakers')">
+Message
+</button>
+
+<button
+class="save"
+onclick="saveItem(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="product">
+
+<div class="productImage">💻</div>
+
+<div class="productInfo">
+
+<h3>Gaming Laptop</h3>
+
+<div class="price">$950 USD</div>
+
+<div class="location">
+📍 New York, USA
+</div>
+
+<div class="rating">
+★★★★★ 4.8
+</div>
+
+<div class="actions">
+
+<button
+class="message"
+onclick="openChat('Gaming Laptop')">
+Message
+</button>
+
+<button
+class="save"
+onclick="saveItem(this)">
+♡
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="title">
+<h2>⭐ Popular Sellers</h2>
+</div>
+
+<div class="seller">
+
+<div class="avatar">JE</div>
+
+<div class="sellerInfo">
+
+<h3>John Electronics ✓</h3>
+
+<div class="rating">
+★★★★★ 4.9
+</div>
+
+<div class="followers">
+2.4K followers
+</div>
+
+</div>
+
+<button class="follow"
+onclick="follow(this)">
+Follow
+</button>
+
+</div>
+
+
+<div class="seller">
+
+<div class="avatar">AF</div>
+
+<div class="sellerInfo">
+
+<h3>AF Fashion ✓</h3>
+
+<div class="rating">
+★★★★★ 4.8
+</div>
+
+<div class="followers">
+1.7K followers
+</div>
+
+</div>
+
+<button class="follow"
+onclick="follow(this)">
+Follow
+</button>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="title">
+<h2>Why AVYRA?</h2>
+</div>
+
+<div class="features">
+
+<div class="feature">
+<div class="featureIcon">🌍</div>
+<h3>Worldwide</h3>
+<p>
+Buy and sell with people around the world.
+</p>
+</div>
+
+<div class="feature">
+<div class="featureIcon">💬</div>
+<h3>Direct Chat</h3>
+<p>
+Talk directly with buyers and sellers.
+</p>
+</div>
+
+<div class="feature">
+<div class="featureIcon">⭐</div>
+<h3>Ratings</h3>
+<p>
+See seller ratings before making a deal.
+</p>
+</div>
+
+<div class="feature">
+<div class="featureIcon">🚚</div>
+<h3>Flexible Shipping</h3>
+<p>
+Buyer and seller arrange shipping themselves.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Ready to sell?</h2>
+
+<p>
+Create your seller account and list your first product.
+</p>
+
+<button class="sell" onclick="openLogin()">
++ Start Selling
+</button>
+
+</section>
+
+</main>
+
+
+<div class="bottomNav">
+
+<button>🏠<br>Home</button>
+<button onclick="search.focus()">🔎<br>Search</button>
+<button onclick="openLogin()">➕<br>Sell</button>
+<button onclick="messages()">💬<br>Messages</button>
+<button onclick="account()">👤<br>Account</button>
+
+</div>
+
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+<div class="modalBox">
+
+<h2>Welcome to AVYRA</h2>
+
+<input
+id="email"
+type="email"
+placeholder="Email address"
+>
+
+<input
+type="password"
+placeholder="Password"
+>
+
+<button onclick="login()">
+Sign In
+</button>
+
+<button onclick="googleLogin()">
+Continue with Google
+</button>
+
+<button
+class="close"
+onclick="closeLogin()">
+Close
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openLogin(){
+  document.getElementById("loginModal")
+  .style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal")
+  .style.display="none";
+}
+
+function login(){
+  alert(
+    "Firebase Authentication will handle your real login once Firebase is connected."
+  );
+}
+
+function googleLogin(){
+  alert(
+    "Google authentication will work after Firebase Authentication is configured."
+  );
+}
+
+function searchProducts(){
+
+  const value =
+    document.getElementById("search")
+    .value
+    .toLowerCase();
+
+  document
+  .querySelectorAll(".product")
+  .forEach(product => {
+
+    const text =
+      product.innerText.toLowerCase();
+
+    product.style.display =
+      text.includes(value)
+      ? ""
+      : "none";
+
+  });
+
+}
+
+function saveItem(button){
+
+  if(button.innerText==="♡"){
+    button.innerText="♥";
+    button.style.color="#ff1744";
+  }else{
+    button.innerText="♡";
+    button.style.color="white";
+  }
+
+}
+
+function follow(button){
+
+  if(button.innerText==="Follow"){
+
+    button.innerText="Following";
+    button.style.background="#ff1744";
+    button.style.color="white";
+
+  }else{
+
+    button.innerText="Follow";
+    button.style.background="none";
+    button.style.color="#ff1744";
+
+  }
+
+}
+
+function openChat(product){
+
+  alert(
+    "Chat with seller\n\n" +
+    "Listing: " + product +
+    "\n\n" +
+    "Real-time chat will be connected through Firebase."
+  );
+
+}
+
+function notifications(){
+
+  alert(
+    "Notifications\n\n" +
+    "You're all caught up."
+  );
+
+}
+
+function messages(){
+
+  alert(
+    "Messages\n\n" +
+    "Your conversations will appear here."
+  );
+
+}
+
+function account(){
+
+  openLogin();
+
+}
+
+</script>
+
+</body>
+</html>
