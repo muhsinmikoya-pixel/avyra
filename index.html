@@ -3,151 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#09090b">
 <title>AVYRA</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 :root{
-  --black:#09090b;
-  --black2:#111114;
-  --white:#fff;
-  --gray:#a1a1aa;
-  --light:#f4f4f5;
-  --border:#27272a;
-  --purple:#8b3dff;
-  --purple2:#c026d3;
-  --red:#ef4444;
-  --pink:#e11d48;
+  --bg:#080808;
+  --surface:#111113;
+  --surface2:#18181b;
+  --border:#29292e;
+  --text:#f7f7f8;
+  --muted:#9999a3;
+  --red:#ff315c;
+  --purple:#8b5cf6;
+  --gradient:linear-gradient(135deg,#ff315c,#8b5cf6);
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f4f5;
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f5f7;
   color:#111;
-  padding-bottom:75px
+  padding-bottom:75px;
 }
 
-button,input,select,textarea{
-  font:inherit
+button,input,textarea,select{
+  font:inherit;
 }
 
 button{
-  cursor:pointer
+  cursor:pointer;
 }
 
 button:disabled{
-  opacity:.5
+  opacity:.5;
 }
 
-/* HEADER */
-
 header{
-  background:linear-gradient(110deg,#070707,#17101c,#250c1b);
-  color:white;
   position:sticky;
   top:0;
   z-index:100;
-  box-shadow:0 4px 20px #0005
+  background:rgba(8,8,8,.94);
+  backdrop-filter:blur(18px);
+  color:white;
+  border-bottom:1px solid #202024;
 }
 
-.top{
-  min-height:65px;
+.header{
+  max-width:1400px;
+  margin:auto;
+  min-height:68px;
+  padding:10px 18px;
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:10px 14px
+  gap:18px;
 }
 
 .logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:white
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:-1px;
 }
 
 .logo span{
-  color:#b64cff
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .searchWrap{
+  flex:1;
   position:relative;
-  flex:1
 }
 
 .search{
+  height:43px;
   display:flex;
-  height:42px;
-  border-radius:10px;
+  background:#171719;
+  border:1px solid #303036;
+  border-radius:12px;
   overflow:hidden;
-  background:white
 }
 
 .search input{
   flex:1;
   border:0;
   outline:0;
-  padding:0 13px;
-  color:#111
+  background:transparent;
+  color:white;
+  padding:0 14px;
+}
+
+.search input::placeholder{
+  color:#777780;
 }
 
 .search button{
-  width:50px;
+  width:48px;
   border:0;
   color:white;
-  background:linear-gradient(135deg,var(--purple),var(--pink))
+  background:var(--gradient);
 }
 
 .headerBtn{
-  background:none;
   border:0;
+  background:none;
   color:white;
-  text-align:left;
-  white-space:nowrap
+  font-weight:600;
+  white-space:nowrap;
 }
 
 .headerBtn small{
   display:block;
-  color:#aaa;
-  font-size:10px
+  color:#777780;
+  font-size:10px;
+  margin-bottom:2px;
 }
-
-.headerBtn b{
-  font-size:13px
-}
-
-.cartTop{
-  font-size:22px
-}
-
-/* SEARCH RESULTS */
 
 .searchResults{
   display:none;
   position:absolute;
+  top:49px;
   left:0;
   right:0;
-  top:48px;
-  background:white;
-  color:#111;
-  border-radius:10px;
+  background:#171719;
+  border:1px solid #303036;
+  border-radius:12px;
   overflow:hidden;
-  box-shadow:0 10px 30px #0004;
-  z-index:300
+  z-index:300;
 }
 
 .suggestion{
   padding:13px;
-  border-bottom:1px solid #eee
+  color:white;
+  border-bottom:1px solid #28282c;
 }
 
 .suggestion:hover{
-  background:#f4f4f5
+  background:#222227;
 }
 
 /* PAGES */
@@ -155,363 +154,496 @@ header{
 .page{
   display:none;
   min-height:80vh;
-  padding-bottom:30px
 }
 
 .page.active{
-  display:block
-}
-
-.container{
-  width:94%;
-  max-width:1250px;
-  margin:auto
+  display:block;
 }
 
 /* HERO */
 
 .hero{
-  min-height:360px;
+  min-height:440px;
+  background:
+    radial-gradient(circle at 80% 30%,rgba(139,92,246,.25),transparent 35%),
+    radial-gradient(circle at 20% 60%,rgba(255,49,92,.18),transparent 35%),
+    #080808;
   color:white;
   display:flex;
   align-items:center;
-  padding:55px 7%;
-  background:
-    radial-gradient(circle at 80% 30%,#9d36ff55,transparent 30%),
-    radial-gradient(circle at 60% 80%,#e11d4855,transparent 30%),
-    linear-gradient(120deg,#050505,#150a18,#260914)
+}
+
+.heroInner{
+  width:92%;
+  max-width:1200px;
+  margin:auto;
+  padding:70px 0;
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid #38383e;
+  background:#151518;
+  padding:7px 11px;
+  border-radius:100px;
+  font-size:12px;
+  color:#bbb;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(38px,8vw,70px);
+  max-width:760px;
+  font-size:clamp(40px,8vw,78px);
   line-height:1;
-  max-width:700px
+  letter-spacing:-4px;
 }
 
-.hero h1 span{
-  color:#b64cff
+.gradientText{
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-  color:#d4d4d8;
-  margin:18px 0 25px;
-  max-width:600px;
-  line-height:1.6
+  max-width:580px;
+  color:#a4a4ad;
+  margin:20px 0 28px;
+  line-height:1.7;
 }
 
-.heroBtns{
+.heroButtons{
   display:flex;
+  gap:10px;
   flex-wrap:wrap;
-  gap:10px
 }
 
-.hero button{
-  border:0;
-  padding:13px 22px;
-  border-radius:10px;
-  font-weight:bold
-}
+/* GENERAL */
 
-.shopHero{
-  background:white;
-  color:#111
+.container{
+  width:92%;
+  max-width:1250px;
+  margin:auto;
 }
-
-.shopHero:hover{
-  background:#eee
-}
-
-.sellHero{
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  color:white
-}
-
-/* SECTIONS */
 
 .section{
-  margin:25px 0
+  padding:32px 0;
 }
 
 .sectionTitle{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:14px
+  gap:10px;
+  margin-bottom:18px;
 }
 
 .sectionTitle h2{
-  font-size:22px
+  font-size:22px;
+  letter-spacing:-.5px;
 }
 
 .sectionTitle button{
   border:0;
   background:none;
-  color:#7c3aed;
-  font-weight:bold
+  color:#7145df;
+  font-weight:600;
+}
+
+.btn{
+  border:1px solid #d7d7dc;
+  background:white;
+  color:#111;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.primary{
+  color:white;
+  border:0;
+  background:var(--gradient);
+}
+
+.darkBtn{
+  background:#111;
+  color:white;
+  border:1px solid #333;
+}
+
+.danger{
+  color:#e22;
 }
 
 /* CATEGORIES */
 
 .categories{
   display:flex;
-  gap:12px;
+  gap:10px;
   overflow-x:auto;
-  padding-bottom:5px
+  scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+  display:none;
 }
 
 .category{
-  min-width:125px;
+  min-width:145px;
+  padding:18px;
   background:white;
-  border:1px solid #e4e4e7;
-  padding:18px 10px;
-  text-align:center;
-  border-radius:14px;
-  transition:.2s
+  border:1px solid #e5e5e8;
+  border-radius:15px;
+  transition:.2s;
 }
 
 .category:hover{
-  transform:translateY(-3px);
-  border-color:#a855f7
+  transform:translateY(-2px);
+  border-color:#bbb;
 }
 
-.category div{
-  font-size:31px;
-  margin-bottom:8px
+.category strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.category span{
+  color:#888;
+  font-size:12px;
 }
 
 /* PRODUCTS */
 
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
-  gap:14px
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:15px;
 }
 
 .product{
   background:white;
-  border:1px solid #e4e4e7;
-  border-radius:14px;
+  border:1px solid #e5e5e8;
+  border-radius:16px;
   padding:12px;
   overflow:hidden;
-  transition:.2s
+  transition:.2s;
 }
 
 .product:hover{
   transform:translateY(-3px);
-  box-shadow:0 8px 25px #0001
+  box-shadow:0 12px 35px #0000000c;
 }
 
-.product img,
-.placeholder{
+.productImage{
   width:100%;
-  height:190px;
+  height:210px;
+  background:#f1f1f3;
+  border-radius:12px;
   object-fit:contain;
-  border-radius:10px
 }
 
-.placeholder{
+.productPlaceholder{
+  width:100%;
+  height:210px;
+  background:#f1f1f3;
+  border-radius:12px;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#f4f4f5;
-  font-size:60px
+  color:#aaa;
+  font-size:13px;
 }
 
 .product h3{
   font-size:15px;
-  margin:11px 0 7px
+  margin:12px 2px 5px;
 }
 
-.stars{
-  color:#f59e0b;
-  font-size:13px
+.seller{
+  color:#777;
+  font-size:12px;
 }
 
 .price{
-  font-size:20px;
-  font-weight:900;
-  margin:8px 0
+  font-size:19px;
+  font-weight:800;
+  margin:10px 2px;
 }
 
-.product small{
-  color:#71717a
-}
-
-.productBtns{
+.productButtons{
   display:flex;
   gap:7px;
-  margin-top:11px
 }
 
-.productBtns button{
+.productButtons button{
   flex:1;
-  border:0;
   padding:9px 5px;
   border-radius:9px;
-  font-weight:bold
+  border:1px solid #ddd;
+  background:#fafafa;
+  font-weight:600;
 }
 
-.productBtns button:first-child{
-  background:#111;
-  color:white
+.productButtons button:last-child{
+  color:white;
+  border:0;
+  background:var(--gradient);
 }
 
-.productBtns button:last-child{
-  background:#f1f1f3;
-  color:#111
-}
+/* EMPTY */
 
-/* CARDS */
-
-.card{
+.empty{
   background:white;
-  border:1px solid #e4e4e7;
-  border-radius:15px;
+  border:1px dashed #d4d4d8;
+  border-radius:16px;
+  padding:55px 20px;
+  text-align:center;
+  color:#777;
+}
+
+.empty h3{
+  color:#222;
+  margin-bottom:7px;
+}
+
+/* DARK SELLER */
+
+.sellerHero{
+  background:#090909;
+  color:white;
+  padding:55px 0;
+}
+
+.sellerHero h1{
+  font-size:clamp(35px,7vw,60px);
+  letter-spacing:-3px;
+}
+
+.sellerHero p{
+  color:#999;
+  max-width:600px;
+  margin-top:12px;
+  line-height:1.6;
+}
+
+.sellerGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:28px;
+}
+
+.sellerCard{
+  background:#151517;
+  border:1px solid #29292d;
+  border-radius:16px;
   padding:20px;
-  margin-bottom:15px;
-  box-shadow:0 4px 15px #00000008
+}
+
+.sellerCard strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.sellerCard span{
+  color:#888;
+  font-size:13px;
 }
 
 /* FORMS */
 
 .form{
-  max-width:600px;
-  margin:auto;
+  max-width:620px;
+  margin:35px auto;
   background:white;
-  padding:22px;
-  border-radius:16px;
-  box-shadow:0 10px 30px #0001
+  padding:25px;
+  border-radius:18px;
+  border:1px solid #e3e3e7;
+}
+
+.form h2{
+  margin-bottom:7px;
+  letter-spacing:-1px;
+}
+
+.formIntro{
+  color:#777;
+  font-size:13px;
+  margin-bottom:22px;
+}
+
+.form label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
 }
 
 .form input,
 .form textarea,
 .form select{
   width:100%;
-  padding:13px;
-  margin:7px 0 14px;
-  border:1px solid #d4d4d8;
-  border-radius:9px;
-  outline:0;
-  background:white
+  padding:12px 13px;
+  margin-bottom:15px;
+  border:1px solid #d6d6da;
+  border-radius:10px;
+  outline:none;
+  background:#fafafa;
 }
 
 .form input:focus,
 .form textarea:focus,
 .form select:focus{
-  border-color:#9333ea;
-  box-shadow:0 0 0 3px #9333ea18
+  border-color:#8b5cf6;
+  box-shadow:0 0 0 3px #8b5cf615;
 }
 
-.form label{
-  font-weight:bold;
-  font-size:13px
-}
-
-/* BUTTONS */
-
-.btn{
-  border:1px solid #d4d4d8;
-  background:white;
-  padding:11px 16px;
-  border-radius:9px;
-  font-weight:bold
-}
-
-.primary{
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  color:white;
-  border:0
-}
-
-.darkBtn{
-  background:#09090b;
-  color:white;
-  border:0
-}
-
-.danger{
-  color:#dc2626
+.form button{
+  width:100%;
 }
 
 /* ACCOUNT */
 
-.accountTop{
+.accountCard{
+  background:white;
+  border:1px solid #e1e1e5;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:15px;
+}
+
+.profile{
   display:flex;
+  gap:15px;
   align-items:center;
-  gap:15px
 }
 
 .avatar{
-  width:75px;
-  height:75px;
+  width:64px;
+  height:64px;
   border-radius:50%;
   object-fit:cover;
-  background:#ddd
+  background:#151515;
 }
 
-.accountActions{
+.avatarText{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:var(--gradient);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:22px;
+  font-weight:800;
+}
+
+.profile p{
+  color:#777;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.actions{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin-top:18px
+  margin-top:20px;
 }
 
 /* CART */
 
 .cartItem{
   background:white;
-  border:1px solid #e4e4e7;
-  border-radius:14px;
+  border:1px solid #e1e1e5;
+  border-radius:15px;
+  padding:14px;
   display:flex;
   gap:15px;
-  padding:15px;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
-.cartItem img,
-.cartPlaceholder{
+.cartImage{
   width:100px;
   height:100px;
+  border-radius:10px;
   object-fit:contain;
-  border-radius:10px
-}
-
-.cartPlaceholder{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eee;
-  font-size:35px
+  background:#f1f1f3;
 }
 
 .cartInfo{
-  flex:1
+  flex:1;
+}
+
+.cartInfo h3{
+  margin-bottom:6px;
 }
 
 .qty{
   display:flex;
+  gap:7px;
   align-items:center;
-  gap:8px;
-  margin-top:10px;
-  flex-wrap:wrap
+  margin-top:12px;
 }
 
 .qty button{
-  width:32px;
-  height:32px;
+  width:30px;
+  height:30px;
   border:1px solid #ccc;
+  border-radius:7px;
   background:white;
-  border-radius:7px
 }
 
 .total{
-  background:#111;
-  color:white;
+  background:white;
+  border:1px solid #e1e1e5;
+  border-radius:15px;
   padding:20px;
-  border-radius:14px;
+  text-align:right;
   font-size:20px;
-  font-weight:bold;
-  text-align:right
+  font-weight:800;
+}
+
+/* ORDERS */
+
+.order{
+  background:white;
+  border:1px solid #e1e1e5;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.orderStatus{
+  display:inline-block;
+  margin-top:8px;
+  background:#eee9ff;
+  color:#7145df;
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* SETTINGS */
+
+.setting{
+  background:white;
+  border:1px solid #e1e1e5;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:12px;
+}
+
+.setting h3{
+  margin-bottom:6px;
+}
+
+.setting p{
+  color:#777;
+  font-size:13px;
+  margin-bottom:14px;
 }
 
 /* MODAL */
@@ -520,223 +652,143 @@ header{
   display:none;
   position:fixed;
   inset:0;
+  z-index:500;
   background:#0009;
-  z-index:200;
   align-items:center;
   justify-content:center;
-  padding:15px
+  padding:15px;
 }
 
 .modal.show{
-  display:flex
+  display:flex;
 }
 
 .modalBox{
-  background:white;
   width:100%;
-  max-width:550px;
+  max-width:500px;
   max-height:92vh;
   overflow:auto;
+  background:white;
+  border-radius:20px;
   padding:22px;
-  border-radius:18px
 }
 
 .modalHeader{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:15px
+  margin-bottom:15px;
 }
 
 .close{
   border:0;
-  background:none;
-  font-size:28px
+  background:#f1f1f3;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:20px;
 }
 
-/* AUTH */
-
-.authLogo{
-  text-align:center;
-  font-size:30px;
-  font-weight:900;
-  margin-bottom:5px
-}
-
-.authLogo span{
-  color:#9333ea
-}
-
-.authSub{
-  text-align:center;
-  color:#71717a;
-  margin-bottom:20px
-}
-
-.authSwitch{
-  text-align:center;
-  margin-top:15px;
-  color:#666
-}
-
-.authSwitch button{
-  border:0;
-  background:none;
-  color:#7c3aed;
-  font-weight:bold
-}
-
-.sellerBox{
-  margin-top:18px;
-  padding:17px;
-  border-radius:13px;
-  background:linear-gradient(135deg,#18181b,#35102b);
-  color:white
-}
-
-.sellerBox h3{
-  margin-bottom:7px
-}
-
-.sellerBox p{
-  color:#d4d4d8;
-  font-size:13px;
-  line-height:1.5;
-  margin-bottom:12px
-}
-
-/* NOTICE */
-
-.notice{
-  padding:13px;
-  background:#fef3c7;
-  border:1px solid #fde68a;
-  border-radius:10px;
-  margin-bottom:15px
-}
-
-.empty{
-  background:white;
-  border-radius:14px;
-  padding:40px;
-  text-align:center;
-  color:#71717a;
-  border:1px solid #e4e4e7
-}
-
-/* BOTTOM NAV */
+/* BOTTOM */
 
 .bottom{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  height:70px;
-  background:#09090b;
+  height:68px;
+  background:rgba(10,10,10,.96);
+  backdrop-filter:blur(15px);
+  border-top:1px solid #29292d;
   display:flex;
-  justify-content:space-around;
-  z-index:110;
-  border-top:1px solid #27272a
+  z-index:150;
 }
 
 .bottom button{
   flex:1;
-  background:none;
   border:0;
-  color:#a1a1aa;
-  font-size:10px
+  background:none;
+  color:#888;
+  font-size:11px;
+  font-weight:600;
 }
 
 .bottom button.active{
-  color:white
-}
-
-.bottom span{
-  display:block;
-  font-size:21px;
-  margin-bottom:3px
-}
-
-/* SELLER DASHBOARD */
-
-.sellerBanner{
-  padding:25px;
-  border-radius:17px;
   color:white;
-  background:
-    radial-gradient(circle at 90%,#c026d355,transparent 30%),
-    linear-gradient(120deg,#09090b,#241027,#3b0a21)
 }
 
-.statGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:15px
-}
-
-.stat{
-  background:#fff;
-  border:1px solid #e4e4e7;
-  border-radius:12px;
-  padding:15px;
-  text-align:center
-}
-
-.stat b{
+.bottom button span{
   display:block;
-  font-size:23px
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:transparent;
+  margin:5px auto 5px;
 }
 
-.stat small{
-  color:#71717a
+.bottom button.active span{
+  background:var(--red);
 }
 
-@media(max-width:700px){
+/* RESPONSIVE */
 
-  .top{
-    gap:7px
+@media(max-width:750px){
+
+  .header{
+    padding:9px 12px;
+    gap:9px;
   }
 
   .logo{
-    font-size:19px
+    font-size:19px;
   }
 
   .headerBtn{
-    display:none
+    display:none;
+  }
+
+  .hero{
+    min-height:410px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .sellerGrid{
+    grid-template-columns:1fr;
   }
 
   .products{
     grid-template-columns:repeat(2,1fr);
-    gap:9px
+    gap:9px;
   }
 
   .product{
-    padding:9px
+    padding:9px;
+    border-radius:13px;
   }
 
-  .product img,
-  .placeholder{
-    height:140px
+  .productImage,
+  .productPlaceholder{
+    height:145px;
   }
 
-  .hero{
-    min-height:300px;
-    padding:40px 7%
+  .product h3{
+    font-size:13px;
+  }
+
+  .price{
+    font-size:16px;
   }
 
   .cartItem{
-    padding:10px
+    padding:10px;
   }
 
-  .cartItem img,
-  .cartPlaceholder{
+  .cartImage{
     width:80px;
-    height:80px
-  }
-
-  .statGrid{
-    grid-template-columns:1fr 1fr
+    height:80px;
   }
 }
 </style>
@@ -745,30 +797,24 @@ header{
 <body>
 
 <header>
-  <div class="top">
+  <div class="header">
 
     <div class="logo">
       AVY<span>RA</span>
     </div>
 
     <div class="searchWrap">
-
       <div class="search">
-        <input id="searchInput" placeholder="Search AVYRA...">
-        <button onclick="searchProducts()">🔎</button>
+        <input id="searchInput" placeholder="Search products">
+        <button onclick="searchProducts()">Search</button>
       </div>
 
       <div id="searchResults" class="searchResults"></div>
-
     </div>
 
-    <button class="headerBtn" onclick="openAuthChoice()">
-      <small>Hello,</small>
-      <b id="headerUser">Log in</b>
-    </button>
-
-    <button class="headerBtn cartTop" onclick="showPage('cart')">
-      🛒 <b id="cartCount">0</b>
+    <button class="headerBtn" onclick="showPage('account')">
+      <small>Account</small>
+      <span id="headerUser">Log in</span>
     </button>
 
   </div>
@@ -780,35 +826,31 @@ header{
 <section id="home" class="page active">
 
   <div class="hero">
+    <div class="heroInner">
 
-    <div>
+      <span class="badge">AVYRA MARKETPLACE</span>
 
       <h1>
-        Shop smarter.<br>
-        Shop <span>AVYRA.</span>
+        Shop better.
+        <span class="gradientText">Sell smarter.</span>
       </h1>
 
       <p>
-        Discover products, compare prices and buy from sellers
-        on a modern marketplace built for everyone.
+        Discover products from independent sellers
+        and find what you need in one place.
       </p>
 
-      <div class="heroBtns">
-
-        <button class="shopHero"
-          onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">
-          Start shopping
+      <div class="heroButtons">
+        <button class="btn primary" onclick="showPage('shop')">
+          Explore products
         </button>
 
-        <button class="sellHero"
-          onclick="openSellerJoin()">
-          Become a seller
+        <button class="btn darkBtn" onclick="showPage('seller')">
+          Join as a seller
         </button>
-
       </div>
 
     </div>
-
   </div>
 
 
@@ -822,75 +864,52 @@ header{
 
       <div class="categories">
 
-        <div class="category" onclick="categorySearch('Phones')">
-          <div>📱</div>
-          Phones
-        </div>
+        <button class="category" onclick="categorySearch('Phones')">
+          <strong>Phones</strong>
+          <span>Mobile devices</span>
+        </button>
 
-        <div class="category" onclick="categorySearch('Computers')">
-          <div>💻</div>
-          Computers
-        </div>
+        <button class="category" onclick="categorySearch('Computers')">
+          <strong>Computers</strong>
+          <span>Laptops and more</span>
+        </button>
 
-        <div class="category" onclick="categorySearch('Gaming')">
-          <div>🎮</div>
-          Gaming
-        </div>
+        <button class="category" onclick="categorySearch('Gaming')">
+          <strong>Gaming</strong>
+          <span>Games and gear</span>
+        </button>
 
-        <div class="category" onclick="categorySearch('Fashion')">
-          <div>👕</div>
-          Fashion
-        </div>
+        <button class="category" onclick="categorySearch('Fashion')">
+          <strong>Fashion</strong>
+          <span>Clothing and style</span>
+        </button>
 
-        <div class="category" onclick="categorySearch('Home')">
-          <div>🏠</div>
-          Home
-        </div>
+        <button class="category" onclick="categorySearch('Home')">
+          <strong>Home</strong>
+          <span>Home essentials</span>
+        </button>
 
-        <div class="category" onclick="categorySearch('Beauty')">
-          <div>💄</div>
-          Beauty
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="section" id="featured">
-
-      <div class="sectionTitle">
-
-        <h2>Featured products</h2>
-
-        <button onclick="showPage('shop')">
-          See all
+        <button class="category" onclick="categorySearch('Beauty')">
+          <strong>Beauty</strong>
+          <span>Beauty products</span>
         </button>
 
       </div>
-
-      <div id="featuredProducts" class="products"></div>
 
     </section>
 
 
     <section class="section">
 
-      <div class="sellerBanner">
+      <div class="sectionTitle">
+        <h2>Latest products</h2>
 
-        <h2>Sell on AVYRA</h2>
-
-        <p style="margin:10px 0;color:#ddd">
-          Turn your products into sales. Join AVYRA and create
-          your own listings.
-        </p>
-
-        <button class="btn primary"
-          onclick="openSellerJoin()">
-          Join as a seller
+        <button onclick="showPage('shop')">
+          View all
         </button>
-
       </div>
+
+      <div id="featuredProducts" class="products"></div>
 
     </section>
 
@@ -903,16 +922,22 @@ header{
 
 <section id="shop" class="page">
 
-  <main class="container">
+  <main class="container section">
 
     <div class="sectionTitle">
 
-      <h1>Shop</h1>
+      <div>
+        <h1>Products</h1>
+        <p style="color:#777;margin-top:5px;font-size:13px">
+          Products listed by AVYRA sellers
+        </p>
+      </div>
 
-      <select id="sortSelect" onchange="renderShop()">
+      <select id="sortSelect" onchange="renderShop()"
+        style="padding:10px;border:1px solid #ddd;border-radius:9px">
         <option value="new">Newest</option>
-        <option value="low">Price: Low to high</option>
-        <option value="high">Price: High to low</option>
+        <option value="low">Lowest price</option>
+        <option value="high">Highest price</option>
       </select>
 
     </div>
@@ -924,11 +949,11 @@ header{
 </section>
 
 
-<!-- DETAILS -->
+<!-- PRODUCT DETAILS -->
 
 <section id="details" class="page">
 
-  <main class="container">
+  <main class="container section">
 
     <div id="productDetails"></div>
 
@@ -937,15 +962,164 @@ header{
 </section>
 
 
+<!-- SELLER LANDING -->
+
+<section id="seller" class="page">
+
+  <div class="sellerHero">
+
+    <div class="container">
+
+      <span class="badge">SELL ON AVYRA</span>
+
+      <h1>
+        Turn your products<br>
+        into <span class="gradientText">sales.</span>
+      </h1>
+
+      <p>
+        Create a seller account, publish your products
+        and manage your listings from one place.
+      </p>
+
+      <div class="heroButtons">
+
+        <button class="btn primary" onclick="startSeller()">
+          Become a seller
+        </button>
+
+        <button class="btn darkBtn" onclick="showPage('account')">
+          Log in
+        </button>
+
+      </div>
+
+
+      <div class="sellerGrid">
+
+        <div class="sellerCard">
+          <strong>Create your store</strong>
+          <span>Set up your seller profile.</span>
+        </div>
+
+        <div class="sellerCard">
+          <strong>List products</strong>
+          <span>Add your own products and prices.</span>
+        </div>
+
+        <div class="sellerCard">
+          <strong>Manage orders</strong>
+          <span>Keep track of customer purchases.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SELLER DASHBOARD -->
+
+<section id="sellerDashboard" class="page">
+
+  <main class="container section">
+
+    <div class="sectionTitle">
+
+      <div>
+        <h1>Seller Hub</h1>
+        <p style="color:#777;margin-top:5px">
+          Manage your AVYRA store
+        </p>
+      </div>
+
+      <button class="btn primary" onclick="showPage('addProduct')">
+        Add product
+      </button>
+
+    </div>
+
+    <div id="sellerStats"></div>
+
+    <div class="sectionTitle" style="margin-top:30px">
+      <h2>Your products</h2>
+    </div>
+
+    <div id="sellerProducts" class="products"></div>
+
+  </main>
+
+</section>
+
+
+<!-- ADD PRODUCT -->
+
+<section id="addProduct" class="page">
+
+  <div class="container">
+
+    <div class="form">
+
+      <h2>Add a product</h2>
+
+      <p class="formIntro">
+        Add the details customers will see on your listing.
+      </p>
+
+      <label>Product name</label>
+      <input id="sellName" placeholder="Product name">
+
+      <label>Category</label>
+      <select id="sellCategory">
+        <option>Phones</option>
+        <option>Computers</option>
+        <option>Gaming</option>
+        <option>Fashion</option>
+        <option>Home</option>
+        <option>Beauty</option>
+        <option>Other</option>
+      </select>
+
+      <label>Price</label>
+      <input id="sellPrice" type="number" min="1" placeholder="10000">
+
+      <label>Currency</label>
+      <input id="sellCurrency" placeholder="KES">
+
+      <label>Location</label>
+      <input id="sellLocation" placeholder="Kakamega, Kenya">
+
+      <label>Description</label>
+      <textarea id="sellDescription" rows="5"
+        placeholder="Describe your product"></textarea>
+
+      <label>Product image</label>
+      <input id="sellImage" type="file" accept="image/*">
+
+      <button class="btn primary" onclick="addProduct()">
+        Publish product
+      </button>
+
+      <p id="sellStatus"
+        style="margin-top:12px;text-align:center"></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
 <!-- CART -->
 
 <section id="cart" class="page">
 
-  <main class="container">
+  <main class="container section">
 
-    <h1 style="margin-bottom:15px">
-      Shopping Cart
-    </h1>
+    <h1 style="margin-bottom:18px">Cart</h1>
 
     <div id="cartItems"></div>
 
@@ -960,11 +1134,9 @@ header{
 
 <section id="orders" class="page">
 
-  <main class="container">
+  <main class="container section">
 
-    <h1 style="margin-bottom:15px">
-      Your Orders
-    </h1>
+    <h1 style="margin-bottom:18px">Orders</h1>
 
     <div id="ordersList"></div>
 
@@ -977,26 +1149,11 @@ header{
 
 <section id="account" class="page">
 
-  <main class="container">
+  <main class="container section">
 
-    <h1 style="margin-bottom:15px">
-      Account
-    </h1>
+    <h1 style="margin-bottom:18px">Account</h1>
 
     <div id="accountContent"></div>
-
-  </main>
-
-</section>
-
-
-<!-- SELLER -->
-
-<section id="sell" class="page">
-
-  <main class="container">
-
-    <div id="sellerContent"></div>
 
   </main>
 
@@ -1007,85 +1164,57 @@ header{
 
 <section id="settings" class="page">
 
-  <main class="container">
+  <main class="container section">
 
-    <h1 style="margin-bottom:15px">
-      Settings
-    </h1>
+    <h1 style="margin-bottom:18px">Settings</h1>
 
-    <div class="card">
-
-      <h3>Account</h3>
-
-      <p style="color:#71717a;margin:8px 0 13px">
-        Manage your AVYRA account.
-      </p>
-
-      <button class="btn primary"
-        onclick="openEditProfile()">
-        Edit profile
-      </button>
-
-    </div>
-
-
-    <div class="card">
+    <div class="setting">
 
       <h3>Delivery location</h3>
 
+      <p>Used as your default shopping location.</p>
+
       <input id="settingLocation"
-        style="width:100%;padding:12px;margin:12px 0;border:1px solid #ccc;border-radius:8px"
-        placeholder="Country or city">
+        style="padding:11px;width:100%;border:1px solid #ddd;border-radius:9px">
 
       <button class="btn primary"
+        style="margin-top:10px"
         onclick="saveLocation()">
-        Save location
+        Save
       </button>
 
     </div>
 
 
-    <div class="card">
+    <div class="setting">
 
-      <h3>Preferences</h3>
+      <h3>Notifications</h3>
 
-      <label style="display:block;margin-top:12px">
+      <p>Control shopping notifications.</p>
 
+      <label>
         <input id="notificationsSetting"
           type="checkbox"
-          checked
           onchange="saveSettings()">
-
         Enable notifications
-
       </label>
 
     </div>
 
 
-    <div class="card">
+    <div class="setting">
 
-      <h3>Data</h3>
+      <h3>Local data</h3>
 
-      <p style="color:#71717a;margin:8px 0">
-        Clear locally stored AVYRA data.
+      <p>
+        Remove products, accounts, carts and orders
+        saved on this device.
       </p>
 
       <button class="btn danger"
         onclick="clearLocalData()">
-        Clear local data
+        Clear app data
       </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>About AVYRA</h3>
-
-      <p style="margin-top:8px;color:#71717a">
-        AVYRA is a modern marketplace interface.
-      </p>
 
     </div>
 
@@ -1094,76 +1223,7 @@ header{
 </section>
 
 
-<!-- AUTH CHOICE -->
-
-<div id="authChoiceModal" class="modal">
-
-  <div class="modalBox">
-
-    <div class="modalHeader">
-
-      <h2>Welcome to AVYRA</h2>
-
-      <button class="close"
-        onclick="closeModal('authChoiceModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form" style="padding:0">
-
-      <div class="authLogo">
-        AVY<span>RA</span>
-      </div>
-
-      <p class="authSub">
-        Choose how you want to continue.
-      </p>
-
-      <button class="btn primary"
-        style="width:100%"
-        onclick="openLogin()">
-        🔐 Log in
-      </button>
-
-      <button class="btn darkBtn"
-        style="width:100%;margin-top:9px"
-        onclick="openCreateAccount()">
-        👤 Create account
-      </button>
-
-      <div class="sellerBox">
-
-        <h3>Want to sell?</h3>
-
-        <p>
-          Join AVYRA as a seller and create product listings
-          for customers to discover.
-        </p>
-
-        <button class="btn primary"
-          style="width:100%"
-          onclick="openSellerJoin()">
-          🛍️ Join as a seller
-        </button>
-
-      </div>
-
-      <button class="btn"
-        style="width:100%;margin-top:10px"
-        onclick="guestLogin()">
-        Continue as guest
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 
 <div id="loginModal" class="modal">
 
@@ -1180,47 +1240,29 @@ header{
 
     </div>
 
-    <div class="form" style="padding:0">
-
-      <div class="authLogo">
-        AVY<span>RA</span>
-      </div>
-
-      <p class="authSub">
-        Log in to your account
-      </p>
+    <div class="form" style="margin:0;padding:0;border:0">
 
       <label>Email</label>
-
-      <input id="loginEmail"
-        type="email"
+      <input id="loginEmail" type="email"
         placeholder="you@example.com">
 
       <label>Password</label>
-
-      <input id="loginPassword"
-        type="password"
-        placeholder="Password">
+      <input id="loginPassword" type="password"
+        placeholder="Your password">
 
       <button class="btn primary"
-        style="width:100%"
         onclick="login()">
         Log in
       </button>
 
+      <button class="btn"
+        style="margin-top:8px"
+        onclick="openSignup()">
+        Create account
+      </button>
+
       <p id="loginStatus"
-        style="margin-top:10px;text-align:center">
-      </p>
-
-      <div class="authSwitch">
-
-        Don't have an account?
-
-        <button onclick="openCreateAccount()">
-          Create account
-        </button>
-
-      </div>
+        style="margin-top:12px;text-align:center"></p>
 
     </div>
 
@@ -1229,9 +1271,9 @@ header{
 </div>
 
 
-<!-- CREATE ACCOUNT -->
+<!-- SIGNUP MODAL -->
 
-<div id="createModal" class="modal">
+<div id="signupModal" class="modal">
 
   <div class="modalBox">
 
@@ -1240,75 +1282,48 @@ header{
       <h2>Create account</h2>
 
       <button class="close"
-        onclick="closeModal('createModal')">
+        onclick="closeModal('signupModal')">
         ×
       </button>
 
     </div>
 
-    <div class="form" style="padding:0">
+    <div class="form" style="margin:0;padding:0;border:0">
 
-      <div class="authLogo">
-        AVY<span>RA</span>
-      </div>
-
-      <p class="authSub">
-        Create your free AVYRA account
-      </p>
-
-      <label>Full name *</label>
-
-      <input id="createName"
+      <label>Full name</label>
+      <input id="signupName"
         placeholder="Your name">
 
-      <label>Phone number *</label>
+      <label>Username</label>
+      <input id="signupUsername"
+        placeholder="username">
 
-      <input id="createPhone"
-        type="tel"
-        placeholder="+254 7XX XXX XXX">
-
-      <label>Email *</label>
-
-      <input id="createEmail"
+      <label>Email</label>
+      <input id="signupEmail"
         type="email"
         placeholder="you@example.com">
 
-      <label>Password *</label>
+      <label>Phone number</label>
+      <input id="signupPhone"
+        type="tel"
+        placeholder="+254 7XX XXX XXX">
 
-      <input id="createPassword"
+      <label>Password</label>
+      <input id="signupPassword"
         type="password"
         placeholder="Create a password">
 
-      <label>Username *</label>
-
-      <input id="createUsername"
-        placeholder="your_username">
-
       <label>Country</label>
-
-      <input id="createCountry"
-        value="Kenya"
-        placeholder="Country">
+      <input id="signupCountry"
+        placeholder="Kenya">
 
       <button class="btn primary"
-        style="width:100%"
         onclick="createAccount()">
         Create account
       </button>
 
-      <p id="createStatus"
-        style="margin-top:10px;text-align:center">
-      </p>
-
-      <div class="authSwitch">
-
-        Already have an account?
-
-        <button onclick="openLogin()">
-          Log in
-        </button>
-
-      </div>
+      <p id="signupStatus"
+        style="margin-top:12px;text-align:center"></p>
 
     </div>
 
@@ -1317,89 +1332,7 @@ header{
 </div>
 
 
-<!-- SELLER JOIN -->
-
-<div id="sellerJoinModal" class="modal">
-
-  <div class="modalBox">
-
-    <div class="modalHeader">
-
-      <h2>Join as a seller</h2>
-
-      <button class="close"
-        onclick="closeModal('sellerJoinModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form" style="padding:0">
-
-      <div class="sellerBox" style="margin:0 0 18px">
-
-        <h3>🛍️ Start selling on AVYRA</h3>
-
-        <p>
-          Create your seller profile and start publishing
-          products to the marketplace.
-        </p>
-
-      </div>
-
-      <label>Business / seller name *</label>
-
-      <input id="sellerName"
-        placeholder="Example: My Tech Store">
-
-      <label>Phone number *</label>
-
-      <input id="sellerPhone"
-        type="tel"
-        placeholder="+254 7XX XXX XXX">
-
-      <label>Email *</label>
-
-      <input id="sellerEmail"
-        type="email"
-        placeholder="seller@example.com">
-
-      <label>Location *</label>
-
-      <input id="sellerLocation"
-        placeholder="Kakamega, Kenya">
-
-      <label>Seller category</label>
-
-      <select id="sellerCategory">
-
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Gaming</option>
-        <option>Home</option>
-        <option>Beauty</option>
-        <option>Other</option>
-
-      </select>
-
-      <button class="btn primary"
-        style="width:100%"
-        onclick="joinSeller()">
-        Join as seller
-      </button>
-
-      <p id="sellerStatus"
-        style="margin-top:10px;text-align:center">
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- PROFILE -->
+<!-- PROFILE MODAL -->
 
 <div id="profileModal" class="modal">
 
@@ -1416,35 +1349,27 @@ header{
 
     </div>
 
-    <div class="form" style="padding:0">
+    <div class="form" style="margin:0;padding:0;border:0">
 
       <label>Name</label>
-      <input id="profileNameInput">
+      <input id="profileName">
 
       <label>Username</label>
-      <input id="profileUsernameInput">
+      <input id="profileUsername">
 
       <label>Email</label>
-      <input id="profileEmailInput">
+      <input id="profileEmail" type="email">
 
-      <label>Phone</label>
-      <input id="profilePhoneInput" type="tel">
+      <label>Phone number</label>
+      <input id="profilePhone" type="tel">
 
       <label>Country</label>
-      <input id="profileCountryInput">
-
-      <label>Profile picture</label>
-      <input id="profileImageInput"
-        type="file"
-        accept="image/*">
+      <input id="profileCountry">
 
       <button class="btn primary"
-        style="width:100%"
         onclick="saveProfile()">
-        Save profile
+        Save changes
       </button>
-
-      <p id="profileStatus"></p>
 
     </div>
 
@@ -1470,34 +1395,27 @@ header{
 
     </div>
 
-    <div class="form" style="padding:0">
+    <div class="form" style="margin:0;padding:0;border:0">
 
       <label>Full name</label>
-
       <input id="checkoutName">
 
-      <label>Phone</label>
-
+      <label>Phone number</label>
       <input id="checkoutPhone">
 
       <label>Delivery address</label>
-
       <textarea id="checkoutAddress"
-        rows="4"
-        placeholder="Enter delivery address"></textarea>
+        rows="4"></textarea>
 
       <label>Payment method</label>
 
       <select id="paymentMethod">
-
         <option>Cash on delivery</option>
         <option>Mobile money</option>
         <option>Card</option>
-
       </select>
 
       <button class="btn primary"
-        style="width:100%"
         onclick="placeOrder()">
         Place order
       </button>
@@ -1517,7 +1435,7 @@ header{
 
     <div class="modalHeader">
 
-      <h2>Write a review</h2>
+      <h2>Review product</h2>
 
       <button class="close"
         onclick="closeModal('reviewModal')">
@@ -1526,24 +1444,25 @@ header{
 
     </div>
 
-    <div class="form" style="padding:0">
+    <div class="form" style="margin:0;padding:0;border:0">
+
+      <label>Rating</label>
 
       <select id="reviewStars">
-
-        <option value="5">⭐⭐⭐⭐⭐</option>
-        <option value="4">⭐⭐⭐⭐</option>
-        <option value="3">⭐⭐⭐</option>
-        <option value="2">⭐⭐</option>
-        <option value="1">⭐</option>
-
+        <option value="5">5 / 5</option>
+        <option value="4">4 / 5</option>
+        <option value="3">3 / 5</option>
+        <option value="2">2 / 5</option>
+        <option value="1">1 / 5</option>
       </select>
+
+      <label>Review</label>
 
       <textarea id="reviewText"
         rows="5"
-        placeholder="Write your review"></textarea>
+        placeholder="Share your experience"></textarea>
 
       <button class="btn primary"
-        style="width:100%"
         onclick="submitReview()">
         Submit review
       </button>
@@ -1559,28 +1478,28 @@ header{
 
 <nav class="bottom">
 
-  <button onclick="showPage('home')">
-    <span>⌂</span>
+  <button onclick="showPage('home')" id="navHome">
+    <span></span>
     Home
   </button>
 
-  <button onclick="showPage('shop')">
-    <span>⌕</span>
+  <button onclick="showPage('shop')" id="navShop">
+    <span></span>
     Shop
   </button>
 
-  <button onclick="openSellerPage()">
-    <span>＋</span>
+  <button onclick="showPage('seller')" id="navSeller">
+    <span></span>
     Sell
   </button>
 
-  <button onclick="showPage('orders')">
-    <span>▣</span>
+  <button onclick="showPage('orders')" id="navOrders">
+    <span></span>
     Orders
   </button>
 
-  <button onclick="showPage('account')">
-    <span>♙</span>
+  <button onclick="showPage('account')" id="navAccount">
+    <span></span>
     Account
   </button>
 
@@ -1589,35 +1508,25 @@ header{
 
 <script>
 
-/* =========================================================
-   AVYRA
-   Local marketplace app
-   ========================================================= */
-
-const KEY="avyra_modern_v2";
+const KEY="avyra_modern_v1";
 
 let data={
   products:[],
   cart:[],
   orders:[],
   reviews:[],
-
   profile:{
+    loggedIn:false,
     name:"",
     username:"",
     email:"",
     phone:"",
     country:"",
-    image:"",
-    seller:false,
-    business:"",
-    sellerCategory:"",
-    sellerLocation:""
+    isSeller:false
   },
-
   settings:{
-    notifications:true,
-    location:"Kenya"
+    location:"Kenya",
+    notifications:true
   }
 };
 
@@ -1654,92 +1563,26 @@ function loadData(){
     data.reviews=[];
 
   if(!data.profile)
-    data.profile={};
+    data.profile={
+      loggedIn:false,
+      name:"",
+      username:"",
+      email:"",
+      phone:"",
+      country:"",
+      isSeller:false
+    };
 
   if(!data.settings)
     data.settings={
-      notifications:true,
-      location:"Kenya"
+      location:"Kenya",
+      notifications:true
     };
 }
 
 
 function saveData(){
   localStorage.setItem(KEY,JSON.stringify(data));
-}
-
-
-/* SAMPLE PRODUCTS */
-
-function createSamples(){
-
-  if(data.products.length)return;
-
-  data.products=[
-
-    {
-      id:id(),
-      name:"Wireless Headphones",
-      category:"Gaming",
-      price:3500,
-      currency:"KES",
-      location:"Kenya",
-      description:"Comfortable wireless headphones for music and gaming.",
-      image:"",
-      seller:"AVYRA Store",
-      sellerUsername:"avyra_store",
-      rating:4.5,
-      created:Date.now()
-    },
-
-    {
-      id:id(),
-      name:"Laptop Computer",
-      category:"Computers",
-      price:65000,
-      currency:"KES",
-      location:"Nairobi, Kenya",
-      description:"Powerful laptop for school, work and entertainment.",
-      image:"",
-      seller:"Tech Store",
-      sellerUsername:"techstore",
-      rating:4.7,
-      created:Date.now()-1000
-    },
-
-    {
-      id:id(),
-      name:"Smartphone",
-      category:"Phones",
-      price:25000,
-      currency:"KES",
-      location:"Kakamega, Kenya",
-      description:"Modern smartphone with a bright display and great battery.",
-      image:"",
-      seller:"Phone Hub",
-      sellerUsername:"phonehub",
-      rating:4.4,
-      created:Date.now()-2000
-    },
-
-    {
-      id:id(),
-      name:"Gaming Controller",
-      category:"Gaming",
-      price:4500,
-      currency:"KES",
-      location:"Kenya",
-      description:"Wireless controller for compatible gaming devices.",
-      image:"",
-      seller:"Game Zone",
-      sellerUsername:"gamezone",
-      rating:4.8,
-      created:Date.now()-3000
-    }
-
-  ];
-
-  saveData();
 }
 
 
@@ -1770,16 +1613,38 @@ function showPage(page){
   if(page==="account")
     renderAccount();
 
-  if(page==="sell")
-    renderSellerPage();
-
   if(page==="settings")
     renderSettings();
+
+  if(page==="sellerDashboard")
+    renderSellerDashboard();
+
+  updateNav(page);
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+}
+
+
+function updateNav(page){
+
+  document.querySelectorAll(".bottom button")
+    .forEach(b=>b.classList.remove("active"));
+
+  const map={
+    home:"navHome",
+    shop:"navShop",
+    seller:"navSeller",
+    orders:"navOrders",
+    account:"navAccount"
+  };
+
+  if(map[page]){
+    document.getElementById(map[page])
+      .classList.add("active");
+  }
 }
 
 
@@ -1793,22 +1658,23 @@ function searchProducts(){
     .trim()
     .toLowerCase();
 
-  document.getElementById("searchResults").style.display="none";
+  document.getElementById("searchResults")
+    .style.display="none";
+
+  showPage("shop");
 
   if(!text){
-    showPage("shop");
+    renderShop();
     return;
   }
 
   const results=data.products.filter(p=>
-    p.name.toLowerCase().includes(text)||
-    p.category.toLowerCase().includes(text)||
-    p.location.toLowerCase().includes(text)||
-    p.seller.toLowerCase().includes(text)||
-    p.description.toLowerCase().includes(text)
+    p.name.toLowerCase().includes(text) ||
+    p.category.toLowerCase().includes(text) ||
+    p.description.toLowerCase().includes(text) ||
+    p.location.toLowerCase().includes(text)
   );
 
-  showPage("shop");
   renderProducts(results);
 }
 
@@ -1841,17 +1707,12 @@ function liveSearch(){
     const div=document.createElement("div");
 
     div.className="suggestion";
-
     div.textContent=p.name;
 
     div.onclick=()=>{
-
       input.value=p.name;
-
       box.style.display="none";
-
       openProduct(p.id);
-
     };
 
     box.appendChild(div);
@@ -1868,20 +1729,16 @@ document.getElementById("searchInput")
 
 document.getElementById("searchInput")
 .addEventListener("keydown",e=>{
-
   if(e.key==="Enter")
     searchProducts();
-
 });
 
 
 document.addEventListener("click",e=>{
 
   if(!e.target.closest(".searchWrap")){
-
     document.getElementById("searchResults")
       .style.display="none";
-
   }
 
 });
@@ -1889,7 +1746,8 @@ document.addEventListener("click",e=>{
 
 function categorySearch(category){
 
-  document.getElementById("searchInput").value=category;
+  document.getElementById("searchInput")
+    .value=category;
 
   const results=data.products.filter(
     p=>p.category.toLowerCase()===category.toLowerCase()
@@ -1906,20 +1764,17 @@ function categorySearch(category){
 function productHTML(p){
 
   const image=p.image
-    ?`<img src="${p.image}" alt="">`
-    :`<div class="placeholder">🛍️</div>`;
+    ?`<img class="productImage" src="${p.image}">`
+    :`<div class="productPlaceholder">No image</div>`;
 
-  return`
+  return `
 
     ${image}
 
     <h3>${escapeHTML(p.name)}</h3>
 
-    <div class="stars">
-      ★★★★★
-      <small>
-        ${Number(p.rating||0).toFixed(1)}
-      </small>
+    <div class="seller">
+      Sold by ${escapeHTML(p.seller)}
     </div>
 
     <div class="price">
@@ -1927,14 +1782,10 @@ function productHTML(p){
       ${formatMoney(p.price)}
     </div>
 
-    <small>
-      📍 ${escapeHTML(p.location)}
-    </small>
-
-    <div class="productBtns">
+    <div class="productButtons">
 
       <button onclick="addToCart('${p.id}')">
-        Add
+        Add to cart
       </button>
 
       <button onclick="openProduct('${p.id}')">
@@ -1950,25 +1801,41 @@ function renderFeatured(){
 
   const box=document.getElementById("featuredProducts");
 
+  if(!data.products.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        <h3>No products yet</h3>
+        <p>
+          Products from sellers will appear here.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
   box.innerHTML="";
 
-  data.products.slice(0,6).forEach(p=>{
+  data.products
+    .slice(0,8)
+    .forEach(p=>{
 
-    const div=document.createElement("article");
+      const div=document.createElement("article");
 
-    div.className="product";
+      div.className="product";
+      div.innerHTML=productHTML(p);
 
-    div.innerHTML=productHTML(p);
+      box.appendChild(div);
 
-    box.appendChild(div);
-
-  });
+    });
 }
 
 
 function renderShop(){
 
-  const sort=document.getElementById("sortSelect").value;
+  const sort=document
+    .getElementById("sortSelect").value;
 
   let products=[...data.products];
 
@@ -1986,22 +1853,27 @@ function renderProducts(products){
 
   const box=document.getElementById("shopProducts");
 
-  box.innerHTML="";
-
   if(!products.length){
 
-    box.innerHTML=
-      '<div class="empty">No products found.</div>';
+    box.innerHTML=`
+      <div class="empty">
+        <h3>No products found</h3>
+        <p>
+          Try another search or check back later.
+        </p>
+      </div>
+    `;
 
     return;
   }
+
+  box.innerHTML="";
 
   products.forEach(p=>{
 
     const div=document.createElement("article");
 
     div.className="product";
-
     div.innerHTML=productHTML(p);
 
     box.appendChild(div);
@@ -2012,9 +1884,9 @@ function renderProducts(products){
 
 /* PRODUCT DETAILS */
 
-function openProduct(productId){
+function openProduct(id){
 
-  const p=data.products.find(x=>x.id===productId);
+  const p=data.products.find(x=>x.id===id);
 
   if(!p)return;
 
@@ -2028,50 +1900,46 @@ function openProduct(productId){
 
   document.getElementById("productDetails").innerHTML=`
 
-    <div class="card">
+    <div class="accountCard">
 
       ${
         p.image
         ?`<img src="${p.image}"
-          style="width:100%;max-height:400px;object-fit:contain">`
-        :`<div class="placeholder">🛍️</div>`
+          style="width:100%;height:400px;object-fit:contain;
+          background:#f2f2f4;border-radius:15px">`
+        :`<div class="productPlaceholder"
+          style="height:400px">No image</div>`
       }
 
-      <h1 style="margin-top:15px">
+      <h1 style="margin-top:20px">
         ${escapeHTML(p.name)}
       </h1>
-
-      <div class="stars">
-        ★★★★★
-        ${Number(p.rating||0).toFixed(1)}
-      </div>
 
       <div class="price">
         ${escapeHTML(p.currency)}
         ${formatMoney(p.price)}
       </div>
 
-      <p style="margin:13px 0;line-height:1.6">
+      <p style="color:#777;line-height:1.6">
         ${escapeHTML(p.description)}
       </p>
 
-      <p>
-        📍 ${escapeHTML(p.location)}
+      <p style="margin-top:10px;color:#777">
+        ${escapeHTML(p.location)}
       </p>
 
       <p style="margin-top:8px">
-        Seller:
-        <b>${escapeHTML(p.seller)}</b>
+        Sold by <b>${escapeHTML(p.seller)}</b>
       </p>
 
-      <div class="accountActions">
+      <div class="actions">
 
         <button class="btn primary"
           onclick="addToCart('${p.id}')">
           Add to cart
         </button>
 
-        <button class="btn darkBtn"
+        <button class="btn"
           onclick="buyNow('${p.id}')">
           Buy now
         </button>
@@ -2085,32 +1953,33 @@ function openProduct(productId){
 
     </div>
 
-    <div class="card">
 
-      <h2>Customer reviews</h2>
+    <div class="accountCard">
+
+      <h2>Reviews</h2>
 
       ${
         reviews.length
-
         ?reviews.map(r=>`
 
-          <div style="border-top:1px solid #eee;padding:13px 0">
+          <div style="border-top:1px solid #eee;padding:15px 0">
 
-            <div class="stars">
-              ${"★".repeat(r.rating)}
-            </div>
+            <strong>
+              ${escapeHTML(r.name)}
+            </strong>
 
-            <b>${escapeHTML(r.name)}</b>
-
-            <p style="margin-top:5px">
+            <p style="margin-top:6px">
               ${escapeHTML(r.text)}
             </p>
 
           </div>
 
         `).join("")
-
-        :'<p style="color:#71717a;margin-top:10px">No reviews yet.</p>'
+        :`
+          <p style="color:#777;margin-top:10px">
+            No reviews yet.
+          </p>
+        `
       }
 
     </div>
@@ -2122,12 +1991,21 @@ function openProduct(productId){
 
 function addToCart(productId){
 
-  const existing=data.cart.find(
+  if(!data.profile.loggedIn){
+
+    alert("Log in before adding products to your cart.");
+
+    openLogin();
+
+    return;
+  }
+
+  const item=data.cart.find(
     x=>x.productId===productId
   );
 
-  if(existing)
-    existing.quantity++;
+  if(item)
+    item.quantity++;
   else
     data.cart.push({
       productId,
@@ -2136,42 +2014,34 @@ function addToCart(productId){
 
   saveData();
 
-  updateCartCount();
-
   alert("Added to cart.");
-}
 
-
-function updateCartCount(){
-
-  const count=data.cart.reduce(
-    (sum,x)=>sum+x.quantity,
-    0
-  );
-
-  document.getElementById("cartCount").textContent=count;
 }
 
 
 function renderCart(){
 
   const box=document.getElementById("cartItems");
-
   const totalBox=document.getElementById("cartTotal");
-
-  box.innerHTML="";
 
   if(!data.cart.length){
 
-    box.innerHTML=
-      '<div class="empty">Your cart is empty.</div>';
+    box.innerHTML=`
+      <div class="empty">
+        <h3>Your cart is empty</h3>
+        <p>Add products to see them here.</p>
+      </div>
+    `;
 
     totalBox.innerHTML="";
 
     return;
   }
 
+  box.innerHTML="";
+
   let total=0;
+  let currency="";
 
   data.cart.forEach(item=>{
 
@@ -2182,6 +2052,7 @@ function renderCart(){
     if(!p)return;
 
     total+=p.price*item.quantity;
+    currency=p.currency;
 
     const div=document.createElement("div");
 
@@ -2191,15 +2062,19 @@ function renderCart(){
 
       ${
         p.image
-        ?`<img src="${p.image}">`
-        :`<div class="cartPlaceholder">🛍️</div>`
+        ?`<img class="cartImage" src="${p.image}">`
+        :`<div class="cartImage"
+          style="display:flex;align-items:center;
+          justify-content:center;color:#999">
+          No image
+        </div>`
       }
 
       <div class="cartInfo">
 
         <h3>${escapeHTML(p.name)}</h3>
 
-        <p style="margin-top:5px">
+        <p>
           ${escapeHTML(p.currency)}
           ${formatMoney(p.price)}
         </p>
@@ -2224,22 +2099,20 @@ function renderCart(){
         </div>
 
       </div>
+
     `;
 
     box.appendChild(div);
 
   });
 
-  const first=data.products.find(
-    p=>p.id===data.cart[0].productId
-  );
 
   totalBox.innerHTML=`
 
     <div class="total">
 
       Total:
-      ${first?.currency||"KES"}
+      ${escapeHTML(currency)}
       ${formatMoney(total)}
 
       <br>
@@ -2247,10 +2120,11 @@ function renderCart(){
       <button class="btn primary"
         style="margin-top:12px"
         onclick="openCheckout()">
-        Proceed to checkout
+        Checkout
       </button>
 
     </div>
+
   `;
 }
 
@@ -2265,17 +2139,12 @@ function changeQuantity(id,change){
 
   item.quantity+=change;
 
-  if(item.quantity<=0){
-
+  if(item.quantity<=0)
     data.cart=data.cart.filter(
       x=>x.productId!==id
     );
 
-  }
-
   saveData();
-
-  updateCartCount();
 
   renderCart();
 }
@@ -2289,13 +2158,18 @@ function removeFromCart(id){
 
   saveData();
 
-  updateCartCount();
-
   renderCart();
 }
 
 
 function buyNow(id){
+
+  if(!data.profile.loggedIn){
+
+    openLogin();
+
+    return;
+  }
 
   data.cart=[
     {
@@ -2305,8 +2179,6 @@ function buyNow(id){
   ];
 
   saveData();
-
-  updateCartCount();
 
   openCheckout();
 }
@@ -2319,6 +2191,13 @@ function openCheckout(){
   if(!data.cart.length){
 
     alert("Your cart is empty.");
+
+    return;
+  }
+
+  if(!data.profile.loggedIn){
+
+    openLogin();
 
     return;
   }
@@ -2336,21 +2215,25 @@ function openCheckout(){
 
 function placeOrder(){
 
-  const name=document.getElementById("checkoutName")
+  const name=document
+    .getElementById("checkoutName")
     .value.trim();
 
-  const phone=document.getElementById("checkoutPhone")
+  const phone=document
+    .getElementById("checkoutPhone")
     .value.trim();
 
-  const address=document.getElementById("checkoutAddress")
+  const address=document
+    .getElementById("checkoutAddress")
     .value.trim();
 
-  const payment=document.getElementById("paymentMethod")
+  const payment=document
+    .getElementById("paymentMethod")
     .value;
 
   if(!name||!phone||!address){
 
-    alert("Please complete all delivery details.");
+    alert("Complete all delivery details.");
 
     return;
   }
@@ -2361,24 +2244,27 @@ function placeOrder(){
       x=>x.id===item.productId
     );
 
-    return{
+    return {
       productId:p.id,
       name:p.name,
       price:p.price,
       currency:p.currency,
-      quantity:item.quantity
+      quantity:item.quantity,
+      seller:p.seller
     };
 
   });
+
 
   const total=items.reduce(
     (sum,x)=>sum+x.price*x.quantity,
     0
   );
 
+
   data.orders.unshift({
 
-    id:id(),
+    id:makeID(),
 
     date:Date.now(),
 
@@ -2395,15 +2281,14 @@ function placeOrder(){
 
   });
 
+
   data.cart=[];
 
   saveData();
 
-  updateCartCount();
-
   closeModal("checkoutModal");
 
-  alert("Order placed successfully!");
+  alert("Order placed.");
 
   showPage("orders");
 }
@@ -2415,61 +2300,60 @@ function renderOrders(){
 
   const box=document.getElementById("ordersList");
 
-  box.innerHTML="";
-
   if(!data.orders.length){
 
-    box.innerHTML=
-      '<div class="empty">You have no orders yet.</div>';
+    box.innerHTML=`
+      <div class="empty">
+        <h3>No orders yet</h3>
+        <p>Your purchases will appear here.</p>
+      </div>
+    `;
 
     return;
   }
+
+  box.innerHTML="";
 
   data.orders.forEach(order=>{
 
     const div=document.createElement("div");
 
-    div.className="card";
+    div.className="order";
 
     div.innerHTML=`
 
-      <h3>
+      <strong>
         Order #${order.id.slice(-6)}
-      </h3>
+      </strong>
 
-      <p style="margin:7px 0;color:#71717a">
+      <p style="color:#777;font-size:12px;margin-top:5px">
         ${new Date(order.date).toLocaleString()}
       </p>
 
-      <b style="color:#7c3aed">
+      <span class="orderStatus">
         ${escapeHTML(order.status)}
-      </b>
+      </span>
 
-      <hr style="margin:12px 0">
+      <div style="margin-top:15px">
 
-      ${order.items.map(item=>`
+        ${order.items.map(item=>`
 
-        <p style="margin:7px 0">
+          <p style="margin:7px 0">
+            ${escapeHTML(item.name)}
+            × ${item.quantity}
+          </p>
 
-          ${escapeHTML(item.name)}
-          × ${item.quantity}
+        `).join("")}
 
-          —
+      </div>
 
-          ${escapeHTML(item.currency)}
-          ${formatMoney(item.price*item.quantity)}
+      <strong>
+        Total:
+        ${formatMoney(order.total)}
+      </strong>
 
-        </p>
-
-      `).join("")}
-
-      <p style="margin-top:12px">
-        <b>Total: ${formatMoney(order.total)}</b>
-      </p>
-
-      <p style="margin-top:8px;color:#71717a">
-        Delivery:
-        ${escapeHTML(order.address)}
+      <p style="color:#777;margin-top:8px">
+        Delivery: ${escapeHTML(order.address)}
       </p>
 
     `;
@@ -2480,309 +2364,168 @@ function renderOrders(){
 }
 
 
-/* SELLER JOIN */
+/* SELLER */
 
-function openSellerJoin(){
+function startSeller(){
 
-  closeModal("authChoiceModal");
+  if(!data.profile.loggedIn){
 
-  document.getElementById("sellerJoinModal")
-    .classList.add("show");
-}
-
-
-function joinSeller(){
-
-  const business=document.getElementById("sellerName")
-    .value.trim();
-
-  const phone=document.getElementById("sellerPhone")
-    .value.trim();
-
-  const email=document.getElementById("sellerEmail")
-    .value.trim();
-
-  const location=document.getElementById("sellerLocation")
-    .value.trim();
-
-  const category=document.getElementById("sellerCategory")
-    .value;
-
-  const status=document.getElementById("sellerStatus");
-
-  if(!business||!phone||!email||!location){
-
-    status.textContent=
-      "Please fill in all required fields.";
-
-    status.style.color="#dc2626";
+    openSignup();
 
     return;
   }
 
-  data.profile.seller=true;
-
-  data.profile.business=business;
-
-  data.profile.phone=phone;
-
-  data.profile.email=email;
-
-  data.profile.sellerLocation=location;
-
-  data.profile.sellerCategory=category;
-
-  if(!data.profile.name)
-    data.profile.name=business;
-
-  if(!data.profile.username)
-    data.profile.username=
-      business.toLowerCase()
-      .replace(/[^a-z0-9]/g,"_");
-
-  if(!data.profile.country)
-    data.profile.country="Kenya";
+  data.profile.isSeller=true;
 
   saveData();
 
-  status.textContent=
-    "Seller account created successfully!";
+  showPage("sellerDashboard");
 
-  status.style.color="#16a34a";
-
-  setTimeout(()=>{
-
-    closeModal("sellerJoinModal");
-
-    updateHeader();
-
-    renderAccount();
-
-    showPage("sell");
-
-  },700);
 }
 
 
-function openSellerPage(){
+function renderSellerDashboard(){
 
-  if(!data.profile.seller){
+  if(!data.profile.loggedIn ||
+     !data.profile.isSeller){
 
-    openSellerJoin();
-
-    return;
-  }
-
-  showPage("sell");
-}
-
-
-function renderSellerPage(){
-
-  const box=document.getElementById("sellerContent");
-
-  if(!data.profile.seller){
-
-    box.innerHTML=`
-
-      <div class="sellerBanner">
-
-        <h1>Become an AVYRA seller</h1>
-
-        <p style="margin:10px 0;color:#ddd">
-          Join the marketplace and start listing your products.
-        </p>
-
-        <button class="btn primary"
-          onclick="openSellerJoin()">
-          Join as seller
-        </button>
-
-      </div>
-
-    `;
+    showPage("seller");
 
     return;
   }
 
   const username=data.profile.username;
 
-  const listings=data.products.filter(
+  const products=data.products.filter(
     p=>p.sellerUsername===username
   );
 
-  box.innerHTML=`
 
-    <div class="sellerBanner">
+  document.getElementById("sellerStats").innerHTML=`
 
-      <h1>Seller Dashboard</h1>
+    <div class="sellerGrid">
 
-      <p style="margin-top:7px;color:#ddd">
-        ${escapeHTML(data.profile.business||data.profile.name)}
-      </p>
-
-    </div>
-
-    <div class="statGrid">
-
-      <div class="stat">
-        <b>${listings.length}</b>
-        <small>Listings</small>
+      <div class="sellerCard"
+        style="background:white;color:#111;border:1px solid #ddd">
+        <strong>${products.length}</strong>
+        <span>Your products</span>
       </div>
 
-      <div class="stat">
-        <b>${data.orders.length}</b>
-        <small>Orders</small>
+      <div class="sellerCard"
+        style="background:white;color:#111;border:1px solid #ddd">
+        <strong>${data.orders.length}</strong>
+        <span>Total orders</span>
       </div>
 
-      <div class="stat">
-        <b>✓</b>
-        <small>Seller</small>
-      </div>
-
-    </div>
-
-    <div class="form" style="margin-top:18px">
-
-      <h2>Add product</h2>
-
-      <label>Product name</label>
-
-      <input id="sellName"
-        placeholder="Example: iPhone 15">
-
-      <label>Category</label>
-
-      <select id="sellCategory">
-
-        <option>Phones</option>
-        <option>Computers</option>
-        <option>Gaming</option>
-        <option>Fashion</option>
-        <option>Home</option>
-        <option>Beauty</option>
-        <option>Other</option>
-
-      </select>
-
-      <label>Price</label>
-
-      <input id="sellPrice"
-        type="number"
-        min="1"
-        placeholder="10000">
-
-      <label>Currency</label>
-
-      <input id="sellCurrency"
-        value="KES"
-        placeholder="KES">
-
-      <label>Location</label>
-
-      <input id="sellLocation"
-        value="${escapeHTML(data.profile.sellerLocation||"Kenya")}">
-
-      <label>Description</label>
-
-      <textarea id="sellDescription"
-        rows="5"
-        placeholder="Describe your product"></textarea>
-
-      <label>Product picture</label>
-
-      <input id="sellImage"
-        type="file"
-        accept="image/*">
-
-      <button class="btn primary"
-        style="width:100%;margin-top:8px"
-        onclick="addProduct()">
-        Publish listing
-      </button>
-
-      <p id="sellStatus"
-        style="margin-top:10px">
-      </p>
-
-    </div>
-
-    <div class="card" style="margin-top:18px">
-
-      <h2>Your listings</h2>
-
-      <div class="products"
-        style="margin-top:13px">
-
-        ${
-          listings.length
-
-          ?listings.map(p=>`
-
-            <div class="product">
-
-              ${productHTML(p)}
-
-              <button class="btn danger"
-                style="width:100%;margin-top:8px"
-                onclick="deleteProduct('${p.id}')">
-                Delete listing
-              </button>
-
-            </div>
-
-          `).join("")
-
-          :'<div class="empty">No listings yet.</div>'
-        }
-
+      <div class="sellerCard"
+        style="background:white;color:#111;border:1px solid #ddd">
+        <strong>Active</strong>
+        <span>Store status</span>
       </div>
 
     </div>
   `;
-}
 
 
-function addProduct(){
+  const box=document.getElementById("sellerProducts");
 
-  if(!data.profile.seller){
+  if(!products.length){
 
-    openSellerJoin();
+    box.innerHTML=`
+      <div class="empty">
+        <h3>Your store is empty</h3>
+        <p>Add your first product to start selling.</p>
+      </div>
+    `;
 
     return;
   }
 
-  const name=document.getElementById("sellName")
+
+  box.innerHTML="";
+
+  products.forEach(p=>{
+
+    const div=document.createElement("div");
+
+    div.className="product";
+
+    div.innerHTML=`
+
+      ${productHTML(p)}
+
+      <button class="btn danger"
+        style="width:100%;margin-top:8px"
+        onclick="deleteProduct('${p.id}')">
+        Delete product
+      </button>
+
+    `;
+
+    box.appendChild(div);
+
+  });
+
+}
+
+
+/* ADD PRODUCT */
+
+function addProduct(){
+
+  if(!data.profile.loggedIn){
+
+    openLogin();
+
+    return;
+  }
+
+  if(!data.profile.isSeller){
+
+    data.profile.isSeller=true;
+
+    saveData();
+  }
+
+
+  const name=document
+    .getElementById("sellName")
     .value.trim();
 
-  const category=document.getElementById("sellCategory")
+  const category=document
+    .getElementById("sellCategory")
     .value;
 
   const price=Number(
     document.getElementById("sellPrice").value
   );
 
-  const currency=document.getElementById("sellCurrency")
+  const currency=document
+    .getElementById("sellCurrency")
     .value.trim();
 
-  const location=document.getElementById("sellLocation")
+  const location=document
+    .getElementById("sellLocation")
     .value.trim();
 
-  const description=document.getElementById("sellDescription")
+  const description=document
+    .getElementById("sellDescription")
     .value.trim();
 
-  const file=document.getElementById("sellImage")
+  const file=document
+    .getElementById("sellImage")
     .files[0];
 
-  const status=document.getElementById("sellStatus");
 
   if(!name||!price||!currency){
 
-    status.textContent=
+    document.getElementById("sellStatus")
+      .textContent=
       "Product name, price and currency are required.";
 
     return;
   }
+
 
   if(file){
 
@@ -2817,6 +2560,7 @@ function addProduct(){
     );
 
   }
+
 }
 
 
@@ -2832,7 +2576,7 @@ function finishProduct(
 
   data.products.unshift({
 
-    id:id(),
+    id:makeID(),
 
     name,
 
@@ -2842,20 +2586,15 @@ function finishProduct(
 
     currency,
 
-    location:location||"Kenya",
+    location:location||data.profile.country||"Kenya",
 
     description,
 
     image,
 
-    seller:
-      data.profile.business||
-      data.profile.name||
-      "AVYRA Seller",
+    seller:data.profile.name,
 
-    sellerUsername:
-      data.profile.username||
-      "seller",
+    sellerUsername:data.profile.username,
 
     rating:0,
 
@@ -2863,13 +2602,55 @@ function finishProduct(
 
   });
 
+
   saveData();
 
+
+  document.getElementById("sellStatus")
+    .textContent=
+    "Product published successfully.";
+
+
+  document.getElementById("sellName").value="";
+  document.getElementById("sellPrice").value="";
+  document.getElementById("sellCurrency").value="";
+  document.getElementById("sellLocation").value="";
+  document.getElementById("sellDescription").value="";
+  document.getElementById("sellImage").value="";
+
+
+  setTimeout(()=>{
+    showPage("sellerDashboard");
+  },500);
+
+}
+
+
+/* DELETE */
+
+function deleteProduct(id){
+
+  const p=data.products.find(
+    x=>x.id===id
+  );
+
+  if(!p)return;
+
+  if(!confirm("Delete this product?"))
+    return;
+
+  data.products=data.products.filter(
+    x=>x.id!==id
+  );
+
+  data.cart=data.cart.filter(
+    x=>x.productId!==id
+  );
+
+  saveData();
+
+  renderSellerDashboard();
   renderFeatured();
-
-  renderSellerPage();
-
-  alert("Your product has been published!");
 
 }
 
@@ -2880,24 +2661,47 @@ function renderAccount(){
 
   const box=document.getElementById("accountContent");
 
-  const p=data.profile;
-
-  if(!p.name){
+  if(!data.profile.loggedIn){
 
     box.innerHTML=`
 
-      <div class="card">
+      <div class="accountCard">
 
-        <h2>Welcome to AVYRA 👋</h2>
+        <h2>Welcome to AVYRA</h2>
 
-        <p style="margin:10px 0;color:#71717a">
-          Log in or create an account to manage your orders
-          and profile.
+        <p style="color:#777;margin-top:8px">
+          Log in to manage your account,
+          orders and shopping cart.
+        </p>
+
+        <div class="actions">
+
+          <button class="btn primary"
+            onclick="openLogin()">
+            Log in
+          </button>
+
+          <button class="btn"
+            onclick="openSignup()">
+            Create account
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="accountCard">
+
+        <h2>Want to sell?</h2>
+
+        <p style="color:#777;margin-top:8px">
+          Join AVYRA as a seller and list your products.
         </p>
 
         <button class="btn primary"
-          onclick="openAuthChoice()">
-          Log in / Create account
+          style="margin-top:15px"
+          onclick="showPage('seller')">
+          Join as a seller
         </button>
 
       </div>
@@ -2907,26 +2711,20 @@ function renderAccount(){
     return;
   }
 
-  const listings=data.products.filter(
-    x=>x.sellerUsername===p.username
-  );
+
+  const p=data.profile;
 
   box.innerHTML=`
 
-    <div class="card">
+    <div class="accountCard">
 
-      <div class="accountTop">
+      <div class="profile">
 
-        ${
-          p.image
-
-          ?`<img class="avatar" src="${p.image}">`
-
-          :`<div class="avatar"
-              style="display:flex;align-items:center;justify-content:center;font-size:30px">
-              👤
-            </div>`
-        }
+        <div class="avatarText">
+          ${escapeHTML(
+            (p.name||"A").charAt(0).toUpperCase()
+          )}
+        </div>
 
         <div>
 
@@ -2934,57 +2732,60 @@ function renderAccount(){
             ${escapeHTML(p.name)}
           </h2>
 
-          <p style="color:#71717a">
-            @${escapeHTML(p.username||"user")}
+          <p>
+            @${escapeHTML(p.username)}
           </p>
-
-          ${
-            p.seller
-            ?'<p style="color:#7c3aed;font-weight:bold;margin-top:5px">✓ Seller</p>'
-            :""
-          }
 
         </div>
 
       </div>
 
-      <p style="margin-top:15px">
-        📧 ${escapeHTML(p.email||"")}
-      </p>
 
-      <p style="margin-top:7px">
-        📱 ${escapeHTML(p.phone||"Not added")}
-      </p>
+      <div style="margin-top:20px;color:#666;font-size:13px">
 
-      <p style="margin-top:7px">
-        🌍 ${escapeHTML(p.country||"Not added")}
-      </p>
+        <p>Email: ${escapeHTML(p.email)}</p>
 
-      <div class="accountActions">
+        <p style="margin-top:7px">
+          Phone: ${escapeHTML(p.phone)}
+        </p>
+
+        <p style="margin-top:7px">
+          Country: ${escapeHTML(p.country)}
+        </p>
+
+      </div>
+
+
+      <div class="actions">
 
         <button class="btn primary"
           onclick="openEditProfile()">
-          ✏️ Edit profile
+          Edit profile
         </button>
 
         ${
-          p.seller
-
-          ?`<button class="btn darkBtn"
-              onclick="showPage('sell')">
-              🛍️ Seller dashboard
-            </button>`
-
-          :""
+          p.isSeller
+          ?`
+            <button class="btn"
+              onclick="showPage('sellerDashboard')">
+              Seller Hub
+            </button>
+          `
+          :`
+            <button class="btn"
+              onclick="showPage('seller')">
+              Join as a seller
+            </button>
+          `
         }
 
         <button class="btn"
           onclick="showPage('settings')">
-          ⚙️ Settings
+          Settings
         </button>
 
         <button class="btn danger"
-          onclick="signOutApp()">
+          onclick="logout()">
           Log out
         </button>
 
@@ -2992,230 +2793,323 @@ function renderAccount(){
 
     </div>
 
-
-    ${
-      p.seller
-
-      ?`
-
-      <div class="card">
-
-        <h2>
-          Your listings
-        </h2>
-
-        <div class="products"
-          style="margin-top:13px">
-
-          ${
-            listings.length
-
-            ?listings.map(x=>`
-
-              <div class="product">
-
-                ${productHTML(x)}
-
-                <button class="btn danger"
-                  style="width:100%;margin-top:7px"
-                  onclick="deleteProduct('${x.id}')">
-                  Delete
-                </button>
-
-              </div>
-
-            `).join("")
-
-            :'<div class="empty">No listings.</div>'
-          }
-
-        </div>
-
-      </div>
-
-      `
-
-      :""
-    }
-
   `;
 }
 
 
-/* EDIT PROFILE */
+/* LOGIN */
+
+function openLogin(){
+
+  closeModal("signupModal");
+
+  document.getElementById("loginModal")
+    .classList.add("show");
+
+}
+
+
+function openSignup(){
+
+  closeModal("loginModal");
+
+  document.getElementById("signupModal")
+    .classList.add("show");
+
+}
+
+
+function login(){
+
+  const email=document
+    .getElementById("loginEmail")
+    .value.trim();
+
+  const password=document
+    .getElementById("loginPassword")
+    .value;
+
+
+  if(!email||!password){
+
+    document.getElementById("loginStatus")
+      .textContent=
+      "Enter your email and password.";
+
+    return;
+  }
+
+
+  /*
+    Local demo login.
+    For real online authentication,
+    connect this section to Firebase.
+  */
+
+  if(!data.profile.email){
+
+    data.profile.email=email;
+
+    if(!data.profile.name)
+      data.profile.name=
+        email.split("@")[0];
+
+    if(!data.profile.username)
+      data.profile.username=
+        email.split("@")[0]
+        .replace(/[^a-zA-Z0-9_]/g,"");
+
+  }
+
+
+  data.profile.loggedIn=true;
+
+  saveData();
+
+  closeModal("loginModal");
+
+  updateHeader();
+
+  renderAccount();
+
+}
+
+
+function createAccount(){
+
+  const name=document
+    .getElementById("signupName")
+    .value.trim();
+
+  const username=document
+    .getElementById("signupUsername")
+    .value.trim()
+    .replace(/\s+/g,"_");
+
+  const email=document
+    .getElementById("signupEmail")
+    .value.trim();
+
+  const phone=document
+    .getElementById("signupPhone")
+    .value.trim();
+
+  const password=document
+    .getElementById("signupPassword")
+    .value;
+
+  const country=document
+    .getElementById("signupCountry")
+    .value.trim();
+
+
+  if(!name||
+     !username||
+     !email||
+     !phone||
+     !password){
+
+    document.getElementById("signupStatus")
+      .textContent=
+      "Complete all required fields.";
+
+    return;
+  }
+
+
+  data.profile={
+
+    loggedIn:true,
+
+    name,
+
+    username,
+
+    email,
+
+    phone,
+
+    country:country||"Kenya",
+
+    isSeller:false
+
+  };
+
+
+  saveData();
+
+  closeModal("signupModal");
+
+  updateHeader();
+
+  renderAccount();
+
+}
+
+
+/* PROFILE */
 
 function openEditProfile(){
 
-  document.getElementById("profileNameInput").value=
+  document.getElementById("profileName").value=
     data.profile.name||"";
 
-  document.getElementById("profileUsernameInput").value=
+  document.getElementById("profileUsername").value=
     data.profile.username||"";
 
-  document.getElementById("profileEmailInput").value=
+  document.getElementById("profileEmail").value=
     data.profile.email||"";
 
-  document.getElementById("profilePhoneInput").value=
+  document.getElementById("profilePhone").value=
     data.profile.phone||"";
 
-  document.getElementById("profileCountryInput").value=
+  document.getElementById("profileCountry").value=
     data.profile.country||"";
+
 
   document.getElementById("profileModal")
     .classList.add("show");
+
 }
 
 
 function saveProfile(){
 
-  const name=document.getElementById("profileNameInput")
+  const oldUsername=data.profile.username;
+
+  const name=document
+    .getElementById("profileName")
     .value.trim();
 
-  const username=document.getElementById("profileUsernameInput")
+  const username=document
+    .getElementById("profileUsername")
     .value.trim()
     .replace(/\s+/g,"_");
 
-  const email=document.getElementById("profileEmailInput")
+  const email=document
+    .getElementById("profileEmail")
     .value.trim();
 
-  const phone=document.getElementById("profilePhoneInput")
+  const phone=document
+    .getElementById("profilePhone")
     .value.trim();
 
-  const country=document.getElementById("profileCountryInput")
+  const country=document
+    .getElementById("profileCountry")
     .value.trim();
 
-  const file=document.getElementById("profileImageInput")
-    .files[0];
 
-  if(!name||!username){
+  if(!name||!username||!phone){
 
-    document.getElementById("profileStatus")
-      .textContent=
-      "Name and username are required.";
+    alert("Name, username and phone number are required.");
 
     return;
   }
 
-  if(!phone){
 
-    document.getElementById("profileStatus")
-      .textContent=
-      "Phone number is required.";
-
-    return;
-  }
-
-  const finish=image=>{
-
-    const oldUsername=data.profile.username;
-
-    data.profile.name=name;
-
-    data.profile.username=username;
-
-    data.profile.email=email;
-
-    data.profile.phone=phone;
-
-    data.profile.country=country;
-
-    if(image!==null)
-      data.profile.image=image;
-
-    data.products.forEach(p=>{
-
-      if(
-        !oldUsername||
-        p.sellerUsername===oldUsername
-      ){
-
-        p.seller=
-          data.profile.business||
-          name;
-
-        p.sellerUsername=username;
-
-      }
-
-    });
-
-    saveData();
-
-    closeModal("profileModal");
-
-    updateHeader();
-
-    renderAccount();
-
-    renderSellerPage();
-
-  };
-
-  if(file){
-
-    const reader=new FileReader();
-
-    reader.onload=e=>
-      finish(e.target.result);
-
-    reader.readAsDataURL(file);
-
-  }else{
-
-    finish(null);
-
-  }
-}
+  data.profile.name=name;
+  data.profile.username=username;
+  data.profile.email=email;
+  data.profile.phone=phone;
+  data.profile.country=country;
 
 
-/* DELETE */
+  data.products.forEach(p=>{
 
-function deleteProduct(productId){
+    if(p.sellerUsername===oldUsername){
 
-  const p=data.products.find(
-    x=>x.id===productId
-  );
+      p.seller=name;
+      p.sellerUsername=username;
 
-  if(!p)return;
+    }
 
-  if(!confirm(
-    "Delete \""+p.name+"\"?"
-  ))return;
+  });
 
-  data.products=data.products.filter(
-    x=>x.id!==productId
-  );
-
-  data.cart=data.cart.filter(
-    x=>x.productId!==productId
-  );
 
   saveData();
 
-  updateCartCount();
+  closeModal("profileModal");
 
-  renderFeatured();
-
-  renderShop();
+  updateHeader();
 
   renderAccount();
 
-  renderSellerPage();
+}
+
+
+/* SETTINGS */
+
+function renderSettings(){
+
+  document.getElementById("settingLocation")
+    .value=data.settings.location||"Kenya";
+
+  document.getElementById("notificationsSetting")
+    .checked=data.settings.notifications!==false;
+
+}
+
+
+function saveLocation(){
+
+  const location=document
+    .getElementById("settingLocation")
+    .value.trim();
+
+  data.settings.location=
+    location||"Kenya";
+
+  saveData();
+
+}
+
+
+function saveSettings(){
+
+  data.settings.notifications=
+    document.getElementById("notificationsSetting")
+      .checked;
+
+  saveData();
+
+}
+
+
+function clearLocalData(){
+
+  if(!confirm(
+    "Clear all AVYRA data stored on this device?"
+  ))return;
+
+  localStorage.removeItem(KEY);
+
+  location.reload();
+
 }
 
 
 /* REVIEWS */
 
-function openReview(productId){
+function openReview(id){
 
-  reviewProduct=productId;
+  if(!data.profile.loggedIn){
 
-  document.getElementById("reviewText").value="";
+    openLogin();
 
-  document.getElementById("reviewStars").value="5";
+    return;
+  }
+
+  reviewProduct=id;
+
+  document.getElementById("reviewText")
+    .value="";
+
+  document.getElementById("reviewStars")
+    .value="5";
 
   document.getElementById("reviewModal")
     .classList.add("show");
+
 }
 
 
@@ -3223,12 +3117,14 @@ function submitReview(){
 
   if(!reviewProduct)return;
 
-  const text=document.getElementById("reviewText")
+  const text=document
+    .getElementById("reviewText")
     .value.trim();
 
   const rating=Number(
     document.getElementById("reviewStars").value
   );
+
 
   if(!text){
 
@@ -3237,14 +3133,14 @@ function submitReview(){
     return;
   }
 
+
   data.reviews.push({
 
-    id:id(),
+    id:makeID(),
 
     productId:reviewProduct,
 
-    name:data.profile.name||
-      "AVYRA Customer",
+    name:data.profile.name,
 
     rating,
 
@@ -3254,6 +3150,7 @@ function submitReview(){
 
   });
 
+
   const reviews=data.reviews.filter(
     r=>r.productId===reviewProduct
   );
@@ -3262,289 +3159,34 @@ function submitReview(){
     x=>x.id===reviewProduct
   );
 
+
   if(p){
 
     p.rating=
       reviews.reduce(
-        (s,r)=>s+r.rating,
-        0
+        (sum,r)=>sum+r.rating,0
       )/reviews.length;
 
   }
+
 
   saveData();
 
   closeModal("reviewModal");
 
   openProduct(reviewProduct);
+
 }
 
 
-/* SETTINGS */
+/* LOG OUT */
 
-function renderSettings(){
-
-  document.getElementById("settingLocation").value=
-    data.settings.location||"Kenya";
-
-  document.getElementById("notificationsSetting").checked=
-    data.settings.notifications!==false;
-}
-
-
-function saveLocation(){
-
-  const value=document.getElementById("settingLocation")
-    .value.trim();
-
-  data.settings.location=value||"Kenya";
-
-  saveData();
-
-  document.getElementById("locationText").textContent=
-    data.settings.location;
-}
-
-
-function saveSettings(){
-
-  data.settings.notifications=
-    document.getElementById("notificationsSetting")
-    .checked;
-
-  saveData();
-}
-
-
-function clearLocalData(){
-
-  if(!confirm(
-    "This will delete your AVYRA data on this device. Continue?"
-  ))return;
-
-  localStorage.removeItem(KEY);
-
-  location.reload();
-}
-
-
-/* AUTH */
-
-function openAuthChoice(){
-
-  document.getElementById("authChoiceModal")
-    .classList.add("show");
-}
-
-
-function openLogin(){
-
-  closeModal("authChoiceModal");
-
-  closeModal("createModal");
-
-  document.getElementById("loginModal")
-    .classList.add("show");
-}
-
-
-function openCreateAccount(){
-
-  closeModal("authChoiceModal");
-
-  closeModal("loginModal");
-
-  document.getElementById("createModal")
-    .classList.add("show");
-}
-
-
-function createAccount(){
-
-  const name=document.getElementById("createName")
-    .value.trim();
-
-  const phone=document.getElementById("createPhone")
-    .value.trim();
-
-  const email=document.getElementById("createEmail")
-    .value.trim();
-
-  const password=document.getElementById("createPassword")
-    .value;
-
-  const username=document.getElementById("createUsername")
-    .value.trim()
-    .replace(/\s+/g,"_");
-
-  const country=document.getElementById("createCountry")
-    .value.trim();
-
-  const status=document.getElementById("createStatus");
-
-  if(!name||!phone||!email||!password||!username){
-
-    status.textContent=
-      "Please fill in all required fields.";
-
-    status.style.color="#dc2626";
-
-    return;
-  }
-
-  if(password.length<6){
-
-    status.textContent=
-      "Password must be at least 6 characters.";
-
-    status.style.color="#dc2626";
-
-    return;
-  }
-
-  data.profile.name=name;
-
-  data.profile.username=username;
-
-  data.profile.email=email;
-
-  data.profile.phone=phone;
-
-  data.profile.country=country||"Kenya";
-
-  /*
-    Demo only:
-    Password is not stored because this local HTML app
-    does not have a real authentication server.
-  */
-
-  saveData();
-
-  status.textContent=
-    "Account created successfully!";
-
-  status.style.color="#16a34a";
-
-  setTimeout(()=>{
-
-    closeModal("createModal");
-
-    updateHeader();
-
-    renderAccount();
-
-    alert("Welcome to AVYRA, "+name+"!");
-
-  },600);
-}
-
-
-function login(){
-
-  const email=document.getElementById("loginEmail")
-    .value.trim();
-
-  const password=document.getElementById("loginPassword")
-    .value;
-
-  const status=document.getElementById("loginStatus");
-
-  if(!email||!password){
-
-    status.textContent=
-      "Enter your email and password.";
-
-    status.style.color="#dc2626";
-
-    return;
-  }
-
-  /*
-    Local demo login.
-    A real secure login requires Firebase/backend authentication.
-  */
-
-  data.profile.email=email;
-
-  if(!data.profile.name)
-    data.profile.name=
-      email.split("@")[0];
-
-  if(!data.profile.username)
-    data.profile.username=
-      email
-      .split("@")[0]
-      .replace(/[^a-zA-Z0-9_]/g,"");
-
-  /*
-    If no phone exists, ask the user to add it.
-  */
-
-  if(!data.profile.phone){
-
-    closeModal("loginModal");
-
-    openEditProfile();
-
-    document.getElementById("profileStatus")
-      .textContent=
-      "Please add your phone number to complete your profile.";
-
-    return;
-  }
-
-  saveData();
-
-  closeModal("loginModal");
-
-  updateHeader();
-
-  renderAccount();
-
-  showPage("account");
-}
-
-
-function guestLogin(){
-
-  if(!data.profile.name){
-
-    data.profile.name="AVYRA Guest";
-
-    data.profile.username=
-      "guest_"+Date.now();
-
-  }
-
-  saveData();
-
-  closeModal("authChoiceModal");
-
-  updateHeader();
-
-  renderAccount();
-
-  showPage("account");
-}
-
-
-function signOutApp(){
+function logout(){
 
   if(!confirm("Log out of AVYRA?"))
     return;
 
-  data.profile={
-    name:"",
-    username:"",
-    email:"",
-    phone:"",
-    country:"",
-    image:"",
-    seller:false,
-    business:"",
-    sellerCategory:"",
-    sellerLocation:""
-  };
+  data.profile.loggedIn=false;
 
   saveData();
 
@@ -3553,6 +3195,7 @@ function signOutApp(){
   renderAccount();
 
   showPage("home");
+
 }
 
 
@@ -3562,24 +3205,26 @@ function updateHeader(){
 
   document.getElementById("headerUser")
     .textContent=
-    data.profile.name||"Log in";
+    data.profile.loggedIn
+    ?data.profile.name
+    :"Log in";
 
 }
 
 
 function closeModal(id){
 
-  const el=document.getElementById(id);
+  document.getElementById(id)
+    .classList.remove("show");
 
-  if(el)
-    el.classList.remove("show");
 }
 
 
-function id(){
+function makeID(){
 
   return Date.now().toString(36)+
     Math.random().toString(36).slice(2);
+
 }
 
 
@@ -3587,6 +3232,7 @@ function formatMoney(n){
 
   return Number(n||0)
     .toLocaleString();
+
 }
 
 
@@ -3598,6 +3244,7 @@ function escapeHTML(value){
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
 
@@ -3605,15 +3252,13 @@ function escapeHTML(value){
 
 loadData();
 
-createSamples();
-
 updateHeader();
-
-updateCartCount();
 
 renderFeatured();
 
 renderShop();
+
+renderCart();
 
 renderOrders();
 
