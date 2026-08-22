@@ -2,681 +2,369 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AVYRA</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AVYRA Shop</title>
 
 <style>
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
-:root{
- --red:#ff1744;
- --bg:#090909;
- --card:#151515;
- --card2:#1c1c1c;
- --border:#292929;
- --muted:#999;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
- background:var(--bg);
- color:white;
- font-family:Arial,sans-serif;
- padding-bottom:70px;
+  font-family:Arial,sans-serif;
+  background:#eaeded;
+  color:#111;
+  padding-bottom:65px;
 }
-
-button,input,textarea,select{
- font:inherit;
-}
-
-button{
- cursor:pointer;
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
 
 header{
- height:62px;
- background:#101010;
- border-bottom:1px solid var(--border);
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 5%;
- position:sticky;
- top:0;
- z-index:20;
+  background:#131921;
+  color:white;
+  padding:9px 12px;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
-
+.top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 .logo{
- font-size:24px;
- font-weight:900;
- letter-spacing:2px;
+  font-size:24px;
+  font-weight:bold;
+  color:#ff9900;
+  white-space:nowrap;
 }
-
-.logo span{
- color:var(--red);
+.location{
+  font-size:11px;
+  white-space:nowrap;
 }
-
-.headerBtns{
- display:flex;
- gap:7px;
-}
-
-.headerBtns button{
- background:#171717;
- border:1px solid #333;
- color:white;
- padding:8px 11px;
- border-radius:8px;
-}
-
-.hero{
- text-align:center;
- padding:40px 18px;
-}
-
-.hero h1{
- font-size:clamp(40px,10vw,65px);
-}
-
-.hero h1 span{
- color:var(--red);
-}
-
-.hero p{
- color:#999;
- margin:10px 0 22px;
-}
+.location b{display:block;font-size:14px}
 
 .search{
- display:flex;
- max-width:700px;
- margin:auto;
- background:#151515;
- border:1px solid #333;
- border-radius:10px;
- overflow:hidden;
+  flex:1;
+  display:flex;
+  height:40px;
 }
-
 .search input{
- flex:1;
- min-width:0;
- padding:14px;
- background:none;
- border:0;
- outline:0;
- color:white;
+  flex:1;
+  border:0;
+  padding:0 12px;
+  outline:none;
 }
-
 .search button{
- background:var(--red);
- color:white;
- border:0;
- padding:0 17px;
+  width:48px;
+  border:0;
+  background:#febd69;
+  font-size:19px;
 }
-
-.searchSuggestions{
- max-width:700px;
- margin:5px auto 0;
- background:#151515;
- border:1px solid #333;
- border-radius:9px;
- overflow:hidden;
- display:none;
- text-align:left;
+.headerBtn{
+  background:none;
+  border:0;
+  color:white;
+  text-align:left;
+  white-space:nowrap;
 }
+.headerBtn small{display:block;font-size:10px}
+.headerBtn b{font-size:13px}
 
-.suggestion{
- padding:12px;
- border-bottom:1px solid #292929;
- cursor:pointer;
+.hero{
+  background:linear-gradient(90deg,#182848,#4b6cb7);
+  color:white;
+  min-height:300px;
+  padding:55px 7%;
+  display:flex;
+  align-items:center;
 }
-
-.suggestion:hover{
- background:#222;
+.hero h1{font-size:clamp(32px,7vw,60px)}
+.hero p{margin:12px 0 20px;color:#ddd}
+.hero button{
+  background:#ff9900;
+  border:0;
+  padding:12px 22px;
+  border-radius:5px;
 }
 
 .container{
- width:90%;
- max-width:1200px;
- margin:auto;
+  width:94%;
+  max-width:1250px;
+  margin:auto;
 }
-
-.section{
- padding:25px 0;
+.section{margin:22px 0}
+.sectionTitle{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
 }
-
-.title{
- margin-bottom:15px;
+.sectionTitle button{
+  background:none;
+  border:0;
+  color:#0066c0;
 }
 
 .categories{
- display:flex;
- gap:9px;
- overflow-x:auto;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
 }
-
 .category{
- min-width:100px;
- background:var(--card);
- border:1px solid var(--border);
- border-radius:10px;
- padding:14px 8px;
- text-align:center;
+  min-width:120px;
+  background:white;
+  border:1px solid #ddd;
+  padding:18px 10px;
+  text-align:center;
+  border-radius:5px;
 }
-
-.category div{
- font-size:24px;
- margin-bottom:5px;
-}
-
-.category p{
- font-size:12px;
- color:#aaa;
-}
+.category div{font-size:32px;margin-bottom:8px}
+.category:hover{border-color:#999}
 
 .products{
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
- gap:13px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:12px;
 }
-
 .product{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:12px;
- overflow:hidden;
+  background:white;
+  padding:12px;
+  min-width:0;
 }
-
-.product img,
-.productPlaceholder{
- width:100%;
- height:180px;
- object-fit:cover;
+.product img,.placeholder{
+  width:100%;
+  height:190px;
+  object-fit:contain;
 }
-
-.productPlaceholder{
- display:flex;
- justify-content:center;
- align-items:center;
- background:#222;
- font-size:50px;
+.placeholder{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f5f5f5;
+  font-size:60px;
 }
-
-.productInfo{
- padding:12px;
+.product h3{
+  font-size:15px;
+  margin:10px 0 6px;
 }
-
-.productInfo h3{
- margin-bottom:6px;
-}
-
+.stars{color:#f5a623}
 .price{
- color:var(--red);
- font-weight:bold;
+  font-size:21px;
+  font-weight:bold;
+  margin:7px 0;
+}
+.product small{color:#666}
+.productBtns{
+  display:flex;
+  gap:6px;
+  margin-top:10px;
+}
+.productBtns button{
+  flex:1;
+  border:1px solid #aaa;
+  background:#ffd814;
+  padding:8px 4px;
+  border-radius:15px;
+}
+.productBtns button:last-child{
+  background:#ffa41c;
 }
 
-.location,
-.sellerName{
- color:#888;
- font-size:12px;
- margin-top:6px;
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:62px;
+  background:#131921;
+  display:flex;
+  justify-content:space-around;
+  z-index:110;
 }
-
-.desc{
- color:#aaa;
- font-size:13px;
- margin-top:8px;
- line-height:1.4;
+.bottom button{
+  flex:1;
+  background:none;
+  border:0;
+  color:white;
+  font-size:11px;
 }
-
-.cardBtns{
- display:flex;
- gap:6px;
- margin-top:10px;
-}
-
-.cardBtns button{
- flex:1;
- padding:9px;
- border-radius:7px;
- border:0;
-}
-
-.messageBtn{
- background:var(--red);
- color:white;
-}
-
-.deleteBtn{
- background:#292929;
- color:#ff5570;
-}
-
-.reviewBtn{
- width:100%;
- margin-top:7px;
- padding:9px;
- background:#292929;
- color:white;
- border:0;
- border-radius:7px;
-}
-
-.seller{
- display:flex;
- align-items:center;
- gap:11px;
- padding:12px;
- margin-bottom:9px;
- background:var(--card);
- border:1px solid var(--border);
- border-radius:11px;
-}
-
-.avatar{
- width:48px;
- height:48px;
- border-radius:50%;
- background:#333;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
- overflow:hidden;
- flex-shrink:0;
-}
-
-.avatar img{
- width:100%;
- height:100%;
- object-fit:cover;
-}
-
-.sellerInfo{
- flex:1;
-}
-
-.sellerInfo small{
- display:block;
- color:#777;
- margin-top:4px;
-}
-
-.follow{
- background:none;
- color:var(--red);
- border:1px solid var(--red);
- padding:8px 11px;
- border-radius:7px;
-}
-
-.bottomNav{
- position:fixed;
- left:0;
- right:0;
- bottom:0;
- height:64px;
- background:#101010;
- border-top:1px solid #292929;
- display:flex;
- justify-content:space-around;
- align-items:center;
- z-index:30;
-}
-
-.bottomNav button{
- background:none;
- border:0;
- color:#aaa;
- font-size:11px;
-}
-
-.bottomNav button span{
- font-size:19px;
-}
+.bottom span{display:block;font-size:21px;margin-bottom:3px}
 
 .page{
- display:none;
+  display:none;
+  min-height:80vh;
+  padding:22px 0;
 }
+.page.active{display:block}
 
-.page.active{
- display:block;
+.card{
+  background:white;
+  border:1px solid #ddd;
+  padding:18px;
+  margin-bottom:14px;
 }
-
-.pageHeader{
- display:flex;
- align-items:center;
- gap:12px;
- margin:20px 0;
+.accountTop{
+  display:flex;
+  align-items:center;
+  gap:15px;
 }
-
-.backBtn{
- background:#222;
- color:white;
- border:0;
- padding:9px 12px;
- border-radius:7px;
+.avatar{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:#ddd;
+  object-fit:cover;
 }
-
-.profileCard{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:13px;
- padding:20px;
+.accountActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
 }
-
-.profileTop{
- display:flex;
- align-items:center;
- gap:14px;
+.btn{
+  border:1px solid #999;
+  background:#fff;
+  padding:10px 15px;
+  border-radius:4px;
 }
-
-.bigAvatar{
- width:85px;
- height:85px;
- border-radius:50%;
- object-fit:cover;
- background:#222;
+.primary{
+  background:#ffd814;
+  border-color:#d5b000;
 }
-
-.profileTopInfo{
- flex:1;
-}
-
-.profileStats{
- display:flex;
- gap:30px;
- margin-top:18px;
-}
-
-.profileStats div{
- text-align:center;
-}
-
-.profileStats b{
- display:block;
- font-size:18px;
-}
-
-.profileStats span{
- font-size:12px;
- color:#888;
-}
-
-.bio{
- color:#aaa;
- margin-top:14px;
- line-height:1.5;
-}
-
-.pageBtn{
- width:100%;
- padding:12px;
- margin-top:9px;
- background:#222;
- color:white;
- border:1px solid #333;
- border-radius:8px;
- text-align:left;
-}
-
-.pageBtn:hover{
- background:#292929;
-}
-
-.profileProducts{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
- margin-top:15px;
-}
-
-.settingsList{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:12px;
- overflow:hidden;
-}
-
-.setting{
- padding:16px;
- border-bottom:1px solid #292929;
- cursor:pointer;
-}
-
-.setting:last-child{
- border-bottom:0;
-}
-
-.setting small{
- display:block;
- color:#777;
- margin-top:5px;
-}
-
-.setting:hover{
- background:#1d1d1d;
+.danger{
+  background:#fff;
+  color:#b00020;
 }
 
 .form{
- background:var(--card);
- padding:18px;
- border:1px solid var(--border);
- border-radius:12px;
+  max-width:600px;
+  margin:auto;
+  background:white;
+  padding:20px;
+}
+.form input,.form textarea,.form select{
+  width:100%;
+  padding:12px;
+  margin:6px 0 12px;
+  border:1px solid #aaa;
+  border-radius:4px;
+}
+.form label{font-weight:bold;font-size:13px}
+
+.cartItem{
+  background:white;
+  display:flex;
+  gap:15px;
+  padding:15px;
+  margin-bottom:10px;
+}
+.cartItem img,.cartPlaceholder{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+}
+.cartPlaceholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eee;
+  font-size:35px;
+}
+.cartInfo{flex:1}
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+.qty button{
+  width:30px;
+  height:30px;
+  border:1px solid #999;
+  background:white;
 }
 
-.form input,
-.form textarea,
-.form select{
- width:100%;
- padding:12px;
- margin:7px 0;
- background:#090909;
- border:1px solid #333;
- color:white;
- border-radius:8px;
- outline:none;
-}
-
-.form textarea{
- min-height:90px;
- resize:vertical;
-}
-
-.primary{
- width:100%;
- padding:12px;
- margin-top:8px;
- border:0;
- border-radius:8px;
- background:var(--red);
- color:white;
-}
-
-.secondary{
- width:100%;
- padding:12px;
- margin-top:8px;
- border:0;
- border-radius:8px;
- background:#292929;
- color:white;
-}
-
-.phoneRow{
- display:flex;
- gap:7px;
-}
-
-.phoneRow select{
- width:38%;
-}
-
-.phoneRow input{
- width:62%;
-}
-
-.notification{
- padding:14px;
- background:var(--card);
- border-bottom:1px solid #292929;
-}
-
-.notification small{
- color:#777;
-}
-
-.conversation{
- display:flex;
- align-items:center;
- gap:10px;
- padding:13px;
- background:var(--card);
- border-bottom:1px solid #292929;
- cursor:pointer;
-}
-
-.conversationText{
- flex:1;
- min-width:0;
-}
-
-.conversationText p{
- color:#888;
- white-space:nowrap;
- overflow:hidden;
- text-overflow:ellipsis;
- margin-top:4px;
-}
-
-.chat{
- display:none;
-}
-
-.chat.active{
- display:block;
-}
-
-.chatMessages{
- height:55vh;
- overflow-y:auto;
- padding:12px;
- display:flex;
- flex-direction:column;
- gap:7px;
- background:#0d0d0d;
-}
-
-.chatMessage{
- max-width:78%;
- padding:9px 12px;
- background:#292929;
- border-radius:15px;
- align-self:flex-start;
- word-break:break-word;
-}
-
-.chatMessage.mine{
- background:var(--red);
- align-self:flex-end;
-}
-
-.composer{
- display:flex;
- gap:7px;
- margin-top:7px;
-}
-
-.composer input{
- flex:1;
- padding:12px;
- background:#111;
- border:1px solid #333;
- color:white;
- border-radius:8px;
-}
-
-.composer button{
- padding:10px 15px;
- background:var(--red);
- color:white;
- border:0;
- border-radius:8px;
-}
-
-.empty{
- color:#777;
- text-align:center;
- padding:25px;
-}
-
-.review{
- background:#202020;
- padding:12px;
- border-radius:9px;
- margin-top:8px;
-}
-
-.rating{
- color:#ffd000;
+.total{
+  background:white;
+  padding:20px;
+  font-size:20px;
+  font-weight:bold;
+  text-align:right;
 }
 
 .modal{
- display:none;
- position:fixed;
- inset:0;
- background:#000b;
- z-index:100;
- align-items:center;
- justify-content:center;
- padding:15px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:200;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
-
-.box{
- width:100%;
- max-width:450px;
- max-height:90vh;
- overflow-y:auto;
- background:#181818;
- border:1px solid #333;
- border-radius:14px;
- padding:20px;
+.modal.show{display:flex}
+.modalBox{
+  background:white;
+  width:100%;
+  max-width:550px;
+  max-height:92vh;
+  overflow:auto;
+  padding:20px;
+  border-radius:6px;
 }
-
-.box input,
-.box textarea,
-.box select{
- width:100%;
- padding:12px;
- margin:7px 0;
- background:#090909;
- border:1px solid #333;
- color:white;
- border-radius:8px;
+.modalHeader{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
 }
+.close{
+  border:0;
+  background:none;
+  font-size:25px;
+}
+.review{
+  border-top:1px solid #ddd;
+  padding:12px 0;
+}
+.empty{
+  background:white;
+  padding:35px;
+  text-align:center;
+  color:#666;
+}
+.notice{
+  background:#fff3cd;
+  border:1px solid #ffe69c;
+  padding:12px;
+  margin-bottom:15px;
+}
+.searchResults{
+  display:none;
+  position:absolute;
+  top:49px;
+  left:0;
+  right:0;
+  background:white;
+  color:#111;
+  z-index:300;
+  border:1px solid #aaa;
+}
+.searchWrap{
+  position:relative;
+  flex:1;
+}
+.suggestion{
+  padding:12px;
+  border-bottom:1px solid #ddd;
+}
+.suggestion:hover{background:#eee}
 
-@media(max-width:600px){
-
- .products{
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
- }
-
- .product img,
- .productPlaceholder{
-  height:135px;
- }
-
- .container{
-  width:94%;
- }
-
- .profileStats{
-  gap:20px;
- }
+@media(max-width:700px){
+  .top{gap:6px}
+  .location,.headerBtn{display:none}
+  .logo{font-size:19px}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .product img,.placeholder{height:140px}
+  .hero{min-height:230px;padding:35px 7%}
 }
 </style>
 </head>
@@ -684,2513 +372,1548 @@ header{
 <body>
 
 <header>
-
- <div class="logo">
-  <span>AV</span>YRA
- </div>
-
- <div class="headerBtns">
-  <button onclick="openNotifications()">🔔</button>
-  <button onclick="openAccount()">👤</button>
- </div>
-
-</header>
-
-
-<!-- HOME -->
-
-<main id="homePage" class="page active">
-
-<section class="hero">
-
- <h1>Welcome to <span>AVYRA</span></h1>
-
- <p>Buy. Sell. Connect. Worldwide. 🌍</p>
-
- <div class="search">
-
-  <input
-   id="searchInput"
-   placeholder="Search products, sellers or locations..."
-   autocomplete="off">
-
-  <button onclick="searchProducts()">Search</button>
-
- </div>
-
- <div id="searchSuggestions" class="searchSuggestions"></div>
-
-</section>
-
-
-<div class="container">
-
-<section class="section">
-
- <div class="title">
-  <h2>Explore Categories</h2>
- </div>
-
- <div class="categories">
-
-  <div class="category">
-   <div>📱</div>
-   <p>Phones</p>
-  </div>
-
-  <div class="category">
-   <div>💻</div>
-   <p>Computers</p>
-  </div>
-
-  <div class="category">
-   <div>🎮</div>
-   <p>Gaming</p>
-  </div>
-
-  <div class="category">
-   <div>👕</div>
-   <p>Fashion</p>
-  </div>
-
-  <div class="category">
-   <div>🚗</div>
-   <p>Vehicles</p>
-  </div>
-
-  <div class="category">
-   <div>🏠</div>
-   <p>Home</p>
-  </div>
-
- </div>
-
-</section>
-
-
-<section class="section">
-
- <div class="title">
-  <h2>🔥 Marketplace</h2>
- </div>
-
- <div id="products" class="products">
-  <div class="empty">Loading...</div>
- </div>
-
-</section>
-
-
-<section class="section">
-
- <div class="title">
-  <h2>⭐ Sellers</h2>
- </div>
-
- <div id="sellers">
-  <div class="empty">Loading...</div>
- </div>
-
-</section>
-
-</div>
-
-</main>
-
-
-<!-- ACCOUNT -->
-
-<main id="accountPage" class="page">
-
-<div class="container">
-
-<div class="pageHeader">
- <button class="backBtn" onclick="showPage('homePage')">←</button>
- <h2>Account</h2>
-</div>
-
-<div class="profileCard">
-
-<div class="profileTop">
-
-<img id="profilePhoto" class="bigAvatar">
-
-<div class="profileTopInfo">
-
-<h2 id="profileName">AVYRA User</h2>
-
-<p id="profileUsername" style="color:#777">
-@username
-</p>
-
-</div>
-
-</div>
-
-
-<div class="profileStats">
-
-<div>
- <b id="myFollowers">0</b>
- <span>Followers</span>
-</div>
-
-<div>
- <b id="myFollowing">0</b>
- <span>Following</span>
-</div>
-
-<div>
- <b id="myItems">0</b>
- <span>Listings</span>
-</div>
-
-</div>
-
-
-<div class="bio" id="profileBio">
- No bio yet.
-</div>
-
-
-<button class="pageBtn" onclick="openSettings()">
- ⚙️ Settings
-</button>
-
-<button class="pageBtn" onclick="openMessages()">
- 💬 Messages
-</button>
-
-<button class="pageBtn" onclick="openAddItem()">
- ➕ Sell something
-</button>
-
-
-<h3 style="margin-top:25px">
- Your Listings
-</h3>
-
-<div id="myProducts" class="profileProducts"></div>
-
-</div>
-
-</div>
-
-</main>
-
-
-<!-- SETTINGS -->
-
-<main id="settingsPage" class="page">
-
-<div class="container">
-
-<div class="pageHeader">
-
-<button class="backBtn" onclick="showPage('accountPage')">
- ←
-</button>
-
-<h2>Settings</h2>
-
-</div>
-
-
-<div class="settingsList">
-
-<div class="setting" onclick="editProfile()">
- <b>✏️ Edit profile</b>
- <small>Change your name, username, bio and profile picture</small>
-</div>
-
-<div class="setting" onclick="editPhone()">
- <b>📱 Phone number</b>
- <small id="settingsPhone">Not added</small>
-</div>
-
-<div class="setting" onclick="showAccountDetails()">
- <b>👤 Account details</b>
- <small>View your AVYRA account information</small>
-</div>
-
-<div class="setting" onclick="logout()">
- <b style="color:#ff5570">🚪 Sign out</b>
- <small>Sign out of this device</small>
-</div>
-
-</div>
-
-
-<div id="settingsForms" style="margin-top:15px"></div>
-
-</div>
-
-</main>
-
-
-<!-- MESSAGES -->
-
-<main id="messagesPage" class="page">
-
-<div class="container">
-
-<div class="pageHeader">
-
-<button class="backBtn" onclick="showPage('accountPage')">
- ←
-</button>
-
-<h2>Messages</h2>
-
-</div>
-
-
-<div id="conversationList"></div>
-
-
-<div id="chat" class="chat">
-
-<div style="
- display:flex;
- align-items:center;
- gap:10px;
- margin-bottom:8px;
-">
-
-<button class="backBtn" onclick="closeChat()">
- ←
-</button>
-
-<h3 id="chatName">
- Chat
-</h3>
-
-</div>
-
-
-<div id="chatMessages" class="chatMessages"></div>
-
-
-<div class="composer">
-
-<input id="messageInput"
- placeholder="Message...">
-
-<button onclick="sendMessage()">
- ➤
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</main>
-
-
-<!-- NOTIFICATIONS -->
-
-<main id="notificationsPage" class="page">
-
-<div class="container">
-
-<div class="pageHeader">
-
-<button class="backBtn" onclick="showPage('homePage')">
- ←
-</button>
-
-<h2>Notifications</h2>
-
-</div>
-
-<div id="notifications">
- <div class="empty">Loading...</div>
-</div>
-
-</div>
-
-</main>
-
-
-<!-- LOGIN -->
-
-<div class="modal" id="loginModal">
-
-<div class="box">
-
-<h2>Welcome to AVYRA</h2>
-
-<p style="color:#888;margin:8px 0">
-Sign in to buy, sell and connect.
-</p>
-
-<input id="email"
- type="email"
- placeholder="Email">
-
-<input id="password"
- type="password"
- placeholder="Password">
-
-<input id="loginPhone"
- type="tel"
- placeholder="Phone number (optional)">
-
-<button class="primary" onclick="emailLogin()">
- Sign In
-</button>
-
-<button
- class="secondary"
- onclick="googleLogin()">
- Continue with Google
-</button>
-
-<button
- class="secondary"
- onclick="closeLogin()">
- Close
-</button>
-
-<div id="status"
- style="color:#aaa;margin-top:10px">
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ADD ITEM -->
-
-<div class="modal" id="itemModal">
-
-<div class="box">
-
-<h2>Sell Something</h2>
-
-<input id="itemName"
- placeholder="Product name">
-
-<input id="itemPrice"
- type="number"
- placeholder="Price">
-
-<input id="itemCurrency"
- placeholder="Currency — KES, USD, EUR...">
-
-<input id="itemLocation"
- placeholder="Location">
-
-<textarea id="itemDescription"
- placeholder="Description"></textarea>
-
-<input id="itemPhoto"
- type="file"
- accept="image/*">
-
-<button class="primary" onclick="addItem()">
- Publish
-</button>
-
-<button class="secondary"
- onclick="closeModal('itemModal')">
- Cancel
-</button>
-
-<div id="itemStatus"
- style="color:#aaa;margin-top:10px">
-</div>
-
-</div>
-
-</div>
-
-
-<!-- REVIEW -->
-
-<div class="modal" id="reviewModal">
-
-<div class="box">
-
-<h2>Review Seller</h2>
-
-<p id="reviewSellerName"
- style="color:#aaa;margin:8px 0">
-</p>
-
-<select id="reviewRating">
-
-<option value="5">⭐⭐⭐⭐⭐ — 5</option>
-<option value="4">⭐⭐⭐⭐ — 4</option>
-<option value="3">⭐⭐⭐ — 3</option>
-<option value="2">⭐⭐ — 2</option>
-<option value="1">⭐ — 1</option>
-
-</select>
-
-<textarea id="reviewText"
- placeholder="Write your review...">
-</textarea>
-
-<button class="primary"
- onclick="submitReview()">
- Submit Review
-</button>
-
-<button class="secondary"
- onclick="closeModal('reviewModal')">
- Cancel
-</button>
-
-</div>
-
-</div>
-
-
-<nav class="bottomNav">
-
-<button onclick="showPage('homePage')">
- <span>🏠</span><br>Home
-</button>
-
-<button onclick="focusSearch()">
- <span>🔎</span><br>Search
-</button>
-
-<button onclick="openAddItem()">
- <span>➕</span><br>Sell
-</button>
-
-<button onclick="openMessages()">
- <span>💬</span><br>Messages
-</button>
-
-<button onclick="openAccount()">
- <span>👤</span><br>Account
-</button>
-
-</nav>
-
-
-<script type="module">
-
-import {initializeApp}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
- getAuth,
- GoogleAuthProvider,
- setPersistence,
- browserLocalPersistence,
- signInWithPopup,
- signInWithEmailAndPassword,
- onAuthStateChanged,
- signOut
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-import {
- getFirestore,
- collection,
- doc,
- setDoc,
- getDoc,
- getDocs,
- addDoc,
- updateDoc,
- deleteDoc,
- query,
- where,
- onSnapshot,
- serverTimestamp,
- increment
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-const firebaseConfig={
-
- apiKey:"AIzaSyCfxi6jdRj1EAhUtOjg-ChRSuZTXPkWIDI",
-
- authDomain:"avyra-666da.firebaseapp.com",
-
- projectId:"avyra-666da",
-
- storageBucket:"avyra-666da.firebasestorage.app",
-
- messagingSenderId:"238523673454",
-
- appId:"1:238523673454:web:afc7dea15dff6afc756f7f",
-
- measurementId:"G-XZ996JZR6N"
-
-};
-
-
-const app=initializeApp(firebaseConfig);
-
-const auth=getAuth(app);
-
-const db=getFirestore(app);
-
-const googleProvider=new GoogleAuthProvider();
-
-
-await setPersistence(
- auth,
- browserLocalPersistence
-);
-
-
-let currentUser=null;
-let allProducts=[];
-let activeChatUser=null;
-let unsubscribeMessages=null;
-let unsubscribeConversation=null;
-let reviewSellerId=null;
-
-
-/* PAGE SYSTEM */
-
-window.showPage=function(page){
-
- document.querySelectorAll(".page")
- .forEach(p=>p.classList.remove("active"));
-
- const el=document.getElementById(page);
-
- if(el)el.classList.add("active");
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
-
-};
-
-
-/* AUTH */
-
-window.googleLogin=async function(){
-
- try{
-
-  await signInWithPopup(
-   auth,
-   googleProvider
-  );
-
- }catch(e){
-
-  document.getElementById("status")
-  .innerText=e.message;
-
- }
-
-};
-
-
-window.emailLogin=async function(){
-
- const email=
-  document.getElementById("email")
-  .value.trim();
-
- const password=
-  document.getElementById("password")
-  .value;
-
- if(!email||!password){
-
-  document.getElementById("status")
-  .innerText="Enter your email and password.";
-
-  return;
- }
-
- try{
-
-  await signInWithEmailAndPassword(
-   auth,
-   email,
-   password
-  );
-
- }catch(e){
-
-  document.getElementById("status")
-  .innerText=e.message;
-
- }
-
-};
-
-
-onAuthStateChanged(auth,async user=>{
-
- currentUser=user;
-
- if(!user){
-
-  document.getElementById("headerName")
-  ?.innerText;
-
-  loadProducts();
-
-  return;
- }
-
- closeLogin();
-
- await createProfile(user);
-
- await loadProfile();
-
- loadProducts();
-
- loadSellers();
-
- loadNotifications();
-
-});
-
-
-/* PROFILE */
-
-async function createProfile(user){
-
- const ref=doc(
-  db,
-  "users",
-  user.uid
- );
-
- const snap=await getDoc(ref);
-
- if(!snap.exists()){
-
-  await setDoc(ref,{
-
-   uid:user.uid,
-
-   name:user.displayName||"AVYRA User",
-
-   username:
-    makeUsername(user.displayName||"user"),
-
-   email:user.email||"",
-
-   phone:"",
-
-   countryCode:"+254",
-
-   photo:user.photoURL||"",
-
-   bio:"",
-
-   followers:0,
-
-   following:0,
-
-   createdAt:serverTimestamp()
-
-  });
-
- }
-
-}
-
-
-function makeUsername(name){
-
- return name
-  .toLowerCase()
-  .replace(/[^a-z0-9]/g,"")
-  .slice(0,15)||"user";
-
-}
-
-
-async function loadProfile(){
-
- if(!currentUser)return;
-
- const ref=doc(
-  db,
-  "users",
-  currentUser.uid
- );
-
- let snap=await getDoc(ref);
-
- if(!snap.exists()){
-
-  await createProfile(currentUser);
-
-  snap=await getDoc(ref);
-
- }
-
- const d=snap.data();
-
- document.getElementById("profileName")
- .innerText=d.name||"AVYRA User";
-
- document.getElementById("profileUsername")
- .innerText="@"+(d.username||"user");
-
- document.getElementById("profileBio")
- .innerText=d.bio||"No bio yet.";
-
- document.getElementById("myFollowers")
- .innerText=d.followers||0;
-
- document.getElementById("myFollowing")
- .innerText=d.following||0;
-
- document.getElementById("settingsPhone")
- .innerText=
-  d.phone
-  ?`${d.countryCode||""} ${d.phone}`
-  :"Not added";
-
- const photo=document.getElementById("profilePhoto");
-
- if(d.photo){
-
-  photo.src=d.photo;
-
- }else{
-
-  photo.src=
-   "https://placehold.co/200x200/222/fff?text=AVYRA";
-
- }
-
- loadMyProducts();
-
-}
-
-
-/* EDIT PROFILE */
-
-window.editProfile=async function(){
-
- const snap=await getDoc(
-  doc(db,"users",currentUser.uid)
- );
-
- const d=snap.data()||{};
-
- document.getElementById("settingsForms")
- .innerHTML=`
-
- <div class="form">
-
-  <h3>Edit Profile</h3>
-
-  <input id="newName"
-   placeholder="Display name"
-   value="${esc(d.name||"")}">
-
-  <input id="newUsername"
-   placeholder="Username"
-   value="${esc(d.username||"")}">
-
-  <textarea id="newBio"
-   placeholder="Bio">${esc(d.bio||"")}</textarea>
-
-  <label style="color:#aaa">
-   Profile picture
-  </label>
-
-  <input id="newPhoto"
-   type="file"
-   accept="image/*">
-
-  <button class="primary"
-   onclick="saveProfile()">
-   Save Changes
-  </button>
-
-  <div id="profileStatus"
-   style="color:#aaa;margin-top:8px">
-  </div>
-
- </div>
-
- `;
-
-};
-
-
-window.saveProfile=async function(){
-
- if(!currentUser)return;
-
- const status=
-  document.getElementById("profileStatus");
-
- try{
-
-  const name=
-   document.getElementById("newName")
-   .value.trim()||"AVYRA User";
-
-  let username=
-   document.getElementById("newUsername")
-   .value.trim()
-   .toLowerCase()
-   .replace(/[^a-z0-9_]/g,"");
-
-  if(!username){
-
-   username="user";
-
-  }
-
-  const bio=
-   document.getElementById("newBio")
-   .value.trim();
-
-  const file=
-   document.getElementById("newPhoto")
-   .files[0];
-
-  let photo=null;
-
-  if(file){
-
-   if(file.size>3*1024*1024){
-
-    status.innerText=
-     "Picture is too large. Choose one under 3MB.";
-
-    return;
-
-   }
-
-   photo=await compressImage(
-    file,
-    500,
-    500
-   );
-
-  }
-
-  const data={
-   name,
-   username,
-   bio,
-   updatedAt:serverTimestamp()
-  };
-
-  if(photo){
-   data.photo=photo;
-  }
-
-  await setDoc(
-   doc(db,"users",currentUser.uid),
-   data,
-   {merge:true}
-  );
-
-  /* Update names on user's listings */
-
-  const products=await getDocs(
-   query(
-    collection(db,"products"),
-    where("sellerId","==",currentUser.uid)
-   )
-  );
-
-  for(const p of products.docs){
-
-   await updateDoc(
-    doc(db,"products",p.id),
-    {
-     sellerName:name
-    }
-   );
-
-  }
-
-  status.innerText="Saved successfully.";
-
-  await loadProfile();
-
-  loadProducts();
-
-  loadSellers();
-
- }catch(e){
-
-  status.innerText=
-   "Could not save: "+e.message;
-
- }
-
-};
-
-
-/* PHONE */
-
-window.editPhone=async function(){
-
- const snap=await getDoc(
-  doc(db,"users",currentUser.uid)
- );
-
- const d=snap.data()||{};
-
- document.getElementById("settingsForms")
- .innerHTML=`
-
- <div class="form">
-
- <h3>Phone Number</h3>
-
- <div class="phoneRow">
-
- <select id="countryCode">
-
-  <option value="+254">🇰🇪 +254 Kenya</option>
-  <option value="+255">🇹🇿 +255 Tanzania</option>
-  <option value="+256">🇺🇬 +256 Uganda</option>
-  <option value="+1">🇺🇸 +1 USA</option>
-  <option value="+44">🇬🇧 +44 UK</option>
-  <option value="+27">🇿🇦 +27 South Africa</option>
-  <option value="+91">🇮🇳 +91 India</option>
-  <option value="+971">🇦🇪 +971 UAE</option>
-  <option value="+234">🇳🇬 +234 Nigeria</option>
-
- </select>
-
- <input
-  id="phoneNumber"
-  type="tel"
-  placeholder="Phone number"
-  value="${esc(d.phone||"")}">
-
- </div>
-
- <button class="primary"
-  onclick="savePhone()">
-  Save Phone
- </button>
-
- <div id="phoneStatus"
-  style="color:#aaa;margin-top:8px">
- </div>
-
- </div>
-
- `;
-
- document.getElementById("countryCode")
- .value=d.countryCode||"+254";
-
-};
-
-
-window.savePhone=async function(){
-
- try{
-
-  const code=
-   document.getElementById("countryCode")
-   .value;
-
-  const phone=
-   document.getElementById("phoneNumber")
-   .value.trim();
-
-  await setDoc(
-   doc(db,"users",currentUser.uid),
-   {
-    countryCode:code,
-    phone,
-    updatedAt:serverTimestamp()
-   },
-   {merge:true}
-  );
-
-  document.getElementById("phoneStatus")
-  .innerText="Phone number saved.";
-
-  loadProfile();
-
- }catch(e){
-
-  document.getElementById("phoneStatus")
-  .innerText=e.message;
-
- }
-
-};
-
-
-/* ACCOUNT DETAILS */
-
-window.showAccountDetails=async function(){
-
- const snap=await getDoc(
-  doc(db,"users",currentUser.uid)
- );
-
- const d=snap.data();
-
- document.getElementById("settingsForms")
- .innerHTML=`
-
- <div class="form">
-
- <h3>Account Details</h3>
-
- <p style="margin-top:10px;color:#aaa">
- <b>Email:</b><br>
- ${esc(d.email||currentUser.email||"")}
- </p>
-
- <p style="margin-top:12px;color:#aaa">
- <b>Username:</b><br>
- @${esc(d.username||"")}
- </p>
-
- <p style="margin-top:12px;color:#aaa">
- <b>Phone:</b><br>
- ${esc(d.countryCode||"")}
- ${esc(d.phone||"Not added")}
- </p>
-
- </div>
-
- `;
-
-};
-
-
-/* IMAGE */
-
-function compressImage(file,maxW,maxH){
-
- return new Promise((resolve,reject)=>{
-
-  const reader=new FileReader();
-
-  reader.onload=e=>{
-
-   const img=new Image();
-
-   img.onload=()=>{
-
-    let w=img.width;
-    let h=img.height;
-
-    const scale=Math.min(
-     1,
-     maxW/w,
-     maxH/h
-    );
-
-    w=Math.round(w*scale);
-    h=Math.round(h*scale);
-
-    const canvas=
-     document.createElement("canvas");
-
-    canvas.width=w;
-    canvas.height=h;
-
-    const ctx=canvas.getContext("2d");
-
-    ctx.drawImage(
-     img,
-     0,
-     0,
-     w,
-     h
-    );
-
-    resolve(
-     canvas.toDataURL(
-      "image/jpeg",
-      .65
-     )
-    );
-
-   };
-
-   img.onerror=reject;
-
-   img.src=e.target.result;
-
-  };
-
-  reader.onerror=reject;
-
-  reader.readAsDataURL(file);
-
- });
-
-}
-
-
-/* PRODUCTS */
-
-function loadProducts(){
-
- onSnapshot(
-  collection(db,"products"),
-  snapshot=>{
-
-   allProducts=[];
-
-   snapshot.forEach(d=>{
-
-    allProducts.push({
-     id:d.id,
-     ...d.data()
-    });
-
-   });
-
-   renderProducts(allProducts);
-
-   loadMyProducts();
-
-  },
-  error=>{
-
-   document.getElementById("products")
-   .innerHTML=
-   `<div class="empty">
-    Could not load products.
-   </div>`;
-
-  }
- );
-
-}
-
-
-function renderProducts(products){
-
- const box=
-  document.getElementById("products");
-
- box.innerHTML="";
-
- if(!products.length){
-
-  box.innerHTML=
-   `<div class="empty">
-    No products found.
-   </div>`;
-
-  return;
-
- }
-
- products.forEach(p=>{
-
-  const card=
-   document.createElement("article");
-
-  card.className="product";
-
-  const image=p.photo
-   ?`<img src="${p.photo}">`
-   :`<div class="productPlaceholder">🛍️</div>`;
-
-  let buttons=`
-
-   <button
-    class="messageBtn"
-    onclick="messageSeller('${p.sellerId}')">
-    💬 Message
-   </button>
-
-  `;
-
-  if(
-   currentUser &&
-   p.sellerId===currentUser.uid
-  ){
-
-   buttons+=`
-
-    <button
-     class="deleteBtn"
-     onclick="deleteProduct('${p.id}')">
-     🗑️ Delete
-    </button>
-
-   `;
-
-  }
-
-  card.innerHTML=`
-
-   ${image}
-
-   <div class="productInfo">
-
-    <h3>${esc(p.name||"Item")}</h3>
-
-    <div class="price">
-     ${esc(p.currency||"")}
-     ${esc(String(p.price||0))}
-    </div>
+  <div class="top">
+    <div class="logo">AVYRA</div>
 
     <div class="location">
-     📍 ${esc(p.location||"Worldwide")}
+      Deliver to
+      <b id="locationText">Kenya</b>
     </div>
 
-    <div class="sellerName">
-     Seller: ${esc(p.sellerName||"Seller")}
+    <div class="searchWrap">
+      <div class="search">
+        <input id="searchInput" placeholder="Search AVYRA">
+        <button onclick="searchProducts()">🔎</button>
+      </div>
+      <div id="searchResults" class="searchResults"></div>
     </div>
 
-    <div class="desc">
-     ${esc(p.description||"")}
-    </div>
-
-    <div class="cardBtns">
-     ${buttons}
-    </div>
-
-    ${
-     currentUser &&
-     p.sellerId!==currentUser.uid
-     ?
-     `<button class="reviewBtn"
-      onclick="openReview(
-       '${p.sellerId}',
-       '${esc(p.sellerName||"Seller")}'
-      )">
-      ⭐ Review Seller
-     </button>`
-     :""
-    }
-
-   </div>
-
-  `;
-
-  box.appendChild(card);
-
- });
-
-}
-
-
-/* SEARCH */
-
-window.searchProducts=function(){
-
- const input=
-  document.getElementById("searchInput");
-
- const text=
-  input.value.trim().toLowerCase();
-
- const suggestions=
-  document.getElementById("searchSuggestions");
-
- if(!text){
-
-  renderProducts(allProducts);
-
-  suggestions.style.display="none";
-
-  return;
-
- }
-
- const results=
-  allProducts.filter(p=>{
-
-   return (
-
-    String(p.name||"")
-     .toLowerCase()
-     .includes(text)
-
-    ||
-
-    String(p.description||"")
-     .toLowerCase()
-     .includes(text)
-
-    ||
-
-    String(p.location||"")
-     .toLowerCase()
-     .includes(text)
-
-    ||
-
-    String(p.sellerName||"")
-     .toLowerCase()
-     .includes(text)
-
-    ||
-
-    String(p.currency||"")
-     .toLowerCase()
-     .includes(text)
-
-   );
-
-  });
-
-
- renderProducts(results);
-
-
- /* suggestions */
-
- suggestions.innerHTML="";
-
- const names=[];
-
- results.forEach(p=>{
-
-  if(!names.includes(p.name))
-   names.push(p.name);
-
- });
-
- names.slice(0,5).forEach(name=>{
-
-  const div=
-   document.createElement("div");
-
-  div.className="suggestion";
-
-  div.innerText="🔎 "+name;
-
-  div.onclick=()=>{
-
-   input.value=name;
-
-   searchProducts();
-
-  };
-
-  suggestions.appendChild(div);
-
- });
-
- suggestions.style.display=
-  names.length?"block":"none";
-
-};
-
-
-document.getElementById("searchInput")
-.addEventListener(
- "input",
- searchProducts
-);
-
-
-/* DELETE */
-
-window.deleteProduct=async function(id){
-
- if(!currentUser)return;
-
- const ref=
-  doc(db,"products",id);
-
- const snap=await getDoc(ref);
-
- if(!snap.exists()){
-
-  alert("Listing no longer exists.");
-
-  return;
-
- }
-
- if(
-  snap.data().sellerId!==currentUser.uid
- ){
-
-  alert("You can only delete your own listing.");
-
-  return;
-
- }
-
- if(!confirm("Delete this listing?"))
-  return;
-
- try{
-
-  await deleteDoc(ref);
-
- }catch(e){
-
-  alert(
-   "Could not delete: "+e.message
-  );
-
- }
-
-};
-
-
-/* ADD ITEM */
-
-window.openAddItem=function(){
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
-
- }
-
- document.getElementById("itemModal")
- .style.display="flex";
-
-};
-
-
-window.addItem=async function(){
-
- const name=
-  document.getElementById("itemName")
-  .value.trim();
-
- const price=
-  document.getElementById("itemPrice")
-  .value;
-
- const currency=
-  document.getElementById("itemCurrency")
-  .value.trim();
-
- const location=
-  document.getElementById("itemLocation")
-  .value.trim();
-
- const description=
-  document.getElementById("itemDescription")
-  .value.trim();
-
- const file=
-  document.getElementById("itemPhoto")
-  .files[0];
-
- if(!name||!price||!currency){
-
-  document.getElementById("itemStatus")
-  .innerText=
-   "Product, price and currency are required.";
-
-  return;
-
- }
-
- try{
-
-  const snap=await getDoc(
-   doc(db,"users",currentUser.uid)
-  );
-
-  const u=snap.data()||{};
-
-  let photo="";
-
-  if(file){
-
-   if(file.size>3*1024*1024){
-
-    document.getElementById("itemStatus")
-    .innerText=
-     "Image must be under 3MB.";
-
-    return;
-
-   }
-
-   photo=await compressImage(
-    file,
-    700,
-    700
-   );
-
-  }
-
-  await addDoc(
-   collection(db,"products"),
-   {
-
-    sellerId:currentUser.uid,
-
-    sellerName:
-     u.name||"AVYRA Seller",
-
-    name,
-
-    price:Number(price),
-
-    currency,
-
-    location,
-
-    description,
-
-    photo,
-
-    createdAt:serverTimestamp()
-
-   }
-  );
-
-  document.getElementById("itemStatus")
-  .innerText="Published!";
-
-  setTimeout(()=>{
-
-   closeModal("itemModal");
-
-  },600);
-
- }catch(e){
-
-  document.getElementById("itemStatus")
-  .innerText=
-   "Could not publish: "+e.message;
-
- }
-
-};
-
-
-/* MY PRODUCTS */
-
-function loadMyProducts(){
-
- if(!currentUser)return;
-
- const mine=
-  allProducts.filter(
-   p=>p.sellerId===currentUser.uid
-  );
-
- document.getElementById("myItems")
- .innerText=mine.length;
-
- const box=
-  document.getElementById("myProducts");
-
- box.innerHTML="";
-
- if(!mine.length){
-
-  box.innerHTML=
-   `<div class="empty">
-    No listings yet.
-   </div>`;
-
-  return;
-
- }
-
- mine.forEach(p=>{
-
-  const div=
-   document.createElement("div");
-
-  div.className="product";
-
-  div.innerHTML=`
-
-   ${
-    p.photo
-    ?`<img src="${p.photo}">`
-    :`<div class="productPlaceholder">🛍️</div>`
-   }
-
-   <div class="productInfo">
-
-    <h3>${esc(p.name)}</h3>
-
-    <div class="price">
-     ${esc(p.currency)}
-     ${esc(String(p.price))}
-    </div>
-
-    <button
-     class="deleteBtn"
-     style="width:100%;padding:9px;margin-top:8px"
-     onclick="deleteProduct('${p.id}')">
-     Delete
+    <button class="headerBtn" onclick="showPage('account')">
+      <small>Hello,</small>
+      <b id="headerUser">Sign in</b>
     </button>
 
-   </div>
+    <button class="headerBtn" onclick="showPage('cart')">
+      🛒 <b id="cartCount">0</b>
+    </button>
+  </div>
+</header>
 
-  `;
+<!-- HOME -->
+<section id="home" class="page active">
 
-  box.appendChild(div);
+  <div class="hero">
+    <div>
+      <h1>Shop on AVYRA</h1>
+      <p>Discover products from sellers around the world.</p>
+      <button onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">
+        Start shopping
+      </button>
+    </div>
+  </div>
 
- });
+  <main class="container">
 
-}
+    <section class="section">
+      <div class="sectionTitle">
+        <h2>Shop by Category</h2>
+      </div>
 
+      <div class="categories">
+        <div class="category" onclick="categorySearch('Phones')"><div>📱</div>Phones</div>
+        <div class="category" onclick="categorySearch('Computers')"><div>💻</div>Computers</div>
+        <div class="category" onclick="categorySearch('Gaming')"><div>🎮</div>Gaming</div>
+        <div class="category" onclick="categorySearch('Fashion')"><div>👕</div>Fashion</div>
+        <div class="category" onclick="categorySearch('Home')"><div>🏠</div>Home</div>
+        <div class="category" onclick="categorySearch('Beauty')"><div>💄</div>Beauty</div>
+      </div>
+    </section>
 
-/* SELLERS */
+    <section class="section" id="featured">
+      <div class="sectionTitle">
+        <h2>Featured products</h2>
+        <button onclick="showPage('shop')">See all</button>
+      </div>
+      <div id="featuredProducts" class="products"></div>
+    </section>
 
-async function loadSellers(){
+  </main>
+</section>
 
- const box=
-  document.getElementById("sellers");
+<!-- SHOP -->
+<section id="shop" class="page">
+  <main class="container">
+    <div class="sectionTitle">
+      <h1>Shop</h1>
+      <select id="sortSelect" onchange="renderShop()">
+        <option value="new">Newest</option>
+        <option value="low">Price: Low to high</option>
+        <option value="high">Price: High to low</option>
+      </select>
+    </div>
+    <div id="shopProducts" class="products"></div>
+  </main>
+</section>
 
- if(!box)return;
+<!-- PRODUCT DETAILS -->
+<section id="details" class="page">
+  <main class="container">
+    <div id="productDetails"></div>
+  </main>
+</section>
 
- const snap=
-  await getDocs(
-   collection(db,"users")
-  );
+<!-- CART -->
+<section id="cart" class="page">
+  <main class="container">
+    <h1 style="margin-bottom:15px">Shopping Cart</h1>
+    <div id="cartItems"></div>
+    <div id="cartTotal"></div>
+  </main>
+</section>
 
- box.innerHTML="";
+<!-- ORDERS -->
+<section id="orders" class="page">
+  <main class="container">
+    <h1 style="margin-bottom:15px">Your Orders</h1>
+    <div id="ordersList"></div>
+  </main>
+</section>
 
- for(const d of snap.docs){
+<!-- ACCOUNT -->
+<section id="account" class="page">
+  <main class="container">
+    <h1 style="margin-bottom:15px">Your Account</h1>
 
-  const u=d.data();
+    <div id="accountContent"></div>
+  </main>
+</section>
 
-  if(!u.uid)continue;
+<!-- SELL -->
+<section id="sell" class="page">
+  <main class="container">
+    <div class="form">
+      <h2>Sell an item</h2>
 
-  if(
-   currentUser &&
-   u.uid===currentUser.uid
-  )continue;
+      <label>Product name</label>
+      <input id="sellName" placeholder="Example: iPhone 15">
 
-  const div=
-   document.createElement("div");
+      <label>Category</label>
+      <select id="sellCategory">
+        <option>Phones</option>
+        <option>Computers</option>
+        <option>Gaming</option>
+        <option>Fashion</option>
+        <option>Home</option>
+        <option>Beauty</option>
+        <option>Other</option>
+      </select>
 
-  div.className="seller";
+      <label>Price</label>
+      <input id="sellPrice" type="number" min="0" placeholder="10000">
 
-  const avatar=u.photo
-   ?`<div class="avatar">
-      <img src="${u.photo}">
-     </div>`
-   :`<div class="avatar">
-      ${(u.name||"A")[0].toUpperCase()}
-     </div>`;
+      <label>Currency</label>
+      <input id="sellCurrency" placeholder="KES">
 
-  div.innerHTML=`
+      <label>Location</label>
+      <input id="sellLocation" placeholder="Kakamega, Kenya">
 
-   ${avatar}
+      <label>Description</label>
+      <textarea id="sellDescription" rows="5" placeholder="Describe your item"></textarea>
 
-   <div class="sellerInfo">
+      <label>Product picture</label>
+      <input id="sellImage" type="file" accept="image/*">
 
-    <b>${esc(u.name||"User")}</b>
+      <button class="btn primary" style="width:100%;margin-top:10px" onclick="addProduct()">
+        Publish listing
+      </button>
 
-    <small>
-     @${esc(u.username||"user")}
-     ·
-     ${u.followers||0} followers
-    </small>
+      <p id="sellStatus" style="margin-top:10px"></p>
+    </div>
+  </main>
+</section>
 
-   </div>
+<!-- SETTINGS -->
+<section id="settings" class="page">
+  <main class="container">
+    <h1 style="margin-bottom:15px">Settings</h1>
 
-   <button class="follow"
-    onclick="followSeller('${u.uid}')">
-    Follow
-   </button>
+    <div class="card">
+      <h3>Account</h3>
+      <button class="btn" onclick="openEditProfile()">Edit profile</button>
+    </div>
 
-  `;
+    <div class="card">
+      <h3>Delivery location</h3>
+      <input id="settingLocation" placeholder="Country or city">
+      <button class="btn primary" onclick="saveLocation()">Save location</button>
+    </div>
 
-  box.appendChild(div);
+    <div class="card">
+      <h3>Preferences</h3>
+      <label>
+        <input id="notificationsSetting" type="checkbox" checked onchange="saveSettings()">
+        Enable notifications
+      </label>
+    </div>
 
- }
+    <div class="card">
+      <h3>Data</h3>
+      <button class="btn danger" onclick="clearLocalData()">Clear local app data</button>
+    </div>
 
-}
+    <div class="card">
+      <h3>About</h3>
+      <p>AVYRA Shopping — an Amazon-inspired shopping interface.</p>
+    </div>
+  </main>
+</section>
 
+<!-- EDIT PROFILE MODAL -->
+<div id="profileModal" class="modal">
+  <div class="modalBox">
 
-/* FOLLOW */
+    <div class="modalHeader">
+      <h2>Edit profile</h2>
+      <button class="close" onclick="closeModal('profileModal')">×</button>
+    </div>
 
-window.followSeller=async function(id){
+    <div class="form" style="padding:0">
+      <label>Display name</label>
+      <input id="profileNameInput">
 
- if(!currentUser){
+      <label>Username</label>
+      <input id="profileUsernameInput">
 
-  openLogin();
+      <label>Email</label>
+      <input id="profileEmailInput" type="email">
 
-  return;
+      <label>Phone</label>
+      <input id="profilePhoneInput" type="tel">
 
- }
+      <label>Country</label>
+      <input id="profileCountryInput">
 
- if(id===currentUser.uid)return;
+      <label>Profile picture</label>
+      <input id="profileImageInput" type="file" accept="image/*">
 
- const followId=
-  currentUser.uid+"_"+id;
+      <button class="btn primary" style="width:100%" onclick="saveProfile()">
+        Save profile
+      </button>
 
- const ref=
-  doc(db,"follows",followId);
+      <p id="profileStatus" style="margin-top:10px"></p>
+    </div>
+  </div>
+</div>
 
- const existing=
-  await getDoc(ref);
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modalBox">
 
- try{
+    <div class="modalHeader">
+      <h2>Sign in</h2>
+      <button class="close" onclick="closeModal('loginModal')">×</button>
+    </div>
 
-  if(existing.exists()){
+    <div class="form" style="padding:0">
+      <input id="loginEmail" type="email" placeholder="Email">
+      <input id="loginPassword" type="password" placeholder="Password">
 
-   await deleteDoc(ref);
+      <button class="btn primary" style="width:100%" onclick="login()">
+        Sign in
+      </button>
 
-   await updateDoc(
-    doc(db,"users",id),
-    {followers:increment(-1)}
-   );
+      <button class="btn" style="width:100%;margin-top:8px" onclick="guestLogin()">
+        Continue as guest
+      </button>
 
-   await updateDoc(
-    doc(db,"users",currentUser.uid),
-    {following:increment(-1)}
-   );
+      <p id="loginStatus" style="margin-top:10px"></p>
+    </div>
+  </div>
+</div>
 
-  }else{
+<!-- CHECKOUT -->
+<div id="checkoutModal" class="modal">
+  <div class="modalBox">
 
-   await setDoc(
-    ref,
-    {
-     followerId:currentUser.uid,
-     sellerId:id,
-     createdAt:serverTimestamp()
-    }
-   );
+    <div class="modalHeader">
+      <h2>Checkout</h2>
+      <button class="close" onclick="closeModal('checkoutModal')">×</button>
+    </div>
 
-   await updateDoc(
-    doc(db,"users",id),
-    {followers:increment(1)}
-   );
+    <div class="form" style="padding:0">
+      <label>Full name</label>
+      <input id="checkoutName">
 
-   await updateDoc(
-    doc(db,"users",currentUser.uid),
-    {following:increment(1)}
-   );
+      <label>Phone</label>
+      <input id="checkoutPhone">
 
-   await addNotification(
-    id,
-    `${currentUser.displayName||"Someone"} followed you.`
-   );
+      <label>Delivery address</label>
+      <textarea id="checkoutAddress"></textarea>
 
+      <label>Payment method</label>
+      <select id="paymentMethod">
+        <option>Cash on delivery</option>
+        <option>Mobile money</option>
+        <option>Card</option>
+      </select>
+
+      <button class="btn primary" style="width:100%" onclick="placeOrder()">
+        Place order
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="modal">
+  <div class="modalBox">
+
+    <div class="modalHeader">
+      <h2>Write a review</h2>
+      <button class="close" onclick="closeModal('reviewModal')">×</button>
+    </div>
+
+    <div class="form" style="padding:0">
+      <select id="reviewStars">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+
+      <textarea id="reviewText" placeholder="Write your review"></textarea>
+
+      <button class="btn primary" style="width:100%" onclick="submitReview()">
+        Submit review
+      </button>
+    </div>
+  </div>
+</div>
+
+<nav class="bottom">
+  <button onclick="showPage('home')"><span>🏠</span>Home</button>
+  <button onclick="showPage('shop')"><span>🔎</span>Shop</button>
+  <button onclick="showPage('sell')"><span>➕</span>Sell</button>
+  <button onclick="showPage('orders')"><span>📦</span>Orders</button>
+  <button onclick="showPage('account')"><span>👤</span>Account</button>
+</nav>
+
+<script>
+/* =========================================================
+   AVYRA SHOPPING APP
+   Everything below works locally using localStorage.
+   ========================================================= */
+
+const KEY="avyra_shop_v1";
+
+let data={
+  products:[],
+  cart:[],
+  orders:[],
+  reviews:[],
+  profile:{
+    name:"",
+    username:"",
+    email:"",
+    phone:"",
+    country:"",
+    image:""
+  },
+  settings:{
+    notifications:true,
+    location:"Kenya"
   }
-
-  loadSellers();
-
-  loadProfile();
-
- }catch(e){
-
-  alert(
-   "Follow failed: "+e.message
-  );
-
- }
-
 };
 
+let selectedProduct=null;
+let reviewProduct=null;
 
-/* NOTIFICATIONS */
+/* ---------- DATA ---------- */
 
-async function addNotification(
- userId,
- text
-){
-
- await addDoc(
-  collection(db,"notifications"),
-  {
-   userId,
-   text,
-   createdAt:serverTimestamp()
+function loadData(){
+  try{
+    const saved=localStorage.getItem(KEY);
+    if(saved){
+      data=Object.assign(data,JSON.parse(saved));
+    }
+  }catch(e){
+    console.log(e);
   }
- );
 
+  if(!Array.isArray(data.products))data.products=[];
+  if(!Array.isArray(data.cart))data.cart=[];
+  if(!Array.isArray(data.orders))data.orders=[];
+  if(!Array.isArray(data.reviews))data.reviews=[];
+  if(!data.profile)data.profile={};
+  if(!data.settings)data.settings={notifications:true,location:"Kenya"};
 }
 
+function saveData(){
+  localStorage.setItem(KEY,JSON.stringify(data));
+}
 
-function loadNotifications(){
+/* ---------- SAMPLE PRODUCTS ---------- */
 
- if(!currentUser)return;
+function createSamples(){
 
- const q=query(
-  collection(db,"notifications"),
-  where(
-   "userId",
-   "==",
-   currentUser.uid
-  )
- );
+  if(data.products.length)return;
 
- onSnapshot(q,snapshot=>{
+  data.products=[
+    {
+      id:id(),
+      name:"Wireless Headphones",
+      category:"Gaming",
+      price:3500,
+      currency:"KES",
+      location:"Kenya",
+      description:"Comfortable wireless headphones for music and gaming.",
+      image:"",
+      seller:"AVYRA Store",
+      sellerUsername:"avyra_store",
+      rating:4.5,
+      created:Date.now()
+    },
+    {
+      id:id(),
+      name:"Laptop Computer",
+      category:"Computers",
+      price:65000,
+      currency:"KES",
+      location:"Nairobi, Kenya",
+      description:"Powerful laptop suitable for school, work and entertainment.",
+      image:"",
+      seller:"Tech Store",
+      sellerUsername:"techstore",
+      rating:4.7,
+      created:Date.now()-1000
+    },
+    {
+      id:id(),
+      name:"Smartphone",
+      category:"Phones",
+      price:25000,
+      currency:"KES",
+      location:"Kakamega, Kenya",
+      description:"Modern smartphone with a bright display and great battery.",
+      image:"",
+      seller:"Phone Hub",
+      sellerUsername:"phonehub",
+      rating:4.4,
+      created:Date.now()-2000
+    },
+    {
+      id:id(),
+      name:"Gaming Controller",
+      category:"Gaming",
+      price:4500,
+      currency:"KES",
+      location:"Kenya",
+      description:"Wireless controller for compatible gaming devices.",
+      image:"",
+      seller:"Game Zone",
+      sellerUsername:"gamezone",
+      rating:4.8,
+      created:Date.now()-3000
+    }
+  ];
 
-  const box=
-   document.getElementById(
-    "notifications"
-   );
+  saveData();
+}
+
+/* ---------- NAVIGATION ---------- */
+
+function showPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+  const target=document.getElementById(page);
+
+  if(target)target.classList.add("active");
+
+  if(page==="home")renderFeatured();
+  if(page==="shop")renderShop();
+  if(page==="cart")renderCart();
+  if(page==="orders")renderOrders();
+  if(page==="account")renderAccount();
+  if(page==="settings")renderSettings();
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- SEARCH ---------- */
+
+function searchProducts(){
+
+  const text=document
+    .getElementById("searchInput")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const box=document.getElementById("searchResults");
+
+  if(!text){
+    box.style.display="none";
+    renderShop();
+    showPage("shop");
+    return;
+  }
+
+  const results=data.products.filter(p=>
+    p.name.toLowerCase().includes(text)||
+    p.category.toLowerCase().includes(text)||
+    p.location.toLowerCase().includes(text)||
+    p.seller.toLowerCase().includes(text)||
+    p.description.toLowerCase().includes(text)
+  );
+
+  showPage("shop");
+  renderProducts(results);
+
+  box.style.display="none";
+}
+
+function liveSearch(){
+
+  const input=document.getElementById("searchInput");
+  const box=document.getElementById("searchResults");
+  const text=input.value.trim().toLowerCase();
 
   box.innerHTML="";
 
-  const list=[];
-
-  snapshot.forEach(d=>{
-
-   list.push(d.data());
-
-  });
-
-  list.sort(
-   (a,b)=>
-    (b.createdAt?.seconds||0)-
-    (a.createdAt?.seconds||0)
-  );
-
-  if(!list.length){
-
-   box.innerHTML=
-    `<div class="empty">
-     No notifications yet.
-    </div>`;
-
-   return;
-
+  if(!text){
+    box.style.display="none";
+    return;
   }
 
-  list.forEach(n=>{
+  const results=data.products
+    .filter(p=>p.name.toLowerCase().includes(text))
+    .slice(0,6);
 
-   const div=
-    document.createElement("div");
+  if(!results.length){
+    box.style.display="none";
+    return;
+  }
 
-   div.className="notification";
+  results.forEach(p=>{
+    const div=document.createElement("div");
+    div.className="suggestion";
+    div.textContent=p.name;
 
-   div.innerHTML=`
+    div.onclick=()=>{
+      input.value=p.name;
+      box.style.display="none";
+      openProduct(p.id);
+    };
 
-    🔔 ${esc(n.text||"Notification")}
-
-    <small>
-     AVYRA
-    </small>
-
-   `;
-
-   box.appendChild(div);
-
+    box.appendChild(div);
   });
 
- });
-
+  box.style.display="block";
 }
 
+document.getElementById("searchInput")
+.addEventListener("input",liveSearch);
 
-window.openNotifications=function(){
+document.getElementById("searchInput")
+.addEventListener("keydown",e=>{
+  if(e.key==="Enter")searchProducts();
+});
 
- if(!currentUser){
+document.addEventListener("click",e=>{
+  const box=document.getElementById("searchResults");
+  if(!e.target.closest(".searchWrap")){
+    box.style.display="none";
+  }
+});
 
-  openLogin();
+function categorySearch(category){
+  document.getElementById("searchInput").value=category;
+  const results=data.products.filter(
+    p=>p.category.toLowerCase()===category.toLowerCase()
+  );
+  showPage("shop");
+  renderProducts(results);
+}
 
-  return;
+/* ---------- PRODUCT DISPLAY ---------- */
 
- }
+function productHTML(p){
 
- showPage("notificationsPage");
+  const image=p.image
+    ?`<img src="${p.image}" alt="">`
+    :`<div class="placeholder">🛍️</div>`;
 
-};
+  return `
+    ${image}
 
+    <h3>${escapeHTML(p.name)}</h3>
 
-/* REVIEWS */
+    <div class="stars">
+      ★★★★★
+      <small>${Number(p.rating||0).toFixed(1)}</small>
+    </div>
 
-window.openReview=function(
- sellerId,
- sellerName
+    <div class="price">
+      ${escapeHTML(p.currency)} ${formatMoney(p.price)}
+    </div>
+
+    <small>${escapeHTML(p.location)}</small>
+
+    <div class="productBtns">
+      <button onclick="addToCart('${p.id}')">
+        Add to cart
+      </button>
+      <button onclick="openProduct('${p.id}')">
+        View
+      </button>
+    </div>
+  `;
+}
+
+function renderFeatured(){
+
+  const box=document.getElementById("featuredProducts");
+
+  box.innerHTML="";
+
+  data.products.slice(0,6).forEach(p=>{
+    const div=document.createElement("article");
+    div.className="product";
+    div.innerHTML=productHTML(p);
+    box.appendChild(div);
+  });
+}
+
+function renderShop(){
+
+  const sort=document.getElementById("sortSelect").value;
+
+  let products=[...data.products];
+
+  if(sort==="low"){
+    products.sort((a,b)=>a.price-b.price);
+  }
+
+  if(sort==="high"){
+    products.sort((a,b)=>b.price-a.price);
+  }
+
+  renderProducts(products);
+}
+
+function renderProducts(products){
+
+  const box=document.getElementById("shopProducts");
+
+  box.innerHTML="";
+
+  if(!products.length){
+    box.innerHTML='<div class="empty">No products found.</div>';
+    return;
+  }
+
+  products.forEach(p=>{
+    const div=document.createElement("article");
+    div.className="product";
+    div.innerHTML=productHTML(p);
+    box.appendChild(div);
+  });
+}
+
+/* ---------- PRODUCT DETAILS ---------- */
+
+function openProduct(productId){
+
+  const p=data.products.find(x=>x.id===productId);
+
+  if(!p)return;
+
+  selectedProduct=p;
+
+  showPage("details");
+
+  const reviews=data.reviews.filter(
+    r=>r.productId===p.id
+  );
+
+  document.getElementById("productDetails").innerHTML=`
+
+    <div class="card">
+
+      ${
+        p.image
+        ?`<img src="${p.image}"
+             style="width:100%;max-height:400px;object-fit:contain">`
+        :`<div class="placeholder">🛍️</div>`
+      }
+
+      <h1 style="margin-top:15px">
+        ${escapeHTML(p.name)}
+      </h1>
+
+      <div class="stars">★★★★★ ${Number(p.rating||0).toFixed(1)}</div>
+
+      <div class="price">
+        ${escapeHTML(p.currency)} ${formatMoney(p.price)}
+      </div>
+
+      <p style="margin:12px 0">
+        ${escapeHTML(p.description)}
+      </p>
+
+      <p>📍 ${escapeHTML(p.location)}</p>
+
+      <p style="margin-top:8px">
+        Seller: <b>${escapeHTML(p.seller)}</b>
+      </p>
+
+      <div class="accountActions">
+        <button class="btn primary"
+          onclick="addToCart('${p.id}')">
+          Add to cart
+        </button>
+
+        <button class="btn"
+          onclick="buyNow('${p.id}')">
+          Buy now
+        </button>
+
+        <button class="btn"
+          onclick="openReview('${p.id}')">
+          Write review
+        </button>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h2>Customer reviews</h2>
+
+      ${
+        reviews.length
+        ?reviews.map(r=>`
+          <div class="review">
+            <div class="stars">${"★".repeat(r.rating)}</div>
+            <b>${escapeHTML(r.name)}</b>
+            <p>${escapeHTML(r.text)}</p>
+          </div>
+        `).join("")
+        :'<p style="margin-top:10px;color:#666">No reviews yet.</p>'
+      }
+    </div>
+  `;
+}
+
+/* ---------- CART ---------- */
+
+function addToCart(productId){
+
+  const existing=data.cart.find(
+    x=>x.productId===productId
+  );
+
+  if(existing){
+    existing.quantity++;
+  }else{
+    data.cart.push({
+      productId,
+      quantity:1
+    });
+  }
+
+  saveData();
+  updateCartCount();
+
+  alert("Added to cart.");
+}
+
+function updateCartCount(){
+
+  const count=data.cart.reduce(
+    (sum,x)=>sum+x.quantity,0
+  );
+
+  document.getElementById("cartCount").textContent=count;
+}
+
+function renderCart(){
+
+  const box=document.getElementById("cartItems");
+  const totalBox=document.getElementById("cartTotal");
+
+  box.innerHTML="";
+
+  if(!data.cart.length){
+    box.innerHTML='<div class="empty">Your cart is empty.</div>';
+    totalBox.innerHTML="";
+    return;
+  }
+
+  let total=0;
+
+  data.cart.forEach(item=>{
+
+    const p=data.products.find(
+      x=>x.id===item.productId
+    );
+
+    if(!p)return;
+
+    total+=p.price*item.quantity;
+
+    const div=document.createElement("div");
+    div.className="cartItem";
+
+    div.innerHTML=`
+      ${
+        p.image
+        ?`<img src="${p.image}">`
+        :`<div class="cartPlaceholder">🛍️</div>`
+      }
+
+      <div class="cartInfo">
+        <h3>${escapeHTML(p.name)}</h3>
+
+        <p>
+          ${escapeHTML(p.currency)}
+          ${formatMoney(p.price)}
+        </p>
+
+        <div class="qty">
+          <button onclick="changeQuantity('${p.id}',-1)">−</button>
+          <b>${item.quantity}</b>
+          <button onclick="changeQuantity('${p.id}',1)">+</button>
+
+          <button class="btn danger"
+            onclick="removeFromCart('${p.id}')">
+            Remove
+          </button>
+        </div>
+      </div>
+    `;
+
+    box.appendChild(div);
+  });
+
+  const currency=data.cart.length
+    ?data.products.find(p=>p.id===data.cart[0].productId)?.currency||""
+    :"";
+
+  totalBox.innerHTML=`
+    <div class="total">
+      Total: ${currency} ${formatMoney(total)}
+      <br>
+      <button class="btn primary"
+        style="margin-top:10px"
+        onclick="openCheckout()">
+        Proceed to checkout
+      </button>
+    </div>
+  `;
+}
+
+function changeQuantity(id,change){
+
+  const item=data.cart.find(x=>x.productId===id);
+
+  if(!item)return;
+
+  item.quantity+=change;
+
+  if(item.quantity<=0){
+    data.cart=data.cart.filter(x=>x.productId!==id);
+  }
+
+  saveData();
+  updateCartCount();
+  renderCart();
+}
+
+function removeFromCart(id){
+
+  data.cart=data.cart.filter(
+    x=>x.productId!==id
+  );
+
+  saveData();
+  updateCartCount();
+  renderCart();
+}
+
+function buyNow(id){
+
+  data.cart=[
+    {productId:id,quantity:1}
+  ];
+
+  saveData();
+  updateCartCount();
+  openCheckout();
+}
+
+/* ---------- CHECKOUT ---------- */
+
+function openCheckout(){
+
+  if(!data.cart.length){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  document.getElementById("checkoutName").value=
+    data.profile.name||"";
+
+  document.getElementById("checkoutPhone").value=
+    data.profile.phone||"";
+
+  document.getElementById("checkoutModal")
+    .classList.add("show");
+}
+
+function placeOrder(){
+
+  const name=document.getElementById("checkoutName").value.trim();
+  const phone=document.getElementById("checkoutPhone").value.trim();
+  const address=document.getElementById("checkoutAddress").value.trim();
+  const payment=document.getElementById("paymentMethod").value;
+
+  if(!name||!phone||!address){
+    alert("Please complete all delivery details.");
+    return;
+  }
+
+  const items=data.cart.map(item=>{
+
+    const p=data.products.find(
+      x=>x.id===item.productId
+    );
+
+    return {
+      productId:p.id,
+      name:p.name,
+      price:p.price,
+      currency:p.currency,
+      quantity:item.quantity
+    };
+  });
+
+  const total=items.reduce(
+    (sum,x)=>sum+x.price*x.quantity,0
+  );
+
+  data.orders.unshift({
+    id:id(),
+    date:Date.now(),
+    status:"Order placed",
+    name,
+    phone,
+    address,
+    payment,
+    items,
+    total
+  });
+
+  data.cart=[];
+
+  saveData();
+  updateCartCount();
+
+  closeModal("checkoutModal");
+
+  alert("Order placed successfully!");
+
+  showPage("orders");
+}
+
+/* ---------- ORDERS ---------- */
+
+function renderOrders(){
+
+  const box=document.getElementById("ordersList");
+
+  box.innerHTML="";
+
+  if(!data.orders.length){
+    box.innerHTML='<div class="empty">You have no orders yet.</div>';
+    return;
+  }
+
+  data.orders.forEach(order=>{
+
+    const div=document.createElement("div");
+    div.className="card";
+
+    div.innerHTML=`
+      <h3>Order #${order.id.slice(-6)}</h3>
+
+      <p style="margin:7px 0">
+        ${new Date(order.date).toLocaleString()}
+      </p>
+
+      <b>${escapeHTML(order.status)}</b>
+
+      <hr style="margin:12px 0">
+
+      ${order.items.map(item=>`
+        <p>
+          ${escapeHTML(item.name)}
+          × ${item.quantity}
+          — ${escapeHTML(item.currency)}
+          ${formatMoney(item.price*item.quantity)}
+        </p>
+      `).join("")}
+
+      <p style="margin-top:10px">
+        <b>Total: ${formatMoney(order.total)}</b>
+      </p>
+
+      <p style="margin-top:8px;color:#666">
+        Delivery: ${escapeHTML(order.address)}
+      </p>
+    `;
+
+    box.appendChild(div);
+  });
+}
+
+/* ---------- SELLING ---------- */
+
+function addProduct(){
+
+  const name=document.getElementById("sellName").value.trim();
+  const category=document.getElementById("sellCategory").value;
+  const price=Number(document.getElementById("sellPrice").value);
+  const currency=document.getElementById("sellCurrency").value.trim();
+  const location=document.getElementById("sellLocation").value.trim();
+  const description=document.getElementById("sellDescription").value.trim();
+  const file=document.getElementById("sellImage").files[0];
+
+  if(!name||!price||!currency){
+    document.getElementById("sellStatus").textContent=
+      "Product name, price and currency are required.";
+    return;
+  }
+
+  if(file){
+
+    const reader=new FileReader();
+
+    reader.onload=e=>{
+      finishProduct(
+        name,category,price,currency,
+        location,description,e.target.result
+      );
+    };
+
+    reader.readAsDataURL(file);
+
+  }else{
+
+    finishProduct(
+      name,category,price,currency,
+      location,description,""
+    );
+  }
+}
+
+function finishProduct(
+  name,category,price,currency,
+  location,description,image
 ){
 
- if(!currentUser){
+  data.products.unshift({
+    id:id(),
+    name,
+    category,
+    price,
+    currency,
+    location:location||"Worldwide",
+    description,
+    image,
+    seller:data.profile.name||"AVYRA Seller",
+    sellerUsername:data.profile.username||"seller",
+    rating:0,
+    created:Date.now()
+  });
 
-  openLogin();
+  saveData();
 
-  return;
+  document.getElementById("sellStatus").textContent=
+    "Your listing has been published.";
 
- }
+  document.getElementById("sellName").value="";
+  document.getElementById("sellPrice").value="";
+  document.getElementById("sellCurrency").value="";
+  document.getElementById("sellLocation").value="";
+  document.getElementById("sellDescription").value="";
+  document.getElementById("sellImage").value="";
 
- reviewSellerId=sellerId;
+  renderFeatured();
 
- document.getElementById(
-  "reviewSellerName"
- ).innerText=
-  "Reviewing "+sellerName;
+  setTimeout(()=>{
+    showPage("shop");
+  },500);
+}
 
- document.getElementById(
-  "reviewModal"
- ).style.display="flex";
+/* ---------- PROFILE ---------- */
 
-};
+function renderAccount(){
 
+  const box=document.getElementById("accountContent");
 
-window.submitReview=async function(){
+  const p=data.profile;
 
- if(!currentUser||!reviewSellerId)
-  return;
+  if(!p.name){
 
- const rating=
-  Number(
-   document.getElementById(
-    "reviewRating"
-   ).value
+    box.innerHTML=`
+      <div class="card">
+        <h2>Welcome to AVYRA</h2>
+        <p style="margin:10px 0;color:#666">
+          Create your profile to manage your account.
+        </p>
+        <button class="btn primary"
+          onclick="openLogin()">
+          Sign in
+        </button>
+      </div>
+    `;
+
+    return;
+  }
+
+  const myListings=data.products.filter(
+    x=>x.sellerUsername===p.username
   );
 
- const text=
-  document.getElementById(
-   "reviewText"
-  ).value.trim();
+  box.innerHTML=`
 
- if(!text){
+    <div class="card">
+      <div class="accountTop">
 
-  alert("Write a review first.");
+        ${
+          p.image
+          ?`<img class="avatar" src="${p.image}">`
+          :`<div class="avatar"
+              style="display:flex;align-items:center;justify-content:center;font-size:30px">
+              👤
+            </div>`
+        }
 
-  return;
+        <div>
+          <h2>${escapeHTML(p.name||"AVYRA User")}</h2>
+          <p style="color:#666">
+            @${escapeHTML(p.username||"user")}
+          </p>
+        </div>
+      </div>
 
- }
+      <p style="margin-top:15px">
+        ${escapeHTML(p.email||"")}
+      </p>
 
- try{
+      <p style="margin-top:6px">
+        📱 ${escapeHTML(p.phone||"Not added")}
+      </p>
 
-  const userSnap=
-   await getDoc(
-    doc(
-     db,
-     "users",
-     currentUser.uid
-    )
-   );
+      <p style="margin-top:6px">
+        🌍 ${escapeHTML(p.country||"Not added")}
+      </p>
 
-  const u=userSnap.data()||{};
+      <div class="accountActions">
 
-  await addDoc(
-   collection(db,"reviews"),
-   {
+        <button class="btn primary"
+          onclick="openEditProfile()">
+          ✏️ Edit profile
+        </button>
 
-    sellerId:reviewSellerId,
+        <button class="btn"
+          onclick="showPage('settings')">
+          ⚙️ Settings
+        </button>
 
-    buyerId:currentUser.uid,
+        <button class="btn danger"
+          onclick="signOutApp()">
+          Sign out
+        </button>
 
-    buyerName:
-     u.name||"Buyer",
+      </div>
+    </div>
 
+    <div class="card">
+      <h2>Your listings</h2>
+
+      <div class="products" style="margin-top:12px">
+        ${
+          myListings.length
+          ?myListings.map(p=>`
+            <div class="product">
+              ${productHTML(p)}
+              <button
+                class="btn danger"
+                style="width:100%;margin-top:7px"
+                onclick="deleteProduct('${p.id}')">
+                Delete listing
+              </button>
+            </div>
+          `).join("")
+          :'<div class="empty">You have no listings.</div>'
+        }
+      </div>
+    </div>
+  `;
+}
+
+function openEditProfile(){
+
+  document.getElementById("profileNameInput").value=
+    data.profile.name||"";
+
+  document.getElementById("profileUsernameInput").value=
+    data.profile.username||"";
+
+  document.getElementById("profileEmailInput").value=
+    data.profile.email||"";
+
+  document.getElementById("profilePhoneInput").value=
+    data.profile.phone||"";
+
+  document.getElementById("profileCountryInput").value=
+    data.profile.country||"";
+
+  document.getElementById("profileModal")
+    .classList.add("show");
+}
+
+function saveProfile(){
+
+  const name=document.getElementById("profileNameInput").value.trim();
+  const username=document.getElementById("profileUsernameInput").value.trim()
+    .replace(/\s+/g,"_");
+
+  const email=document.getElementById("profileEmailInput").value.trim();
+  const phone=document.getElementById("profilePhoneInput").value.trim();
+  const country=document.getElementById("profileCountryInput").value.trim();
+  const file=document.getElementById("profileImageInput").files[0];
+
+  if(!name||!username){
+    document.getElementById("profileStatus").textContent=
+      "Name and username are required.";
+    return;
+  }
+
+  const finish=image=>{
+
+    const oldUsername=data.profile.username;
+
+    data.profile.name=name;
+    data.profile.username=username;
+    data.profile.email=email;
+    data.profile.phone=phone;
+    data.profile.country=country;
+
+    if(image!==null)data.profile.image=image;
+
+    /*
+      Update your existing listings when
+      you change your profile name/username.
+    */
+    data.products.forEach(p=>{
+      if(!oldUsername||p.sellerUsername===oldUsername){
+        p.seller=name;
+        p.sellerUsername=username;
+      }
+    });
+
+    saveData();
+
+    document.getElementById("profileStatus").textContent=
+      "Profile saved successfully.";
+
+    setTimeout(()=>{
+      closeModal("profileModal");
+      renderAccount();
+      updateHeader();
+    },500);
+  };
+
+  if(file){
+
+    const reader=new FileReader();
+
+    reader.onload=e=>finish(e.target.result);
+
+    reader.onerror=()=>{
+      document.getElementById("profileStatus").textContent=
+        "Could not read that image.";
+    };
+
+    reader.readAsDataURL(file);
+
+  }else{
+    finish(null);
+  }
+}
+
+/* ---------- DELETE LISTING ---------- */
+
+function deleteProduct(productId){
+
+  const p=data.products.find(x=>x.id===productId);
+
+  if(!p)return;
+
+  if(!confirm(`Delete "${p.name}"?`))return;
+
+  data.products=data.products.filter(
+    x=>x.id!==productId
+  );
+
+  data.cart=data.cart.filter(
+    x=>x.productId!==productId
+  );
+
+  saveData();
+
+  updateCartCount();
+  renderAccount();
+  renderFeatured();
+  renderShop();
+}
+
+/* ---------- REVIEWS ---------- */
+
+function openReview(productId){
+
+  reviewProduct=productId;
+
+  document.getElementById("reviewText").value="";
+  document.getElementById("reviewStars").value="5";
+
+  document.getElementById("reviewModal")
+    .classList.add("show");
+}
+
+function submitReview(){
+
+  if(!reviewProduct)return;
+
+  const text=document
+    .getElementById("reviewText")
+    .value.trim();
+
+  const rating=Number(
+    document.getElementById("reviewStars").value
+  );
+
+  if(!text){
+    alert("Write a review first.");
+    return;
+  }
+
+  data.reviews.push({
+    id:id(),
+    productId:reviewProduct,
+    name:data.profile.name||"AVYRA Customer",
     rating,
-
     text,
+    date:Date.now()
+  });
 
-    createdAt:serverTimestamp()
-
-   }
+  const reviews=data.reviews.filter(
+    r=>r.productId===reviewProduct
   );
 
-  await addNotification(
-   reviewSellerId,
-   `${u.name||"A buyer"} left you a ${rating}-star review.`
+  const p=data.products.find(
+    x=>x.id===reviewProduct
   );
 
-  document.getElementById(
-   "reviewText"
-  ).value="";
+  if(p){
+    p.rating=
+      reviews.reduce((s,r)=>s+r.rating,0)/reviews.length;
+  }
+
+  saveData();
 
   closeModal("reviewModal");
 
-  alert("Review submitted.");
-
- }catch(e){
-
-  alert(
-   "Review failed: "+e.message
-  );
-
- }
-
-};
-
-
-/* MESSAGES */
-
-window.openMessages=function(){
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
-
- }
-
- showPage("messagesPage");
-
- loadConversations();
-
-};
-
-
-window.messageSeller=async function(id){
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
-
- }
-
- const snap=
-  await getDoc(
-   doc(db,"users",id)
-  );
-
- const user=
-  snap.exists()
-  ?snap.data()
-  :{name:"Seller"};
-
- showPage("messagesPage");
-
- openChat(id,user);
-
-};
-
-
-async function loadConversations(){
-
- if(unsubscribeConversation)
-  unsubscribeConversation();
-
- const q=query(
-  collection(db,"messages"),
-  where(
-   "participants",
-   "array-contains",
-   currentUser.uid
-  )
- );
-
- unsubscribeConversation=
-  onSnapshot(q,async snapshot=>{
-
-   const latest={};
-
-   snapshot.forEach(d=>{
-
-    const m=d.data();
-
-    const other=
-     m.senderId===currentUser.uid
-     ?m.receiverId
-     :m.senderId;
-
-    const time=
-     m.createdAt?.seconds||0;
-
-    if(
-     !latest[other]||
-     time>(latest[other].createdAt?.seconds||0)
-    ){
-
-     latest[other]={
-      ...m,
-      other
-     };
-
-    }
-
-   });
-
-   const box=
-    document.getElementById(
-     "conversationList"
-    );
-
-   box.innerHTML="";
-
-   const conversations=
-    Object.values(latest);
-
-   if(!conversations.length){
-
-    box.innerHTML=
-     `<div class="empty">
-      No messages yet.
-     </div>`;
-
-    return;
-
-   }
-
-   for(
-    const c of conversations
-   ){
-
-    const snap=
-     await getDoc(
-      doc(
-       db,
-       "users",
-       c.other
-      )
-     );
-
-    const u=
-     snap.exists()
-     ?snap.data()
-     :{name:"User"};
-
-    const div=
-     document.createElement("div");
-
-    div.className="conversation";
-
-    div.innerHTML=`
-
-     <div class="avatar">
-
-      ${
-       u.photo
-       ?`<img src="${u.photo}">`
-       :(u.name||"A")[0]
-      }
-
-     </div>
-
-     <div class="conversationText">
-
-      <b>${esc(u.name||"User")}</b>
-
-      <p>
-       ${esc(c.text||"")}
-      </p>
-
-     </div>
-
-    `;
-
-    div.onclick=()=>
-     openChat(c.other,u);
-
-    box.appendChild(div);
-
-   }
-
-  });
-
+  if(p)openProduct(p.id);
 }
 
+/* ---------- SETTINGS ---------- */
 
-function openChat(id,user){
+function renderSettings(){
 
- activeChatUser=id;
+  document.getElementById("settingLocation").value=
+    data.settings.location||"";
 
- document.getElementById(
-  "conversationList"
- ).style.display="none";
-
- document.getElementById(
-  "chat"
- ).classList.add("active");
-
- document.getElementById(
-  "chatName"
- ).innerText=
-  user.name||"User";
-
- loadChat(id);
-
+  document.getElementById("notificationsSetting").checked=
+    data.settings.notifications!==false;
 }
 
+function saveLocation(){
 
-function closeChat(){
+  const value=document
+    .getElementById("settingLocation")
+    .value.trim();
 
- if(unsubscribeMessages)
-  unsubscribeMessages();
+  data.settings.location=value||"Kenya";
 
- activeChatUser=null;
+  saveData();
 
- document.getElementById(
-  "chat"
- ).classList.remove("active");
-
- document.getElementById(
-  "conversationList"
- ).style.display="block";
-
+  document.getElementById("locationText").textContent=
+    data.settings.location;
 }
 
+function saveSettings(){
 
-function loadChat(other){
+  data.settings.notifications=
+    document.getElementById("notificationsSetting").checked;
 
- if(unsubscribeMessages)
-  unsubscribeMessages();
-
- const q=query(
-  collection(db,"messages"),
-  where(
-   "participants",
-   "array-contains",
-   currentUser.uid
-  )
- );
-
- unsubscribeMessages=
-  onSnapshot(q,snapshot=>{
-
-   const messages=[];
-
-   snapshot.forEach(d=>{
-
-    const m=d.data();
-
-    if(
-     m.participants.includes(other)
-    ){
-
-     messages.push(m);
-
-    }
-
-   });
-
-   messages.sort(
-    (a,b)=>
-     (a.createdAt?.seconds||0)-
-     (b.createdAt?.seconds||0)
-   );
-
-   const box=
-    document.getElementById(
-     "chatMessages"
-    );
-
-   box.innerHTML="";
-
-   messages.forEach(m=>{
-
-    const div=
-     document.createElement("div");
-
-    div.className=
-     "chatMessage"+
-     (
-      m.senderId===currentUser.uid
-      ?" mine"
-      :""
-     );
-
-    div.innerText=
-     m.text||"";
-
-    box.appendChild(div);
-
-   });
-
-   box.scrollTop=
-    box.scrollHeight;
-
-  });
-
+  saveData();
 }
 
+function clearLocalData(){
 
-window.sendMessage=async function(){
+  if(!confirm(
+    "This will remove your local AVYRA data from this browser. Continue?"
+  ))return;
 
- if(!currentUser||!activeChatUser)
-  return;
+  localStorage.removeItem(KEY);
 
- const input=
-  document.getElementById(
-   "messageInput"
-  );
+  location.reload();
+}
 
- const text=
-  input.value.trim();
-
- if(!text)return;
-
- input.value="";
-
- try{
-
-  await addDoc(
-   collection(db,"messages"),
-   {
-
-    senderId:currentUser.uid,
-
-    receiverId:activeChatUser,
-
-    participants:[
-     currentUser.uid,
-     activeChatUser
-    ],
-
-    text,
-
-    createdAt:serverTimestamp()
-
-   }
-  );
-
-  await addNotification(
-   activeChatUser,
-   `${currentUser.displayName||"Someone"} sent you a message.`
-  );
-
- }catch(e){
-
-  alert(
-   "Message failed: "+e.message
-  );
-
- }
-
-};
-
-
-document.getElementById(
- "messageInput"
-).addEventListener(
- "keydown",
- e=>{
-
-  if(e.key==="Enter"){
-
-   e.preventDefault();
-
-   sendMessage();
-
-  }
-
- }
-);
-
-
-/* ACCOUNT */
-
-window.openAccount=function(){
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
-
- }
-
- showPage("accountPage");
-
- loadProfile();
-
-};
-
-
-window.openSettings=function(){
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
-
- }
-
- showPage("settingsPage");
-
- loadProfile();
-
-};
-
-
-window.logout=async function(){
-
- try{
-
-  await signOut(auth);
-
-  showPage("homePage");
-
- }catch(e){
-
-  alert(e.message);
-
- }
-
-};
-
-
-/* LOGIN */
+/* ---------- LOGIN ---------- */
 
 function openLogin(){
-
- document.getElementById(
-  "loginModal"
- ).style.display="flex";
-
+  document.getElementById("loginModal")
+    .classList.add("show");
 }
 
-window.openLogin=openLogin;
+function login(){
 
+  const email=document.getElementById("loginEmail").value.trim();
+  const password=document.getElementById("loginPassword").value;
 
-window.closeLogin=function(){
+  if(!email||!password){
+    document.getElementById("loginStatus").textContent=
+      "Enter your email and password.";
+    return;
+  }
 
- document.getElementById(
-  "loginModal"
- ).style.display="none";
+  /*
+    This demo keeps the shopping app local.
+    Your real Firebase authentication can be
+    connected here later.
+  */
 
-};
+  data.profile.email=email;
 
+  if(!data.profile.name){
+    data.profile.name=email.split("@")[0];
+  }
 
-window.closeModal=function(id){
+  if(!data.profile.username){
+    data.profile.username=
+      email.split("@")[0].replace(/[^a-zA-Z0-9_]/g,"");
+  }
 
- document.getElementById(id)
- .style.display="none";
+  saveData();
 
-};
+  closeModal("loginModal");
 
-
-/* SEARCH */
-
-window.focusSearch=function(){
-
- showPage("homePage");
-
- const input=
-  document.getElementById(
-   "searchInput"
-  );
-
- input.focus();
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
-
-};
-
-
-/* ESCAPE */
-
-function esc(value){
-
- return String(value||"")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
-
+  updateHeader();
+  renderAccount();
 }
+
+function guestLogin(){
+
+  if(!data.profile.name){
+    data.profile.name="AVYRA Guest";
+    data.profile.username="guest_"+Date.now();
+  }
+
+  saveData();
+
+  closeModal("loginModal");
+
+  updateHeader();
+  renderAccount();
+}
+
+function signOutApp(){
+
+  if(!confirm("Sign out?"))return;
+
+  data.profile={
+    name:"",
+    username:"",
+    email:"",
+    phone:"",
+    country:"",
+    image:""
+  };
+
+  saveData();
+
+  updateHeader();
+  renderAccount();
+
+  showPage("home");
+}
+
+/* ---------- HELPERS ---------- */
+
+function updateHeader(){
+
+  const name=data.profile.name;
+
+  document.getElementById("headerUser").textContent=
+    name||"Sign in";
+
+  document.getElementById("locationText").textContent=
+    data.settings.location||"Kenya";
+}
+
+function closeModal(id){
+  document.getElementById(id)
+    .classList.remove("show");
+}
+
+function id(){
+  return Date.now().toString(36)+
+    Math.random().toString(36).slice(2);
+}
+
+function formatMoney(n){
+  return Number(n||0).toLocaleString();
+}
+
+function escapeHTML(value){
+
+  return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+/* ---------- START APP ---------- */
+
+loadData();
+createSamples();
+
+updateHeader();
+updateCartCount();
+renderFeatured();
+renderShop();
+renderOrders();
+renderAccount();
+renderSettings();
 
 </script>
 
