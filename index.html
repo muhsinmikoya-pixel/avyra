@@ -1,75 +1,2303 @@
-import { initializeApp } from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVYRA — Buy • Sell • Connect</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+ --red:#ff1744;
+ --bg:#080808;
+ --card:#151515;
+ --border:#292929;
+ --muted:#999;
+}
+
+body{
+ background:var(--bg);
+ color:white;
+ font-family:Arial,sans-serif;
+ padding-bottom:75px;
+}
+
+button,input,textarea{font:inherit}
+
+button{cursor:pointer}
+
+header{
+ height:65px;
+ background:#101010;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 5%;
+ position:sticky;
+ top:0;
+ z-index:50;
+}
+
+.logo{
+ font-size:25px;
+ font-weight:900;
+ letter-spacing:2px;
+}
+
+.logo span{color:var(--red)}
+
+.headerBtns{
+ display:flex;
+ gap:8px;
+}
+
+.headerBtns button{
+ background:none;
+ color:white;
+ border:1px solid var(--red);
+ padding:8px 12px;
+ border-radius:8px;
+}
+
+.hero{
+ text-align:center;
+ padding:55px 20px;
+ background:radial-gradient(circle at top,#3b0a17,#080808 60%);
+}
+
+.hero h1{
+ font-size:clamp(42px,10vw,70px);
+}
+
+.hero h1 span{color:var(--red)}
+
+.hero p{
+ color:var(--muted);
+ margin:12px 0 25px;
+}
+
+.search{
+ max-width:680px;
+ margin:auto;
+ display:flex;
+ background:var(--card);
+ border:1px solid #333;
+ border-radius:12px;
+ overflow:hidden;
+}
+
+.search input{
+ flex:1;
+ min-width:0;
+ padding:15px;
+ border:0;
+ outline:0;
+ background:none;
+ color:white;
+}
+
+.search button{
+ background:var(--red);
+ color:white;
+ border:0;
+ padding:0 20px;
+}
+
+.container{
+ width:90%;
+ max-width:1200px;
+ margin:auto;
+}
+
+.section{
+ padding:30px 0;
+}
+
+.title{
+ margin-bottom:17px;
+}
+
+.categories{
+ display:flex;
+ gap:10px;
+ overflow-x:auto;
+}
+
+.category{
+ min-width:105px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:15px 8px;
+ text-align:center;
+}
+
+.category div{
+ font-size:27px;
+ margin-bottom:7px;
+}
+
+.category p{
+ color:#ccc;
+ font-size:13px;
+}
+
+.products{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+ gap:15px;
+}
+
+.product{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ overflow:hidden;
+}
+
+.product img{
+ width:100%;
+ height:180px;
+ object-fit:cover;
+ background:#202020;
+}
+
+.productEmoji{
+ height:180px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ background:#202020;
+ font-size:60px;
+}
+
+.productInfo{
+ padding:13px;
+}
+
+.productInfo h3{
+ margin-bottom:7px;
+ font-size:16px;
+}
+
+.price{
+ color:var(--red);
+ font-weight:bold;
+}
+
+.location{
+ color:#777;
+ font-size:12px;
+ margin-top:7px;
+}
+
+.description{
+ color:#aaa;
+ font-size:13px;
+ margin-top:8px;
+ line-height:1.4;
+}
+
+.cardBtn{
+ width:100%;
+ background:var(--red);
+ color:white;
+ border:0;
+ padding:10px;
+ border-radius:8px;
+ margin-top:12px;
+}
+
+.seller{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:13px;
+ margin-bottom:10px;
+}
+
+.avatar{
+ width:48px;
+ height:48px;
+ border-radius:50%;
+ background:var(--red);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ overflow:hidden;
+ flex-shrink:0;
+}
+
+.avatar img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+.sellerInfo{flex:1}
+
+.sellerInfo small{
+ color:#888;
+}
+
+.follow{
+ background:none;
+ border:1px solid var(--red);
+ color:var(--red);
+ padding:8px 12px;
+ border-radius:8px;
+}
+
+.account{
+ display:none;
+}
+
+.accountCard{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:15px;
+ padding:20px;
+}
+
+.profilePhoto{
+ width:100px;
+ height:100px;
+ border-radius:50%;
+ object-fit:cover;
+ background:#252525;
+ display:block;
+ margin-bottom:12px;
+}
+
+.photoPicker{
+ display:none;
+}
+
+.photoBtn{
+ background:#292929;
+ color:white;
+ border:0;
+ padding:10px 14px;
+ border-radius:8px;
+}
+
+.accountCard p{
+ color:#999;
+ margin-top:8px;
+}
+
+.logout{
+ background:var(--red);
+ color:white;
+ border:0;
+ padding:11px 15px;
+ border-radius:8px;
+ margin-top:15px;
+}
+
+.bottom{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ height:65px;
+ background:#101010;
+ border-top:1px solid var(--border);
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:50;
+}
+
+.bottom button{
+ background:none;
+ border:0;
+ color:#aaa;
+ font-size:11px;
+}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#000d;
+ z-index:100;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.box{
+ width:100%;
+ max-width:430px;
+ max-height:90vh;
+ overflow-y:auto;
+ background:#181818;
+ border:1px solid #333;
+ border-radius:17px;
+ padding:22px;
+}
+
+.box h2{
+ margin-bottom:10px;
+}
+
+.box input,
+.box textarea{
+ width:100%;
+ padding:13px;
+ margin:6px 0;
+ background:#090909;
+ border:1px solid #333;
+ color:white;
+ border-radius:8px;
+ outline:none;
+}
+
+.box textarea{
+ min-height:90px;
+ resize:vertical;
+}
+
+.box button{
+ width:100%;
+ padding:12px;
+ margin-top:8px;
+ border-radius:8px;
+}
+
+.primary{
+ background:var(--red);
+ color:white;
+ border:0;
+}
+
+.secondary{
+ background:#292929;
+ color:white;
+ border:0;
+}
+
+.google{
+ background:white;
+ color:black;
+ border:0;
+}
+
+#status{
+ color:#aaa;
+ font-size:13px;
+ margin-top:10px;
+}
+
+.chatBox{
+ margin-top:15px;
+ max-height:300px;
+ overflow-y:auto;
+ background:#0d0d0d;
+ border-radius:10px;
+ padding:10px;
+}
+
+.msg{
+ padding:9px;
+ margin:6px 0;
+ border-radius:9px;
+ background:#202020;
+}
+
+.msg.mine{
+ background:#4d0c1c;
+ text-align:right;
+}
+
+.msg small{
+ display:block;
+ color:#777;
+ font-size:10px;
+ margin-top:4px;
+}
+
+.notice{
+ background:#191919;
+ border:1px solid #292929;
+ padding:13px;
+ border-radius:10px;
+ margin:7px 0;
+}
+
+@media(max-width:650px){
+ .products{
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+ }
+
+ .product img,
+ .productEmoji{
+  height:135px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+ <div class="logo">
+  <span>AV</span>YRA
+ </div>
+
+ <div class="headerBtns">
+
+  <button onclick="openNotifications()">
+   🔔
+  </button>
+
+  <button onclick="openAccount()">
+   <span id="headerName">Sign in</span>
+  </button>
+
+ </div>
+
+</header>
+
+
+<section class="hero">
+
+ <h1>
+  Welcome to <span>AVYRA</span>
+ </h1>
+
+ <p>
+  Buy. Sell. Connect. Worldwide. 🌍
+ </p>
+
+ <div class="search">
+
+  <input
+   id="searchInput"
+   placeholder="Search products or sellers..."
+  >
+
+  <button onclick="searchProducts()">
+   Search
+  </button>
+
+ </div>
+
+</section>
+
+
+<main class="container">
+
+
+<section class="section">
+
+ <div class="title">
+  <h2>Explore Categories</h2>
+ </div>
+
+ <div class="categories">
+
+  <div class="category">
+   <div>📱</div>
+   <p>Phones</p>
+  </div>
+
+  <div class="category">
+   <div>💻</div>
+   <p>Computers</p>
+  </div>
+
+  <div class="category">
+   <div>🎮</div>
+   <p>Gaming</p>
+  </div>
+
+  <div class="category">
+   <div>👕</div>
+   <p>Fashion</p>
+  </div>
+
+  <div class="category">
+   <div>🚗</div>
+   <p>Vehicles</p>
+  </div>
+
+  <div class="category">
+   <div>🏠</div>
+   <p>Home</p>
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section">
+
+ <div class="title">
+  <h2>🔥 AVYRA Marketplace</h2>
+ </div>
+
+ <div
+  id="products"
+  class="products">
+
+  <div class="notice">
+   Loading products...
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- SELLERS -->
+
+<section class="section">
+
+ <div class="title">
+  <h2>⭐ Sellers</h2>
+ </div>
+
+ <div id="sellers">
+
+  <div class="notice">
+   Sign in to see sellers.
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+
+<section
+ class="section account"
+ id="accountSection">
+
+ <div class="title">
+  <h2>Your AVYRA Account</h2>
+ </div>
+
+ <div class="accountCard">
+
+  <img
+   id="profilePhoto"
+   class="profilePhoto"
+   alt="Profile picture"
+  >
+
+  <input
+   id="photoPicker"
+   class="photoPicker"
+   type="file"
+   accept="image/*"
+  >
+
+  <button
+   class="photoBtn"
+   onclick="choosePhoto()">
+   📷 Change Profile Picture
+  </button>
+
+  <h2
+   id="profileName"
+   style="margin-top:18px">
+   AVYRA User
+  </h2>
+
+  <p id="profileEmail"></p>
+
+  <p>
+   Followers:
+   <b id="myFollowers">0</b>
+  </p>
+
+  <p>
+   Following:
+   <b id="myFollowing">0</b>
+  </p>
+
+  <button
+   class="primary"
+   onclick="openAddItem()">
+   ➕ Add Item
+  </button>
+
+  <button
+   class="primary"
+   onclick="openMessages()">
+   💬 Messages
+  </button>
+
+  <button
+   class="logout"
+   onclick="logout()">
+   Sign Out
+  </button>
+
+ </div>
+
+</section>
+
+</main>
+
+
+<!-- NAV -->
+
+<nav class="bottom">
+
+ <button>🏠<br>Home</button>
+
+ <button onclick="
+  document.getElementById('searchInput').focus()
+ ">
+  🔎<br>Search
+ </button>
+
+ <button onclick="openAddItem()">
+  ➕<br>Sell
+ </button>
+
+ <button onclick="openMessages()">
+  💬<br>Messages
+ </button>
+
+ <button onclick="openAccount()">
+  👤<br>Account
+ </button>
+
+</nav>
+
+
+<!-- LOGIN -->
+
+<div
+ class="modal"
+ id="loginModal">
+
+ <div class="box">
+
+  <h2>Welcome to AVYRA</h2>
+
+  <p style="color:#888">
+   Sign in to buy, sell and connect.
+  </p>
+
+  <input
+   id="email"
+   type="email"
+   placeholder="Email address"
+  >
+
+  <input
+   id="password"
+   type="password"
+   placeholder="Password"
+  >
+
+  <button
+   class="primary"
+   onclick="emailLogin()">
+   Sign In
+  </button>
+
+  <button
+   class="google"
+   onclick="googleLogin()">
+   Continue with Google
+  </button>
+
+  <button
+   class="secondary"
+   onclick="closeModal('loginModal')">
+   Close
+  </button>
+
+  <div id="status"></div>
+
+ </div>
+
+</div>
+
+
+<!-- ADD ITEM -->
+
+<div
+ class="modal"
+ id="itemModal">
+
+ <div class="box">
+
+  <h2>Add an Item</h2>
+
+  <input
+   id="itemName"
+   placeholder="Product name"
+  >
+
+  <input
+   id="itemPrice"
+   type="number"
+   placeholder="Price"
+  >
+
+  <input
+   id="itemCurrency"
+   value="USD"
+   placeholder="Currency"
+  >
+
+  <input
+   id="itemLocation"
+   placeholder="Location"
+  >
+
+  <textarea
+   id="itemDescription"
+   placeholder="Describe your item..."
+  ></textarea>
+
+  <input
+   id="itemPhoto"
+   type="file"
+   accept="image/*"
+  >
+
+  <button
+   class="primary"
+   onclick="addItem()">
+   Publish Item
+  </button>
+
+  <button
+   class="secondary"
+   onclick="closeModal('itemModal')">
+   Cancel
+  </button>
+
+  <div id="itemStatus"></div>
+
+ </div>
+
+</div>
+
+
+<!-- MESSAGES -->
+
+<div
+ class="modal"
+ id="messageModal">
+
+ <div class="box">
+
+  <h2>💬 Messages</h2>
+
+  <div id="messageList">
+   Loading messages...
+  </div>
+
+  <input
+   id="messageText"
+   placeholder="Write a message..."
+  >
+
+  <button
+   class="primary"
+   onclick="sendMessage()">
+   Send
+  </button>
+
+  <button
+   class="secondary"
+   onclick="closeModal('messageModal')">
+   Close
+  </button>
+
+ </div>
+
+</div>
+
+
+<!-- NOTIFICATIONS -->
+
+<div
+ class="modal"
+ id="notificationModal">
+
+ <div class="box">
+
+  <h2>🔔 Notifications</h2>
+
+  <div id="notificationList">
+   No notifications yet.
+  </div>
+
+  <button
+   class="secondary"
+   onclick="closeModal('notificationModal')">
+   Close
+  </button>
+
+ </div>
+
+</div>
+
+
+<script type="module">
 
 import {
-  getAuth,
-  GoogleAuthProvider,
-  setPersistence,
-  browserLocalPersistence,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+ auth,
+ db,
+ googleProvider,
+ signInWithPopup,
+ signInWithEmailAndPassword,
+ onAuthStateChanged,
+ signOut
+} from "./firebase.js";
+
 
 import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-  serverTimestamp
+ collection,
+ addDoc,
+ getDoc,
+ getDocs,
+ setDoc,
+ updateDoc,
+ deleteDoc,
+ doc,
+ query,
+ where,
+ orderBy,
+ onSnapshot,
+ serverTimestamp,
+ increment
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCfxi6jdRj1EAhUtOjg-ChRSuZTXPkWIDI",
-  authDomain: "avyra-666da.firebaseapp.com",
-  projectId: "avyra-666da",
-  storageBucket: "avyra-666da.firebasestorage.app",
-  messagingSenderId: "238523673454",
-  appId: "1:238523673454:web:afc7dea15dff6afc756f7f",
-  measurementId: "G-XZ996JZR6N"
+/* -------------------------
+   GLOBAL
+------------------------- */
+
+let currentUser=null;
+let selectedSeller=null;
+
+
+/* -------------------------
+   LOGIN
+------------------------- */
+
+window.googleLogin=async()=>{
+
+ try{
+
+  await signInWithPopup(
+   auth,
+   googleProvider
+  );
+
+ }catch(error){
+
+  document.getElementById(
+   "status"
+  ).innerText=
+   error.message;
+
+ }
+
 };
 
 
-const app = initializeApp(firebaseConfig);
+window.emailLogin=async()=>{
 
-const auth = getAuth(app);
+ const email=
+  document.getElementById("email")
+  .value.trim();
 
-const db = getFirestore(app);
+ const password=
+  document.getElementById("password")
+  .value;
 
-const googleProvider =
-  new GoogleAuthProvider();
+ if(!email||!password){
+
+  document.getElementById("status")
+   .innerText=
+   "Enter your email and password.";
+
+  return;
+ }
+
+ try{
+
+  await signInWithEmailAndPassword(
+   auth,
+   email,
+   password
+  );
+
+ }catch(error){
+
+  document.getElementById("status")
+   .innerText=
+   error.message;
+
+ }
+
+};
 
 
-/*
-  IMPORTANT:
-  Firebase will keep the user's
-  login session in this browser.
-*/
+/* -------------------------
+   AUTH
+------------------------- */
 
-await setPersistence(
-  auth,
-  browserLocalPersistence
+onAuthStateChanged(
+ auth,
+ async user=>{
+
+  currentUser=user;
+
+  if(!user){
+
+   document.getElementById(
+    "headerName"
+   ).innerText="Sign in";
+
+   document.getElementById(
+    "sellers"
+   ).innerHTML=
+   `<div class="notice">
+     Sign in to follow sellers.
+   </div>`;
+
+   return;
+  }
+
+
+  document.getElementById(
+   "loginModal"
+  ).style.display="none";
+
+
+  document.getElementById(
+   "headerName"
+  ).innerText=
+   user.displayName||
+   "Account";
+
+
+  await createUserProfile(user);
+
+  await loadProfile();
+
+  loadProducts();
+
+  loadSellers();
+
+  loadMessages();
+
+ }
 );
 
 
-export {
-  app,
-  auth,
-  db,
-  googleProvider,
+/* -------------------------
+   PROFILE
+------------------------- */
 
-  signInWithPopup,
-  signInWithEmailAndPassword,
+async function createUserProfile(user){
 
-  onAuthStateChanged,
-  signOut,
+ const ref=
+  doc(db,"users",user.uid);
 
-  doc,
-  setDoc,
-  getDoc,
-  serverTimestamp
+ const snap=
+  await getDoc(ref);
+
+ if(!snap.exists()){
+
+  await setDoc(ref,{
+
+   uid:user.uid,
+
+   name:
+    user.displayName||
+    "AVYRA User",
+
+   email:
+    user.email||"",
+
+   photo:
+    user.photoURL||"",
+
+   followers:0,
+
+   following:0,
+
+   createdAt:
+    serverTimestamp()
+
+  });
+
+ }
+
+}
+
+
+async function loadProfile(){
+
+ if(!currentUser)return;
+
+ const snap=
+  await getDoc(
+   doc(
+    db,
+    "users",
+    currentUser.uid
+   )
+  );
+
+ if(!snap.exists())return;
+
+ const data=snap.data();
+
+
+ document.getElementById(
+  "profileName"
+ ).innerText=
+  data.name||
+  "AVYRA User";
+
+
+ document.getElementById(
+  "profileEmail"
+ ).innerText=
+  data.email||"";
+
+
+ document.getElementById(
+  "myFollowers"
+ ).innerText=
+  data.followers||0;
+
+
+ document.getElementById(
+  "myFollowing"
+ ).innerText=
+  data.following||0;
+
+
+ if(data.photo){
+
+  document.getElementById(
+   "profilePhoto"
+  ).src=data.photo;
+
+ }
+
+}
+
+
+window.choosePhoto=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+ document.getElementById(
+  "photoPicker"
+ ).click();
+
 };
+
+
+document.getElementById(
+ "photoPicker"
+).addEventListener(
+ "change",
+ async event=>{
+
+  const file=
+   event.target.files[0];
+
+  if(!file)return;
+
+  if(!file.type.startsWith("image/")){
+
+   alert("Choose an image.");
+
+   return;
+  }
+
+
+  try{
+
+   const image=
+    await compressImage(file,500,500);
+
+
+   await updateDoc(
+    doc(
+     db,
+     "users",
+     currentUser.uid
+    ),
+    {
+     photo:image
+    }
+   );
+
+
+   document.getElementById(
+    "profilePhoto"
+   ).src=image;
+
+
+  }catch(error){
+
+   alert(
+    "Could not save photo: "+
+    error.message
+   );
+
+  }
+
+ }
+);
+
+
+/* Compress gallery image */
+
+function compressImage(
+ file,
+ maxWidth,
+ maxHeight
+){
+
+ return new Promise(
+  (resolve,reject)=>{
+
+   const reader=
+    new FileReader();
+
+   reader.onload=e=>{
+
+    const img=
+     new Image();
+
+    img.onload=()=>{
+
+     let width=img.width;
+     let height=img.height;
+
+     if(width>maxWidth){
+
+      height=
+       height*
+       maxWidth/
+       width;
+
+      width=maxWidth;
+
+     }
+
+     if(height>maxHeight){
+
+      width=
+       width*
+       maxHeight/
+       height;
+
+      height=maxHeight;
+
+     }
+
+
+     const canvas=
+      document.createElement(
+       "canvas"
+      );
+
+     canvas.width=width;
+     canvas.height=height;
+
+
+     const ctx=
+      canvas.getContext("2d");
+
+     ctx.drawImage(
+      img,
+      0,
+      0,
+      width,
+      height
+     );
+
+
+     resolve(
+      canvas.toDataURL(
+       "image/jpeg",
+       0.75
+      )
+     );
+
+    };
+
+    img.onerror=reject;
+
+    img.src=e.target.result;
+
+   };
+
+   reader.onerror=reject;
+
+   reader.readAsDataURL(file);
+
+  }
+ );
+
+}
+
+
+/* -------------------------
+   FOLLOW SYSTEM
+------------------------- */
+
+window.followSeller=
+async sellerId=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ if(
+  sellerId===
+  currentUser.uid
+ ){
+
+  alert(
+   "You cannot follow yourself."
+  );
+
+  return;
+ }
+
+
+ const followId=
+  currentUser.uid+
+  "_"+
+  sellerId;
+
+
+ const followRef=
+  doc(
+   db,
+   "follows",
+   followId
+  );
+
+
+ const existing=
+  await getDoc(followRef);
+
+
+ const sellerRef=
+  doc(
+   db,
+   "users",
+   sellerId
+  );
+
+
+ if(existing.exists()){
+
+  await deleteDoc(followRef);
+
+  await updateDoc(
+   sellerRef,
+   {
+    followers:
+     increment(-1)
+   }
+  );
+
+
+  await updateDoc(
+   doc(
+    db,
+    "users",
+    currentUser.uid
+   ),
+   {
+    following:
+     increment(-1)
+   }
+  );
+
+
+ }else{
+
+  await setDoc(
+   followRef,
+   {
+    followerId:
+     currentUser.uid,
+
+    sellerId:
+     sellerId,
+
+    createdAt:
+     serverTimestamp()
+   }
+  );
+
+
+  await updateDoc(
+   sellerRef,
+   {
+    followers:
+     increment(1)
+   }
+  );
+
+
+  await updateDoc(
+   doc(
+    db,
+    "users",
+    currentUser.uid
+   ),
+   {
+    following:
+     increment(1)
+   }
+  );
+
+ }
+
+
+ loadSellers();
+
+ loadProfile();
+
+};
+
+
+/* -------------------------
+   SELLERS
+------------------------- */
+
+async function loadSellers(){
+
+ const box=
+  document.getElementById(
+   "sellers"
+  );
+
+ box.innerHTML=
+  "Loading sellers...";
+
+
+ const snap=
+  await getDocs(
+   collection(db,"users")
+  );
+
+
+ box.innerHTML="";
+
+
+ for(
+  const userDoc of snap.docs
+ ){
+
+  const user=
+   userDoc.data();
+
+
+  if(
+   !user.uid||
+   user.uid===
+   currentUser?.uid
+  ){
+
+   continue;
+  }
+
+
+  const followSnap=
+   currentUser
+   ? await getDoc(
+      doc(
+       db,
+       "follows",
+       currentUser.uid+
+       "_"+
+       user.uid
+      )
+     )
+   : null;
+
+
+  const following=
+   followSnap &&
+   followSnap.exists();
+
+
+  const seller=
+   document.createElement(
+    "div"
+   );
+
+  seller.className="seller";
+
+
+  const avatar=
+   user.photo
+   ? `<div class="avatar">
+       <img src="${user.photo}">
+      </div>`
+   : `<div class="avatar">
+       ${(user.name||"A")
+        .charAt(0)
+        .toUpperCase()}
+      </div>`;
+
+
+  seller.innerHTML=`
+
+   ${avatar}
+
+   <div class="sellerInfo">
+
+    <b>
+     ${escapeHTML(
+      user.name||
+      "AVYRA Seller"
+     )}
+    </b>
+
+    <br>
+
+    <small>
+     ${user.followers||0}
+     followers
+    </small>
+
+   </div>
+
+   <button
+    class="follow"
+    onclick="
+     window.followSeller(
+      '${user.uid}'
+     )
+    ">
+
+    ${following
+     ? "Following"
+     : "Follow"}
+
+   </button>
+  `;
+
+
+  box.appendChild(seller);
+
+ }
+
+}
+
+
+/* -------------------------
+   ADD ITEMS
+------------------------- */
+
+window.openAddItem=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+ document.getElementById(
+  "itemModal"
+ ).style.display="flex";
+
+};
+
+
+window.addItem=async()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ const name=
+  document.getElementById(
+   "itemName"
+  ).value.trim();
+
+
+ const price=
+  document.getElementById(
+   "itemPrice"
+  ).value;
+
+
+ const currency=
+  document.getElementById(
+   "itemCurrency"
+  ).value.trim()||
+  "USD";
+
+
+ const location=
+  document.getElementById(
+   "itemLocation"
+  ).value.trim();
+
+
+ const description=
+  document.getElementById(
+   "itemDescription"
+  ).value.trim();
+
+
+ const file=
+  document.getElementById(
+   "itemPhoto"
+  ).files[0];
+
+
+ if(!name||!price){
+
+  document.getElementById(
+   "itemStatus"
+  ).innerText=
+   "Product name and price are required.";
+
+  return;
+ }
+
+
+ try{
+
+  let photo="";
+
+
+  if(file){
+
+   photo=
+    await compressImage(
+     file,
+     700,
+     700
+    );
+
+  }
+
+
+  await addDoc(
+   collection(
+    db,
+    "products"
+   ),
+   {
+
+    sellerId:
+     currentUser.uid,
+
+    sellerName:
+     currentUser.displayName||
+     "AVYRA Seller",
+
+    name,
+
+    price:
+     Number(price),
+
+    currency,
+
+    location,
+
+    description,
+
+    photo,
+
+    createdAt:
+     serverTimestamp()
+
+   }
+  );
+
+
+  document.getElementById(
+   "itemStatus"
+  ).innerText=
+   "Item published!";
+
+
+  document.getElementById(
+   "itemName"
+  ).value="";
+
+
+  document.getElementById(
+   "itemPrice"
+  ).value="";
+
+
+  document.getElementById(
+   "itemLocation"
+  ).value="";
+
+
+  document.getElementById(
+   "itemDescription"
+  ).value="";
+
+
+  document.getElementById(
+   "itemPhoto"
+  ).value="";
+
+
+  loadProducts();
+
+
+ }catch(error){
+
+  console.error(error);
+
+  document.getElementById(
+   "itemStatus"
+  ).innerText=
+   "Could not add item: "+
+   error.message;
+
+ }
+
+};
+
+
+/* -------------------------
+   PRODUCTS
+------------------------- */
+
+function loadProducts(){
+
+ onSnapshot(
+  collection(
+   db,
+   "products"
+  ),
+  snapshot=>{
+
+   const box=
+    document.getElementById(
+     "products"
+    );
+
+   box.innerHTML="";
+
+
+   if(snapshot.empty){
+
+    box.innerHTML=
+     `<div class="notice">
+       No products yet.
+       Be the first seller!
+      </div>`;
+
+    return;
+   }
+
+
+   snapshot.forEach(
+    productDoc=>{
+
+     const p=
+      productDoc.data();
+
+
+     const card=
+      document.createElement(
+       "article"
+      );
+
+     card.className=
+      "product";
+
+
+     const image=
+      p.photo
+      ? `<img
+          src="${p.photo}"
+          alt="Product"
+        >`
+      : `<div class="productEmoji">
+          🛍️
+        </div>`;
+
+
+     card.innerHTML=`
+
+      ${image}
+
+      <div class="productInfo">
+
+       <h3>
+        ${escapeHTML(
+         p.name||
+         "Unnamed item"
+        )}
+       </h3>
+
+       <div class="price">
+        ${p.currency||"USD"}
+        ${p.price||0}
+       </div>
+
+       <div class="location">
+        📍
+        ${escapeHTML(
+         p.location||
+         "Worldwide"
+        )}
+       </div>
+
+       <div class="description">
+        ${escapeHTML(
+         p.description||
+         ""
+        )}
+       </div>
+
+       <button
+        class="cardBtn"
+        onclick="
+         openSellerMessage(
+          '${p.sellerId}'
+         )
+        ">
+        Message Seller
+       </button>
+
+      </div>
+     `;
+
+
+     box.appendChild(card);
+
+    }
+   );
+
+  },
+  error=>{
+
+   document.getElementById(
+    "products"
+   ).innerHTML=
+    `<div class="notice">
+      Products could not load:
+      ${escapeHTML(
+       error.message
+      )}
+     </div>`;
+
+  }
+ );
+
+}
+
+
+/* -------------------------
+   MESSAGES
+------------------------- */
+
+window.openMessages=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ document.getElementById(
+  "messageModal"
+ ).style.display="flex";
+
+
+ loadMessages();
+
+};
+
+
+window.openSellerMessage=
+sellerId=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ selectedSeller=sellerId;
+
+ document.getElementById(
+  "messageModal"
+ ).style.display="flex";
+
+
+ loadConversation(
+  sellerId
+ );
+
+};
+
+
+function loadMessages(){
+
+ if(!currentUser)return;
+
+
+ const q=
+  query(
+   collection(
+    db,
+    "messages"
+   ),
+   where(
+    "participants",
+    "array-contains",
+    currentUser.uid
+   )
+  );
+
+
+ onSnapshot(
+  q,
+  snapshot=>{
+
+   const box=
+    document.getElementById(
+     "messageList"
+    );
+
+   box.innerHTML="";
+
+
+   if(snapshot.empty){
+
+    box.innerHTML=
+     `<div class="notice">
+       No messages yet.
+      </div>`;
+
+    return;
+   }
+
+
+   snapshot.forEach(
+    messageDoc=>{
+
+     const m=
+      messageDoc.data();
+
+
+     const mine=
+      m.senderId===
+      currentUser.uid;
+
+
+     const div=
+      document.createElement(
+       "div"
+      );
+
+
+     div.className=
+      mine
+      ? "msg mine"
+      : "msg";
+
+
+     div.innerHTML=`
+
+      ${escapeHTML(
+       m.text||""
+      )}
+
+      <small>
+       ${mine
+        ? "You"
+        : "Seller/User"}
+      </small>
+
+     `;
+
+
+     box.appendChild(div);
+
+    }
+   );
+
+  }
+ );
+
+}
+
+
+function loadConversation(
+ otherUserId
+){
+
+ selectedSeller=
+  otherUserId;
+
+
+ const q=
+  query(
+   collection(
+    db,
+    "messages"
+   ),
+   where(
+    "participants",
+    "array-contains",
+    currentUser.uid
+   )
+  );
+
+
+ onSnapshot(
+  q,
+  snapshot=>{
+
+   const box=
+    document.getElementById(
+     "messageList"
+    );
+
+   box.innerHTML="";
+
+
+   const messages=[];
+
+
+   snapshot.forEach(
+    messageDoc=>{
+
+     const m=
+      messageDoc.data();
+
+
+     if(
+      m.participants.includes(
+       otherUserId
+      )
+     ){
+
+      messages.push(m);
+
+     }
+
+    }
+   );
+
+
+   messages.sort(
+    (a,b)=>
+     (a.createdAt?.seconds||0)-
+     (b.createdAt?.seconds||0)
+   );
+
+
+   if(!messages.length){
+
+    box.innerHTML=
+     `<div class="notice">
+       No messages yet.
+      </div>`;
+
+    return;
+   }
+
+
+   messages.forEach(
+    m=>{
+
+     const div=
+      document.createElement(
+       "div"
+      );
+
+
+     div.className=
+      m.senderId===
+      currentUser.uid
+      ? "msg mine"
+      : "msg";
+
+
+     div.innerHTML=
+      escapeHTML(
+       m.text||""
+      );
+
+
+     box.appendChild(div);
+
+    }
+   );
+
+  }
+ );
+
+}
+
+
+window.sendMessage=
+async()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ if(!selectedSeller){
+
+  alert(
+   "Open a seller's message button first."
+  );
+
+  return;
+ }
+
+
+ const input=
+  document.getElementById(
+   "messageText"
+  );
+
+
+ const text=
+  input.value.trim();
+
+
+ if(!text)return;
+
+
+ await addDoc(
+  collection(
+   db,
+   "messages"
+  ),
+  {
+
+   senderId:
+    currentUser.uid,
+
+   receiverId:
+    selectedSeller,
+
+   text,
+
+   participants:[
+    currentUser.uid,
+    selectedSeller
+   ],
+
+   createdAt:
+    serverTimestamp()
+
+  }
+ );
+
+
+ input.value="";
+
+};
+
+
+/* -------------------------
+   NOTIFICATIONS
+------------------------- */
+
+window.openNotifications=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ document.getElementById(
+  "notificationModal"
+ ).style.display="flex";
+
+
+ document.getElementById(
+  "notificationList"
+ ).innerHTML=
+  `<div class="notice">
+    Notifications are ready for
+    follower/message events.
+   </div>`;
+
+};
+
+
+/* -------------------------
+   SEARCH
+------------------------- */
+
+window.searchProducts=()=>{
+
+ const value=
+  document.getElementById(
+   "searchInput"
+  )
+  .value
+  .toLowerCase();
+
+
+ document
+  .querySelectorAll(
+   ".product"
+  )
+  .forEach(card=>{
+
+   card.style.display=
+    card.innerText
+    .toLowerCase()
+    .includes(value)
+    ? ""
+    : "none";
+
+  });
+
+};
+
+
+/* -------------------------
+   ACCOUNT
+------------------------- */
+
+window.openAccount=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ const section=
+  document.getElementById(
+   "accountSection"
+  );
+
+
+ section.style.display=
+  "block";
+
+
+ section.scrollIntoView({
+  behavior:"smooth"
+ });
+
+};
+
+
+/* -------------------------
+   MODALS
+------------------------- */
+
+window.openLogin=()=>{
+
+ document.getElementById(
+  "loginModal"
+ ).style.display="flex";
+
+};
+
+
+window.closeModal=id=>{
+
+ document.getElementById(
+  id
+ ).style.display="none";
+
+};
+
+
+/* -------------------------
+   LOGOUT
+------------------------- */
+
+window.logout=async()=>{
+
+ await signOut(auth);
+
+ document.getElementById(
+  "accountSection"
+ ).style.display=
+  "none";
+
+};
+
+
+/* -------------------------
+   SECURITY HELPER
+------------------------- */
+
+function escapeHTML(value){
+
+ return String(value)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
