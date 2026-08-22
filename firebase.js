@@ -4,9 +4,10 @@ import { initializeApp } from
 import {
   getAuth,
   GoogleAuthProvider,
+  setPersistence,
+  browserLocalPersistence,
   signInWithPopup,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut
 } from
@@ -43,6 +44,18 @@ const googleProvider =
   new GoogleAuthProvider();
 
 
+/*
+  IMPORTANT:
+  Firebase will keep the user's
+  login session in this browser.
+*/
+
+await setPersistence(
+  auth,
+  browserLocalPersistence
+);
+
+
 export {
   app,
   auth,
@@ -51,7 +64,6 @@ export {
 
   signInWithPopup,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
 
   onAuthStateChanged,
   signOut,
