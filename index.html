@@ -14,18 +14,23 @@
  --card:#151515;
  --card2:#1d1d1d;
  --border:#292929;
+ --text:#fff;
  --muted:#999;
 }
 
+html{scroll-behavior:smooth}
+
 body{
  background:var(--bg);
- color:white;
+ color:var(--text);
  font-family:Arial,sans-serif;
  padding-bottom:70px;
 }
 
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+
+button:active{transform:scale(.97)}
 
 header{
  height:62px;
@@ -34,14 +39,14 @@ header{
  display:flex;
  align-items:center;
  justify-content:space-between;
- padding:0 5%;
+ padding:0 16px;
  position:sticky;
  top:0;
- z-index:20;
+ z-index:50;
 }
 
 .logo{
- font-size:24px;
+ font-size:23px;
  font-weight:900;
  letter-spacing:2px;
 }
@@ -54,42 +59,36 @@ header{
 }
 
 .headerBtns button{
- background:#171717;
- border:1px solid #333;
+ background:#181818;
+ border:1px solid #303030;
  color:white;
- padding:8px 11px;
- border-radius:9px;
+ padding:8px 10px;
+ border-radius:8px;
 }
 
 .page{
  display:none;
- animation:fade .18s ease;
 }
 
 .page.active{
  display:block;
 }
 
-@keyframes fade{
- from{opacity:0;transform:translateY(5px)}
- to{opacity:1;transform:translateY(0)}
-}
-
 .hero{
  text-align:center;
- padding:42px 18px;
- background:radial-gradient(circle at top,#350713,#080808 65%);
+ padding:42px 16px 30px;
+ background:radial-gradient(circle at top,#3b0715,#080808 65%);
 }
 
 .hero h1{
- font-size:clamp(40px,10vw,68px);
+ font-size:clamp(38px,10vw,65px);
 }
 
 .hero h1 span{color:var(--red)}
 
 .hero p{
- color:#aaa;
- margin:10px 0 22px;
+ color:#999;
+ margin:9px 0 22px;
 }
 
 .search{
@@ -98,8 +97,9 @@ header{
  margin:auto;
  background:#151515;
  border:1px solid #333;
- border-radius:12px;
+ border-radius:10px;
  overflow:hidden;
+ position:relative;
 }
 
 .search input{
@@ -113,24 +113,46 @@ header{
 }
 
 .search button{
- border:0;
  background:var(--red);
+ border:0;
  color:white;
- padding:0 18px;
+ padding:0 17px;
+}
+
+.suggestions{
+ position:absolute;
+ top:50px;
+ left:0;
+ right:0;
+ background:#171717;
+ border:1px solid #333;
+ z-index:20;
+ text-align:left;
+ display:none;
+}
+
+.suggestion{
+ padding:12px;
+ border-bottom:1px solid #292929;
+ cursor:pointer;
+}
+
+.suggestion:hover{
+ background:#242424;
 }
 
 .container{
- width:90%;
- max-width:1200px;
+ width:92%;
+ max-width:1150px;
  margin:auto;
 }
 
 .section{
- padding:28px 0;
+ padding:25px 0;
 }
 
 .title{
- margin-bottom:15px;
+ margin-bottom:14px;
 }
 
 .categories{
@@ -140,41 +162,36 @@ header{
 }
 
 .category{
- min-width:100px;
+ min-width:95px;
+ padding:13px 8px;
  background:var(--card);
  border:1px solid var(--border);
- border-radius:12px;
- padding:14px 8px;
+ border-radius:11px;
  text-align:center;
+ cursor:pointer;
 }
 
 .category div{
- font-size:25px;
+ font-size:24px;
  margin-bottom:5px;
 }
 
 .category p{
+ color:#aaa;
  font-size:12px;
- color:#bbb;
 }
 
 .products{
  display:grid;
  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
- gap:14px;
+ gap:12px;
 }
 
 .product{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:14px;
+ border-radius:13px;
  overflow:hidden;
- transition:.18s;
-}
-
-.product:hover{
- transform:translateY(-2px);
- border-color:#444;
 }
 
 .product img,
@@ -186,10 +203,10 @@ header{
 
 .productPlaceholder{
  display:flex;
- align-items:center;
  justify-content:center;
- font-size:55px;
+ align-items:center;
  background:#222;
+ font-size:50px;
 }
 
 .productInfo{
@@ -205,7 +222,8 @@ header{
  font-weight:bold;
 }
 
-.location,.sellerName{
+.location,
+.sellerName{
  color:#888;
  font-size:12px;
  margin-top:6px;
@@ -226,40 +244,35 @@ header{
 
 .cardBtns button{
  flex:1;
- padding:9px 5px;
+ padding:9px;
  border-radius:7px;
  border:0;
-}
-
-.messageBtn{
- background:var(--red);
- color:white;
-}
-
-.deleteBtn{
- background:#292929;
- color:#ff5270;
-}
-
-.secondary{
- background:#292929;
- color:white;
- border:0;
- padding:10px;
- border-radius:8px;
 }
 
 .primary{
  background:var(--red);
  color:white;
- border:0;
- padding:11px;
- border-radius:8px;
 }
 
-.full{
+.secondary{
+ background:#292929;
+ color:white;
+}
+
+.delete{
+ background:#292929;
+ color:#ff5270;
+ border:0;
+}
+
+.reviewBtn{
  width:100%;
- margin-top:8px;
+ padding:9px;
+ margin-top:7px;
+ background:#292929;
+ color:white;
+ border:0;
+ border-radius:7px;
 }
 
 .seller{
@@ -267,17 +280,17 @@ header{
  align-items:center;
  gap:11px;
  padding:12px;
- margin-bottom:9px;
+ margin-bottom:8px;
  background:var(--card);
  border:1px solid var(--border);
- border-radius:13px;
+ border-radius:12px;
 }
 
 .avatar{
- width:48px;
- height:48px;
+ width:47px;
+ height:47px;
  border-radius:50%;
- background:var(--red);
+ background:#333;
  display:flex;
  align-items:center;
  justify-content:center;
@@ -294,6 +307,7 @@ header{
 
 .sellerInfo{
  flex:1;
+ min-width:0;
 }
 
 .sellerInfo small{
@@ -310,73 +324,43 @@ header{
  border-radius:8px;
 }
 
-.bottomNav{
- position:fixed;
- left:0;
- right:0;
- bottom:0;
- height:65px;
- background:#101010;
- border-top:1px solid #292929;
+.pageHeader{
+ padding:22px 0 12px;
  display:flex;
- justify-content:space-around;
  align-items:center;
- z-index:30;
+ gap:10px;
 }
 
-.bottomNav button{
- background:none;
- border:0;
- color:#aaa;
- font-size:11px;
-}
-
-.bottomNav button.active{
+.pageHeader button{
+ background:#292929;
  color:white;
-}
-
-.bottomNav button span{
- font-size:19px;
-}
-
-.accountWrap,
-.messagesWrap{
- width:90%;
- max-width:850px;
- margin:25px auto;
-}
-
-.backBtn{
- background:#202020;
  border:0;
- color:white;
- padding:9px 13px;
  border-radius:8px;
- margin-bottom:15px;
+ padding:8px 11px;
 }
 
-.profileCard{
+.accountCard{
  background:var(--card);
  border:1px solid var(--border);
  border-radius:15px;
- padding:20px;
+ padding:18px;
 }
 
 .profileTop{
  display:flex;
  align-items:center;
- gap:15px;
+ gap:14px;
 }
 
 .bigAvatar{
- width:90px;
- height:90px;
+ width:82px;
+ height:82px;
  border-radius:50%;
  object-fit:cover;
  background:#222;
 }
 
-.profileTopInfo{
+.profileInfo{
  flex:1;
 }
 
@@ -385,47 +369,66 @@ header{
  margin-top:4px;
 }
 
-.profileStats{
- display:flex;
- gap:25px;
- margin-top:18px;
+.edit{
+ background:#292929;
+ border:0;
+ color:white;
+ padding:9px 11px;
+ border-radius:8px;
 }
 
-.profileStats div{
+.stats{
+ display:flex;
+ justify-content:space-around;
+ margin:20px 0;
+ padding:15px 0;
+ border-top:1px solid #292929;
+ border-bottom:1px solid #292929;
+}
+
+.stats div{
  text-align:center;
 }
 
-.profileStats b{
+.stats b{
  display:block;
  font-size:18px;
 }
 
-.profileStats span{
- font-size:12px;
+.stats span{
  color:#888;
+ font-size:12px;
 }
 
 .bio{
  color:#aaa;
- margin-top:14px;
  line-height:1.5;
-}
-
-.profileActions{
- display:flex;
- gap:8px;
- margin-top:15px;
-}
-
-.profileActions button{
- flex:1;
+ margin-bottom:15px;
 }
 
 .profileProducts{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:10px;
- margin-top:15px;
+ gap:9px;
+}
+
+.profileProduct{
+ background:#202020;
+ border-radius:9px;
+ overflow:hidden;
+}
+
+.profileProduct img,
+.profileProduct .productPlaceholder{
+ height:130px;
+}
+
+.profileProductInfo{
+ padding:9px;
+}
+
+.messagesPage{
+ min-height:calc(100vh - 130px);
 }
 
 .messageLayout{
@@ -433,27 +436,33 @@ header{
  border:1px solid var(--border);
  border-radius:14px;
  overflow:hidden;
- min-height:600px;
+ min-height:70vh;
  display:flex;
+ flex-direction:column;
+}
+
+.messageTop{
+ padding:15px;
+ border-bottom:1px solid #292929;
+ font-weight:bold;
 }
 
 .conversationList{
- width:35%;
- border-right:1px solid #292929;
+ flex:1;
  overflow-y:auto;
 }
 
 .conversation{
  display:flex;
- align-items:center;
  gap:10px;
+ align-items:center;
  padding:13px;
- border-bottom:1px solid #222;
+ border-bottom:1px solid #242424;
  cursor:pointer;
 }
 
 .conversation:hover{
- background:#1d1d1d;
+ background:#202020;
 }
 
 .conversationText{
@@ -470,15 +479,35 @@ header{
 }
 
 .chat{
- flex:1;
- display:flex;
+ display:none;
  flex-direction:column;
- min-width:0;
+ min-height:70vh;
 }
 
 .chatHeader{
- padding:14px;
+ padding:12px;
  border-bottom:1px solid #292929;
+ display:flex;
+ align-items:center;
+ gap:10px;
+}
+
+.chatHeader button{
+ background:#292929;
+ color:white;
+ border:0;
+ padding:7px 10px;
+ border-radius:7px;
+}
+
+.chatHeaderInfo{
+ flex:1;
+}
+
+.chatHeaderInfo small{
+ display:block;
+ color:#777;
+ margin-top:3px;
 }
 
 .chatMessages{
@@ -491,10 +520,10 @@ header{
 }
 
 .chatMessage{
- max-width:75%;
- padding:9px 12px;
+ max-width:78%;
  background:#292929;
- border-radius:17px;
+ padding:9px 12px;
+ border-radius:16px;
  align-self:flex-start;
  word-break:break-word;
 }
@@ -504,43 +533,22 @@ header{
  align-self:flex-end;
 }
 
-.messageComposer{
+.messageTime{
+ font-size:9px;
+ opacity:.6;
+ margin-top:3px;
+}
+
+.composer{
  display:flex;
  gap:7px;
  padding:9px;
  border-top:1px solid #292929;
 }
 
-.messageComposer input{
+.composer input{
  flex:1;
-}
-
-.messageComposer button{
- background:var(--red);
- border:0;
- color:white;
- padding:10px 15px;
- border-radius:8px;
-}
-
-.formBox{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:15px;
- padding:20px;
- max-width:500px;
- margin:25px auto;
-}
-
-.formBox input,
-.formBox textarea,
-.formBox select,
-.modalBox input,
-.modalBox textarea,
-.modalBox select{
- width:100%;
- padding:12px;
- margin:6px 0;
+ padding:11px;
  background:#090909;
  border:1px solid #333;
  color:white;
@@ -548,65 +556,23 @@ header{
  outline:0;
 }
 
-.formBox textarea,
-.modalBox textarea{
- min-height:85px;
- resize:vertical;
+.composer button{
+ border:0;
+ background:var(--red);
+ color:white;
+ padding:0 15px;
+ border-radius:8px;
 }
 
-.phoneRow{
- display:flex;
- gap:7px;
-}
-
-.phoneRow select{
- width:40%;
-}
-
-.phoneRow input{
- width:60%;
-}
-
-.modal{
- display:none;
- position:fixed;
- inset:0;
- background:#000d;
- z-index:100;
- align-items:center;
- justify-content:center;
- padding:15px;
-}
-
-.modalBox{
- width:100%;
- max-width:470px;
- max-height:92vh;
- overflow-y:auto;
- background:#181818;
- border:1px solid #333;
- border-radius:17px;
- padding:20px;
-}
-
-.modalBox h2{
- margin-bottom:8px;
-}
-
-.empty{
- color:#777;
- text-align:center;
- padding:20px;
-}
-
-.status{
- color:#aaa;
- margin-top:10px;
- font-size:13px;
+.notifications{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ overflow:hidden;
 }
 
 .notification{
- padding:12px;
+ padding:13px;
  border-bottom:1px solid #292929;
 }
 
@@ -617,7 +583,7 @@ header{
 .review{
  background:#202020;
  padding:12px;
- border-radius:10px;
+ border-radius:9px;
  margin-top:8px;
 }
 
@@ -625,8 +591,134 @@ header{
  color:#ffd000;
 }
 
-@media(max-width:650px){
+.empty{
+ text-align:center;
+ color:#777;
+ padding:25px;
+}
 
+.bottomNav{
+ position:fixed;
+ left:0;
+ right:0;
+ bottom:0;
+ height:64px;
+ background:#101010;
+ border-top:1px solid #292929;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:60;
+}
+
+.bottomNav button{
+ background:none;
+ border:0;
+ color:#aaa;
+ font-size:11px;
+}
+
+.bottomNav button.active{
+ color:white;
+}
+
+.bottomNav span{
+ font-size:19px;
+ display:block;
+ margin-bottom:2px;
+}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#000c;
+ z-index:100;
+ align-items:center;
+ justify-content:center;
+ padding:14px;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.box{
+ width:100%;
+ max-width:470px;
+ max-height:92vh;
+ overflow-y:auto;
+ background:#181818;
+ border:1px solid #333;
+ border-radius:15px;
+ padding:19px;
+}
+
+.box h2{
+ margin-bottom:8px;
+}
+
+.box p{
+ color:#888;
+}
+
+.box input,
+.box textarea,
+.box select{
+ width:100%;
+ padding:12px;
+ margin:6px 0;
+ background:#090909;
+ border:1px solid #333;
+ color:white;
+ border-radius:8px;
+ outline:0;
+}
+
+.box textarea{
+ min-height:80px;
+ resize:vertical;
+}
+
+.box button{
+ width:100%;
+ padding:11px;
+ margin-top:7px;
+ border-radius:8px;
+ border:0;
+}
+
+.google{
+ background:white;
+ color:black;
+}
+
+.close{
+ background:#292929;
+ color:white;
+}
+
+.phoneRow{
+ display:flex;
+ gap:6px;
+}
+
+.country{
+ width:105px!important;
+ flex:none;
+}
+
+.phone{
+ flex:1;
+}
+
+.loading{
+ text-align:center;
+ color:#777;
+ padding:25px;
+}
+
+@media(max-width:600px){
  .products{
   grid-template-columns:repeat(2,1fr);
   gap:8px;
@@ -637,25 +729,12 @@ header{
   height:135px;
  }
 
- .messageLayout{
-  min-height:70vh;
+ .container{
+  width:94%;
  }
 
- .conversationList{
-  width:38%;
- }
-
- .profileTop{
-  align-items:flex-start;
- }
-
- .bigAvatar{
-  width:70px;
-  height:70px;
- }
-
- .profileActions{
-  flex-direction:column;
+ .hero{
+  padding-top:32px;
  }
 }
 </style>
@@ -664,593 +743,535 @@ header{
 <body>
 
 <header>
-
  <div class="logo"><span>AV</span>YRA</div>
 
  <div class="headerBtns">
   <button onclick="openNotifications()">🔔</button>
   <button onclick="openAccount()">👤 <span id="headerName">Sign in</span></button>
  </div>
-
 </header>
 
 
 <!-- HOME -->
 
-<div id="homePage" class="page active">
+<section id="homePage" class="page active">
 
-<section class="hero">
+ <section class="hero">
+  <h1>Welcome to <span>AVYRA</span></h1>
+  <p>Buy. Sell. Connect. Worldwide. 🌍</p>
 
- <h1>Welcome to <span>AVYRA</span></h1>
+  <div class="search">
 
- <p>Buy. Sell. Connect. Worldwide. 🌍</p>
+   <input
+    id="searchInput"
+    placeholder="Search products, sellers or locations..."
+    autocomplete="off">
 
- <div class="search">
+   <button onclick="searchProducts()">Search</button>
 
-  <input
-   id="searchInput"
-   placeholder="Search products, sellers or locations..."
-   autocomplete="off">
+   <div id="suggestions" class="suggestions"></div>
 
-  <button onclick="searchProducts()">Search</button>
+  </div>
+ </section>
 
- </div>
+
+ <main class="container">
+
+  <section class="section">
+
+   <div class="title">
+    <h2>Explore Categories</h2>
+   </div>
+
+   <div class="categories">
+
+    <div class="category" onclick="categorySearch('Phones')">
+     <div>📱</div>
+     <p>Phones</p>
+    </div>
+
+    <div class="category" onclick="categorySearch('Computers')">
+     <div>💻</div>
+     <p>Computers</p>
+    </div>
+
+    <div class="category" onclick="categorySearch('Gaming')">
+     <div>🎮</div>
+     <p>Gaming</p>
+    </div>
+
+    <div class="category" onclick="categorySearch('Fashion')">
+     <div>👕</div>
+     <p>Fashion</p>
+    </div>
+
+    <div class="category" onclick="categorySearch('Vehicles')">
+     <div>🚗</div>
+     <p>Vehicles</p>
+    </div>
+
+    <div class="category" onclick="categorySearch('Home')">
+     <div>🏠</div>
+     <p>Home</p>
+    </div>
+
+   </div>
+
+  </section>
+
+
+  <section class="section">
+
+   <div class="title">
+    <h2>🔥 Marketplace</h2>
+   </div>
+
+   <div id="products" class="products">
+    <div class="loading">Loading products...</div>
+   </div>
+
+  </section>
+
+
+  <section class="section">
+
+   <div class="title">
+    <h2>⭐ Sellers</h2>
+   </div>
+
+   <div id="sellers">
+    <div class="loading">Loading sellers...</div>
+   </div>
+
+  </section>
+
+ </main>
 
 </section>
-
-
-<main class="container">
-
-<section class="section">
-
- <div class="title">
-  <h2>Explore Categories</h2>
- </div>
-
- <div class="categories">
-
-  <div class="category">
-   <div>📱</div>
-   <p>Phones</p>
-  </div>
-
-  <div class="category">
-   <div>💻</div>
-   <p>Computers</p>
-  </div>
-
-  <div class="category">
-   <div>🎮</div>
-   <p>Gaming</p>
-  </div>
-
-  <div class="category">
-   <div>👕</div>
-   <p>Fashion</p>
-  </div>
-
-  <div class="category">
-   <div>🚗</div>
-   <p>Vehicles</p>
-  </div>
-
-  <div class="category">
-   <div>🏠</div>
-   <p>Home</p>
-  </div>
-
- </div>
-
-</section>
-
-
-<section class="section">
-
- <div class="title">
-  <h2>🔥 Marketplace</h2>
- </div>
-
- <div id="products" class="products">
-  <div class="empty">Loading products...</div>
- </div>
-
-</section>
-
-
-<section class="section">
-
- <div class="title">
-  <h2>⭐ Sellers</h2>
- </div>
-
- <div id="sellers">
-  <div class="empty">Loading sellers...</div>
- </div>
-
-</section>
-
-</main>
-
-</div>
 
 
 <!-- ACCOUNT PAGE -->
 
-<div id="accountPage" class="page">
+<section id="accountPage" class="page">
 
-<div class="accountWrap">
+ <main class="container">
 
- <button class="backBtn" onclick="showPage('homePage')">
-  ← Back
- </button>
+  <div class="pageHeader">
+   <button onclick="showPage('homePage')">←</button>
+   <h2>My Account</h2>
+  </div>
 
- <div class="profileCard">
+  <div class="accountCard">
 
-  <div class="profileTop">
+   <div class="profileTop">
 
-   <img
-    id="profilePhoto"
-    class="bigAvatar"
-    src="https://placehold.co/200x200/222/fff?text=A">
+    <img id="profilePhoto" class="bigAvatar">
 
-   <div class="profileTopInfo">
+    <div class="profileInfo">
 
-    <h2 id="profileName">AVYRA User</h2>
+     <h2 id="profileDisplayName">AVYRA User</h2>
 
-    <div class="username" id="profileUsername">
-     @username
+     <div class="username" id="profileUsername">
+      @username
+     </div>
+
+     <div class="username" id="profileEmail"></div>
+
     </div>
 
-    <div id="profileEmail" style="color:#777;margin-top:4px"></div>
+    <button class="edit" onclick="openEditProfile()">✏️</button>
 
    </div>
 
-   <button
-    class="secondary"
-    onclick="openEditProfile()">
-    ✏️
-   </button>
 
-  </div>
+   <div class="stats">
 
+    <div>
+     <b id="myFollowers">0</b>
+     <span>Followers</span>
+    </div>
 
-  <div class="profileStats">
+    <div>
+     <b id="myFollowing">0</b>
+     <span>Following</span>
+    </div>
 
-   <div>
-    <b id="myFollowers">0</b>
-    <span>Followers</span>
+    <div>
+     <b id="myItems">0</b>
+     <span>Listings</span>
+    </div>
+
    </div>
 
-   <div>
-    <b id="myFollowing">0</b>
-    <span>Following</span>
+
+   <div id="profileBio" class="bio">
+    No bio yet.
    </div>
 
-   <div>
-    <b id="myItems">0</b>
-    <span>Listings</span>
-   </div>
-
-  </div>
-
-
-  <div class="bio" id="profileBio">
-   No bio yet.
-  </div>
-
-
-  <div class="profileActions">
 
    <button class="primary" onclick="openAddItem()">
-    + Sell
+    + Sell Something
    </button>
 
-   <button class="secondary" onclick="showPage('messagesPage')">
+   <button class="secondary" onclick="openMessages()">
     💬 Messages
    </button>
 
+   <button class="secondary" onclick="logout()">
+    Sign Out
+   </button>
+
+
+   <h3 style="margin:24px 0 10px">
+    Your Listings
+   </h3>
+
+   <div id="myProducts" class="profileProducts"></div>
+
   </div>
 
+ </main>
 
-  <button
-   class="secondary full"
-   onclick="logout()">
-   Sign Out
-  </button>
-
-
-  <h3 style="margin-top:25px">
-   Your Listings
-  </h3>
-
-  <div id="myProducts" class="profileProducts"></div>
-
- </div>
-
-</div>
-
-</div>
+</section>
 
 
 <!-- MESSAGES PAGE -->
 
-<div id="messagesPage" class="page">
+<section id="messagesPage" class="page">
 
-<div class="messagesWrap">
+ <main class="container">
 
- <button class="backBtn" onclick="showPage('homePage')">
-  ← Back
- </button>
+  <div class="pageHeader">
+   <button onclick="showPage('homePage')">←</button>
+   <h2>Messages</h2>
+  </div>
 
- <h2 style="margin-bottom:15px">
-  Messages
- </h2>
+  <div class="messageLayout">
 
- <div class="messageLayout">
+   <div id="conversationArea">
 
-  <div id="conversationList" class="conversationList">
-   <div class="empty">Loading conversations...</div>
+    <div class="messageTop">
+     Your conversations
+    </div>
+
+    <div id="conversationList" class="conversationList">
+     <div class="empty">No conversations yet.</div>
+    </div>
+
+   </div>
+
+
+   <div id="chatArea" class="chat">
+
+    <div class="chatHeader">
+
+     <button onclick="showConversationList()">←</button>
+
+     <div class="chatHeaderInfo">
+      <b id="chatName">User</b>
+      <small>AVYRA</small>
+     </div>
+
+    </div>
+
+
+    <div id="chatMessages" class="chatMessages"></div>
+
+
+    <div class="composer">
+
+     <input
+      id="messageInput"
+      placeholder="Message...">
+
+     <button onclick="sendMessage()">➤</button>
+
+    </div>
+
+   </div>
+
+  </div>
+
+ </main>
+
+</section>
+
+
+<!-- NOTIFICATIONS PAGE -->
+
+<section id="notificationsPage" class="page">
+
+ <main class="container">
+
+  <div class="pageHeader">
+   <button onclick="showPage('homePage')">←</button>
+   <h2>Notifications</h2>
+  </div>
+
+  <div id="notifications" class="notifications">
+   <div class="empty">No notifications yet.</div>
+  </div>
+
+ </main>
+
+</section>
+
+
+<!-- LOGIN / SIGN UP -->
+
+<div id="loginModal" class="modal">
+
+ <div class="box">
+
+  <h2 id="authTitle">Welcome to AVYRA</h2>
+
+  <p id="authSubtitle">
+   Sign in to buy, sell and connect.
+  </p>
+
+
+  <div id="signupFields" style="display:none">
+
+   <input
+    id="signupUsername"
+    placeholder="Username">
+
+   <input
+    id="signupDisplayName"
+    placeholder="Display name">
+
+   <div class="phoneRow">
+
+    <select id="signupCountry" class="country">
+
+     <option value="+254">🇰🇪 +254</option>
+     <option value="+256">🇺🇬 +256</option>
+     <option value="+255">🇹🇿 +255</option>
+     <option value="+250">🇷🇼 +250</option>
+     <option value="+1">🇺🇸 +1</option>
+     <option value="+44">🇬🇧 +44</option>
+     <option value="+91">🇮🇳 +91</option>
+     <option value="+971">🇦🇪 +971</option>
+
+    </select>
+
+    <input
+     id="signupPhone"
+     class="phone"
+     type="tel"
+     placeholder="Phone number">
+
+   </div>
+
   </div>
 
 
-  <div class="chat">
+  <input
+   id="email"
+   type="email"
+   placeholder="Email">
 
-   <div class="chatHeader">
-    <b id="chatName">Select a conversation</b>
-   </div>
+  <input
+   id="password"
+   type="password"
+   placeholder="Password">
 
-   <div id="chatMessages" class="chatMessages">
-    <div class="empty">
-     Select someone to start chatting.
-    </div>
-   </div>
 
-   <div class="messageComposer">
+  <button
+   id="authButton"
+   class="primary"
+   onclick="emailLogin()">
+   Sign In
+  </button>
 
-    <input
-     id="messageInput"
-     placeholder="Message..."
-     disabled>
 
-    <button
-     id="sendMessageBtn"
-     onclick="sendMessage()"
-     disabled>
-     ➤
-    </button>
+  <button
+   class="google"
+   onclick="googleLogin()">
+   Continue with Google
+  </button>
 
-   </div>
 
+  <button
+   class="secondary"
+   onclick="toggleAuthMode()">
+
+   <span id="toggleAuthText">
+    Create an account
+   </span>
+
+  </button>
+
+
+  <button
+   class="close"
+   onclick="closeModal('loginModal')">
+   Close
+  </button>
+
+
+  <div
+   id="status"
+   style="color:#aaa;margin-top:10px">
   </div>
 
  </div>
-
-</div>
-
-</div>
-
-
-<!-- LOGIN -->
-
-<div class="modal" id="loginModal">
-
-<div class="modalBox">
-
-<h2>Welcome to AVYRA</h2>
-
-<p style="color:#888">
- Sign in or create your account.
-</p>
-
-
-<input
- id="email"
- type="email"
- placeholder="Email">
-
-
-<input
- id="password"
- type="password"
- placeholder="Password">
-
-
-<label style="display:block;color:#aaa;margin-top:8px">
-Phone number
-</label>
-
-
-<div class="phoneRow">
-
-<select id="countryCode">
-
- <option value="+254">🇰🇪 +254</option>
- <option value="+255">🇹🇿 +255</option>
- <option value="+256">🇺🇬 +256</option>
- <option value="+250">🇷🇼 +250</option>
- <option value="+257">🇧🇮 +257</option>
- <option value="+1">🇺🇸 +1</option>
- <option value="+44">🇬🇧 +44</option>
- <option value="+27">🇿🇦 +27</option>
- <option value="+91">🇮🇳 +91</option>
-
-</select>
-
-<input
- id="phone"
- type="tel"
- placeholder="712345678">
-
-</div>
-
-
-<button
- class="primary full"
- onclick="emailLogin()">
- Sign In
-</button>
-
-
-<button
- class="secondary full"
- onclick="createAccount()">
- Create Account
-</button>
-
-
-<button
- class="google full"
- onclick="googleLogin()">
- Continue with Google
-</button>
-
-
-<button
- class="secondary full"
- onclick="closeModal('loginModal')">
- Close
-</button>
-
-
-<div id="status" class="status"></div>
-
-</div>
 
 </div>
 
 
 <!-- EDIT PROFILE -->
 
-<div class="modal" id="editModal">
+<div id="editModal" class="modal">
 
-<div class="modalBox">
+ <div class="box">
 
-<h2>Edit Profile</h2>
+  <h2>Edit Profile</h2>
 
-<input
- id="editUsername"
- placeholder="Username">
+  <input
+   id="editUsername"
+   placeholder="Username">
 
+  <input
+   id="editDisplayName"
+   placeholder="Display name">
 
-<input
- id="editDisplayName"
- placeholder="Display name">
-
-
-<textarea
- id="editBio"
- placeholder="Write your bio..."></textarea>
-
-
-<label style="display:block;color:#aaa;margin-top:10px">
-Phone number
-</label>
+  <textarea
+   id="editBio"
+   placeholder="Bio">
+  </textarea>
 
 
-<div class="phoneRow">
+  <label style="display:block;color:#aaa;margin-top:8px">
+   Profile picture
+  </label>
 
-<select id="editCountryCode">
-
- <option value="+254">🇰🇪 +254</option>
- <option value="+255">🇹🇿 +255</option>
- <option value="+256">🇺🇬 +256</option>
- <option value="+250">🇷🇼 +250</option>
- <option value="+257">🇧🇮 +257</option>
- <option value="+1">🇺🇸 +1</option>
- <option value="+44">🇬🇧 +44</option>
- <option value="+27">🇿🇦 +27</option>
- <option value="+91">🇮🇳 +91</option>
-
-</select>
-
-<input
- id="editPhone"
- type="tel"
- placeholder="Phone number">
-
-</div>
+  <input
+   id="editPhoto"
+   type="file"
+   accept="image/*">
 
 
-<label style="display:block;color:#aaa;margin-top:10px">
-Profile picture
-</label>
+  <button
+   class="primary"
+   onclick="saveProfile()">
+   Save Changes
+  </button>
 
+  <button
+   class="close"
+   onclick="closeModal('editModal')">
+   Cancel
+  </button>
 
-<input
- id="editPhoto"
- type="file"
- accept="image/*">
+  <div
+   id="editStatus"
+   style="color:#aaa;margin-top:8px">
+  </div>
 
-
-<button
- class="primary full"
- onclick="saveProfile()">
- Save Changes
-</button>
-
-
-<button
- class="secondary full"
- onclick="closeModal('editModal')">
- Cancel
-</button>
-
-
-<div id="editStatus" class="status"></div>
-
-</div>
+ </div>
 
 </div>
 
 
-<!-- ADD ITEM -->
+<!-- SELL ITEM -->
 
-<div class="modal" id="itemModal">
+<div id="itemModal" class="modal">
 
-<div class="modalBox">
+ <div class="box">
 
-<h2>Add Item</h2>
+  <h2>Sell Something</h2>
 
-<input
- id="itemName"
- placeholder="Product name">
+  <input
+   id="itemName"
+   placeholder="Product name">
 
-<input
- id="itemPrice"
- type="number"
- placeholder="Price">
+  <input
+   id="itemPrice"
+   type="number"
+   placeholder="Price">
 
-<input
- id="itemCurrency"
- placeholder="Currency — KES, USD, EUR...">
+  <input
+   id="itemCurrency"
+   placeholder="Currency — KES, USD, EUR...">
 
-<input
- id="itemLocation"
- placeholder="Location">
+  <input
+   id="itemLocation"
+   placeholder="Location">
 
-<textarea
- id="itemDescription"
- placeholder="Description"></textarea>
+  <textarea
+   id="itemDescription"
+   placeholder="Description">
+  </textarea>
 
-<input
- id="itemPhoto"
- type="file"
- accept="image/*">
-
-
-<button
- class="primary full"
- onclick="addItem()">
- Publish Item
-</button>
+  <input
+   id="itemPhoto"
+   type="file"
+   accept="image/*">
 
 
-<button
- class="secondary full"
- onclick="closeModal('itemModal')">
- Cancel
-</button>
+  <button
+   class="primary"
+   onclick="addItem()">
+   Publish
+  </button>
 
+  <button
+   class="close"
+   onclick="closeModal('itemModal')">
+   Cancel
+  </button>
 
-<div id="itemStatus" class="status"></div>
+  <div
+   id="itemStatus"
+   style="color:#aaa;margin-top:8px">
+  </div>
 
-</div>
+ </div>
 
 </div>
 
 
 <!-- REVIEW -->
 
-<div class="modal" id="reviewModal">
+<div id="reviewModal" class="modal">
 
-<div class="modalBox">
+ <div class="box">
 
-<h2>Leave a Review</h2>
+  <h2>Review Seller</h2>
 
-<div id="reviewSellerName"
- style="color:#aaa"></div>
+  <p id="reviewSellerName"></p>
 
+  <select id="reviewRating">
 
-<select id="reviewRating">
+   <option value="5">⭐⭐⭐⭐⭐ — 5</option>
+   <option value="4">⭐⭐⭐⭐ — 4</option>
+   <option value="3">⭐⭐⭐ — 3</option>
+   <option value="2">⭐⭐ — 2</option>
+   <option value="1">⭐ — 1</option>
 
- <option value="5">⭐⭐⭐⭐⭐ — 5</option>
- <option value="4">⭐⭐⭐⭐ — 4</option>
- <option value="3">⭐⭐⭐ — 3</option>
- <option value="2">⭐⭐ — 2</option>
- <option value="1">⭐ — 1</option>
+  </select>
 
-</select>
+  <textarea
+   id="reviewText"
+   placeholder="Write your review...">
+  </textarea>
 
+  <button
+   class="primary"
+   onclick="submitReview()">
+   Submit Review
+  </button>
 
-<textarea
- id="reviewText"
- placeholder="Write your review..."></textarea>
+  <button
+   class="close"
+   onclick="closeModal('reviewModal')">
+   Cancel
+  </button>
 
-
-<button
- class="primary full"
- onclick="submitReview()">
- Submit Review
-</button>
-
-
-<button
- class="secondary full"
- onclick="closeModal('reviewModal')">
- Cancel
-</button>
+ </div>
 
 </div>
-
-</div>
-
-
-<!-- NOTIFICATIONS -->
-
-<div class="modal" id="notificationModal">
-
-<div class="modalBox">
-
-<h2>🔔 Notifications</h2>
-
-<div id="notifications">
- <div class="empty">Loading...</div>
-</div>
-
-<button
- class="secondary full"
- onclick="closeModal('notificationModal')">
- Close
-</button>
-
-</div>
-
-</div>
-
-
-<nav class="bottomNav">
-
-<button id="navHome" class="active" onclick="showPage('homePage')">
- <span>🏠</span><br>Home
-</button>
-
-<button onclick="focusSearch()">
- <span>🔎</span><br>Search
-</button>
-
-<button onclick="openAddItem()">
- <span>➕</span><br>Sell
-</button>
-
-<button onclick="openMessages()">
- <span>💬</span><br>Messages
-</button>
-
-<button id="navAccount" onclick="openAccount()">
- <span>👤</span><br>Profile
-</button>
-
-</nav>
 
 
 <script type="module">
@@ -1261,10 +1282,18 @@ import {
  googleProvider,
  signInWithPopup,
  signInWithEmailAndPassword,
- createUserWithEmailAndPassword,
  onAuthStateChanged,
  signOut
-} from "./firebase.js";
+}
+from "./firebase.js";
+
+
+import {
+ createUserWithEmailAndPassword,
+ updateProfile
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
@@ -1281,177 +1310,251 @@ import {
  onSnapshot,
  serverTimestamp,
  increment
-} from
+}
+from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-import {
- updateProfile
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 let currentUser=null;
 let allProducts=[];
 let activeChatUser=null;
 let unsubscribeChat=null;
-let unsubscribeNotifications=null;
+let unsubscribeMessages=null;
 let reviewSellerId=null;
+let signupMode=false;
 
 
-/* ---------------- PAGE SYSTEM ---------------- */
+/* =========================
+   PAGE SYSTEM
+========================= */
 
-window.showPage=function(page){
+window.showPage=function(id){
 
- document.querySelectorAll(".page")
- .forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll(".page").forEach(page=>{
+  page.classList.remove("active");
+ });
 
- const target=document.getElementById(page);
+ const page=document.getElementById(id);
 
- if(target){
-  target.classList.add("active");
- }
+ if(page)page.classList.add("active");
 
  window.scrollTo({
   top:0,
   behavior:"smooth"
  });
 
- document.querySelectorAll(".bottomNav button")
- .forEach(b=>b.classList.remove("active"));
-
- if(page==="homePage"){
-  document.getElementById("navHome")
-  .classList.add("active");
+ if(id==="accountPage"){
+  loadProfile();
+  loadMyProducts();
  }
 
- if(page==="accountPage"){
-  document.getElementById("navAccount")
-  .classList.add("active");
+ if(id==="messagesPage"){
+  loadConversations();
  }
 };
 
 
-/* ---------------- AUTH ---------------- */
+/* =========================
+   MODALS
+========================= */
 
-window.googleLogin=async()=>{
+window.closeModal=function(id){
+ const modal=document.getElementById(id);
+ if(modal)modal.classList.remove("show");
+};
+
+function openModal(id){
+ document.getElementById(id).classList.add("show");
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+window.openAccount=function(){
+
+ if(!currentUser){
+  openModal("loginModal");
+  return;
+ }
+
+ showPage("accountPage");
+};
+
+
+window.openMessages=function(){
+
+ if(!currentUser){
+  openModal("loginModal");
+  return;
+ }
+
+ showPage("messagesPage");
+};
+
+
+window.openNotifications=function(){
+
+ if(!currentUser){
+  openModal("loginModal");
+  return;
+ }
+
+ showPage("notificationsPage");
+};
+
+
+window.toggleAuthMode=function(){
+
+ signupMode=!signupMode;
+
+ document.getElementById("signupFields").style.display=
+  signupMode?"block":"none";
+
+ document.getElementById("authTitle").innerText=
+  signupMode
+  ?"Create your AVYRA account"
+  :"Welcome to AVYRA";
+
+ document.getElementById("authSubtitle").innerText=
+  signupMode
+  ?"Create an account to buy and sell."
+  :"Sign in to buy, sell and connect.";
+
+ document.getElementById("authButton").innerText=
+  signupMode?"Create Account":"Sign In";
+
+ document.getElementById("toggleAuthText").innerText=
+  signupMode
+  ?"Already have an account? Sign in"
+  :"Create an account";
+
+ document.getElementById("status").innerText="";
+};
+
+
+window.googleLogin=async function(){
 
  try{
+
+  document.getElementById("status").innerText=
+   "Signing in...";
 
   await signInWithPopup(
    auth,
    googleProvider
   );
 
- }catch(e){
+ }catch(error){
 
-  document.getElementById("status")
-  .innerText=e.message;
-
+  document.getElementById("status").innerText=
+   error.message;
  }
 };
 
 
-window.emailLogin=async()=>{
+window.emailLogin=async function(){
 
  const email=
-  document.getElementById("email")
-  .value.trim();
+  document.getElementById("email").value.trim();
 
  const password=
-  document.getElementById("password")
-  .value;
+  document.getElementById("password").value;
+
 
  if(!email||!password){
 
-  document.getElementById("status")
-  .innerText=
+  document.getElementById("status").innerText=
    "Enter your email and password.";
 
   return;
  }
 
- try{
-
-  await signInWithEmailAndPassword(
-   auth,
-   email,
-   password
-  );
-
- }catch(e){
-
-  document.getElementById("status")
-  .innerText=e.message;
-
- }
-};
-
-
-window.createAccount=async()=>{
-
- const email=
-  document.getElementById("email")
-  .value.trim();
-
- const password=
-  document.getElementById("password")
-  .value;
-
- const code=
-  document.getElementById("countryCode")
-  .value;
-
- const phone=
-  document.getElementById("phone")
-  .value.trim();
-
- if(!email||!password){
-
-  document.getElementById("status")
-  .innerText=
-   "Email and password are required.";
-
-  return;
- }
 
  try{
 
-  const credential=
-   await createUserWithEmailAndPassword(
+  document.getElementById("status").innerText=
+   signupMode
+   ?"Creating account..."
+   :"Signing in...";
+
+
+  if(signupMode){
+
+   const username=
+    document.getElementById("signupUsername")
+     .value.trim()
+     .toLowerCase();
+
+   const displayName=
+    document.getElementById("signupDisplayName")
+     .value.trim();
+
+   const country=
+    document.getElementById("signupCountry").value;
+
+   const phone=
+    document.getElementById("signupPhone")
+     .value.trim();
+
+
+   if(!username||!displayName||!phone){
+
+    document.getElementById("status").innerText=
+     "Username, display name and phone are required.";
+
+    return;
+   }
+
+
+   const credential=
+    await createUserWithEmailAndPassword(
+     auth,
+     email,
+     password
+    );
+
+
+   await updateProfile(
+    credential.user,
+    {
+     displayName:displayName
+    }
+   );
+
+
+   await createProfile(
+    credential.user,
+    {
+     username,
+     name:displayName,
+     phone:country+phone
+    }
+   );
+
+
+  }else{
+
+   await signInWithEmailAndPassword(
     auth,
     email,
     password
    );
 
-  await setDoc(
-   doc(db,"users",credential.user.uid),
-   {
-    uid:credential.user.uid,
-    username:email.split("@")[0],
-    name:email.split("@")[0],
-    email,
-    phoneCountryCode:code,
-    phone,
-    photo:"",
-    bio:"",
-    followers:0,
-    following:0,
-    createdAt:serverTimestamp()
-   },
-   {merge:true}
-  );
+  }
 
- }catch(e){
+ }catch(error){
 
-  document.getElementById("status")
-  .innerText=e.message;
-
+  document.getElementById("status").innerText=
+   error.message;
  }
 };
 
 
-/* ---------------- AUTH STATE ---------------- */
+/* =========================
+   AUTH STATE
+========================= */
 
 onAuthStateChanged(auth,async user=>{
 
@@ -1459,17 +1562,18 @@ onAuthStateChanged(auth,async user=>{
 
  if(!user){
 
-  document.getElementById("headerName")
-   .innerText="Sign in";
-
-  showPage("homePage");
+  document.getElementById("headerName").innerText=
+   "Sign in";
 
   return;
  }
 
 
- document.getElementById("loginModal")
- .style.display="none";
+ closeModal("loginModal");
+
+
+ document.getElementById("headerName").innerText=
+  user.displayName||"Account";
 
 
  await createProfile(user);
@@ -1482,43 +1586,45 @@ onAuthStateChanged(auth,async user=>{
 
  loadNotifications();
 
- loadConversations();
-
 });
 
 
-/* ---------------- PROFILE ---------------- */
+/* =========================
+   PROFILE CREATION
+========================= */
 
-async function createProfile(user){
+async function createProfile(user,extra={}){
 
- const ref=doc(db,"users",user.uid);
+ const ref=
+  doc(db,"users",user.uid);
 
- const snap=await getDoc(ref);
+ const snap=
+  await getDoc(ref);
+
 
  if(!snap.exists()){
-
-  const base=
-   user.displayName ||
-   user.email?.split("@")[0] ||
-   "AVYRA User";
 
   await setDoc(ref,{
 
    uid:user.uid,
 
    username:
-    base.toLowerCase()
-    .replace(/[^a-z0-9_]/g,""),
+    extra.username||
+    createUsername(user.displayName,user.email),
 
-   name:base,
+   name:
+    extra.name||
+    user.displayName||
+    "AVYRA User",
 
-   email:user.email||"",
+   email:
+    user.email||"",
 
-   phoneCountryCode:"",
+   phone:
+    extra.phone||"",
 
-   phone:"",
-
-   photo:user.photoURL||"",
+   photo:
+    user.photoURL||"",
 
    bio:"",
 
@@ -1526,197 +1632,221 @@ async function createProfile(user){
 
    following:0,
 
-   createdAt:serverTimestamp()
+   createdAt:
+    serverTimestamp()
 
   });
+
+ }else{
+
+  /*
+   This is important.
+   setDoc with merge prevents
+   "document does not exist" errors.
+  */
+
+  await setDoc(ref,{
+
+   uid:user.uid,
+
+   email:user.email||snap.data().email||""
+
+  },{merge:true});
 
  }
 
 }
 
+
+function createUsername(name,email){
+
+ let value=
+  (name||email||"user")
+  .split("@")[0]
+  .replace(/[^a-zA-Z0-9]/g,"")
+  .toLowerCase();
+
+ return value+"_"+Math.floor(Math.random()*9999);
+}
+
+
+/* =========================
+   LOAD PROFILE
+========================= */
 
 async function loadProfile(){
 
  if(!currentUser)return;
 
- const snap=
-  await getDoc(
-   doc(db,"users",currentUser.uid)
-  );
 
- if(!snap.exists())return;
+ const ref=
+  doc(db,"users",currentUser.uid);
+
+ const snap=
+  await getDoc(ref);
+
+
+ if(!snap.exists()){
+
+  await createProfile(currentUser);
+
+  return loadProfile();
+ }
+
 
  const d=snap.data();
 
- document.getElementById("profileName")
-  .innerText=d.name||"AVYRA User";
 
- document.getElementById("profileUsername")
-  .innerText=
-   "@"+(d.username||"username");
+ document.getElementById("profileDisplayName").innerText=
+  d.name||"AVYRA User";
 
- document.getElementById("profileEmail")
-  .innerText=d.email||"";
 
- document.getElementById("profileBio")
-  .innerText=d.bio||"No bio yet.";
+ document.getElementById("profileUsername").innerText=
+  "@"+(d.username||"user");
 
- document.getElementById("myFollowers")
-  .innerText=d.followers||0;
 
- document.getElementById("myFollowing")
-  .innerText=d.following||0;
+ document.getElementById("profileEmail").innerText=
+  d.email||currentUser.email||"";
 
- document.getElementById("headerName")
-  .innerText=d.name||"Account";
 
- document.getElementById("profilePhoto")
-  .src=
-   d.photo||
-   "https://placehold.co/200x200/222/fff?text=A";
+ document.getElementById("profileBio").innerText=
+  d.bio||"No bio yet.";
 
- loadMyProducts();
+
+ document.getElementById("myFollowers").innerText=
+  d.followers||0;
+
+
+ document.getElementById("myFollowing").innerText=
+  d.following||0;
+
+
+ const photo=
+  d.photo||currentUser.photoURL;
+
+
+ document.getElementById("profilePhoto").src=
+  photo||
+  "https://placehold.co/200x200/222/fff?text=AVYRA";
 }
 
 
-/* ---------------- EDIT PROFILE ---------------- */
+/* =========================
+   EDIT PROFILE
+========================= */
 
-window.openEditProfile=async()=>{
+window.openEditProfile=async function(){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
 
+
  const snap=
   await getDoc(
    doc(db,"users",currentUser.uid)
   );
 
+
  const d=snap.exists()?snap.data():{};
 
- document.getElementById("editUsername")
-  .value=d.username||"";
 
- document.getElementById("editDisplayName")
-  .value=d.name||
-   currentUser.displayName||
-   "";
+ document.getElementById("editUsername").value=
+  d.username||"";
 
- document.getElementById("editBio")
-  .value=d.bio||"";
 
- document.getElementById("editCountryCode")
-  .value=d.phoneCountryCode||"+254";
+ document.getElementById("editDisplayName").value=
+  d.name||"";
 
- document.getElementById("editPhone")
-  .value=d.phone||"";
 
- document.getElementById("editPhoto")
-  .value="";
+ document.getElementById("editBio").value=
+  d.bio||"";
 
- document.getElementById("editStatus")
-  .innerText="";
 
- document.getElementById("editModal")
-  .style.display="flex";
+ openModal("editModal");
 };
 
 
-window.saveProfile=async()=>{
+window.saveProfile=async function(){
 
  if(!currentUser)return;
+
 
  const status=
   document.getElementById("editStatus");
 
+
  status.innerText="Saving...";
+
 
  try{
 
   const username=
    document.getElementById("editUsername")
-   .value.trim()
-   .toLowerCase();
+    .value.trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_]/g,"");
+
 
   const name=
    document.getElementById("editDisplayName")
-   .value.trim();
+    .value.trim();
+
 
   const bio=
    document.getElementById("editBio")
-   .value.trim();
+    .value.trim();
 
-  const code=
-   document.getElementById("editCountryCode")
-   .value;
 
-  const phone=
-   document.getElementById("editPhone")
-   .value.trim();
+  if(!username||!name){
+
+   status.innerText=
+    "Username and display name are required.";
+
+   return;
+  }
+
 
   const file=
    document.getElementById("editPhoto")
-   .files[0];
-
-  if(!username){
-
-   status.innerText=
-    "Username is required.";
-
-   return;
-  }
-
-  if(!name){
-
-   status.innerText=
-    "Display name is required.";
-
-   return;
-  }
+    .files[0];
 
 
   let photo=null;
+
 
   if(file){
 
    photo=
     await compressImage(
      file,
-     350,
-     350
+     300,
+     300
     );
 
   }
 
 
   const data={
-
-   uid:currentUser.uid,
-
    username,
-
    name,
-
    bio,
-
-   phoneCountryCode:code,
-
-   phone,
-
    updatedAt:serverTimestamp()
-
   };
 
 
   if(photo){
-
    data.photo=photo;
-
   }
 
+
+  /*
+   setDoc + merge works even if
+   the profile document doesn't exist.
+  */
 
   await setDoc(
    doc(db,"users",currentUser.uid),
@@ -1725,84 +1855,90 @@ window.saveProfile=async()=>{
   );
 
 
-  if(currentUser.displayName!==name){
+  /*
+   Also update Firebase Auth's
+   display name.
+  */
 
-   await updateProfile(
-    currentUser,
-    {
-     displayName:name
-    }
-   );
+  await updateProfile(
+   currentUser,
+   {
+    displayName:name
+   }
+  );
 
-  }
+
+  status.innerText="Saved!";
 
 
   await loadProfile();
 
-  await loadSellers();
+  loadSellers();
 
+  loadProducts();
 
-  status.innerText=
-   "Profile saved successfully.";
 
   setTimeout(()=>{
-
    closeModal("editModal");
+  },500);
 
-  },600);
 
-
- }catch(e){
-
-  console.error(e);
+ }catch(error){
 
   status.innerText=
-   "Could not save: "+e.message;
-
+   "Could not save: "+error.message;
  }
-
 };
 
 
-/* ---------------- IMAGE COMPRESSION ---------------- */
+/* =========================
+   IMAGE
+========================= */
 
-function compressImage(
- file,
- maxWidth,
- maxHeight
-){
+function compressImage(file,maxWidth,maxHeight){
 
  return new Promise((resolve,reject)=>{
 
   const reader=new FileReader();
 
-  reader.onload=e=>{
+
+  reader.onload=function(event){
 
    const img=new Image();
 
-   img.onload=()=>{
+
+   img.onload=function(){
 
     let width=img.width;
     let height=img.height;
 
-    const scale=
+
+    const ratio=
      Math.min(
       maxWidth/width,
       maxHeight/height,
       1
      );
 
-    width=Math.round(width*scale);
-    height=Math.round(height*scale);
+
+    width=
+     Math.round(width*ratio);
+
+    height=
+     Math.round(height*ratio);
+
 
     const canvas=
      document.createElement("canvas");
 
+
     canvas.width=width;
     canvas.height=height;
 
+
     const ctx=
      canvas.getContext("2d");
+
 
     ctx.drawImage(
      img,
@@ -1812,31 +1948,34 @@ function compressImage(
      height
     );
 
+
     resolve(
      canvas.toDataURL(
       "image/jpeg",
-      .55
+      .65
      )
     );
 
    };
 
+
    img.onerror=reject;
 
-   img.src=e.target.result;
-
+   img.src=event.target.result;
   };
+
 
   reader.onerror=reject;
 
   reader.readAsDataURL(file);
 
  });
-
 }
 
 
-/* ---------------- PRODUCTS ---------------- */
+/* =========================
+   PRODUCTS
+========================= */
 
 function loadProducts(){
 
@@ -1846,14 +1985,19 @@ function loadProducts(){
 
    allProducts=[];
 
-   snapshot.forEach(d=>{
+
+   snapshot.forEach(item=>{
 
     allProducts.push({
-     id:d.id,
-     ...d.data()
+
+     id:item.id,
+
+     ...item.data()
+
     });
 
    });
+
 
    renderProducts(allProducts);
 
@@ -1867,9 +2011,10 @@ function loadProducts(){
     error
    );
 
+   document.getElementById("products").innerHTML=
+    '<div class="empty">Could not load products.</div>';
   }
  );
-
 }
 
 
@@ -1878,7 +2023,9 @@ function renderProducts(products){
  const box=
   document.getElementById("products");
 
+
  box.innerHTML="";
+
 
  if(!products.length){
 
@@ -1894,14 +2041,16 @@ function renderProducts(products){
   const card=
    document.createElement("article");
 
+
   card.className="product";
 
 
-  const image=p.photo
-
-   ?`<img src="${p.photo}" alt="">`
-
-   :`<div class="productPlaceholder">🛍️</div>`;
+  const image=
+   p.photo
+   ?
+   `<img src="${p.photo}" loading="lazy">`
+   :
+   `<div class="productPlaceholder">🛍️</div>`;
 
 
   card.innerHTML=`
@@ -1920,70 +2069,53 @@ function renderProducts(products){
     </div>
 
     <div class="location">
-     📍 ${escapeHTML(
-      p.location||"Worldwide"
-     )}
+     📍 ${escapeHTML(p.location||"Worldwide")}
     </div>
 
     <div class="sellerName">
      Seller:
-     ${escapeHTML(
-      p.sellerName||"AVYRA Seller"
-     )}
+     ${escapeHTML(p.sellerName||"AVYRA Seller")}
     </div>
 
     <div class="desc">
-     ${escapeHTML(
-      p.description||""
-     )}
+     ${escapeHTML(p.description||"")}
     </div>
 
     <div class="cardBtns">
 
-     <button
-      class="messageBtn"
-      onclick="messageSeller('${p.sellerId}')">
-      Message
-     </button>
-
      ${
       currentUser &&
       p.sellerId===currentUser.uid
-
-      ?`
-
-       <button
-        class="deleteBtn"
-        onclick="deleteProduct('${p.id}')">
-        Delete
-       </button>
-
-      `:""
-
+      ?
+      `<button
+       class="delete"
+       onclick="deleteProduct('${p.id}')">
+       Delete
+      </button>`
+      :
+      `<button
+       class="primary"
+       onclick="messageSeller('${p.sellerId}')">
+       Message
+      </button>`
      }
 
     </div>
 
-
     ${
      currentUser &&
      p.sellerId!==currentUser.uid
-
-     ?`
-
-      <button
-       class="secondary full"
-       onclick="openReview(
-        '${p.sellerId}',
-        '${escapeHTML(
-         p.sellerName||"Seller"
-        )}'
-       )">
-       ⭐ Review Seller
-      </button>
-
-     `:""
-
+     ?
+     `<button
+      class="reviewBtn"
+      onclick="openReview(
+       '${p.sellerId}',
+       '${escapeHTML(p.sellerName||"Seller")}'
+      )">
+      ⭐ Review Seller
+     </button>`
+     :
+     ""
     }
 
    </div>
@@ -1998,15 +2130,102 @@ function renderProducts(products){
 }
 
 
-/* ---------------- SEARCH ---------------- */
+/* =========================
+   SEARCH
+========================= */
 
-window.searchProducts=()=>{
+document
+ .getElementById("searchInput")
+ .addEventListener(
+  "input",
+  function(){
+
+   showSuggestions(this.value);
+
+   searchProducts();
+
+  }
+ );
+
+
+function showSuggestions(text){
+
+ const box=
+  document.getElementById("suggestions");
+
+
+ text=text.trim().toLowerCase();
+
+
+ if(!text){
+
+  box.style.display="none";
+
+  return;
+ }
+
+
+ const matches=
+  allProducts
+   .filter(p=>
+    String(p.name||"")
+     .toLowerCase()
+     .includes(text)
+   )
+   .slice(0,6);
+
+
+ if(!matches.length){
+
+  box.style.display="none";
+
+  return;
+ }
+
+
+ box.innerHTML="";
+
+
+ matches.forEach(p=>{
+
+  const div=
+   document.createElement("div");
+
+  div.className="suggestion";
+
+  div.innerText=
+   p.name||"Product";
+
+  div.onclick=()=>{
+
+   document.getElementById("searchInput").value=
+    p.name||"";
+
+   box.style.display="none";
+
+   searchProducts();
+
+  };
+
+
+  box.appendChild(div);
+
+ });
+
+
+ box.style.display="block";
+}
+
+
+window.searchProducts=function(){
 
  const text=
-  document.getElementById("searchInput")
-  .value
-  .trim()
-  .toLowerCase();
+  document
+   .getElementById("searchInput")
+   .value
+   .trim()
+   .toLowerCase();
+
 
  if(!text){
 
@@ -2017,152 +2236,86 @@ window.searchProducts=()=>{
 
 
  const results=
-  allProducts.filter(p=>{
+  allProducts.filter(p=>
 
-   return [
-
-    p.name,
-    p.description,
-    p.location,
-    p.sellerName,
-    p.currency
-
-   ].some(value=>
-    String(value||"")
+   String(p.name||"")
     .toLowerCase()
     .includes(text)
-   );
 
-  });
+   ||
+
+   String(p.description||"")
+    .toLowerCase()
+    .includes(text)
+
+   ||
+
+   String(p.location||"")
+    .toLowerCase()
+    .includes(text)
+
+   ||
+
+   String(p.sellerName||"")
+    .toLowerCase()
+    .includes(text)
+
+   ||
+
+   String(p.currency||"")
+    .toLowerCase()
+    .includes(text)
+
+  );
 
 
  renderProducts(results);
-
 };
 
 
-document.getElementById("searchInput")
-.addEventListener(
- "input",
- searchProducts
-);
+window.categorySearch=function(category){
 
+ document.getElementById("searchInput").value=
+  category;
 
-/* ---------------- DELETE PRODUCT ---------------- */
+ searchProducts();
 
-window.deleteProduct=async id=>{
-
- if(!currentUser)return;
-
- if(!confirm("Delete this listing?"))
-  return;
-
-
- try{
-
-  const ref=
-   doc(db,"products",id);
-
-  const snap=
-   await getDoc(ref);
-
-  if(!snap.exists()){
-
-   alert("Listing no longer exists.");
-
-   return;
-  }
-
-
-  if(
-   snap.data().sellerId!==
-   currentUser.uid
-  ){
-
-   alert(
-    "You can only delete your own listing."
-   );
-
-   return;
-  }
-
-
-  await deleteDoc(ref);
-
-
- }catch(e){
-
-  alert(
-   "Could not delete: "+e.message
-  );
-
- }
-
+ window.scrollTo({
+  top:350,
+  behavior:"smooth"
+ });
 };
 
 
-/* ---------------- ADD PRODUCT ---------------- */
+/* =========================
+   ADD PRODUCT
+========================= */
 
-window.openAddItem=()=>{
+window.openAddItem=function(){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
 
- document.getElementById("itemModal")
- .style.display="flex";
-
+ openModal("itemModal");
 };
 
 
-window.addItem=async()=>{
+window.addItem=async function(){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
 
-
- const name=
-  document.getElementById("itemName")
-  .value.trim();
-
- const price=
-  document.getElementById("itemPrice")
-  .value;
-
- const currency=
-  document.getElementById("itemCurrency")
-  .value.trim();
-
- const location=
-  document.getElementById("itemLocation")
-  .value.trim();
-
- const description=
-  document.getElementById("itemDescription")
-  .value.trim();
-
- const file=
-  document.getElementById("itemPhoto")
-  .files[0];
 
  const status=
   document.getElementById("itemStatus");
-
-
- if(!name||!price||!currency){
-
-  status.innerText=
-   "Name, price and currency are required.";
-
-  return;
- }
 
 
  status.innerText="Publishing...";
@@ -2170,29 +2323,70 @@ window.addItem=async()=>{
 
  try{
 
-  const profile=
-   await getDoc(
-    doc(db,"users",currentUser.uid)
-   );
+  const name=
+   document.getElementById("itemName")
+    .value.trim();
 
-  const user=
-   profile.exists()
-   ?profile.data()
-   :{};
+
+  const price=
+   document.getElementById("itemPrice")
+    .value;
+
+
+  const currency=
+   document.getElementById("itemCurrency")
+    .value.trim();
+
+
+  const location=
+   document.getElementById("itemLocation")
+    .value.trim();
+
+
+  const description=
+   document.getElementById("itemDescription")
+    .value.trim();
+
+
+  const file=
+   document.getElementById("itemPhoto")
+    .files[0];
+
+
+  if(!name||!price||!currency){
+
+   status.innerText=
+    "Name, price and currency are required.";
+
+   return;
+  }
 
 
   let photo="";
+
 
   if(file){
 
    photo=
     await compressImage(
      file,
-     700,
-     700
+     600,
+     600
     );
 
   }
+
+
+  const profile=
+   await getDoc(
+    doc(db,"users",currentUser.uid)
+   );
+
+
+  const userData=
+   profile.exists()
+   ?profile.data()
+   :{};
 
 
   await addDoc(
@@ -2202,7 +2396,7 @@ window.addItem=async()=>{
     sellerId:currentUser.uid,
 
     sellerName:
-     user.name||
+     userData.name||
      currentUser.displayName||
      "AVYRA Seller",
 
@@ -2224,55 +2418,94 @@ window.addItem=async()=>{
   );
 
 
-  status.innerText=
-   "Published successfully!";
+  status.innerText="Published!";
 
 
-  document.getElementById("itemName")
-   .value="";
-
-  document.getElementById("itemPrice")
-   .value="";
-
-  document.getElementById("itemCurrency")
-   .value="";
-
-  document.getElementById("itemLocation")
-   .value="";
-
-  document.getElementById("itemDescription")
-   .value="";
-
-  document.getElementById("itemPhoto")
-   .value="";
+  document.getElementById("itemName").value="";
+  document.getElementById("itemPrice").value="";
+  document.getElementById("itemCurrency").value="";
+  document.getElementById("itemLocation").value="";
+  document.getElementById("itemDescription").value="";
+  document.getElementById("itemPhoto").value="";
 
 
-  setTimeout(
-   ()=>{
-    closeModal("itemModal");
-   },
-   600
-  );
+  setTimeout(()=>{
+   closeModal("itemModal");
+  },600);
 
 
- }catch(e){
+ }catch(error){
 
   status.innerText=
-   "Could not publish: "+e.message;
-
+   "Could not publish: "+error.message;
  }
-
 };
 
 
-/* ---------------- MY PRODUCTS ---------------- */
+/* =========================
+   DELETE PRODUCT
+========================= */
+
+window.deleteProduct=async function(id){
+
+ if(!currentUser)return;
+
+
+ if(!confirm("Delete this listing?"))return;
+
+
+ try{
+
+  const ref=
+   doc(db,"products",id);
+
+
+  const snap=
+   await getDoc(ref);
+
+
+  if(!snap.exists()){
+
+   alert("This listing no longer exists.");
+
+   return;
+  }
+
+
+  if(
+   snap.data().sellerId!==
+   currentUser.uid
+  ){
+
+   alert(
+    "You can only delete your own listings."
+   );
+
+   return;
+  }
+
+
+  await deleteDoc(ref);
+
+
+ }catch(error){
+
+  alert(
+   "Could not delete: "+
+   error.message
+  );
+ }
+};
+
+
+/* =========================
+   MY PRODUCTS
+========================= */
 
 function loadMyProducts(){
 
  if(!currentUser)return;
 
- const box=
-  document.getElementById("myProducts");
 
  const mine=
   allProducts.filter(
@@ -2280,8 +2513,12 @@ function loadMyProducts(){
   );
 
 
- document.getElementById("myItems")
- .innerText=mine.length;
+ document.getElementById("myItems").innerText=
+  mine.length;
+
+
+ const box=
+  document.getElementById("myProducts");
 
 
  box.innerHTML="";
@@ -2301,38 +2538,38 @@ function loadMyProducts(){
   const div=
    document.createElement("div");
 
-  div.className="product";
+
+  div.className="profileProduct";
 
 
   div.innerHTML=`
 
    ${
     p.photo
-
-    ?`<img
-       src="${p.photo}"
-       alt="">`
-
-    :`<div class="productPlaceholder">
-       🛍️
-      </div>`
+    ?
+    `<img
+     src="${p.photo}"
+     loading="lazy">`
+    :
+    `<div class="productPlaceholder">
+     🛍️
+    </div>`
    }
 
+   <div class="profileProductInfo">
 
-   <div class="productInfo">
-
-    <h3>
-     ${escapeHTML(p.name)}
-    </h3>
+    <b>
+     ${escapeHTML(p.name||"Item")}
+    </b>
 
     <div class="price">
-     ${escapeHTML(p.currency)}
+     ${escapeHTML(p.currency||"")}
      ${p.price}
     </div>
 
-
     <button
-     class="deleteBtn full"
+     class="delete"
+     style="width:100%;padding:8px;margin-top:6px"
      onclick="deleteProduct('${p.id}')">
      Delete
     </button>
@@ -2345,24 +2582,26 @@ function loadMyProducts(){
   box.appendChild(div);
 
  });
-
 }
 
 
-/* ---------------- SELLERS ---------------- */
+/* =========================
+   SELLERS
+========================= */
 
 async function loadSellers(){
 
  const box=
   document.getElementById("sellers");
 
+
  box.innerHTML=
-  '<div class="empty">Loading sellers...</div>';
+  '<div class="loading">Loading sellers...</div>';
 
 
  try{
 
-  const snap=
+  const snapshot=
    await getDocs(
     collection(db,"users")
    );
@@ -2371,15 +2610,17 @@ async function loadSellers(){
   box.innerHTML="";
 
 
-  for(const d of snap.docs){
+  for(const item of snapshot.docs){
 
-   const u=d.data();
+   const u=item.data();
 
-   if(!u.uid)continue;
 
    if(
-    currentUser &&
-    u.uid===currentUser.uid
+    !u.uid ||
+    (
+     currentUser &&
+     u.uid===currentUser.uid
+    )
    )continue;
 
 
@@ -2388,18 +2629,17 @@ async function loadSellers(){
 
    if(currentUser){
 
-    const f=
+    const follow=
      await getDoc(
       doc(
        db,
        "follows",
-       currentUser.uid+
-       "_"+
-       u.uid
+       currentUser.uid+"_"+u.uid
       )
      );
 
-    following=f.exists();
+
+    following=follow.exists();
 
    }
 
@@ -2407,26 +2647,20 @@ async function loadSellers(){
    const div=
     document.createElement("div");
 
+
    div.className="seller";
 
 
    const avatar=
-
     u.photo
-
-    ?`
-     <div class="avatar">
-      <img src="${u.photo}" alt="">
-     </div>
-    `
-
-    :`
-     <div class="avatar">
-      ${(u.name||"A")
-       .charAt(0)
-       .toUpperCase()}
-     </div>
-    `;
+    ?
+    `<div class="avatar">
+      <img src="${u.photo}">
+     </div>`
+    :
+    `<div class="avatar">
+      ${(u.name||"A")[0].toUpperCase()}
+     </div>`;
 
 
    div.innerHTML=`
@@ -2436,29 +2670,21 @@ async function loadSellers(){
     <div class="sellerInfo">
 
      <b>
-      ${escapeHTML(
-       u.name||"AVYRA User"
-      )}
+      ${escapeHTML(u.name||"AVYRA User")}
      </b>
 
      <small>
-      @${escapeHTML(
-       u.username||"username"
-      )}
-      ·
-      ${u.followers||0} followers
+      @${escapeHTML(u.username||"user")}
+      · ${u.followers||0} followers
      </small>
 
     </div>
-
 
     <button
      class="follow"
      onclick="followSeller('${u.uid}')">
 
-     ${following
-      ?"Following"
-      :"Follow"}
+     ${following?"Following":"Follow"}
 
     </button>
 
@@ -2470,36 +2696,29 @@ async function loadSellers(){
   }
 
 
-  if(!box.children.length){
-
-   box.innerHTML=
-    '<div class="empty">No sellers yet.</div>';
-
-  }
-
-
- }catch(e){
+ }catch(error){
 
   box.innerHTML=
    '<div class="empty">Could not load sellers.</div>';
 
-  console.error(e);
-
+  console.error(error);
  }
-
 }
 
 
-/* ---------------- FOLLOW ---------------- */
+/* =========================
+   FOLLOW
+========================= */
 
-window.followSeller=async sellerId=>{
+window.followSeller=async function(sellerId){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
+
 
  if(sellerId===currentUser.uid)return;
 
@@ -2507,8 +2726,10 @@ window.followSeller=async sellerId=>{
  const id=
   currentUser.uid+"_"+sellerId;
 
+
  const ref=
   doc(db,"follows",id);
+
 
  try{
 
@@ -2524,8 +2745,7 @@ window.followSeller=async sellerId=>{
    await updateDoc(
     doc(db,"users",sellerId),
     {
-     followers:
-      increment(-1)
+     followers:increment(-1)
     }
    );
 
@@ -2533,32 +2753,27 @@ window.followSeller=async sellerId=>{
    await updateDoc(
     doc(db,"users",currentUser.uid),
     {
-     following:
-      increment(-1)
+     following:increment(-1)
     }
    );
 
 
   }else{
 
-   await setDoc(ref,{
-
-    followerId:
-     currentUser.uid,
-
-    sellerId,
-
-    createdAt:
-     serverTimestamp()
-
-   });
+   await setDoc(
+    ref,
+    {
+     followerId:currentUser.uid,
+     sellerId,
+     createdAt:serverTimestamp()
+    }
+   );
 
 
    await updateDoc(
     doc(db,"users",sellerId),
     {
-     followers:
-      increment(1)
+     followers:increment(1)
     }
    );
 
@@ -2566,73 +2781,69 @@ window.followSeller=async sellerId=>{
    await updateDoc(
     doc(db,"users",currentUser.uid),
     {
-     following:
-      increment(1)
+     following:increment(1)
     }
    );
 
 
    await addNotification(
     sellerId,
-    `${currentUser.displayName||
-     "Someone"} followed you.`
+    (currentUser.displayName||"Someone")+
+    " followed you."
    );
 
   }
 
 
-  await loadProfile();
-
   await loadSellers();
 
+  await loadProfile();
 
- }catch(e){
+
+ }catch(error){
 
   alert(
-   "Follow failed: "+e.message
+   "Follow failed: "+
+   error.message
   );
-
  }
-
 };
 
 
-/* ---------------- NOTIFICATIONS ---------------- */
+/* =========================
+   NOTIFICATIONS
+========================= */
 
 async function addNotification(
  userId,
  text
 ){
 
- await addDoc(
-  collection(db,"notifications"),
-  {
+ try{
 
-   userId,
+  await addDoc(
+   collection(db,"notifications"),
+   {
+    userId,
+    text,
+    read:false,
+    createdAt:serverTimestamp()
+   }
+  );
 
-   text,
+ }catch(error){
 
-   read:false,
-
-   createdAt:
-    serverTimestamp()
-
-  }
- );
-
+  console.error(
+   "Notification error:",
+   error
+  );
+ }
 }
 
 
 function loadNotifications(){
 
  if(!currentUser)return;
-
-
- if(unsubscribeNotifications){
-
-  unsubscribeNotifications();
-
- }
 
 
  const q=
@@ -2646,110 +2857,87 @@ function loadNotifications(){
   );
 
 
- unsubscribeNotifications=
-  onSnapshot(q,snapshot=>{
+ onSnapshot(q,snapshot=>{
 
-   const box=
-    document.getElementById(
-     "notifications"
-    );
-
-   box.innerHTML="";
+  const box=
+   document.getElementById("notifications");
 
 
-   const list=[];
+  box.innerHTML="";
 
 
-   snapshot.forEach(d=>{
-
-    list.push({
-     id:d.id,
-     ...d.data()
-    });
-
-   });
+  const list=[];
 
 
-   list.sort(
-    (a,b)=>
-     (b.createdAt?.seconds||0)-
-     (a.createdAt?.seconds||0)
-   );
+  snapshot.forEach(item=>{
 
-
-   if(!list.length){
-
-    box.innerHTML=
-     '<div class="empty">No notifications yet.</div>';
-
-    return;
-
-   }
-
-
-   list.forEach(n=>{
-
-    const div=
-     document.createElement("div");
-
-    div.className="notification";
-
-
-    div.innerHTML=`
-
-     <div>
-      🔔 ${escapeHTML(
-       n.text||"Notification"
-      )}
-     </div>
-
-     <small>
-      AVYRA
-     </small>
-
-    `;
-
-
-    box.appendChild(div);
-
-   });
+   list.push(item.data());
 
   });
 
+
+  list.sort(
+   (a,b)=>
+   (b.createdAt?.seconds||0)-
+   (a.createdAt?.seconds||0)
+  );
+
+
+  if(!list.length){
+
+   box.innerHTML=
+    '<div class="empty">No notifications yet.</div>';
+
+   return;
+  }
+
+
+  list.forEach(n=>{
+
+   const div=
+    document.createElement("div");
+
+
+   div.className="notification";
+
+
+   div.innerHTML=`
+
+    <div>
+     🔔 ${escapeHTML(n.text||"Notification")}
+    </div>
+
+    <small>
+     AVYRA
+    </small>
+
+   `;
+
+
+   box.appendChild(div);
+
+  });
+
+ });
 }
 
 
-window.openNotifications=()=>{
+/* =========================
+   REVIEWS
+========================= */
 
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
- document.getElementById(
-  "notificationModal"
- ).style.display="flex";
-
- loadNotifications();
-
-};
-
-
-/* ---------------- REVIEWS ---------------- */
-
-window.openReview=(
+window.openReview=function(
  sellerId,
  sellerName
-)=>{
+){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
+
 
  reviewSellerId=sellerId;
 
@@ -2760,40 +2948,32 @@ window.openReview=(
   "Reviewing "+sellerName;
 
 
- document.getElementById(
-  "reviewModal"
- ).style.display="flex";
-
+ openModal("reviewModal");
 };
 
 
-window.submitReview=async()=>{
+window.submitReview=async function(){
 
  if(
-  !currentUser||
+  !currentUser ||
   !reviewSellerId
  )return;
 
 
  const rating=
   Number(
-   document.getElementById(
-    "reviewRating"
-   ).value
+   document.getElementById("reviewRating").value
   );
 
 
  const text=
-  document.getElementById(
-   "reviewText"
-  ).value.trim();
+  document.getElementById("reviewText")
+   .value.trim();
 
 
  if(!text){
 
-  alert(
-   "Write a review first."
-  );
+  alert("Write a review first.");
 
   return;
  }
@@ -2805,11 +2985,9 @@ window.submitReview=async()=>{
    collection(db,"reviews"),
    {
 
-    sellerId:
-     reviewSellerId,
+    sellerId:reviewSellerId,
 
-    buyerId:
-     currentUser.uid,
+    buyerId:currentUser.uid,
 
     buyerName:
      currentUser.displayName||
@@ -2828,63 +3006,42 @@ window.submitReview=async()=>{
 
   await addNotification(
    reviewSellerId,
-   `${currentUser.displayName||
-    "A buyer"} left you a ${
-     rating
-    }-star review.`
+   (currentUser.displayName||"A buyer")+
+   " left you a "+
+   rating+
+   "-star review."
   );
 
 
-  document.getElementById(
-   "reviewText"
-  ).value="";
+  document.getElementById("reviewText").value="";
 
 
-  closeModal(
-   "reviewModal"
-  );
+  closeModal("reviewModal");
 
 
-  alert(
-   "Review submitted!"
-  );
+  alert("Review submitted!");
 
-
- }catch(e){
+ }catch(error){
 
   alert(
    "Could not submit review: "+
-   e.message
+   error.message
   );
-
  }
-
 };
 
 
-/* ---------------- MESSAGES ---------------- */
+/* =========================
+   MESSAGES
+========================= */
 
-window.openMessages=()=>{
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
- showPage("messagesPage");
-
- loadConversations();
-
-};
-
-
-window.messageSeller=async sellerId=>{
+window.messageSeller=async function(
+ sellerId
+){
 
  if(!currentUser){
 
-  openLogin();
+  openModal("loginModal");
 
   return;
  }
@@ -2892,11 +3049,10 @@ window.messageSeller=async sellerId=>{
 
  if(sellerId===currentUser.uid){
 
+  openAccount();
+
   return;
  }
-
-
- showPage("messagesPage");
 
 
  const snap=
@@ -2911,17 +3067,23 @@ window.messageSeller=async sellerId=>{
   :{name:"AVYRA User"};
 
 
+ showPage("messagesPage");
+
  openChat(
   sellerId,
   user
  );
-
 };
 
 
-function loadConversations(){
+async function loadConversations(){
 
  if(!currentUser)return;
+
+
+ if(unsubscribeMessages){
+  unsubscribeMessages();
+ }
 
 
  const q=
@@ -2935,148 +3097,177 @@ function loadConversations(){
   );
 
 
- onSnapshot(q,async snapshot=>{
+ unsubscribeMessages=
+  onSnapshot(q,async snapshot=>{
 
-  const box=
-   document.getElementById(
-    "conversationList"
-   );
-
-  box.innerHTML="";
+   const latest={};
 
 
-  const latest={};
+   snapshot.forEach(item=>{
+
+    const m=item.data();
 
 
-  snapshot.forEach(d=>{
-
-   const m=d.data();
-
-   const other=
-    m.senderId===
-    currentUser.uid
-
-    ?m.receiverId
-    :m.senderId;
+    const other=
+     m.senderId===currentUser.uid
+     ?m.receiverId
+     :m.senderId;
 
 
-   if(
-    !latest[other]||
-    (m.createdAt?.seconds||0)>
-    (latest[other]
-     .createdAt?.seconds||0)
-   ){
+    if(
+     !latest[other] ||
+     (
+      m.createdAt?.seconds||0
+     )>
+     (
+      latest[other]
+       .createdAt?.seconds||0
+     )
+    ){
 
-    latest[other]={
-     ...m,
-     other
-    };
+     latest[other]={
+      ...m,
+      other
+     };
 
-   }
+    }
 
-  });
-
-
-  const conversations=
-   Object.values(latest);
-
-
-  if(!conversations.length){
-
-   box.innerHTML=
-    '<div class="empty">No conversations yet.</div>';
-
-   return;
-
-  }
+   });
 
 
-  for(
-   const c of conversations
-  ){
-
-   const snap=
-    await getDoc(
-     doc(db,"users",c.other)
+   const box=
+    document.getElementById(
+     "conversationList"
     );
 
 
-   const u=
-    snap.exists()
-    ?snap.data()
-    :{
-     name:"AVYRA User"
-    };
+   box.innerHTML="";
 
 
-   const div=
-    document.createElement("div");
-
-   div.className="conversation";
+   const conversations=
+    Object.values(latest);
 
 
-   div.innerHTML=`
+   if(!conversations.length){
 
-    <div class="avatar">
+    box.innerHTML=
+     '<div class="empty">No conversations yet.</div>';
 
-     ${
-      u.photo
-
-      ?`<img
-         src="${u.photo}"
-         alt="">`
-
-      :(u.name||"A")
-       .charAt(0)
-       .toUpperCase()
-     }
-
-    </div>
+    return;
+   }
 
 
-    <div class="conversationText">
+   for(
+    const conversation
+    of conversations
+   ){
 
-     <b>
-      ${escapeHTML(
-       u.name||"User"
-      )}
-     </b>
-
-     <p>
-      ${escapeHTML(
-       c.text||""
-      )}
-     </p>
-
-    </div>
-
-   `;
+    const snap=
+     await getDoc(
+      doc(
+       db,
+       "users",
+       conversation.other
+      )
+     );
 
 
-   div.onclick=
-    ()=>{
+    const u=
+     snap.exists()
+     ?snap.data()
+     :{
+      name:"AVYRA User"
+     };
+
+
+    const div=
+     document.createElement("div");
+
+
+    div.className="conversation";
+
+
+    div.innerHTML=`
+
+     <div class="avatar">
+
+      ${
+       u.photo
+       ?
+       `<img src="${u.photo}">`
+       :
+       (u.name||"A")[0]
+        .toUpperCase()
+      }
+
+     </div>
+
+     <div class="conversationText">
+
+      <b>
+       ${escapeHTML(u.name||"User")}
+      </b>
+
+      <p>
+       ${escapeHTML(conversation.text||"")}
+      </p>
+
+     </div>
+
+    `;
+
+
+    div.onclick=()=>{
      openChat(
-      c.other,
+      conversation.other,
       u
      );
     };
 
 
-   box.appendChild(div);
+    box.appendChild(div);
 
-  }
+   }
 
- });
-
+  });
 }
 
 
-function openChat(
- userId,
- user
-){
+function showConversationList(){
+
+ document.getElementById(
+  "conversationArea"
+ ).style.display="block";
+
+
+ document.getElementById(
+  "chatArea"
+ ).style.display="none";
+
+
+ activeChatUser=null;
+
+ loadConversations();
+}
+
+
+window.showConversationList=
+ showConversationList;
+
+
+function openChat(userId,user){
 
  activeChatUser=userId;
+
+
+ document.getElementById(
+  "conversationArea"
+ ).style.display="none";
+
+
+ document.getElementById(
+  "chatArea"
+ ).style.display="flex";
 
 
  document.getElementById(
@@ -3085,31 +3276,14 @@ function openChat(
   user.name||"AVYRA User";
 
 
- document.getElementById(
-  "messageInput"
- ).disabled=false;
-
-
- document.getElementById(
-  "sendMessageBtn"
- ).disabled=false;
-
-
- loadChatMessages(
-  userId
- );
-
+ loadChatMessages(userId);
 }
 
 
-function loadChatMessages(
- other
-){
+function loadChatMessages(other){
 
  if(unsubscribeChat){
-
   unsubscribeChat();
-
  }
 
 
@@ -3127,26 +3301,17 @@ function loadChatMessages(
  unsubscribeChat=
   onSnapshot(q,snapshot=>{
 
-   const box=
-    document.getElementById(
-     "chatMessages"
-    );
-
-   box.innerHTML="";
-
-
    const messages=[];
 
 
-   snapshot.forEach(d=>{
+   snapshot.forEach(item=>{
 
-    const m=d.data();
+    const m=item.data();
 
 
     if(
-     m.participants?.includes(
-      other
-     )
+     m.participants &&
+     m.participants.includes(other)
     ){
 
      messages.push(m);
@@ -3158,9 +3323,18 @@ function loadChatMessages(
 
    messages.sort(
     (a,b)=>
-     (a.createdAt?.seconds||0)-
-     (b.createdAt?.seconds||0)
+    (a.createdAt?.seconds||0)-
+    (b.createdAt?.seconds||0)
    );
+
+
+   const box=
+    document.getElementById(
+     "chatMessages"
+    );
+
+
+   box.innerHTML="";
 
 
    messages.forEach(m=>{
@@ -3168,20 +3342,42 @@ function loadChatMessages(
     const div=
      document.createElement("div");
 
+
     div.className=
-     "chatMessage"+
+     "chatMessage "+
      (
-      m.senderId===
-      currentUser.uid
-      ?" mine"
+      m.senderId===currentUser.uid
+      ?"mine"
       :""
      );
 
 
-    div.innerHTML=
-     escapeHTML(
-      m.text||""
-     );
+    const time=
+     m.createdAt
+     ?
+     new Date(
+      m.createdAt.seconds*1000
+     ).toLocaleTimeString(
+      [],
+      {
+       hour:"2-digit",
+       minute:"2-digit"
+      }
+     )
+     :"";
+
+
+    div.innerHTML=`
+
+     <div>
+      ${escapeHTML(m.text||"")}
+     </div>
+
+     <div class="messageTime">
+      ${time}
+     </div>
+
+    `;
 
 
     box.appendChild(div);
@@ -3193,14 +3389,13 @@ function loadChatMessages(
     box.scrollHeight;
 
   });
-
 }
 
 
-window.sendMessage=async()=>{
+window.sendMessage=async function(){
 
  if(
-  !currentUser||
+  !currentUser ||
   !activeChatUser
  )return;
 
@@ -3227,11 +3422,9 @@ window.sendMessage=async()=>{
    collection(db,"messages"),
    {
 
-    senderId:
-     currentUser.uid,
+    senderId:currentUser.uid,
 
-    receiverId:
-     activeChatUser,
+    receiverId:activeChatUser,
 
     text,
 
@@ -3249,66 +3442,46 @@ window.sendMessage=async()=>{
 
   await addNotification(
    activeChatUser,
-   `${currentUser.displayName||
-    "Someone"} sent you a message.`
+   (currentUser.displayName||"Someone")+
+   " sent you a message."
   );
 
 
- }catch(e){
+ }catch(error){
 
   alert(
    "Message failed: "+
-   e.message
+   error.message
   );
 
+  input.value=text;
  }
-
 };
 
 
-document.getElementById(
- "messageInput"
-).addEventListener(
- "keydown",
- e=>{
+document
+ .getElementById("messageInput")
+ .addEventListener(
+  "keydown",
+  function(event){
 
-  if(e.key==="Enter"){
+   if(event.key==="Enter"){
 
-   e.preventDefault();
+    event.preventDefault();
 
-   sendMessage();
+    sendMessage();
+
+   }
 
   }
-
- }
-);
-
-
-/* ---------------- ACCOUNT ---------------- */
-
-window.openAccount=()=>{
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
-
- showPage(
-  "accountPage"
  );
 
 
- loadProfile();
+/* =========================
+   LOGOUT
+========================= */
 
- loadMyProducts();
-
-};
-
-
-window.logout=async()=>{
+window.logout=async function(){
 
  try{
 
@@ -3316,67 +3489,97 @@ window.logout=async()=>{
 
   showPage("homePage");
 
- }catch(e){
+  location.reload();
 
-  alert(
-   "Sign out failed: "+
-   e.message
-  );
+ }catch(error){
+
+  alert(error.message);
 
  }
-
 };
 
 
-/* ---------------- UI HELPERS ---------------- */
-
-window.openLogin=()=>{
-
- document.getElementById(
-  "loginModal"
- ).style.display="flex";
-
-};
-
-
-window.closeModal=id=>{
-
- document.getElementById(
-  id
- ).style.display="none";
-
-};
-
-
-window.focusSearch=()=>{
-
- showPage("homePage");
-
- const input=
-  document.getElementById(
-   "searchInput"
-  );
-
- input.focus();
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
-
-};
-
+/* =========================
+   HELPERS
+========================= */
 
 function escapeHTML(value){
 
  return String(value)
 
   .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
 
+  .replace(/</g,"&lt;")
+
+  .replace(/>/g,"&gt;")
+
+  .replace(/"/g,"&quot;")
+
+  .replace(/'/g,"&#039;");
+}
+
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+window.goHome=function(){
+ showPage("homePage");
+};
+
+
+</script>
+
+
+<nav class="bottomNav">
+
+ <button onclick="showPage('homePage')">
+  <span>🏠</span>
+  Home
+ </button>
+
+ <button onclick="focusSearch()">
+  <span>🔎</span>
+  Search
+ </button>
+
+ <button onclick="openAddItem()">
+  <span>＋</span>
+  Sell
+ </button>
+
+ <button onclick="openMessages()">
+  <span>💬</span>
+  Messages
+ </button>
+
+ <button onclick="openAccount()">
+  <span>👤</span>
+  Account
+ </button>
+
+</nav>
+
+
+<script>
+
+function focusSearch(){
+
+ showPage("homePage");
+
+ setTimeout(()=>{
+
+  const input=
+   document.getElementById("searchInput");
+
+  input.focus();
+
+  window.scrollTo({
+   top:0,
+   behavior:"smooth"
+  });
+
+ },100);
 }
 
 </script>
