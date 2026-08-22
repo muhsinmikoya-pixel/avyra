@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AVYRA — Buy • Sell • Connect</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
 
 :root{
  --red:#ff1744;
  --bg:#080808;
  --card:#151515;
+ --card2:#1d1d1d;
  --border:#292929;
  --muted:#999;
 }
@@ -19,13 +24,17 @@
 body{
  background:var(--bg);
  color:white;
- font-family:Arial,sans-serif;
- padding-bottom:75px;
+ font-family:Arial,Helvetica,sans-serif;
+ padding-bottom:70px;
 }
 
-button,input,textarea{font:inherit}
+button,input,textarea{
+ font:inherit;
+}
 
-button{cursor:pointer}
+button{
+ cursor:pointer;
+}
 
 header{
  height:65px;
@@ -46,14 +55,16 @@ header{
  letter-spacing:2px;
 }
 
-.logo span{color:var(--red)}
+.logo span{
+ color:var(--red);
+}
 
-.headerBtns{
+.headerButtons{
  display:flex;
  gap:8px;
 }
 
-.headerBtns button{
+.headerButtons button{
  background:none;
  color:white;
  border:1px solid var(--red);
@@ -64,14 +75,22 @@ header{
 .hero{
  text-align:center;
  padding:55px 20px;
- background:radial-gradient(circle at top,#3b0a17,#080808 60%);
+ background:
+ radial-gradient(
+  circle at top,
+  #3b0a17,
+  #080808 60%
+ );
 }
 
 .hero h1{
  font-size:clamp(42px,10vw,70px);
+ font-weight:900;
 }
 
-.hero h1 span{color:var(--red)}
+.hero h1 span{
+ color:var(--red);
+}
 
 .hero p{
  color:var(--muted);
@@ -146,7 +165,8 @@ header{
 
 .products{
  display:grid;
- grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+ grid-template-columns:
+ repeat(auto-fill,minmax(185px,1fr));
  gap:15px;
 }
 
@@ -167,8 +187,8 @@ header{
 .productEmoji{
  height:180px;
  display:flex;
- justify-content:center;
  align-items:center;
+ justify-content:center;
  background:#202020;
  font-size:60px;
 }
@@ -178,8 +198,8 @@ header{
 }
 
 .productInfo h3{
- margin-bottom:7px;
  font-size:16px;
+ margin-bottom:7px;
 }
 
 .price{
@@ -240,7 +260,9 @@ header{
  object-fit:cover;
 }
 
-.sellerInfo{flex:1}
+.sellerInfo{
+ flex:1;
+}
 
 .sellerInfo small{
  color:#888;
@@ -292,16 +314,27 @@ header{
  margin-top:8px;
 }
 
-.logout{
+.primary{
+ width:100%;
  background:var(--red);
  color:white;
  border:0;
- padding:11px 15px;
+ padding:12px;
  border-radius:8px;
  margin-top:15px;
 }
 
-.bottom{
+.logout{
+ width:100%;
+ background:#292929;
+ color:white;
+ border:0;
+ padding:12px;
+ border-radius:8px;
+ margin-top:10px;
+}
+
+.bottomNav{
  position:fixed;
  bottom:0;
  left:0;
@@ -315,7 +348,7 @@ header{
  z-index:50;
 }
 
-.bottom button{
+.bottomNav button{
  background:none;
  border:0;
  color:#aaa;
@@ -330,18 +363,18 @@ header{
  z-index:100;
  align-items:center;
  justify-content:center;
- padding:20px;
+ padding:15px;
 }
 
 .box{
  width:100%;
  max-width:430px;
- max-height:90vh;
+ max-height:92vh;
  overflow-y:auto;
  background:#181818;
  border:1px solid #333;
  border-radius:17px;
- padding:22px;
+ padding:20px;
 }
 
 .box h2{
@@ -372,9 +405,9 @@ header{
  border-radius:8px;
 }
 
-.primary{
- background:var(--red);
- color:white;
+.google{
+ background:white;
+ color:black;
  border:0;
 }
 
@@ -384,55 +417,158 @@ header{
  border:0;
 }
 
-.google{
- background:white;
- color:black;
- border:0;
-}
-
-#status{
+#status,
+#itemStatus{
  color:#aaa;
  font-size:13px;
  margin-top:10px;
 }
 
-.chatBox{
- margin-top:15px;
- max-height:300px;
- overflow-y:auto;
- background:#0d0d0d;
- border-radius:10px;
- padding:10px;
+
+/* MESSAGING */
+
+.messageBox{
+ width:100%;
+ max-width:500px;
+ height:85vh;
+ max-height:700px;
+ padding:0;
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
 }
 
-.msg{
- padding:9px;
- margin:6px 0;
- border-radius:9px;
- background:#202020;
+.messageHeader{
+ height:62px;
+ padding:10px 15px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ border-bottom:1px solid var(--border);
+ background:#151515;
 }
 
-.msg.mine{
- background:#4d0c1c;
- text-align:right;
+.messageHeader button{
+ width:auto;
+ margin:0;
+ background:none;
+ color:white;
+ border:0;
+ font-size:20px;
 }
 
-.msg small{
+.messageHeaderInfo{
+ flex:1;
+}
+
+.messageHeaderInfo b{
  display:block;
+}
+
+.messageHeaderInfo small{
  color:#777;
- font-size:10px;
+}
+
+.conversationList{
+ flex:1;
+ overflow-y:auto;
+}
+
+.conversation{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:13px 15px;
+ border-bottom:1px solid #202020;
+}
+
+.conversation:hover{
+ background:#191919;
+}
+
+.conversationText{
+ flex:1;
+ min-width:0;
+}
+
+.conversationText b{
+ display:block;
+}
+
+.conversationText p{
+ color:#888;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
  margin-top:4px;
 }
 
-.notice{
- background:#191919;
- border:1px solid #292929;
- padding:13px;
- border-radius:10px;
- margin:7px 0;
+.chatScreen{
+ display:none;
+ flex:1;
+ flex-direction:column;
+ min-height:0;
+}
+
+.chatMessages{
+ flex:1;
+ overflow-y:auto;
+ padding:15px;
+ display:flex;
+ flex-direction:column;
+ gap:6px;
+}
+
+.chatMessage{
+ max-width:78%;
+ padding:9px 12px;
+ border-radius:17px;
+ background:#292929;
+ align-self:flex-start;
+ word-wrap:break-word;
+}
+
+.chatMessage.mine{
+ background:var(--red);
+ align-self:flex-end;
+}
+
+.chatTime{
+ font-size:9px;
+ opacity:.6;
+ margin-top:3px;
+}
+
+.messageComposer{
+ display:flex;
+ gap:7px;
+ padding:10px;
+ border-top:1px solid var(--border);
+ background:#151515;
+}
+
+.messageComposer input{
+ flex:1;
+ margin:0;
+}
+
+.messageComposer button{
+ width:auto;
+ margin:0;
+ padding:10px 15px;
+ background:var(--red);
+ color:white;
+ border:0;
+}
+
+.empty{
+ padding:20px;
+ color:#777;
+ text-align:center;
 }
 
 @media(max-width:650px){
+
  .products{
   grid-template-columns:repeat(2,1fr);
   gap:9px;
@@ -442,11 +578,13 @@ header{
  .productEmoji{
   height:135px;
  }
+
 }
 </style>
 </head>
 
 <body>
+
 
 <header>
 
@@ -454,14 +592,16 @@ header{
   <span>AV</span>YRA
  </div>
 
- <div class="headerBtns">
+ <div class="headerButtons">
 
   <button onclick="openNotifications()">
    🔔
   </button>
 
   <button onclick="openAccount()">
-   <span id="headerName">Sign in</span>
+   <span id="headerName">
+    Sign in
+   </span>
   </button>
 
  </div>
@@ -541,8 +681,6 @@ header{
 </section>
 
 
-<!-- PRODUCTS -->
-
 <section class="section">
 
  <div class="title">
@@ -553,7 +691,7 @@ header{
   id="products"
   class="products">
 
-  <div class="notice">
+  <div class="empty">
    Loading products...
   </div>
 
@@ -561,8 +699,6 @@ header{
 
 </section>
 
-
-<!-- SELLERS -->
 
 <section class="section">
 
@@ -572,16 +708,14 @@ header{
 
  <div id="sellers">
 
-  <div class="notice">
-   Sign in to see sellers.
+  <div class="empty">
+   Loading sellers...
   </div>
 
  </div>
 
 </section>
 
-
-<!-- ACCOUNT -->
 
 <section
  class="section account"
@@ -655,9 +789,7 @@ header{
 </main>
 
 
-<!-- NAV -->
-
-<nav class="bottom">
+<nav class="bottomNav">
 
  <button>🏠<br>Home</button>
 
@@ -795,36 +927,82 @@ header{
 </div>
 
 
-<!-- MESSAGES -->
+<!-- MESSAGING -->
 
 <div
  class="modal"
  id="messageModal">
 
- <div class="box">
+ <div class="box messageBox">
 
-  <h2>💬 Messages</h2>
+  <div class="messageHeader">
 
-  <div id="messageList">
-   Loading messages...
+   <button
+    id="backMessages"
+    onclick="showConversationList()">
+    ←
+   </button>
+
+   <div class="messageHeaderInfo">
+
+    <b id="chatName">
+     Messages
+    </b>
+
+    <small id="chatStatus">
+     AVYRA
+    </small>
+
+   </div>
+
+   <button
+    onclick="closeModal('messageModal')">
+    ✕
+   </button>
+
   </div>
 
-  <input
-   id="messageText"
-   placeholder="Write a message..."
-  >
 
-  <button
-   class="primary"
-   onclick="sendMessage()">
-   Send
-  </button>
+  <!-- conversation list -->
 
-  <button
-   class="secondary"
-   onclick="closeModal('messageModal')">
-   Close
-  </button>
+  <div
+   id="conversationList"
+   class="conversationList">
+
+   <div class="empty">
+    Loading conversations...
+   </div>
+
+  </div>
+
+
+  <!-- actual chat -->
+
+  <div
+   id="chatScreen"
+   class="chatScreen">
+
+   <div
+    id="chatMessages"
+    class="chatMessages">
+   </div>
+
+   <div class="messageComposer">
+
+    <input
+     id="messageInput"
+     placeholder="Message..."
+     autocomplete="off"
+    >
+
+    <button
+     onclick="sendMessage()">
+     ➤
+    </button>
+
+   </div>
+
+  </div>
 
  </div>
 
@@ -841,8 +1019,8 @@ header{
 
   <h2>🔔 Notifications</h2>
 
-  <div id="notificationList">
-   No notifications yet.
+  <div class="empty">
+   Notifications will appear here.
   </div>
 
   <button
@@ -868,7 +1046,6 @@ import {
  signOut
 } from "./firebase.js";
 
-
 import {
  collection,
  addDoc,
@@ -880,7 +1057,6 @@ import {
  doc,
  query,
  where,
- orderBy,
  onSnapshot,
  serverTimestamp,
  increment
@@ -888,17 +1064,15 @@ import {
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* -------------------------
-   GLOBAL
-------------------------- */
-
 let currentUser=null;
-let selectedSeller=null;
+let activeChatUser=null;
+let unsubscribeChat=null;
+let unsubscribeConversations=null;
 
 
-/* -------------------------
+/* =========================
    LOGIN
-------------------------- */
+========================= */
 
 window.googleLogin=async()=>{
 
@@ -933,8 +1107,9 @@ window.emailLogin=async()=>{
 
  if(!email||!password){
 
-  document.getElementById("status")
-   .innerText=
+  document.getElementById(
+   "status"
+  ).innerText=
    "Enter your email and password.";
 
   return;
@@ -950,8 +1125,9 @@ window.emailLogin=async()=>{
 
  }catch(error){
 
-  document.getElementById("status")
-   .innerText=
+  document.getElementById(
+   "status"
+  ).innerText=
    error.message;
 
  }
@@ -959,9 +1135,9 @@ window.emailLogin=async()=>{
 };
 
 
-/* -------------------------
+/* =========================
    AUTH
-------------------------- */
+========================= */
 
 onAuthStateChanged(
  auth,
@@ -974,13 +1150,6 @@ onAuthStateChanged(
    document.getElementById(
     "headerName"
    ).innerText="Sign in";
-
-   document.getElementById(
-    "sellers"
-   ).innerHTML=
-   `<div class="notice">
-     Sign in to follow sellers.
-   </div>`;
 
    return;
   }
@@ -998,7 +1167,7 @@ onAuthStateChanged(
    "Account";
 
 
-  await createUserProfile(user);
+  await createProfile(user);
 
   await loadProfile();
 
@@ -1006,48 +1175,49 @@ onAuthStateChanged(
 
   loadSellers();
 
-  loadMessages();
+  loadConversations();
 
  }
 );
 
 
-/* -------------------------
+/* =========================
    PROFILE
-------------------------- */
+========================= */
 
-async function createUserProfile(user){
+async function createProfile(user){
 
  const ref=
-  doc(db,"users",user.uid);
+  doc(
+   db,
+   "users",
+   user.uid
+  );
+
 
  const snap=
   await getDoc(ref);
 
+
  if(!snap.exists()){
 
-  await setDoc(ref,{
-
-   uid:user.uid,
-
-   name:
-    user.displayName||
-    "AVYRA User",
-
-   email:
-    user.email||"",
-
-   photo:
-    user.photoURL||"",
-
-   followers:0,
-
-   following:0,
-
-   createdAt:
-    serverTimestamp()
-
-  });
+  await setDoc(
+   ref,
+   {
+    uid:user.uid,
+    name:
+     user.displayName||
+     "AVYRA User",
+    email:
+     user.email||"",
+    photo:
+     user.photoURL||"",
+    followers:0,
+    following:0,
+    createdAt:
+     serverTimestamp()
+   }
+  );
 
  }
 
@@ -1067,7 +1237,16 @@ async function loadProfile(){
    )
   );
 
- if(!snap.exists())return;
+
+ if(!snap.exists()){
+
+  await createProfile(
+   currentUser
+  );
+
+  return loadProfile();
+ }
+
 
  const data=snap.data();
 
@@ -1108,6 +1287,10 @@ async function loadProfile(){
 }
 
 
+/* =========================
+   PROFILE PHOTO
+========================= */
+
 window.choosePhoto=()=>{
 
  if(!currentUser){
@@ -1135,28 +1318,50 @@ document.getElementById(
 
   if(!file)return;
 
-  if(!file.type.startsWith("image/")){
-
-   alert("Choose an image.");
-
-   return;
-  }
-
 
   try{
 
    const image=
-    await compressImage(file,500,500);
+    await compressImage(
+     file,
+     500,
+     500
+    );
 
 
-   await updateDoc(
+   /*
+    IMPORTANT FIX:
+    setDoc with merge creates the
+    document if it doesn't exist.
+   */
+
+   await setDoc(
     doc(
      db,
      "users",
      currentUser.uid
     ),
     {
-     photo:image
+     uid:
+      currentUser.uid,
+
+     name:
+      currentUser.displayName||
+      "AVYRA User",
+
+     email:
+      currentUser.email||
+      "",
+
+     photo:image,
+
+     followers:0,
+
+     following:0
+
+    },
+    {
+     merge:true
     }
    );
 
@@ -1166,7 +1371,17 @@ document.getElementById(
    ).src=image;
 
 
+   alert(
+    "Profile picture saved!"
+   );
+
+
+   await loadProfile();
+
+
   }catch(error){
+
+   console.error(error);
 
    alert(
     "Could not save photo: "+
@@ -1179,7 +1394,9 @@ document.getElementById(
 );
 
 
-/* Compress gallery image */
+/* =========================
+   IMAGE COMPRESSION
+========================= */
 
 function compressImage(
  file,
@@ -1193,15 +1410,21 @@ function compressImage(
    const reader=
     new FileReader();
 
+
    reader.onload=e=>{
 
     const img=
      new Image();
 
+
     img.onload=()=>{
 
-     let width=img.width;
-     let height=img.height;
+     let width=
+      img.width;
+
+     let height=
+      img.height;
+
 
      if(width>maxWidth){
 
@@ -1213,6 +1436,7 @@ function compressImage(
       width=maxWidth;
 
      }
+
 
      if(height>maxHeight){
 
@@ -1231,36 +1455,38 @@ function compressImage(
        "canvas"
       );
 
+
      canvas.width=width;
      canvas.height=height;
 
 
-     const ctx=
-      canvas.getContext("2d");
-
-     ctx.drawImage(
-      img,
-      0,
-      0,
-      width,
-      height
-     );
+     canvas
+      .getContext("2d")
+      .drawImage(
+       img,
+       0,
+       0,
+       width,
+       height
+      );
 
 
      resolve(
       canvas.toDataURL(
        "image/jpeg",
-       0.75
+       .7
       )
      );
 
     };
+
 
     img.onerror=reject;
 
     img.src=e.target.result;
 
    };
+
 
    reader.onerror=reject;
 
@@ -1272,9 +1498,9 @@ function compressImage(
 }
 
 
-/* -------------------------
-   FOLLOW SYSTEM
-------------------------- */
+/* =========================
+   FOLLOWERS
+========================= */
 
 window.followSeller=
 async sellerId=>{
@@ -1328,7 +1554,10 @@ async sellerId=>{
 
  if(existing.exists()){
 
-  await deleteDoc(followRef);
+  await deleteDoc(
+   followRef
+  );
+
 
   await updateDoc(
    sellerRef,
@@ -1351,7 +1580,6 @@ async sellerId=>{
    }
   );
 
-
  }else{
 
   await setDoc(
@@ -1359,10 +1587,8 @@ async sellerId=>{
    {
     followerId:
      currentUser.uid,
-
     sellerId:
      sellerId,
-
     createdAt:
      serverTimestamp()
    }
@@ -1393,16 +1619,16 @@ async sellerId=>{
  }
 
 
- loadSellers();
+ await loadSellers();
 
- loadProfile();
+ await loadProfile();
 
 };
 
 
-/* -------------------------
+/* =========================
    SELLERS
-------------------------- */
+========================= */
 
 async function loadSellers(){
 
@@ -1411,13 +1637,17 @@ async function loadSellers(){
    "sellers"
   );
 
+
  box.innerHTML=
   "Loading sellers...";
 
 
- const snap=
+ const snapshot=
   await getDocs(
-   collection(db,"users")
+   collection(
+    db,
+    "users"
+   )
   );
 
 
@@ -1425,7 +1655,7 @@ async function loadSellers(){
 
 
  for(
-  const userDoc of snap.docs
+  const userDoc of snapshot.docs
  ){
 
   const user=
@@ -1442,46 +1672,53 @@ async function loadSellers(){
   }
 
 
-  const followSnap=
-   currentUser
-   ? await getDoc(
-      doc(
-       db,
-       "follows",
-       currentUser.uid+
-       "_"+
-       user.uid
-      )
+  let following=false;
+
+
+  if(currentUser){
+
+   const followSnap=
+    await getDoc(
+     doc(
+      db,
+      "follows",
+      currentUser.uid+
+      "_"+
+      user.uid
      )
-   : null;
+    );
 
 
-  const following=
-   followSnap &&
-   followSnap.exists();
+   following=
+    followSnap.exists();
+
+  }
 
 
-  const seller=
+  const div=
    document.createElement(
     "div"
    );
 
-  seller.className="seller";
+
+  div.className="seller";
 
 
   const avatar=
    user.photo
-   ? `<div class="avatar">
-       <img src="${user.photo}">
-      </div>`
-   : `<div class="avatar">
-       ${(user.name||"A")
-        .charAt(0)
-        .toUpperCase()}
-      </div>`;
+   ?
+   `<div class="avatar">
+      <img src="${user.photo}">
+    </div>`
+   :
+   `<div class="avatar">
+      ${(user.name||"A")
+       .charAt(0)
+       .toUpperCase()}
+    </div>`;
 
 
-  seller.innerHTML=`
+  div.innerHTML=`
 
    ${avatar}
 
@@ -1494,8 +1731,6 @@ async function loadSellers(){
      )}
     </b>
 
-    <br>
-
     <small>
      ${user.followers||0}
      followers
@@ -1506,29 +1741,153 @@ async function loadSellers(){
    <button
     class="follow"
     onclick="
-     window.followSeller(
+     followSeller(
       '${user.uid}'
      )
     ">
 
     ${following
-     ? "Following"
-     : "Follow"}
+     ?"Following"
+     :"Follow"}
 
    </button>
   `;
 
 
-  box.appendChild(seller);
+  box.appendChild(div);
 
  }
 
 }
 
 
-/* -------------------------
-   ADD ITEMS
-------------------------- */
+/* =========================
+   PRODUCTS
+========================= */
+
+function loadProducts(){
+
+ onSnapshot(
+  collection(
+   db,
+   "products"
+  ),
+  snapshot=>{
+
+   const box=
+    document.getElementById(
+     "products"
+    );
+
+
+   box.innerHTML="";
+
+
+   if(snapshot.empty){
+
+    box.innerHTML=
+     `<div class="empty">
+       No products yet.
+      </div>`;
+
+    return;
+   }
+
+
+   snapshot.forEach(
+    productDoc=>{
+
+     const p=
+      productDoc.data();
+
+
+     const card=
+      document.createElement(
+       "article"
+      );
+
+
+     card.className=
+      "product";
+
+
+     const image=
+      p.photo
+      ?
+      `<img
+        src="${p.photo}"
+        alt="Product">
+      `
+      :
+      `<div class="productEmoji">
+        🛍️
+       </div>`;
+
+
+     card.innerHTML=`
+
+      ${image}
+
+      <div class="productInfo">
+
+       <h3>
+        ${escapeHTML(
+         p.name||
+         "Unnamed item"
+        )}
+       </h3>
+
+       <div class="price">
+        ${escapeHTML(
+         p.currency||
+         "USD"
+        )}
+        ${p.price||0}
+       </div>
+
+       <div class="location">
+        📍
+        ${escapeHTML(
+         p.location||
+         "Worldwide"
+        )}
+       </div>
+
+       <div class="description">
+        ${escapeHTML(
+         p.description||
+         ""
+        )}
+       </div>
+
+       <button
+        class="cardBtn"
+        onclick="
+         openSellerMessage(
+          '${p.sellerId}'
+         )
+        ">
+        Message Seller
+       </button>
+
+      </div>
+     `;
+
+
+     box.appendChild(card);
+
+    }
+   );
+
+  }
+ );
+
+}
+
+
+/* =========================
+   ADD ITEM
+========================= */
 
 window.openAddItem=()=>{
 
@@ -1538,6 +1897,7 @@ window.openAddItem=()=>{
 
   return;
  }
+
 
  document.getElementById(
   "itemModal"
@@ -1598,7 +1958,7 @@ window.addItem=async()=>{
   document.getElementById(
    "itemStatus"
   ).innerText=
-   "Product name and price are required.";
+   "Name and price are required.";
 
   return;
  }
@@ -1627,7 +1987,6 @@ window.addItem=async()=>{
     "products"
    ),
    {
-
     sellerId:
      currentUser.uid,
 
@@ -1635,22 +1994,20 @@ window.addItem=async()=>{
      currentUser.displayName||
      "AVYRA Seller",
 
-    name,
+    name:name,
 
-    price:
-     Number(price),
+    price:Number(price),
 
-    currency,
+    currency:currency,
 
-    location,
+    location:location,
 
-    description,
+    description:description,
 
-    photo,
+    photo:photo,
 
     createdAt:
      serverTimestamp()
-
    }
   );
 
@@ -1658,35 +2015,28 @@ window.addItem=async()=>{
   document.getElementById(
    "itemStatus"
   ).innerText=
-   "Item published!";
+   "Item published successfully!";
 
 
   document.getElementById(
    "itemName"
   ).value="";
 
-
   document.getElementById(
    "itemPrice"
   ).value="";
-
 
   document.getElementById(
    "itemLocation"
   ).value="";
 
-
   document.getElementById(
    "itemDescription"
   ).value="";
 
-
   document.getElementById(
    "itemPhoto"
   ).value="";
-
-
-  loadProducts();
 
 
  }catch(error){
@@ -1704,140 +2054,10 @@ window.addItem=async()=>{
 };
 
 
-/* -------------------------
-   PRODUCTS
-------------------------- */
-
-function loadProducts(){
-
- onSnapshot(
-  collection(
-   db,
-   "products"
-  ),
-  snapshot=>{
-
-   const box=
-    document.getElementById(
-     "products"
-    );
-
-   box.innerHTML="";
-
-
-   if(snapshot.empty){
-
-    box.innerHTML=
-     `<div class="notice">
-       No products yet.
-       Be the first seller!
-      </div>`;
-
-    return;
-   }
-
-
-   snapshot.forEach(
-    productDoc=>{
-
-     const p=
-      productDoc.data();
-
-
-     const card=
-      document.createElement(
-       "article"
-      );
-
-     card.className=
-      "product";
-
-
-     const image=
-      p.photo
-      ? `<img
-          src="${p.photo}"
-          alt="Product"
-        >`
-      : `<div class="productEmoji">
-          🛍️
-        </div>`;
-
-
-     card.innerHTML=`
-
-      ${image}
-
-      <div class="productInfo">
-
-       <h3>
-        ${escapeHTML(
-         p.name||
-         "Unnamed item"
-        )}
-       </h3>
-
-       <div class="price">
-        ${p.currency||"USD"}
-        ${p.price||0}
-       </div>
-
-       <div class="location">
-        📍
-        ${escapeHTML(
-         p.location||
-         "Worldwide"
-        )}
-       </div>
-
-       <div class="description">
-        ${escapeHTML(
-         p.description||
-         ""
-        )}
-       </div>
-
-       <button
-        class="cardBtn"
-        onclick="
-         openSellerMessage(
-          '${p.sellerId}'
-         )
-        ">
-        Message Seller
-       </button>
-
-      </div>
-     `;
-
-
-     box.appendChild(card);
-
-    }
-   );
-
-  },
-  error=>{
-
-   document.getElementById(
-    "products"
-   ).innerHTML=
-    `<div class="notice">
-      Products could not load:
-      ${escapeHTML(
-       error.message
-      )}
-     </div>`;
-
-  }
- );
-
-}
-
-
-/* -------------------------
-   MESSAGES
-------------------------- */
+/* =========================
+   INSTAGRAM/TIKTOK STYLE
+   MESSAGING
+========================= */
 
 window.openMessages=()=>{
 
@@ -1851,16 +2071,234 @@ window.openMessages=()=>{
 
  document.getElementById(
   "messageModal"
- ).style.display="flex";
+ ).style.display=
+  "flex";
 
 
- loadMessages();
+ showConversationList();
+
+ loadConversations();
 
 };
 
 
+function showConversationList(){
+
+ activeChatUser=null;
+
+
+ document.getElementById(
+  "conversationList"
+ ).style.display=
+  "block";
+
+
+ document.getElementById(
+  "chatScreen"
+ ).style.display=
+  "none";
+
+
+ document.getElementById(
+  "chatName"
+ ).innerText=
+  "Messages";
+
+
+ document.getElementById(
+  "chatStatus"
+ ).innerText=
+  "AVYRA";
+
+}
+
+
+function loadConversations(){
+
+ if(!currentUser)return;
+
+
+ if(unsubscribeConversations){
+
+  unsubscribeConversations();
+
+ }
+
+
+ const q=
+  query(
+   collection(
+    db,
+    "messages"
+   ),
+   where(
+    "participants",
+    "array-contains",
+    currentUser.uid
+   )
+  );
+
+
+ unsubscribeConversations=
+  onSnapshot(
+   q,
+   async snapshot=>{
+
+    const box=
+     document.getElementById(
+      "conversationList"
+     );
+
+
+    const latest={};
+
+
+    snapshot.forEach(
+     messageDoc=>{
+
+      const m=
+       messageDoc.data();
+
+
+      const other=
+       m.senderId===
+       currentUser.uid
+       ?m.receiverId
+       :m.senderId;
+
+
+      if(
+       !latest[other]||
+       (m.createdAt?.seconds||0)>
+       (latest[other].createdAt?.seconds||0)
+      ){
+
+       latest[other]={
+        ...m,
+        otherUserId:other
+       };
+
+      }
+
+     }
+    );
+
+
+    box.innerHTML="";
+
+
+    const users=
+     Object.values(latest);
+
+
+    if(!users.length){
+
+     box.innerHTML=
+      `<div class="empty">
+        No conversations yet.<br><br>
+        Message a seller to start chatting.
+       </div>`;
+
+     return;
+    }
+
+
+    for(
+     const conversation of users
+    ){
+
+     const userSnap=
+      await getDoc(
+       doc(
+        db,
+        "users",
+        conversation.otherUserId
+       )
+      );
+
+
+     const user=
+      userSnap.exists()
+      ?userSnap.data()
+      :{
+       name:"AVYRA User",
+       photo:""
+      };
+
+
+     const div=
+      document.createElement(
+       "div"
+      );
+
+
+     div.className=
+      "conversation";
+
+
+     const avatar=
+      user.photo
+      ?
+      `<div class="avatar">
+        <img src="${user.photo}">
+       </div>`
+      :
+      `<div class="avatar">
+        ${(user.name||"A")
+         .charAt(0)
+         .toUpperCase()}
+       </div>`;
+
+
+     div.innerHTML=`
+
+      ${avatar}
+
+      <div class="conversationText">
+
+       <b>
+        ${escapeHTML(
+         user.name||
+         "AVYRA User"
+        )}
+       </b>
+
+       <p>
+        ${escapeHTML(
+         conversation.text||
+         ""
+        )}
+       </p>
+
+      </div>
+
+     `;
+
+
+     div.onclick=()=>{
+
+      openChat(
+       conversation.otherUserId,
+       user
+      );
+
+     };
+
+
+     box.appendChild(div);
+
+    }
+
+   }
+  );
+
+}
+
+
+/* OPEN A CHAT */
+
 window.openSellerMessage=
-sellerId=>{
+async sellerId=>{
 
  if(!currentUser){
 
@@ -1870,118 +2308,102 @@ sellerId=>{
  }
 
 
- selectedSeller=sellerId;
+ const snap=
+  await getDoc(
+   doc(
+    db,
+    "users",
+    sellerId
+   )
+  );
+
+
+ const user=
+  snap.exists()
+  ?snap.data()
+  :{
+   name:"AVYRA Seller",
+   photo:""
+  };
+
 
  document.getElementById(
   "messageModal"
- ).style.display="flex";
+ ).style.display=
+  "flex";
 
 
- loadConversation(
-  sellerId
+ openChat(
+  sellerId,
+  user
  );
 
 };
 
 
-function loadMessages(){
+function openChat(
+ userId,
+ user
+){
 
- if(!currentUser)return;
+ activeChatUser=userId;
 
 
- const q=
-  query(
-   collection(
-    db,
-    "messages"
-   ),
-   where(
-    "participants",
-    "array-contains",
-    currentUser.uid
-   )
+ document.getElementById(
+  "conversationList"
+ ).style.display=
+  "none";
+
+
+ const chat=
+  document.getElementById(
+   "chatScreen"
   );
 
 
- onSnapshot(
-  q,
-  snapshot=>{
-
-   const box=
-    document.getElementById(
-     "messageList"
-    );
-
-   box.innerHTML="";
+ chat.style.display=
+  "flex";
 
 
-   if(snapshot.empty){
-
-    box.innerHTML=
-     `<div class="notice">
-       No messages yet.
-      </div>`;
-
-    return;
-   }
+ document.getElementById(
+  "chatName"
+ ).innerText=
+  user.name||
+  "AVYRA User";
 
 
-   snapshot.forEach(
-    messageDoc=>{
-
-     const m=
-      messageDoc.data();
-
-
-     const mine=
-      m.senderId===
-      currentUser.uid;
+ document.getElementById(
+  "chatStatus"
+ ).innerText=
+  "Message";
 
 
-     const div=
-      document.createElement(
-       "div"
-      );
+ loadChatMessages(
+  userId
+ );
 
 
-     div.className=
-      mine
-      ? "msg mine"
-      : "msg";
-
-
-     div.innerHTML=`
-
-      ${escapeHTML(
-       m.text||""
-      )}
-
-      <small>
-       ${mine
-        ? "You"
-        : "Seller/User"}
-      </small>
-
-     `;
-
-
-     box.appendChild(div);
-
-    }
-   );
-
-  }
+ setTimeout(
+  ()=>{
+   document.getElementById(
+    "messageInput"
+   ).focus();
+  },
+  100
  );
 
 }
 
 
-function loadConversation(
+function loadChatMessages(
  otherUserId
 ){
 
- selectedSeller=
-  otherUserId;
+ if(unsubscribeChat){
+
+  unsubscribeChat();
+
+ }
 
 
  const q=
@@ -1998,92 +2420,117 @@ function loadConversation(
   );
 
 
- onSnapshot(
-  q,
-  snapshot=>{
+ unsubscribeChat=
+  onSnapshot(
+   q,
+   snapshot=>{
 
-   const box=
-    document.getElementById(
-     "messageList"
-    );
-
-   box.innerHTML="";
-
-
-   const messages=[];
+    const box=
+     document.getElementById(
+      "chatMessages"
+     );
 
 
-   snapshot.forEach(
-    messageDoc=>{
-
-     const m=
-      messageDoc.data();
+    box.innerHTML="";
 
 
-     if(
-      m.participants.includes(
-       otherUserId
-      )
-     ){
+    const messages=[];
 
-      messages.push(m);
+
+    snapshot.forEach(
+     messageDoc=>{
+
+      const m=
+       messageDoc.data();
+
+
+      if(
+       m.participants.includes(
+        otherUserId
+       )
+      ){
+
+       messages.push(m);
+
+      }
 
      }
-
-    }
-   );
+    );
 
 
-   messages.sort(
-    (a,b)=>
-     (a.createdAt?.seconds||0)-
-     (b.createdAt?.seconds||0)
-   );
+    messages.sort(
+     (a,b)=>
+      (a.createdAt?.seconds||0)-
+      (b.createdAt?.seconds||0)
+    );
 
 
-   if(!messages.length){
+    messages.forEach(
+     m=>{
 
-    box.innerHTML=
-     `<div class="notice">
-       No messages yet.
-      </div>`;
+      const div=
+       document.createElement(
+        "div"
+       );
 
-    return;
+
+      div.className=
+       "chatMessage"+
+       (
+        m.senderId===
+        currentUser.uid
+        ?" mine"
+        :""
+       );
+
+
+      const date=
+       m.createdAt
+       ?new Date(
+        m.createdAt.seconds*
+        1000
+       ).toLocaleTimeString(
+        [],
+        {
+         hour:"2-digit",
+         minute:"2-digit"
+        }
+       )
+       :"";
+
+
+      div.innerHTML=`
+
+       <div>
+        ${escapeHTML(
+         m.text||
+         ""
+        )}
+       </div>
+
+       <div class="chatTime">
+        ${date}
+       </div>
+
+      `;
+
+
+      box.appendChild(div);
+
+     }
+    );
+
+
+    box.scrollTop=
+     box.scrollHeight;
+
    }
-
-
-   messages.forEach(
-    m=>{
-
-     const div=
-      document.createElement(
-       "div"
-      );
-
-
-     div.className=
-      m.senderId===
-      currentUser.uid
-      ? "msg mine"
-      : "msg";
-
-
-     div.innerHTML=
-      escapeHTML(
-       m.text||""
-      );
-
-
-     box.appendChild(div);
-
-    }
-   );
-
-  }
- );
+  );
 
 }
 
+
+/* SEND MESSAGE */
 
 window.sendMessage=
 async()=>{
@@ -2096,11 +2543,7 @@ async()=>{
  }
 
 
- if(!selectedSeller){
-
-  alert(
-   "Open a seller's message button first."
-  );
+ if(!activeChatUser){
 
   return;
  }
@@ -2108,7 +2551,7 @@ async()=>{
 
  const input=
   document.getElementById(
-   "messageText"
+   "messageInput"
   );
 
 
@@ -2119,71 +2562,76 @@ async()=>{
  if(!text)return;
 
 
- await addDoc(
-  collection(
-   db,
-   "messages"
-  ),
-  {
-
-   senderId:
-    currentUser.uid,
-
-   receiverId:
-    selectedSeller,
-
-   text,
-
-   participants:[
-    currentUser.uid,
-    selectedSeller
-   ],
-
-   createdAt:
-    serverTimestamp()
-
-  }
- );
-
-
  input.value="";
 
-};
 
+ try{
 
-/* -------------------------
-   NOTIFICATIONS
-------------------------- */
+  await addDoc(
+   collection(
+    db,
+    "messages"
+   ),
+   {
 
-window.openNotifications=()=>{
+    senderId:
+     currentUser.uid,
 
- if(!currentUser){
+    receiverId:
+     activeChatUser,
 
-  openLogin();
+    text:text,
 
-  return;
+    participants:[
+     currentUser.uid,
+     activeChatUser
+    ],
+
+    createdAt:
+     serverTimestamp()
+
+   }
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+  alert(
+   "Message failed: "+
+   error.message
+  );
+
  }
 
-
- document.getElementById(
-  "notificationModal"
- ).style.display="flex";
-
-
- document.getElementById(
-  "notificationList"
- ).innerHTML=
-  `<div class="notice">
-    Notifications are ready for
-    follower/message events.
-   </div>`;
-
 };
 
 
-/* -------------------------
+/* ENTER TO SEND */
+
+document.getElementById(
+ "messageInput"
+).addEventListener(
+ "keydown",
+ event=>{
+
+  if(
+   event.key==="Enter"
+  ){
+
+   event.preventDefault();
+
+   sendMessage();
+
+  }
+
+ }
+);
+
+
+/* =========================
    SEARCH
-------------------------- */
+========================= */
 
 window.searchProducts=()=>{
 
@@ -2203,19 +2651,19 @@ window.searchProducts=()=>{
 
    card.style.display=
     card.innerText
-    .toLowerCase()
-    .includes(value)
-    ? ""
-    : "none";
+     .toLowerCase()
+     .includes(value)
+    ?""
+    :"none";
 
   });
 
 };
 
 
-/* -------------------------
+/* =========================
    ACCOUNT
-------------------------- */
+========================= */
 
 window.openAccount=()=>{
 
@@ -2244,15 +2692,12 @@ window.openAccount=()=>{
 };
 
 
-/* -------------------------
-   MODALS
-------------------------- */
-
 window.openLogin=()=>{
 
  document.getElementById(
   "loginModal"
- ).style.display="flex";
+ ).style.display=
+  "flex";
 
 };
 
@@ -2261,14 +2706,37 @@ window.closeModal=id=>{
 
  document.getElementById(
   id
- ).style.display="none";
+ ).style.display=
+  "none";
 
 };
 
 
-/* -------------------------
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+window.openNotifications=()=>{
+
+ if(!currentUser){
+
+  openLogin();
+
+  return;
+ }
+
+
+ document.getElementById(
+  "notificationModal"
+ ).style.display=
+  "flex";
+
+};
+
+
+/* =========================
    LOGOUT
-------------------------- */
+========================= */
 
 window.logout=async()=>{
 
@@ -2282,9 +2750,9 @@ window.logout=async()=>{
 };
 
 
-/* -------------------------
-   SECURITY HELPER
-------------------------- */
+/* =========================
+   HTML SECURITY
+========================= */
 
 function escapeHTML(value){
 
