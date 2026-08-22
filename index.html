@@ -2,325 +2,213 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVYRA | Buy • Sell • Connect</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AVYRA</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-:root{
-  --bg:#080808;
-  --panel:#111111;
-  --panel2:#181818;
-  --border:#292929;
-  --red:#ff1744;
-  --red2:#ff4565;
-  --white:#ffffff;
-  --muted:#999999;
-  --gold:#ffd54a;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  background:var(--bg);
-  color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  padding-bottom:75px;
+  background:#080808;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding-bottom:70px;
 }
-
-button,
-input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-/* HEADER */
 
 header{
-  height:68px;
-  background:#0c0c0c;
-  border-bottom:1px solid var(--border);
+  height:65px;
+  background:#101010;
+  border-bottom:1px solid #292929;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   padding:0 5%;
   position:sticky;
   top:0;
-  z-index:50;
+  z-index:20;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:9px;
+  font-size:25px;
   font-weight:900;
-  font-size:24px;
   letter-spacing:2px;
 }
 
-.logoMark{
-  width:34px;
-  height:34px;
-  background:var(--red);
-  clip-path:polygon(
-    50% 0,
-    100% 100%,
-    76% 100%,
-    67% 76%,
-    33% 76%,
-    24% 100%,
-    0 100%
-  );
+.logo span{
+  color:#ff1744;
 }
 
-.nav{
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.nav button{
+header button{
   background:none;
-  border:0;
-  color:#ddd;
-  padding:9px;
+  border:1px solid #ff1744;
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
 }
-
-.nav button:hover{
-  color:var(--red);
-}
-
-.signin{
-  border:1px solid var(--red)!important;
-  border-radius:9px;
-}
-
-/* HERO */
 
 .hero{
   text-align:center;
-  padding:65px 20px 45px;
-  background:
-    radial-gradient(
-      circle at top,
-      #390a17,
-      #080808 58%
-    );
+  padding:60px 20px;
+  background:radial-gradient(
+    circle at top,
+    #3b0a17,
+    #080808 60%
+  );
 }
 
 .hero h1{
-  font-size:clamp(42px,10vw,76px);
-  font-weight:900;
+  font-size:clamp(42px,10vw,70px);
 }
 
 .hero h1 span{
-  color:var(--red);
+  color:#ff1744;
 }
 
 .hero p{
-  color:var(--muted);
-  margin:15px 0 25px;
-  font-size:17px;
+  color:#999;
+  margin:12px 0 25px;
 }
 
 .search{
-  max-width:700px;
+  max-width:650px;
   margin:auto;
   display:flex;
-  background:var(--panel);
+  background:#151515;
   border:1px solid #333;
-  border-radius:13px;
+  border-radius:12px;
   overflow:hidden;
 }
 
 .search input{
   flex:1;
   min-width:0;
-  padding:16px;
-  background:none;
+  padding:15px;
   border:0;
   outline:0;
+  background:none;
   color:white;
 }
 
 .search button{
-  border:0;
-  background:var(--red);
+  background:#ff1744;
   color:white;
-  padding:0 22px;
-  font-weight:bold;
+  border:0;
+  padding:0 20px;
 }
-
-/* MAIN */
 
 .container{
   width:90%;
-  max-width:1250px;
+  max-width:1200px;
   margin:auto;
 }
 
 .section{
-  padding:32px 0;
+  padding:30px 0;
 }
 
-.sectionTitle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
+.title{
+  margin-bottom:17px;
 }
-
-.sectionTitle h2{
-  font-size:21px;
-}
-
-.sectionTitle span{
-  color:var(--red);
-  font-size:13px;
-}
-
-/* CATEGORIES */
 
 .categories{
   display:flex;
-  gap:11px;
+  gap:10px;
   overflow-x:auto;
-  scrollbar-width:none;
 }
 
 .category{
   min-width:105px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:15px 10px;
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:15px 8px;
   text-align:center;
 }
 
-.category:hover{
-  border-color:var(--red);
-}
-
-.categoryIcon{
-  font-size:28px;
+.category div{
+  font-size:27px;
   margin-bottom:7px;
 }
 
 .category p{
-  color:#ddd;
+  color:#ccc;
   font-size:13px;
 }
 
-/* PRODUCTS */
-
 .products{
   display:grid;
-  grid-template-columns:
-    repeat(auto-fill,minmax(190px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+  gap:15px;
 }
 
 .product{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:15px;
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:14px;
   overflow:hidden;
-  transition:.2s;
 }
 
-.product:hover{
-  transform:translateY(-3px);
-  border-color:var(--red);
-}
-
-.productImage{
-  height:180px;
+.image{
+  height:170px;
   background:#202020;
   display:flex;
   justify-content:center;
   align-items:center;
-  font-size:62px;
+  font-size:60px;
 }
 
-.productInfo{
-  padding:14px;
+.info{
+  padding:13px;
 }
 
-.productInfo h3{
+.info h3{
   font-size:15px;
   margin-bottom:7px;
 }
 
 .price{
-  color:var(--red);
-  font-size:17px;
+  color:#ff1744;
   font-weight:bold;
 }
 
 .location{
-  color:#888;
+  color:#777;
   font-size:12px;
   margin-top:7px;
 }
 
 .rating{
-  color:var(--gold);
+  color:#ffd54a;
   font-size:13px;
   margin-top:7px;
 }
 
-.productActions{
-  display:flex;
-  gap:7px;
-  margin-top:12px;
-}
-
-.productActions button{
-  flex:1;
-  padding:9px;
-  border-radius:8px;
-}
-
-.messageBtn{
-  background:var(--red);
+.message{
+  width:100%;
+  background:#ff1744;
   color:white;
   border:0;
+  padding:10px;
+  border-radius:8px;
+  margin-top:12px;
 }
-
-.saveBtn{
-  background:none;
-  border:1px solid #333;
-  color:white;
-}
-
-/* SELLERS */
 
 .seller{
   display:flex;
   align-items:center;
-  gap:13px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:11px;
+  gap:12px;
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:13px;
+  padding:13px;
+  margin-bottom:10px;
 }
 
 .avatar{
-  width:50px;
-  height:50px;
+  width:48px;
+  height:48px;
   border-radius:50%;
-  background:linear-gradient(
-    135deg,
-    var(--red),
-    var(--red2)
-  );
+  background:#ff1744;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -331,249 +219,166 @@ header{
   flex:1;
 }
 
-.sellerInfo h3{
-  font-size:15px;
-}
-
-.followers{
+.sellerInfo small{
   color:#888;
-  font-size:12px;
-  margin-top:5px;
 }
 
-.followBtn{
+.follow{
   background:none;
-  border:1px solid var(--red);
-  color:var(--red);
+  border:1px solid #ff1744;
+  color:#ff1744;
   padding:8px 12px;
   border-radius:8px;
 }
 
-/* FEATURES */
-
-.features{
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
-  gap:14px;
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:65px;
+  background:#101010;
+  border-top:1px solid #292929;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:20;
 }
 
-.feature{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:21px;
-}
-
-.featureIcon{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.feature p{
-  color:#888;
-  font-size:13px;
-  line-height:1.5;
-  margin-top:7px;
-}
-
-/* CTA */
-
-.cta{
-  text-align:center;
-  padding:40px 20px;
-  margin:25px 0;
-  background:linear-gradient(
-    135deg,
-    #270914,
-    #100407
-  );
-  border:1px solid #42101c;
-  border-radius:19px;
-}
-
-.cta p{
-  color:#999;
-  margin:10px 0 20px;
-}
-
-.sellBtn{
-  background:var(--red);
-  color:white;
+.bottom button{
+  background:none;
   border:0;
-  padding:13px 23px;
-  border-radius:9px;
-  font-weight:bold;
+  color:#aaa;
+  font-size:11px;
 }
-
-/* MODAL */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  z-index:200;
-  background:#000c;
-  justify-content:center;
+  background:#000d;
+  z-index:100;
   align-items:center;
+  justify-content:center;
   padding:20px;
 }
 
-.modalBox{
+.box{
   width:100%;
-  max-width:410px;
-  background:var(--panel2);
+  max-width:400px;
+  background:#181818;
   border:1px solid #333;
   border-radius:17px;
-  padding:24px;
+  padding:23px;
 }
 
-.modalBox h2{
+.box h2{
   margin-bottom:8px;
 }
 
-.modalBox .description{
+.box p{
   color:#888;
   font-size:13px;
-  margin-bottom:17px;
+  margin-bottom:15px;
 }
 
-.modalBox input{
+.box input{
   width:100%;
   padding:13px;
-  margin:6px 0;
-  background:#0b0b0b;
+  margin:5px 0;
+  background:#090909;
   border:1px solid #333;
-  border-radius:8px;
-  outline:none;
   color:white;
+  border-radius:8px;
 }
 
-.modalBox button{
+.box button{
   width:100%;
-  padding:13px;
-  margin-top:9px;
+  padding:12px;
+  margin-top:8px;
   border-radius:8px;
 }
 
-.primaryBtn{
-  background:var(--red);
+.primary{
+  background:#ff1744;
   color:white;
   border:0;
 }
 
-.googleBtn{
+.google{
   background:white;
-  color:#111;
+  color:black;
   border:0;
 }
 
-.closeBtn{
-  background:#252525;
+.close{
+  background:#292929;
   color:white;
   border:0;
 }
 
-.status{
+#status{
+  margin-top:10px;
   color:#aaa;
-  font-size:12px;
-  margin-top:12px;
-  line-height:1.4;
 }
 
-/* BOTTOM NAV */
-
-.bottomNav{
-  display:flex;
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:65px;
-  background:#0d0d0d;
-  border-top:1px solid var(--border);
-  z-index:100;
-  justify-content:space-around;
-  align-items:center;
+.account{
+  display:none;
 }
 
-.bottomNav button{
+.accountCard{
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:20px;
+}
+
+.accountCard img{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  display:block;
+  margin-bottom:12px;
+}
+
+.accountCard button{
+  background:#ff1744;
   border:0;
-  background:none;
-  color:#aaa;
-  font-size:11px;
+  color:white;
+  padding:10px 15px;
+  border-radius:8px;
+  margin-top:15px;
 }
-
-.bottomNav button:first-child{
-  color:var(--red);
-}
-
-/* MOBILE */
 
 @media(max-width:650px){
-
-  header{
-    padding:0 4%;
-  }
-
-  .nav button:not(.signin){
-    display:none;
-  }
 
   .products{
     grid-template-columns:repeat(2,1fr);
     gap:9px;
   }
 
-  .productImage{
+  .image{
     height:135px;
-  }
-
-  .productInfo{
-    padding:11px;
-  }
-
-  .productInfo h3{
-    font-size:13px;
-  }
-
-  .price{
-    font-size:15px;
   }
 }
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
   <div class="logo">
-    <div class="logoMark"></div>
-    AVYRA
+    <span>AV</span>YRA
   </div>
 
-  <div class="nav">
-
-    <button onclick="showNotifications()">
-      🔔
-    </button>
-
-    <button onclick="showMessages()">
-      💬
-    </button>
-
-    <button onclick="openLogin()">
-      Account
-    </button>
-
-    <button
-      class="signin"
-      onclick="openLogin()">
+  <button onclick="openAccount()">
+    <span id="headerAccount">
       Sign in
-    </button>
-
-  </div>
+    </span>
+  </button>
 
 </header>
 
@@ -591,10 +396,8 @@ header{
   <div class="search">
 
     <input
-      id="searchInput"
-      type="text"
+      id="search"
       placeholder="Search products or sellers..."
-      oninput="searchProducts()"
     >
 
     <button onclick="searchProducts()">
@@ -611,45 +414,40 @@ header{
 
 <section class="section">
 
-  <div class="sectionTitle">
+  <div class="title">
     <h2>Explore Categories</h2>
   </div>
 
   <div class="categories">
 
     <div class="category">
-      <div class="categoryIcon">📱</div>
+      <div>📱</div>
       <p>Phones</p>
     </div>
 
     <div class="category">
-      <div class="categoryIcon">💻</div>
+      <div>💻</div>
       <p>Computers</p>
     </div>
 
     <div class="category">
-      <div class="categoryIcon">🎮</div>
+      <div>🎮</div>
       <p>Gaming</p>
     </div>
 
     <div class="category">
-      <div class="categoryIcon">👕</div>
+      <div>👕</div>
       <p>Fashion</p>
     </div>
 
     <div class="category">
-      <div class="categoryIcon">🚗</div>
+      <div>🚗</div>
       <p>Vehicles</p>
     </div>
 
     <div class="category">
-      <div class="categoryIcon">🏠</div>
+      <div>🏠</div>
       <p>Home</p>
-    </div>
-
-    <div class="category">
-      <div class="categoryIcon">⚽</div>
-      <p>Sports</p>
     </div>
 
   </div>
@@ -659,29 +457,24 @@ header{
 
 <section class="section">
 
-  <div class="sectionTitle">
-
-    <h2>🔥 Trending Worldwide</h2>
-
-    <span>Worldwide</span>
-
+  <div class="title">
+    <h2>🔥 Trending</h2>
   </div>
 
-
-  <div
-    class="products"
-    id="products">
+  <div class="products">
 
 
-    <article class="product">
+    <div class="product">
 
-      <div class="productImage">
+      <div class="image">
         📱
       </div>
 
-      <div class="productInfo">
+      <div class="info">
 
-        <h3>Galaxy Smartphone</h3>
+        <h3>
+          Galaxy Smartphone
+        </h3>
 
         <div class="price">
           $420 USD
@@ -695,36 +488,28 @@ header{
           ★★★★★ 4.9
         </div>
 
-        <div class="productActions">
-
-          <button
-            class="messageBtn"
-            onclick="showMessages()">
-            Message
-          </button>
-
-          <button
-            class="saveBtn"
-            onclick="toggleSave(this)">
-            ♡
-          </button>
-
-        </div>
+        <button
+          class="message"
+          onclick="messageSeller()">
+          Message Seller
+        </button>
 
       </div>
 
-    </article>
+    </div>
 
 
-    <article class="product">
+    <div class="product">
 
-      <div class="productImage">
+      <div class="image">
         🎮
       </div>
 
-      <div class="productInfo">
+      <div class="info">
 
-        <h3>Gaming Controller</h3>
+        <h3>
+          Gaming Controller
+        </h3>
 
         <div class="price">
           $45 USD
@@ -738,36 +523,28 @@ header{
           ★★★★☆ 4.6
         </div>
 
-        <div class="productActions">
-
-          <button
-            class="messageBtn"
-            onclick="showMessages()">
-            Message
-          </button>
-
-          <button
-            class="saveBtn"
-            onclick="toggleSave(this)">
-            ♡
-          </button>
-
-        </div>
+        <button
+          class="message"
+          onclick="messageSeller()">
+          Message Seller
+        </button>
 
       </div>
 
-    </article>
+    </div>
 
 
-    <article class="product">
+    <div class="product">
 
-      <div class="productImage">
+      <div class="image">
         👟
       </div>
 
-      <div class="productInfo">
+      <div class="info">
 
-        <h3>Sports Sneakers</h3>
+        <h3>
+          Sports Sneakers
+        </h3>
 
         <div class="price">
           $65 USD
@@ -781,68 +558,15 @@ header{
           ★★★★★ 5.0
         </div>
 
-        <div class="productActions">
-
-          <button
-            class="messageBtn"
-            onclick="showMessages()">
-            Message
-          </button>
-
-          <button
-            class="saveBtn"
-            onclick="toggleSave(this)">
-            ♡
-          </button>
-
-        </div>
+        <button
+          class="message"
+          onclick="messageSeller()">
+          Message Seller
+        </button>
 
       </div>
 
-    </article>
-
-
-    <article class="product">
-
-      <div class="productImage">
-        💻
-      </div>
-
-      <div class="productInfo">
-
-        <h3>Gaming Laptop</h3>
-
-        <div class="price">
-          $950 USD
-        </div>
-
-        <div class="location">
-          📍 New York, USA
-        </div>
-
-        <div class="rating">
-          ★★★★★ 4.8
-        </div>
-
-        <div class="productActions">
-
-          <button
-            class="messageBtn"
-            onclick="showMessages()">
-            Message
-          </button>
-
-          <button
-            class="saveBtn"
-            onclick="toggleSave(this)">
-            ♡
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
+    </div>
 
 
   </div>
@@ -852,7 +576,7 @@ header{
 
 <section class="section">
 
-  <div class="sectionTitle">
+  <div class="title">
     <h2>⭐ Popular Sellers</h2>
   </div>
 
@@ -865,23 +589,23 @@ header{
 
     <div class="sellerInfo">
 
-      <h3>
+      <b>
         John Electronics ✓
-      </h3>
+      </b>
 
       <div class="rating">
         ★★★★★ 4.9
       </div>
 
-      <div class="followers">
+      <small>
         2.4K followers
-      </div>
+      </small>
 
     </div>
 
     <button
-      class="followBtn"
-      onclick="toggleFollow(this)">
+      class="follow"
+      onclick="follow(this)">
       Follow
     </button>
 
@@ -896,23 +620,23 @@ header{
 
     <div class="sellerInfo">
 
-      <h3>
+      <b>
         AF Fashion ✓
-      </h3>
+      </b>
 
       <div class="rating">
         ★★★★★ 4.8
       </div>
 
-      <div class="followers">
+      <small>
         1.7K followers
-      </div>
+      </small>
 
     </div>
 
     <button
-      class="followBtn"
-      onclick="toggleFollow(this)">
+      class="follow"
+      onclick="follow(this)">
       Follow
     </button>
 
@@ -921,102 +645,48 @@ header{
 </section>
 
 
-<section class="section">
+<section
+  class="section account"
+  id="accountSection">
 
-  <div class="sectionTitle">
-    <h2>Why AVYRA?</h2>
+  <div class="title">
+    <h2>Your AVYRA Account</h2>
   </div>
 
+  <div class="accountCard">
 
-  <div class="features">
+    <img
+      id="profilePhoto"
+      src=""
+      alt="Profile">
 
-    <div class="feature">
+    <h2 id="profileName">
+      User
+    </h2>
 
-      <div class="featureIcon">
-        🌍
-      </div>
+    <p id="profileEmail">
+      Email
+    </p>
 
-      <h3>
-        Worldwide
-      </h3>
+    <p>
+      Followers:
+      <b id="followers">
+        0
+      </b>
+    </p>
 
-      <p>
-        Buyers and sellers can connect across countries.
-      </p>
+    <p>
+      Following:
+      <b id="following">
+        0
+      </b>
+    </p>
 
-    </div>
-
-
-    <div class="feature">
-
-      <div class="featureIcon">
-        💬
-      </div>
-
-      <h3>
-        Direct Chat
-      </h3>
-
-      <p>
-        Buyers can contact sellers about their listings.
-      </p>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="featureIcon">
-        ⭐
-      </div>
-
-      <h3>
-        Ratings
-      </h3>
-
-      <p>
-        Buyers can rate sellers after transactions.
-      </p>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="featureIcon">
-        🚚
-      </div>
-
-      <h3>
-        Flexible Shipping
-      </h3>
-
-      <p>
-        Buyers and sellers arrange shipping between themselves.
-      </p>
-
-    </div>
+    <button onclick="logout()">
+      Sign Out
+    </button>
 
   </div>
-
-</section>
-
-
-<section class="cta">
-
-  <h2>
-    Ready to sell?
-  </h2>
-
-  <p>
-    Create an AVYRA account and list your products.
-  </p>
-
-  <button
-    class="sellBtn"
-    onclick="openLogin()">
-    + Start Selling
-  </button>
 
 </section>
 
@@ -1024,9 +694,7 @@ header{
 </main>
 
 
-<!-- MOBILE NAVIGATION -->
-
-<div class="bottomNav">
+<div class="bottom">
 
   <button>
     🏠<br>
@@ -1035,23 +703,23 @@ header{
 
   <button
     onclick="document
-    .getElementById('searchInput')
+    .getElementById('search')
     .focus()">
     🔎<br>
     Search
   </button>
 
-  <button onclick="openLogin()">
+  <button onclick="openAccount()">
     ➕<br>
     Sell
   </button>
 
-  <button onclick="showMessages()">
+  <button onclick="messageSeller()">
     💬<br>
     Messages
   </button>
 
-  <button onclick="openLogin()">
+  <button onclick="openAccount()">
     👤<br>
     Account
   </button>
@@ -1059,26 +727,26 @@ header{
 </div>
 
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 
 <div
   class="modal"
   id="loginModal">
 
-  <div class="modalBox">
+  <div class="box">
 
     <h2>
       Welcome to AVYRA
     </h2>
 
-    <p class="description">
-      Sign in to buy, sell and connect worldwide.
+    <p>
+      Sign in to your account.
     </p>
 
     <input
       id="email"
       type="email"
-      placeholder="Email address"
+      placeholder="Email"
     >
 
     <input
@@ -1088,27 +756,24 @@ header{
     >
 
     <button
-      class="primaryBtn"
-      onclick="login()">
+      class="primary"
+      onclick="emailLogin()">
       Sign In
     </button>
 
     <button
-      class="googleBtn"
+      class="google"
       onclick="googleLogin()">
       Continue with Google
     </button>
 
     <button
-      class="closeBtn"
+      class="close"
       onclick="closeLogin()">
       Close
     </button>
 
-    <div
-      class="status"
-      id="authStatus">
-    </div>
+    <div id="status"></div>
 
   </div>
 
@@ -1125,7 +790,6 @@ function openLogin(){
 
 }
 
-
 function closeLogin(){
 
   document
@@ -1134,12 +798,69 @@ function closeLogin(){
 
 }
 
+function openAccount(){
+
+  const user =
+    window.currentUser;
+
+  if(user){
+
+    document
+      .getElementById("accountSection")
+      .style.display="block";
+
+    document
+      .getElementById("accountSection")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }else{
+
+    openLogin();
+
+  }
+
+}
+
+function messageSeller(){
+
+  if(!window.currentUser){
+
+    openLogin();
+
+    return;
+
+  }
+
+  alert(
+    "Messaging will be connected to AVYRA chat next."
+  );
+
+}
+
+function follow(button){
+
+  if(!window.currentUser){
+
+    openLogin();
+
+    return;
+
+  }
+
+  button.innerText =
+    button.innerText==="Follow"
+    ? "Following"
+    : "Follow";
+
+}
 
 function searchProducts(){
 
-  const value =
+  const text =
     document
-      .getElementById("searchInput")
+      .getElementById("search")
       .value
       .toLowerCase();
 
@@ -1147,113 +868,51 @@ function searchProducts(){
     .querySelectorAll(".product")
     .forEach(product=>{
 
-      const text =
-        product.innerText.toLowerCase();
-
       product.style.display =
-        text.includes(value)
-        ? ""
-        : "none";
+        product.innerText
+          .toLowerCase()
+          .includes(text)
+          ? ""
+          : "none";
 
     });
-
-}
-
-
-function toggleSave(button){
-
-  if(button.innerText==="♡"){
-
-    button.innerText="♥";
-
-    button.style.color=
-      "#ff1744";
-
-  }else{
-
-    button.innerText="♡";
-
-    button.style.color=
-      "white";
-
-  }
-
-}
-
-
-function toggleFollow(button){
-
-  if(button.innerText==="Follow"){
-
-    button.innerText=
-      "Following";
-
-    button.style.background=
-      "#ff1744";
-
-    button.style.color=
-      "white";
-
-  }else{
-
-    button.innerText=
-      "Follow";
-
-    button.style.background=
-      "none";
-
-    button.style.color=
-      "#ff1744";
-
-  }
-
-}
-
-
-function showNotifications(){
-
-  alert(
-    "Notifications will appear here."
-  );
-
-}
-
-
-function showMessages(){
-
-  alert(
-    "Sign in to AVYRA to message sellers."
-  );
-
-  openLogin();
 
 }
 
 </script>
 
 
-<!-- FIREBASE -->
-
 <script type="module">
 
 import {
+
   auth,
+  db,
   googleProvider,
+
   signInWithPopup,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+
+  onAuthStateChanged,
+  signOut,
+
+  doc,
+  setDoc,
+  getDoc,
+  serverTimestamp
+
 } from "./firebase.js";
 
+
+/* GOOGLE LOGIN */
 
 window.googleLogin = async function(){
 
   const status =
-    document.getElementById(
-      "authStatus"
-    );
+    document.getElementById("status");
 
-  status.textContent =
-    "Signing in with Google...";
-
+  status.innerText =
+    "Connecting to Google...";
 
   try{
 
@@ -1262,20 +921,12 @@ window.googleLogin = async function(){
       googleProvider
     );
 
-    status.textContent =
-      "Welcome to AVYRA! 🎉";
-
-    setTimeout(
-      closeLogin,
-      800
-    );
-
   }catch(error){
 
     console.error(error);
 
-    status.textContent =
-      "Google sign-in failed: " +
+    status.innerText =
+      "Google login failed: " +
       error.message;
 
   }
@@ -1283,7 +934,9 @@ window.googleLogin = async function(){
 };
 
 
-window.login = async function(){
+/* EMAIL LOGIN */
+
+window.emailLogin = async function(){
 
   const email =
     document
@@ -1296,24 +949,17 @@ window.login = async function(){
       .getElementById("password")
       .value;
 
-  const status =
-    document.getElementById(
-      "authStatus"
-    );
-
 
   if(!email || !password){
 
-    status.textContent =
+    document
+      .getElementById("status")
+      .innerText =
       "Enter your email and password.";
 
     return;
 
   }
-
-
-  status.textContent =
-    "Signing in...";
 
 
   try{
@@ -1324,25 +970,160 @@ window.login = async function(){
       password
     );
 
-    status.textContent =
-      "Signed in successfully! 🎉";
-
-    setTimeout(
-      closeLogin,
-      800
-    );
-
   }catch(error){
 
-    console.error(error);
-
-    status.textContent =
-      "Sign-in failed: " +
+    document
+      .getElementById("status")
+      .innerText =
       error.message;
 
   }
 
 };
+
+
+/* LOGOUT */
+
+window.logout = async function(){
+
+  await signOut(auth);
+
+  document
+    .getElementById("accountSection")
+    .style.display="none";
+
+};
+
+
+/* WATCH LOGIN */
+
+onAuthStateChanged(
+  auth,
+  async user=>{
+
+    window.currentUser =
+      user || null;
+
+
+    if(!user){
+
+      document
+        .getElementById("headerAccount")
+        .innerText="Sign in";
+
+      return;
+
+    }
+
+
+    /* USER IS LOGGED IN */
+
+    document
+      .getElementById("headerAccount")
+      .innerText =
+      user.displayName ||
+      "Account";
+
+
+    document
+      .getElementById("loginModal")
+      .style.display="none";
+
+
+    /* CREATE / LOAD PROFILE */
+
+    const userRef =
+      doc(
+        db,
+        "users",
+        user.uid
+      );
+
+
+    const existing =
+      await getDoc(userRef);
+
+
+    if(!existing.exists()){
+
+      await setDoc(
+        userRef,
+        {
+
+          uid:user.uid,
+
+          name:
+            user.displayName ||
+            "AVYRA User",
+
+          email:
+            user.email || "",
+
+          photo:
+            user.photoURL || "",
+
+          followers:0,
+
+          following:0,
+
+          createdAt:
+            serverTimestamp()
+
+        }
+      );
+
+    }
+
+
+    /* SHOW ACCOUNT */
+
+    document
+      .getElementById("accountSection")
+      .style.display="block";
+
+
+    document
+      .getElementById("profileName")
+      .innerText =
+      user.displayName ||
+      "AVYRA User";
+
+
+    document
+      .getElementById("profileEmail")
+      .innerText =
+      user.email || "";
+
+
+    document
+      .getElementById("followers")
+      .innerText="0";
+
+
+    document
+      .getElementById("following")
+      .innerText="0";
+
+
+    const photo =
+      document
+        .getElementById("profilePhoto");
+
+
+    if(user.photoURL){
+
+      photo.src =
+        user.photoURL;
+
+    }else{
+
+      photo.style.display="none";
+
+    }
+
+  }
+
+);
 
 </script>
 
