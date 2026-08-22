@@ -49,7 +49,6 @@ button:active{
 }
 
 /* HEADER */
-
 header{
   position:sticky;
   top:0;
@@ -138,6 +137,7 @@ header{
   padding:14px;
   color:#fff;
   border-bottom:1px solid #28282f;
+  cursor:pointer;
 }
 
 .searchResult:last-child{
@@ -157,7 +157,6 @@ header{
 }
 
 /* PAGES */
-
 .page{
   display:none;
   min-height:calc(100vh - 70px);
@@ -168,7 +167,6 @@ header{
 }
 
 /* HERO */
-
 .hero{
   min-height:520px;
   display:flex;
@@ -229,7 +227,6 @@ header{
 }
 
 /* GENERAL */
-
 .container{
   width:92%;
   max-width:1250px;
@@ -301,7 +298,6 @@ header{
 }
 
 /* CATEGORIES */
-
 .categories{
   display:flex;
   gap:10px;
@@ -332,7 +328,6 @@ header{
 }
 
 /* PRODUCTS */
-
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
@@ -396,7 +391,6 @@ header{
 }
 
 /* FORMS */
-
 .formPage{
   max-width:620px;
   margin:35px auto;
@@ -465,7 +459,6 @@ header{
 }
 
 /* PROFILE */
-
 .profileCard{
   background:#fff;
   border:1px solid #e0e0e6;
@@ -484,6 +477,7 @@ header{
   width:82px;
   height:82px;
   flex:none;
+  cursor:pointer;
 }
 
 .avatar{
@@ -499,6 +493,7 @@ header{
   font-size:27px;
   font-weight:800;
   border:3px solid #f3f3f5;
+  overflow:hidden;
 }
 
 .avatarPlus{
@@ -552,7 +547,6 @@ header{
 }
 
 /* MODAL */
-
 .modal{
   display:none;
   position:fixed;
@@ -595,7 +589,6 @@ header{
 }
 
 /* PRODUCT DETAILS */
-
 .detailImage{
   width:100%;
   max-height:500px;
@@ -628,7 +621,6 @@ header{
 }
 
 /* BOTTOM NAV */
-
 .bottomNav{
   position:fixed;
   bottom:0;
@@ -668,7 +660,6 @@ header{
 }
 
 /* SELLER */
-
 .sellerHero{
   color:#fff;
   background:
@@ -715,7 +706,6 @@ header{
 }
 
 /* TOAST */
-
 .toast{
   position:fixed;
   left:50%;
@@ -739,66 +729,51 @@ header{
 }
 
 @media(max-width:700px){
-
   .header{
     padding:10px 12px;
     gap:9px;
   }
-
   .logo{
     font-size:18px;
   }
-
   .headerAccount{
     display:none;
   }
-
   .search button{
     width:58px;
     font-size:12px;
   }
-
   .hero{
     min-height:450px;
   }
-
   .hero h1{
     letter-spacing:-2.5px;
   }
-
   .products{
     grid-template-columns:repeat(2,1fr);
     gap:9px;
   }
-
   .productImage{
     height:155px;
   }
-
   .productBody{
     padding:10px;
   }
-
   .productBody h3{
     font-size:13px;
   }
-
   .productPrice{
     font-size:16px;
   }
-
   .productActions{
     flex-direction:column;
   }
-
   .sellerStats{
     grid-template-columns:1fr;
   }
-
   .phoneRow{
     gap:5px;
   }
-
   .phoneRow select{
     width:120px;
   }
@@ -810,7 +785,6 @@ header{
 
 <header>
   <div class="header">
-
     <div class="logo">AV<span>YRA</span></div>
 
     <div class="searchBox">
@@ -824,41 +798,30 @@ header{
     <button class="headerAccount" onclick="showPage('account')" id="headerUser">
       Account
     </button>
-
   </div>
 </header>
 
-
 <!-- HOME -->
-
 <section id="home" class="page active">
-
   <div class="hero">
     <div class="heroContent">
-
       <div class="tag">AVYRA MARKETPLACE</div>
-
       <h1>
         Shop better.<br>
         <span class="gradient">Sell smarter.</span>
       </h1>
-
       <p>
         Discover products from independent sellers and find what you need in one place.
       </p>
-
       <div class="heroButtons">
         <button class="btn btnPrimary" onclick="showPage('shop')">Explore products</button>
         <button class="btn btnDark" onclick="showPage('seller')">Become a seller</button>
       </div>
-
     </div>
   </div>
 
   <main class="container">
-
     <section class="section">
-
       <div class="sectionHeader">
         <h2>Categories</h2>
       </div>
@@ -894,31 +857,22 @@ header{
           <small>More products</small>
         </button>
       </div>
-
     </section>
 
     <section class="section">
-
       <div class="sectionHeader">
         <h2>Latest products</h2>
         <button class="btn" onclick="showPage('shop')">View all</button>
       </div>
 
       <div id="featuredProducts" class="products"></div>
-
     </section>
-
   </main>
-
 </section>
 
-
 <!-- SHOP -->
-
 <section id="shop" class="page">
-
   <main class="container section">
-
     <div class="sectionHeader">
       <div>
         <h1>Products</h1>
@@ -933,53 +887,36 @@ header{
     </div>
 
     <div id="shopProducts" class="products"></div>
-
   </main>
-
 </section>
 
-
 <!-- PRODUCT DETAILS -->
-
 <section id="details" class="page">
   <main class="container section">
     <div id="detailsContent"></div>
   </main>
 </section>
 
-
 <!-- SELL -->
-
 <section id="seller" class="page">
-
   <div class="sellerHero">
     <div class="container">
-
       <div class="tag">SELL ON AVYRA</div>
-
       <h1>
         Your products.<br>
         <span class="gradient">Your business.</span>
       </h1>
-
       <p>
         Create your seller account and add your own products and product pictures.
       </p>
-
       <button class="btn btnPrimary" onclick="startSeller()">Become a seller</button>
-
     </div>
   </div>
-
 </section>
 
-
 <!-- SELLER DASHBOARD -->
-
 <section id="sellerDashboard" class="page">
-
   <main class="container section">
-
     <div class="sectionHeader">
       <div>
         <h1>Seller Hub</h1>
@@ -998,22 +935,14 @@ header{
     </div>
 
     <div id="sellerProducts" class="products"></div>
-
   </main>
-
 </section>
 
-
 <!-- ADD PRODUCT -->
-
 <section id="addProduct" class="page">
-
   <main class="container">
-
     <div class="formPage">
-
       <h1>Add product</h1>
-
       <p class="formIntro">
         Only sellers can publish products. Your product and picture will appear on the marketplace.
       </p>
@@ -1068,46 +997,32 @@ header{
         <input id="productImageInput" type="file" accept="image/*">
       </div>
 
-      <button class="btn btnPrimary full" onclick="addProduct()">
+      <button id="publishBtn" class="btn btnPrimary full" onclick="addProduct()">
         Publish product
       </button>
-
     </div>
-
   </main>
-
 </section>
 
-
 <!-- ACCOUNT -->
-
 <section id="account" class="page">
-
   <main class="container section">
-
     <div class="sectionHeader">
       <h1>Account</h1>
     </div>
 
     <div id="accountContent"></div>
-
   </main>
-
 </section>
 
-
 <!-- SETTINGS -->
-
 <section id="settings" class="page">
-
   <main class="container section">
-
     <div class="sectionHeader">
       <h1>Settings</h1>
     </div>
 
     <div class="profileCard">
-
       <div class="field">
         <label>Country</label>
         <select id="settingCountry"></select>
@@ -1119,24 +1034,13 @@ header{
       </div>
 
       <button class="btn btnPrimary" onclick="saveSettings()">Save settings</button>
-
-      <button class="btn btnDanger" style="margin-left:8px" onclick="clearData()">
-        Clear app data
-      </button>
-
     </div>
-
   </main>
-
 </section>
 
-
 <!-- LOGIN MODAL -->
-
 <div id="loginModal" class="modal">
-
   <div class="modalBox">
-
     <div class="modalHead">
       <h2>Log in</h2>
       <button class="close" onclick="closeModal('loginModal')">×</button>
@@ -1152,23 +1056,17 @@ header{
       <input id="loginPassword" type="password" placeholder="Your password">
     </div>
 
-    <button class="btn btnPrimary full" onclick="login()">Log in</button>
+    <button id="loginBtn" class="btn btnPrimary full" onclick="login()">Log in</button>
 
     <button class="btn full" style="margin-top:10px" onclick="openSignup(false)">
       Create account
     </button>
-
   </div>
-
 </div>
 
-
 <!-- SIGNUP MODAL -->
-
 <div id="signupModal" class="modal">
-
   <div class="modalBox">
-
     <div class="modalHead">
       <h2 id="signupTitle">Create account</h2>
       <button class="close" onclick="closeModal('signupModal')">×</button>
@@ -1196,7 +1094,6 @@ header{
 
     <div class="field">
       <label>Phone number</label>
-
       <div class="phoneRow">
         <select id="signupCode"></select>
         <input id="signupPhone" type="tel" placeholder="Phone number">
@@ -1218,21 +1115,15 @@ header{
       <input id="signupConfirmPassword" type="password" placeholder="Confirm your password">
     </div>
 
-    <button class="btn btnPrimary full" onclick="createAccount()">
+    <button id="signupBtn" class="btn btnPrimary full" onclick="createAccount()">
       Create account
     </button>
-
   </div>
-
 </div>
 
-
 <!-- EDIT PROFILE -->
-
 <div id="profileModal" class="modal">
-
   <div class="modalBox">
-
     <div class="modalHead">
       <h2>Edit profile</h2>
       <button class="close" onclick="closeModal('profileModal')">×</button>
@@ -1254,13 +1145,7 @@ header{
     </div>
 
     <div class="field">
-      <label>Email</label>
-      <input id="editEmail" type="email">
-    </div>
-
-    <div class="field">
       <label>Phone number</label>
-
       <div class="phoneRow">
         <select id="editCode"></select>
         <input id="editPhone">
@@ -1272,1065 +1157,720 @@ header{
       <select id="editCountry"></select>
     </div>
 
-    <button class="btn btnPrimary full" onclick="saveProfile()">
+    <button id="editProfileBtn" class="btn btnPrimary full" onclick="saveProfile()">
       Save changes
     </button>
-
   </div>
-
 </div>
 
-
 <!-- BOTTOM NAV -->
-
 <nav class="bottomNav">
-
   <button id="navHome" class="active" onclick="showPage('home')">
     <div class="navDot"></div>
     Home
   </button>
-
   <button id="navShop" onclick="showPage('shop')">
     <div class="navDot"></div>
     Shop
   </button>
-
   <button id="navSell" onclick="showPage('seller')">
     <div class="navDot"></div>
     Sell
   </button>
-
   <button id="navAccount" onclick="showPage('account')">
     <div class="navDot"></div>
     Account
   </button>
-
 </nav>
-
 
 <div id="toast" class="toast"></div>
 
-
-<script>
-const STORAGE_KEY = "avyra_final_marketplace";
-
-let app = {
-  profile:{
-    loggedIn:false,
-    name:"",
-    username:"",
-    business:"",
-    email:"",
-    phone:"",
-    code:"+254",
-    country:"Kenya",
-    isSeller:false,
-    avatar:""
-  },
-
-  settings:{
-    country:"Kenya",
-    location:""
-  },
-
-  products:[],
-
-  users:[]
-};
-
-let signupSeller = false;
-
-
-/* COUNTRIES AND COUNTRY CODES */
-
-const countries = [
-["Afghanistan","+93"],["Albania","+355"],["Algeria","+213"],
-["Andorra","+376"],["Angola","+244"],["Argentina","+54"],
-["Armenia","+374"],["Australia","+61"],["Austria","+43"],
-["Azerbaijan","+994"],["Bahamas","+1"],["Bahrain","+973"],
-["Bangladesh","+880"],["Barbados","+1"],["Belarus","+375"],
-["Belgium","+32"],["Belize","+501"],["Benin","+229"],
-["Bhutan","+975"],["Bolivia","+591"],["Bosnia and Herzegovina","+387"],
-["Botswana","+267"],["Brazil","+55"],["Brunei","+673"],
-["Bulgaria","+359"],["Burkina Faso","+226"],["Burundi","+257"],
-["Cambodia","+855"],["Cameroon","+237"],["Canada","+1"],
-["Cape Verde","+238"],["Central African Republic","+236"],
-["Chad","+235"],["Chile","+56"],["China","+86"],
-["Colombia","+57"],["Comoros","+269"],["Congo","+242"],
-["Costa Rica","+506"],["Croatia","+385"],["Cuba","+53"],
-["Cyprus","+357"],["Czech Republic","+420"],["Denmark","+45"],
-["Djibouti","+253"],["Dominica","+1"],["Dominican Republic","+1"],
-["Ecuador","+593"],["Egypt","+20"],["El Salvador","+503"],
-["Equatorial Guinea","+240"],["Eritrea","+291"],["Estonia","+372"],
-["Eswatini","+268"],["Ethiopia","+251"],["Fiji","+679"],
-["Finland","+358"],["France","+33"],["Gabon","+241"],
-["Gambia","+220"],["Georgia","+995"],["Germany","+49"],
-["Ghana","+233"],["Greece","+30"],["Grenada","+1"],
-["Guatemala","+502"],["Guinea","+224"],["Guinea-Bissau","+245"],
-["Guyana","+592"],["Haiti","+509"],["Honduras","+504"],
-["Hungary","+36"],["Iceland","+354"],["India","+91"],
-["Indonesia","+62"],["Iran","+98"],["Iraq","+964"],
-["Ireland","+353"],["Israel","+972"],["Italy","+39"],
-["Jamaica","+1"],["Japan","+81"],["Jordan","+962"],
-["Kazakhstan","+7"],["Kenya","+254"],["Kiribati","+686"],
-["Kuwait","+965"],["Kyrgyzstan","+996"],["Laos","+856"],
-["Latvia","+371"],["Lebanon","+961"],["Lesotho","+266"],
-["Liberia","+231"],["Libya","+218"],["Liechtenstein","+423"],
-["Lithuania","+370"],["Luxembourg","+352"],["Madagascar","+261"],
-["Malawi","+265"],["Malaysia","+60"],["Maldives","+960"],
-["Mali","+223"],["Malta","+356"],["Marshall Islands","+692"],
-["Mauritania","+222"],["Mauritius","+230"],["Mexico","+52"],
-["Micronesia","+691"],["Moldova","+373"],["Monaco","+377"],
-["Mongolia","+976"],["Montenegro","+382"],["Morocco","+212"],
-["Mozambique","+258"],["Myanmar","+95"],["Namibia","+264"],
-["Nauru","+674"],["Nepal","+977"],["Netherlands","+31"],
-["New Zealand","+64"],["Nicaragua","+505"],["Niger","+227"],
-["Nigeria","+234"],["North Korea","+850"],["North Macedonia","+389"],
-["Norway","+47"],["Oman","+968"],["Pakistan","+92"],
-["Palau","+680"],["Panama","+507"],["Papua New Guinea","+675"],
-["Paraguay","+595"],["Peru","+51"],["Philippines","+63"],
-["Poland","+48"],["Portugal","+351"],["Qatar","+974"],
-["Romania","+40"],["Russia","+7"],["Rwanda","+250"],
-["Saint Kitts and Nevis","+1"],["Saint Lucia","+1"],
-["Saint Vincent and the Grenadines","+1"],["Samoa","+685"],
-["San Marino","+378"],["Sao Tome and Principe","+239"],
-["Saudi Arabia","+966"],["Senegal","+221"],["Serbia","+381"],
-["Seychelles","+248"],["Sierra Leone","+232"],["Singapore","+65"],
-["Slovakia","+421"],["Slovenia","+386"],["Solomon Islands","+677"],
-["Somalia","+252"],["South Africa","+27"],["South Korea","+82"],
-["South Sudan","+211"],["Spain","+34"],["Sri Lanka","+94"],
-["Sudan","+249"],["Suriname","+597"],["Sweden","+46"],
-["Switzerland","+41"],["Syria","+963"],["Taiwan","+886"],
-["Tajikistan","+992"],["Tanzania","+255"],["Thailand","+66"],
-["Timor-Leste","+670"],["Togo","+228"],["Tonga","+676"],
-["Trinidad and Tobago","+1"],["Tunisia","+216"],["Turkey","+90"],
-["Turkmenistan","+993"],["Tuvalu","+688"],["Uganda","+256"],
-["Ukraine","+380"],["United Arab Emirates","+971"],
-["United Kingdom","+44"],["United States","+1"],
-["Uruguay","+598"],["Uzbekistan","+998"],["Vanuatu","+678"],
-["Vatican City","+379"],["Venezuela","+58"],["Vietnam","+84"],
-["Yemen","+967"],["Zambia","+260"],["Zimbabwe","+263"]
-];
-
-
-/* SAVE / LOAD */
-
-function loadApp(){
-  try{
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(saved){
-      const parsed = JSON.parse(saved);
-      app = {
-        ...app,
-        ...parsed,
-        profile:{...app.profile,...parsed.profile},
-        settings:{...app.settings,...parsed.settings}
-      };
-    }
-  }catch(e){}
-}
-
-function saveApp(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(app));
-}
-
-
-/* START */
-
-function populateSelects(){
-
-  const countrySelects = [
-    "signupCountry",
-    "editCountry",
-    "settingCountry"
-  ];
-
-  const codeSelects = [
-    "signupCode",
-    "editCode"
-  ];
-
-  countrySelects.forEach(id=>{
-    const select = document.getElementById(id);
-    select.innerHTML = "";
-
-    countries.forEach(c=>{
-      const option = document.createElement("option");
-      option.value = c[0];
-      option.textContent = c[0];
-
-      if(c[0] === "Kenya"){
-        option.selected = true;
-      }
-
-      select.appendChild(option);
-    });
-  });
-
-  codeSelects.forEach(id=>{
-    const select = document.getElementById(id);
-    select.innerHTML = "";
-
-    countries.forEach(c=>{
-      const option = document.createElement("option");
-      option.value = c[1];
-      option.textContent = c[0] + " (" + c[1] + ")";
-
-      if(c[0] === "Kenya"){
-        option.selected = true;
-      }
-
-      select.appendChild(option);
-    });
-  });
-}
-
-function init(){
-  loadApp();
-  populateSelects();
-  updateHeader();
-  renderFeatured();
-  renderShop();
-  renderAccount();
-}
-
-
-/* NAVIGATION */
-
-function showPage(page){
-
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-  });
-
-  const target = document.getElementById(page);
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  if(page === "home") renderFeatured();
-  if(page === "shop") renderShop();
-  if(page === "account") renderAccount();
-  if(page === "sellerDashboard") renderSellerDashboard();
-  if(page === "settings") renderSettings();
-
-  updateNav(page);
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-function updateNav(page){
-
-  document.querySelectorAll(".bottomNav button").forEach(b=>{
-    b.classList.remove("active");
-  });
-
-  let nav = null;
-
-  if(page === "home") nav = "navHome";
-  if(page === "shop" || page === "details") nav = "navShop";
-  if(page === "seller" || page === "sellerDashboard" || page === "addProduct") nav = "navSell";
-  if(page === "account" || page === "settings") nav = "navAccount";
-
-  if(nav){
-    document.getElementById(nav).classList.add("active");
-  }
-}
-
-
-/* SEARCH */
-
-function searchProducts(){
-
-  const text = document.getElementById("searchInput").value.trim().toLowerCase();
-
-  showPage("shop");
-
-  if(!text){
-    renderShop();
-    return;
-  }
-
-  const results = app.products.filter(p=>
-    p.name.toLowerCase().includes(text) ||
-    p.category.toLowerCase().includes(text) ||
-    p.description.toLowerCase().includes(text) ||
-    p.location.toLowerCase().includes(text) ||
-    p.business.toLowerCase().includes(text)
-  );
-
-  renderProductList(results, "shopProducts");
-}
-
-document.getElementById("searchInput").addEventListener("input", function(){
-
-  const text = this.value.trim().toLowerCase();
-  const box = document.getElementById("searchResults");
-
-  box.innerHTML = "";
-
-  if(!text){
-    box.style.display = "none";
-    return;
-  }
-
-  const results = app.products.filter(p=>
-    p.name.toLowerCase().includes(text)
-  ).slice(0,6);
-
-  if(results.length === 0){
-    box.style.display = "none";
-    return;
-  }
-
-  results.forEach(product=>{
-    const item = document.createElement("div");
-
-    item.className = "searchResult";
-    item.textContent = product.name;
-
-    item.onclick = function(){
-      document.getElementById("searchInput").value = product.name;
-      box.style.display = "none";
-      openProduct(product.id);
-    };
-
-    box.appendChild(item);
-  });
-
-  box.style.display = "block";
-});
-
-document.getElementById("searchInput").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-    searchProducts();
-  }
-});
-
-document.addEventListener("click", function(e){
-  if(!e.target.closest(".searchBox")){
-    document.getElementById("searchResults").style.display = "none";
-  }
-});
-
-function categorySearch(category){
-
-  document.getElementById("searchInput").value = category;
-
-  const results = app.products.filter(p=>
-    p.category.toLowerCase() === category.toLowerCase()
-  );
-
-  showPage("shop");
-  renderProductList(results, "shopProducts");
-}
-
-
-/* PRODUCTS */
-
-function productCardHTML(p){
-
-  return `
-    <article class="product">
-
-      <img class="productImage" src="${p.image}" alt="Product image">
-
-      <div class="productBody">
-
-        <h3>${escapeHTML(p.name)}</h3>
-
-        <div class="productSeller">
-          ${escapeHTML(p.business || p.seller)}
-        </div>
-
-        <div class="productPrice">
-          ${escapeHTML(p.currency)} ${formatMoney(p.price)}
-        </div>
-
-        <div class="productActions">
-          <button onclick="openProduct('${p.id}')" class="viewBtn">View</button>
-        </div>
-
-      </div>
-
-    </article>
-  `;
-}
-
-function renderProductList(products, targetId){
-
-  const box = document.getElementById(targetId);
-
-  if(products.length === 0){
-
-    box.innerHTML = `
-      <div class="empty">
-        <h3>No products yet</h3>
-        <p>Sellers will add products and pictures here.</p>
-      </div>
-    `;
-
-    return;
-  }
-
-  box.innerHTML = products.map(productCardHTML).join("");
-}
-
-function renderFeatured(){
-  renderProductList(app.products.slice(0,8), "featuredProducts");
-}
-
-function renderShop(){
-
-  let products = [...app.products];
-
-  const sort = document.getElementById("sortProducts").value;
-
-  if(sort === "low"){
-    products.sort((a,b)=>a.price-b.price);
-  }
-
-  if(sort === "high"){
-    products.sort((a,b)=>b.price-a.price);
-  }
-
-  renderProductList(products, "shopProducts");
-}
-
-function openProduct(id){
-
-  const p = app.products.find(product=>product.id === id);
-
-  if(!p) return;
-
-  showPage("details");
-
-  document.getElementById("detailsContent").innerHTML = `
-
-    <img class="detailImage" src="${p.image}" alt="Product image">
-
-    <div class="detailCard">
-
-      <h1>${escapeHTML(p.name)}</h1>
-
-      <div class="detailPrice">
-        ${escapeHTML(p.currency)} ${formatMoney(p.price)}
-      </div>
-
-      <p class="detailDescription">
-        ${escapeHTML(p.description)}
-      </p>
-
-      <p style="margin-top:15px;color:#777783;font-size:13px">
-        Location: ${escapeHTML(p.location)}
-      </p>
-
-      <p style="margin-top:7px;color:#777783;font-size:13px">
-        Seller: ${escapeHTML(p.business || p.seller)}
-      </p>
-
-    </div>
-  `;
-}
-
-
-/* SELLER */
-
-function startSeller(){
-
-  if(!app.profile.loggedIn){
-    openSignup(true);
-    return;
-  }
-
-  if(!app.profile.isSeller){
-    app.profile.isSeller = true;
-    saveApp();
-  }
-
-  showPage("sellerDashboard");
-}
-
-function renderSellerDashboard(){
-
-  if(!app.profile.loggedIn || !app.profile.isSeller){
-    showPage("seller");
-    return;
-  }
-
-  const products = app.products.filter(p=>
-    p.sellerUsername === app.profile.username
-  );
-
-  document.getElementById("businessNameText").textContent =
-    app.profile.business || app.profile.name;
-
-  document.getElementById("sellerStats").innerHTML = `
-    <div class="stat">
-      <strong>${products.length}</strong>
-      <span>Your products</span>
-    </div>
-
-    <div class="stat">
-      <strong>${app.profile.business || "My Store"}</strong>
-      <span>Business</span>
-    </div>
-
-    <div class="stat">
-      <strong>Active</strong>
-      <span>Store status</span>
-    </div>
-  `;
-
-  const box = document.getElementById("sellerProducts");
-
-  if(products.length === 0){
-
-    box.innerHTML = `
-      <div class="empty">
-        <h3>Your store is empty</h3>
-        <p>Only you can add products and product pictures.</p>
-      </div>
-    `;
-
-    return;
-  }
-
-  box.innerHTML = products.map(p=>`
-    <article class="product">
-
-      <img class="productImage" src="${p.image}">
-
-      <div class="productBody">
-
-        <h3>${escapeHTML(p.name)}</h3>
-
-        <div class="productPrice">
-          ${escapeHTML(p.currency)} ${formatMoney(p.price)}
-        </div>
-
-        <div class="productActions">
-          <button onclick="openProduct('${p.id}')">View</button>
-          <button class="btnDanger" onclick="deleteProduct('${p.id}')">Delete</button>
-        </div>
-
-      </div>
-
-    </article>
-  `).join("");
-}
-
-
-/* ADD PRODUCT - SELLERS ONLY */
-
-function addProduct(){
-
-  if(!app.profile.loggedIn || !app.profile.isSeller){
-    showToast("Only sellers can add products");
-    return;
-  }
-
-  const name = document.getElementById("productName").value.trim();
-  const category = document.getElementById("productCategory").value;
-  const price = Number(document.getElementById("productPrice").value);
-  const currency = document.getElementById("productCurrency").value;
-  const location = document.getElementById("productLocation").value.trim();
-  const description = document.getElementById("productDescription").value.trim();
-  const imageFile = document.getElementById("productImageInput").files[0];
-
-  if(!name || !price || !location || !description || !imageFile){
-    showToast("Complete every field and add a product picture");
-    return;
-  }
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const product = {
-      id:makeID(),
-      name:name,
-      category:category,
-      price:price,
-      currency:currency,
-      location:location,
-      description:description,
-      image:e.target.result,
-      seller:app.profile.name,
-      business:app.profile.business,
-      sellerUsername:app.profile.username,
-      created:Date.now()
-    };
-
-    app.products.unshift(product);
-
-    saveApp();
-
-    document.getElementById("productName").value = "";
-    document.getElementById("productPrice").value = "";
-    document.getElementById("productLocation").value = "";
-    document.getElementById("productDescription").value = "";
-    document.getElementById("productImageInput").value = "";
-
-    showToast("Product published");
-
-    setTimeout(()=>{
-      showPage("sellerDashboard");
-    },500);
+<!-- FIREBASE MODULE SCRIPTS -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    signOut, 
+    onAuthStateChanged 
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    getDoc, 
+    collection, 
+    addDoc, 
+    onSnapshot, 
+    query, 
+    orderBy, 
+    deleteDoc, 
+    updateDoc 
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+  import { 
+    getStorage, 
+    ref, 
+    uploadBytes, 
+    getDownloadURL 
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
+
+  // TODO: Replace with your actual Firebase Project configuration keys
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-  reader.readAsDataURL(imageFile);
-}
+  // Initialize Firebase Services
+  const firebaseApp = initializeApp(firebaseConfig);
+  const auth = getAuth(firebaseApp);
+  const db = getFirestore(firebaseApp);
+  const storage = getStorage(firebaseApp);
 
-function deleteProduct(id){
+  let app = {
+    profile: { loggedIn: false },
+    settings: { country: "Kenya", location: "" },
+    products: []
+  };
 
-  const product = app.products.find(p=>p.id === id);
+  let signupSeller = false;
 
-  if(!product || product.sellerUsername !== app.profile.username){
-    return;
+  const countries = [
+    ["Afghanistan","+93"],["Albania","+355"],["Algeria","+213"],["Andorra","+376"],["Angola","+244"],
+    ["Argentina","+54"],["Armenia","+374"],["Australia","+61"],["Austria","+43"],["Azerbaijan","+994"],
+    ["Bahamas","+1"],["Bahrain","+973"],["Bangladesh","+880"],["Barbados","+1"],["Belarus","+375"],
+    ["Belgium","+32"],["Belize","+501"],["Benin","+229"],["Bhutan","+975"],["Bolivia","+591"],
+    ["Bosnia and Herzegovina","+387"],["Botswana","+267"],["Brazil","+55"],["Brunei","+673"],["Bulgaria","+359"],
+    ["Burkina Faso","+226"],["Burundi","+257"],["Cambodia","+855"],["Cameroon","+237"],["Canada","+1"],
+    ["Cape Verde","+238"],["Central African Republic","+236"],["Chad","+235"],["Chile","+56"],["China","+86"],
+    ["Colombia","+57"],["Comoros","+269"],["Congo","+242"],["Costa Rica","+506"],["Croatia","+385"],
+    ["Cuba","+53"],["Cyprus","+357"],["Czech Republic","+420"],["Denmark","+45"],["Djibouti","+253"],
+    ["Dominica","+1"],["Dominican Republic","+1"],["Ecuador","+593"],["Egypt","+20"],["El Salvador","+503"],
+    ["Equatorial Guinea","+240"],["Eritrea","+291"],["Estonia","+372"],["Eswatini","+268"],["Ethiopia","+251"],
+    ["Fiji","+679"],["Finland","+358"],["France","+33"],["Gabon","+241"],["Gambia","+220"],
+    ["Georgia","+995"],["Germany","+49"],["Ghana","+233"],["Greece","+30"],["Grenada","+1"],
+    ["Guatemala","+502"],["Guinea","+224"],["Guinea-Bissau","+245"],["Guyana","+592"],["Haiti","+509"],
+    ["Honduras","+504"],["Hungary","+36"],["Iceland","+354"],["India","+91"],["Indonesia","+62"],
+    ["Iran","+98"],["Iraq","+964"],["Ireland","+353"],["Israel","+972"],["Italy","+39"],
+    ["Jamaica","+1"],["Japan","+81"],["Jordan","+962"],["Kazakhstan","+7"],["Kenya","+254"],
+    ["Kiribati","+686"],["Kuwait","+965"],["Kyrgyzstan","+996"],["Laos","+856"],["Latvia","+371"],
+    ["Lebanon","+961"],["Lesotho","+266"],["Liberia","+231"],["Libya","+218"],["Liechtenstein","+423"],
+    ["Lithuania","+370"],["Luxembourg","+352"],["Madagascar","+261"],["Malawi","+265"],["Malaysia","+60"],
+    ["Maldives","+960"],["Mali","+223"],["Malta","+356"],["Marshall Islands","+692"],["Mauritania","+222"],
+    ["Mauritius","+230"],["Mexico","+52"],["Micronesia","+691"],["Moldova","+373"],["Monaco","+377"],
+    ["Mongolia","+976"],["Montenegro","+382"],["Morocco","+212"],["Mozambique","+258"],["Myanmar","+95"],
+    ["Namibia","+264"],["Nauru","+674"],["Nepal","+977"],["Netherlands","+31"],["New Zealand","+64"],
+    ["Nicaragua","+505"],["Niger","+227"],["Nigeria","+234"],["North Korea","+850"],["North Macedonia","+389"],
+    ["Norway","+47"],["Oman","+968"],["Pakistan","+92"],["Palau","+680"],["Panama","+507"],
+    ["Papua New Guinea","+675"],["Paraguay","+595"],["Peru","+51"],["Philippines","+63"],["Poland","+48"],
+    ["Portugal","+351"],["Qatar","+974"],["Romania","+40"],["Russia","+7"],["Rwanda","+250"],
+    ["Saint Kitts and Nevis","+1"],["Saint Lucia","+1"],["Saint Vincent and the Grenadines","+1"],["Samoa","+685"],
+    ["San Marino","+378"],["Sao Tome and Principe","+239"],["Saudi Arabia","+966"],["Senegal","+221"],
+    ["Serbia","+381"],["Seychelles","+248"],["Sierra Leone","+232"],["Singapore","+65"],["Slovakia","+421"],
+    ["Slovenia","+386"],["Solomon Islands","+677"],["Somalia","+252"],["South Africa","+27"],["South Korea","+82"],
+    ["South Sudan","+211"],["Spain","+34"],["Sri Lanka","+94"],["Sudan","+249"],["Suriname","+597"],
+    ["Sweden","+46"],["Switzerland","+41"],["Syria","+963"],["Taiwan","+886"],["Tajikistan","+992"],
+    ["Tanzania","+255"],["Thailand","+66"],["Timor-Leste","+670"],["Togo","+228"],["Tonga","+676"],
+    ["Trinidad and Tobago","+1"],["Tunisia","+216"],["Turkey","+90"],["Turkmenistan","+993"],["Tuvalu","+688"],
+    ["Uganda","+256"],["Ukraine","+380"],["United Arab Emirates","+971"],["United Kingdom","+44"],
+    ["United States","+1"],["Uruguay","+598"],["Uzbekistan","+998"],["Vanuatu","+678"],["Vatican City","+379"],
+    ["Venezuela","+58"],["Vietnam","+84"],["Yemen","+967"],["Zambia","+260"],["Zimbabwe","+263"]
+  ];
+
+  function populateSelects(){
+    const countrySelects = ["signupCountry", "editCountry", "settingCountry"];
+    const codeSelects = ["signupCode", "editCode"];
+
+    countrySelects.forEach(id=>{
+      const select = document.getElementById(id);
+      if(!select) return;
+      select.innerHTML = "";
+      countries.forEach(c=>{
+        const option = document.createElement("option");
+        option.value = c[0];
+        option.textContent = c[0];
+        if(c[0] === "Kenya") option.selected = true;
+        select.appendChild(option);
+      });
+    });
+
+    codeSelects.forEach(id=>{
+      const select = document.getElementById(id);
+      if(!select) return;
+      select.innerHTML = "";
+      countries.forEach(c=>{
+        const option = document.createElement("option");
+        option.value = c[1];
+        option.textContent = c[0] + " (" + c[1] + ")";
+        if(c[0] === "Kenya") option.selected = true;
+        select.appendChild(option);
+      });
+    });
   }
 
-  if(!confirm("Delete this product?")){
-    return;
+  // Real-time Auth Observer
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (userDoc.exists()) {
+        app.profile = { loggedIn: true, uid: user.uid, ...userDoc.data() };
+      } else {
+        app.profile = { loggedIn: true, uid: user.uid, email: user.email };
+      }
+    } else {
+      app.profile = { loggedIn: false };
+    }
+    updateHeader();
+    renderAccount();
+  });
+
+  // Real-time Products Sync
+  const q = query(collection(db, "products"), orderBy("created", "desc"));
+  onSnapshot(q, (snapshot) => {
+    app.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderFeatured();
+    renderShop();
+    if(document.getElementById("sellerDashboard").classList.contains("active")) {
+      renderSellerDashboard();
+    }
+  });
+
+  // Attach Functions to Window Context
+  window.showPage = function(page){
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    const target = document.getElementById(page);
+    if(target) target.classList.add("active");
+
+    if(page === "home") renderFeatured();
+    if(page === "shop") renderShop();
+    if(page === "account") renderAccount();
+    if(page === "sellerDashboard") renderSellerDashboard();
+    if(page === "settings") renderSettings();
+
+    updateNav(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  function updateNav(page){
+    document.querySelectorAll(".bottomNav button").forEach(b => b.classList.remove("active"));
+    let nav = null;
+    if(page === "home") nav = "navHome";
+    if(page === "shop" || page === "details") nav = "navShop";
+    if(page === "seller" || page === "sellerDashboard" || page === "addProduct") nav = "navSell";
+    if(page === "account" || page === "settings") nav = "navAccount";
+    if(nav) document.getElementById(nav).classList.add("active");
   }
 
-  app.products = app.products.filter(p=>p.id !== id);
+  window.searchProducts = function(){
+    const text = document.getElementById("searchInput").value.trim().toLowerCase();
+    showPage("shop");
+    if(!text){
+      renderShop();
+      return;
+    }
+    const results = app.products.filter(p=>
+      p.name.toLowerCase().includes(text) ||
+      p.category.toLowerCase().includes(text) ||
+      p.description.toLowerCase().includes(text) ||
+      p.location.toLowerCase().includes(text) ||
+      (p.business && p.business.toLowerCase().includes(text))
+    );
+    renderProductList(results, "shopProducts");
+  };
 
-  saveApp();
-  renderSellerDashboard();
-  renderFeatured();
-}
+  window.categorySearch = function(category){
+    document.getElementById("searchInput").value = category;
+    const results = app.products.filter(p => p.category.toLowerCase() === category.toLowerCase());
+    showPage("shop");
+    renderProductList(results, "shopProducts");
+  };
 
+  function productCardHTML(p){
+    return `
+      <article class="product">
+        <img class="productImage" src="${p.image}" alt="Product image">
+        <div class="productBody">
+          <h3>${escapeHTML(p.name)}</h3>
+          <div class="productSeller">${escapeHTML(p.business || p.seller)}</div>
+          <div class="productPrice">${escapeHTML(p.currency)} ${formatMoney(p.price)}</div>
+          <div class="productActions">
+            <button onclick="openProduct('${p.id}')" class="viewBtn">View</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
 
-/* ACCOUNT */
+  function renderProductList(products, targetId){
+    const box = document.getElementById(targetId);
+    if(!box) return;
+    if(products.length === 0){
+      box.innerHTML = `
+        <div class="empty">
+          <h3>No products yet</h3>
+          <p>Sellers will add products and pictures here.</p>
+        </div>
+      `;
+      return;
+    }
+    box.innerHTML = products.map(productCardHTML).join("");
+  }
 
-function renderAccount(){
+  function renderFeatured(){
+    renderProductList(app.products.slice(0,8), "featuredProducts");
+  }
 
-  const box = document.getElementById("accountContent");
+  window.renderShop = function(){
+    let products = [...app.products];
+    const sort = document.getElementById("sortProducts").value;
+    if(sort === "low") products.sort((a,b) => a.price - b.price);
+    if(sort === "high") products.sort((a,b) => b.price - a.price);
+    renderProductList(products, "shopProducts");
+  };
 
-  if(!app.profile.loggedIn){
+  window.openProduct = function(id){
+    const p = app.products.find(product => product.id === id);
+    if(!p) return;
+    showPage("details");
+    document.getElementById("detailsContent").innerHTML = `
+      <img class="detailImage" src="${p.image}" alt="Product image">
+      <div class="detailCard">
+        <h1>${escapeHTML(p.name)}</h1>
+        <div class="detailPrice">${escapeHTML(p.currency)} ${formatMoney(p.price)}</div>
+        <p class="detailDescription">${escapeHTML(p.description)}</p>
+        <p style="margin-top:15px;color:#777783;font-size:13px">Location: ${escapeHTML(p.location)}</p>
+        <p style="margin-top:7px;color:#777783;font-size:13px">Seller: ${escapeHTML(p.business || p.seller)}</p>
+      </div>
+    `;
+  };
+
+  window.startSeller = async function(){
+    if(!app.profile.loggedIn){
+      openSignup(true);
+      return;
+    }
+    if(!app.profile.isSeller){
+      app.profile.isSeller = true;
+      await updateDoc(doc(db, "users", app.profile.uid), { isSeller: true });
+    }
+    showPage("sellerDashboard");
+  };
+
+  function renderSellerDashboard(){
+    if(!app.profile.loggedIn || !app.profile.isSeller){
+      showPage("seller");
+      return;
+    }
+    const products = app.products.filter(p => p.sellerUid === app.profile.uid);
+
+    document.getElementById("businessNameText").textContent = app.profile.business || app.profile.name;
+    document.getElementById("sellerStats").innerHTML = `
+      <div class="stat">
+        <strong>${products.length}</strong>
+        <span>Your products</span>
+      </div>
+      <div class="stat">
+        <strong>${escapeHTML(app.profile.business || "My Store")}</strong>
+        <span>Business</span>
+      </div>
+      <div class="stat">
+        <strong>Active</strong>
+        <span>Store status</span>
+      </div>
+    `;
+
+    const box = document.getElementById("sellerProducts");
+    if(products.length === 0){
+      box.innerHTML = `
+        <div class="empty">
+          <h3>Your store is empty</h3>
+          <p>Only you can add products and product pictures.</p>
+        </div>
+      `;
+      return;
+    }
+
+    box.innerHTML = products.map(p => `
+      <article class="product">
+        <img class="productImage" src="${p.image}">
+        <div class="productBody">
+          <h3>${escapeHTML(p.name)}</h3>
+          <div class="productPrice">${escapeHTML(p.currency)} ${formatMoney(p.price)}</div>
+          <div class="productActions">
+            <button onclick="openProduct('${p.id}')">View</button>
+            <button class="btnDanger" onclick="deleteProduct('${p.id}')">Delete</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  window.addProduct = async function(){
+    if(!app.profile.loggedIn || !app.profile.isSeller){
+      showToast("Only sellers can add products");
+      return;
+    }
+
+    const name = document.getElementById("productName").value.trim();
+    const category = document.getElementById("productCategory").value;
+    const price = Number(document.getElementById("productPrice").value);
+    const currency = document.getElementById("productCurrency").value;
+    const location = document.getElementById("productLocation").value.trim();
+    const description = document.getElementById("productDescription").value.trim();
+    const imageFile = document.getElementById("productImageInput").files[0];
+
+    if(!name || !price || !location || !description || !imageFile){
+      showToast("Complete every field and add a product picture");
+      return;
+    }
+
+    const btn = document.getElementById("publishBtn");
+    btn.disabled = true;
+    btn.textContent = "Publishing...";
+
+    try {
+      const fileRef = ref(storage, `products/${Date.now()}_${imageFile.name}`);
+      await uploadBytes(fileRef, imageFile);
+      const imageUrl = await getDownloadURL(fileRef);
+
+      await addDoc(collection(db, "products"), {
+        name,
+        category,
+        price,
+        currency,
+        location,
+        description,
+        image: imageUrl,
+        seller: app.profile.name,
+        business: app.profile.business || "",
+        sellerUid: app.profile.uid,
+        created: Date.now()
+      });
+
+      document.getElementById("productName").value = "";
+      document.getElementById("productPrice").value = "";
+      document.getElementById("productLocation").value = "";
+      document.getElementById("productDescription").value = "";
+      document.getElementById("productImageInput").value = "";
+
+      showToast("Product published");
+      showPage("sellerDashboard");
+    } catch (err) {
+      showToast(err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Publish product";
+    }
+  };
+
+  window.deleteProduct = async function(id){
+    const product = app.products.find(p => p.id === id);
+    if(!product || product.sellerUid !== app.profile.uid) return;
+    if(!confirm("Delete this product?")) return;
+
+    try {
+      await deleteDoc(doc(db, "products", id));
+      showToast("Product deleted");
+    } catch(err) {
+      showToast(err.message);
+    }
+  };
+
+  function renderAccount(){
+    const box = document.getElementById("accountContent");
+    if(!box) return;
+
+    if(!app.profile.loggedIn){
+      box.innerHTML = `
+        <div class="profileCard">
+          <h2>Welcome to AVYRA</h2>
+          <p class="formIntro">Create an account to build your profile or become a seller.</p>
+          <div class="accountButtons">
+            <button class="btn btnPrimary" onclick="openLogin()">Log in</button>
+            <button class="btn" onclick="openSignup(false)">Create account</button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    const p = app.profile;
+    const avatarContent = p.avatar
+      ? `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : escapeHTML((p.name || "A").charAt(0).toUpperCase());
 
     box.innerHTML = `
       <div class="profileCard">
-
-        <h2>Welcome to AVYRA</h2>
-
-        <p class="formIntro">
-          Create an account to build your profile or become a seller.
-        </p>
-
-        <div class="accountButtons">
-          <button class="btn btnPrimary" onclick="openLogin()">Log in</button>
-          <button class="btn" onclick="openSignup(false)">Create account</button>
+        <div class="profileTop">
+          <label class="avatarUpload">
+            <div class="avatar" id="avatarDisplay">${avatarContent}</div>
+            <div class="avatarPlus">+</div>
+            <input type="file" accept="image/*" onchange="changeProfilePicture(this)">
+          </label>
+          <div>
+            <h2>${escapeHTML(p.name)}</h2>
+            <p>@${escapeHTML(p.username)}</p>
+            ${p.isSeller ? `<p>${escapeHTML(p.business || "Seller")}</p>` : ``}
+          </div>
         </div>
-
+        <div class="accountInfo">
+          <p>Email: ${escapeHTML(p.email)}</p>
+          <p>Phone: ${escapeHTML(p.code || "")} ${escapeHTML(p.phone || "")}</p>
+          <p>Country: ${escapeHTML(p.country || "")}</p>
+        </div>
+        <div class="accountButtons">
+          <button class="btn btnPrimary" onclick="openEditProfile()">Edit profile</button>
+          ${p.isSeller
+            ? `<button class="btn" onclick="showPage('sellerDashboard')">Seller Hub</button>`
+            : `<button class="btn" onclick="showPage('seller')">Become a seller</button>`
+          }
+          <button class="btn" onclick="showPage('settings')">Settings</button>
+          <button class="btn btnDanger" onclick="logout()">Log out</button>
+        </div>
       </div>
     `;
-
-    return;
   }
 
-  const p = app.profile;
+  window.changeProfilePicture = async function(input){
+    const file = input.files[0];
+    if(!file || !app.profile.loggedIn) return;
 
-  const avatarContent = p.avatar
-    ? `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
-    : escapeHTML((p.name || "A").charAt(0).toUpperCase());
+    showToast("Uploading profile picture...");
+    try {
+      const avatarRef = ref(storage, `avatars/${app.profile.uid}_${Date.now()}`);
+      await uploadBytes(avatarRef, file);
+      const avatarUrl = await getDownloadURL(avatarRef);
 
-  box.innerHTML = `
-
-    <div class="profileCard">
-
-      <div class="profileTop">
-
-        <label class="avatarUpload">
-
-          <div class="avatar" id="avatarDisplay">
-            ${avatarContent}
-          </div>
-
-          <div class="avatarPlus">+</div>
-
-          <input type="file" accept="image/*" onchange="changeProfilePicture(this)">
-
-        </label>
-
-        <div>
-          <h2>${escapeHTML(p.name)}</h2>
-          <p>@${escapeHTML(p.username)}</p>
-          ${p.isSeller ? `<p>${escapeHTML(p.business || "Seller")}</p>` : ``}
-        </div>
-
-      </div>
-
-      <div class="accountInfo">
-        <p>Email: ${escapeHTML(p.email)}</p>
-        <p>Phone: ${escapeHTML(p.code)} ${escapeHTML(p.phone)}</p>
-        <p>Country: ${escapeHTML(p.country)}</p>
-      </div>
-
-      <div class="accountButtons">
-
-        <button class="btn btnPrimary" onclick="openEditProfile()">
-          Edit profile
-        </button>
-
-        ${
-          p.isSeller
-          ? `<button class="btn" onclick="showPage('sellerDashboard')">Seller Hub</button>`
-          : `<button class="btn" onclick="showPage('seller')">Become a seller</button>`
-        }
-
-        <button class="btn" onclick="showPage('settings')">
-          Settings
-        </button>
-
-        <button class="btn btnDanger" onclick="logout()">
-          Log out
-        </button>
-
-      </div>
-
-    </div>
-  `;
-}
-
-
-/* PROFILE PICTURE */
-
-function changeProfilePicture(input){
-
-  const file = input.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    app.profile.avatar = e.target.result;
-
-    saveApp();
-    renderAccount();
-
-    showToast("Profile picture updated");
+      await updateDoc(doc(db, "users", app.profile.uid), { avatar: avatarUrl });
+      app.profile.avatar = avatarUrl;
+      renderAccount();
+      showToast("Profile picture updated");
+    } catch(err) {
+      showToast(err.message);
+    }
   };
 
-  reader.readAsDataURL(file);
-}
-
-
-/* LOGIN / SIGNUP */
-
-function openLogin(){
-  closeModal("signupModal");
-  document.getElementById("loginModal").classList.add("show");
-}
-
-function openSignup(isSeller){
-
-  signupSeller = isSeller;
-
-  closeModal("loginModal");
-
-  document.getElementById("signupTitle").textContent =
-    isSeller ? "Create seller account" : "Create account";
-
-  document.getElementById("businessField").style.display =
-    isSeller ? "block" : "none";
-
-  document.getElementById("signupModal").classList.add("show");
-}
-
-function createAccount(){
-
-  const name = document.getElementById("signupName").value.trim();
-  const username = document.getElementById("signupUsername").value.trim().replace(/\s+/g,"_");
-  const business = document.getElementById("signupBusiness").value.trim();
-  const email = document.getElementById("signupEmail").value.trim();
-  const code = document.getElementById("signupCode").value;
-  const phone = document.getElementById("signupPhone").value.trim();
-  const country = document.getElementById("signupCountry").value;
-  const password = document.getElementById("signupPassword").value;
-  const confirmPassword = document.getElementById("signupConfirmPassword").value;
-
-  if(!name || !username || !email || !phone || !password){
-    showToast("Complete all required fields");
-    return;
-  }
-
-  if(signupSeller && !business){
-    showToast("Enter your business name");
-    return;
-  }
-
-  if(password !== confirmPassword){
-    showToast("Passwords do not match");
-    return;
-  }
-
-  const userExists = app.users.some(u=>u.email.toLowerCase() === email.toLowerCase());
-
-  if(userExists){
-    showToast("An account with this email already exists");
-    return;
-  }
-
-  const user = {
-    name:name,
-    username:username,
-    business:business,
-    email:email,
-    phone:phone,
-    code:code,
-    country:country,
-    password:password,
-    isSeller:signupSeller,
-    avatar:""
+  window.openLogin = function(){
+    closeModal("signupModal");
+    document.getElementById("loginModal").classList.add("show");
   };
 
-  app.users.push(user);
-
-  app.profile = {
-    loggedIn:true,
-    ...user
+  window.openSignup = function(isSeller){
+    signupSeller = isSeller;
+    closeModal("loginModal");
+    document.getElementById("signupTitle").textContent = isSeller ? "Create seller account" : "Create account";
+    document.getElementById("businessField").style.display = isSeller ? "block" : "none";
+    document.getElementById("signupModal").classList.add("show");
   };
 
-  saveApp();
+  window.createAccount = async function(){
+    const name = document.getElementById("signupName").value.trim();
+    const username = document.getElementById("signupUsername").value.trim().replace(/\s+/g,"_");
+    const business = document.getElementById("signupBusiness").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const code = document.getElementById("signupCode").value;
+    const phone = document.getElementById("signupPhone").value.trim();
+    const country = document.getElementById("signupCountry").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
 
-  closeModal("signupModal");
+    if(!name || !username || !email || !phone || !password){
+      showToast("Complete all required fields");
+      return;
+    }
+    if(signupSeller && !business){
+      showToast("Enter your business name");
+      return;
+    }
+    if(password !== confirmPassword){
+      showToast("Passwords do not match");
+      return;
+    }
 
-  updateHeader();
-  renderAccount();
+    const btn = document.getElementById("signupBtn");
+    btn.disabled = true;
 
-  showToast("Account created");
-
-  if(signupSeller){
-    showPage("sellerDashboard");
-  }else{
-    showPage("account");
-  }
-}
-
-function login(){
-
-  const email = document.getElementById("loginEmail").value.trim().toLowerCase();
-  const password = document.getElementById("loginPassword").value;
-
-  const user = app.users.find(u=>
-    u.email.toLowerCase() === email &&
-    u.password === password
-  );
-
-  if(!user){
-    showToast("Incorrect email or password");
-    return;
-  }
-
-  app.profile = {
-    loggedIn:true,
-    ...user
-  };
-
-  saveApp();
-
-  closeModal("loginModal");
-
-  updateHeader();
-  renderAccount();
-  showPage("account");
-
-  showToast("Logged in");
-}
-
-function logout(){
-
-  if(!confirm("Log out of AVYRA?")){
-    return;
-  }
-
-  app.profile.loggedIn = false;
-
-  saveApp();
-  updateHeader();
-
-  showPage("home");
-  showToast("Logged out");
-}
-
-
-/* EDIT PROFILE */
-
-function openEditProfile(){
-
-  const p = app.profile;
-
-  document.getElementById("editName").value = p.name || "";
-  document.getElementById("editUsername").value = p.username || "";
-  document.getElementById("editBusiness").value = p.business || "";
-  document.getElementById("editEmail").value = p.email || "";
-  document.getElementById("editCode").value = p.code || "+254";
-  document.getElementById("editPhone").value = p.phone || "";
-  document.getElementById("editCountry").value = p.country || "Kenya";
-
-  document.getElementById("profileModal").classList.add("show");
-}
-
-function saveProfile(){
-
-  const oldUsername = app.profile.username;
-
-  const name = document.getElementById("editName").value.trim();
-  const username = document.getElementById("editUsername").value.trim().replace(/\s+/g,"_");
-  const business = document.getElementById("editBusiness").value.trim();
-  const email = document.getElementById("editEmail").value.trim();
-  const code = document.getElementById("editCode").value;
-  const phone = document.getElementById("editPhone").value.trim();
-  const country = document.getElementById("editCountry").value;
-
-  if(!name || !username || !phone){
-    showToast("Name, username and phone are required");
-    return;
-  }
-
-  app.profile.name = name;
-  app.profile.username = username;
-  app.profile.business = business;
-  app.profile.email = email;
-  app.profile.code = code;
-  app.profile.phone = phone;
-  app.profile.country = country;
-
-  app.users = app.users.map(u=>{
-    if(u.email === app.profile.email || u.username === oldUsername){
-      return {
-        ...u,
-        name:name,
-        username:username,
-        business:business,
-        email:email,
-        code:code,
-        phone:phone,
-        country:country
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      const userData = {
+        name,
+        username,
+        business,
+        email,
+        phone,
+        code,
+        country,
+        isSeller: signupSeller,
+        avatar: ""
       };
+      await setDoc(doc(db, "users", res.user.uid), userData);
+      closeModal("signupModal");
+      showToast("Account created");
+      if(signupSeller) showPage("sellerDashboard");
+      else showPage("account");
+    } catch(err) {
+      showToast(err.message);
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
+  window.login = async function(){
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    if(!email || !password){
+      showToast("Enter email and password");
+      return;
     }
 
-    return u;
-  });
+    const btn = document.getElementById("loginBtn");
+    btn.disabled = true;
 
-  app.products.forEach(p=>{
-    if(p.sellerUsername === oldUsername){
-      p.sellerUsername = username;
-      p.seller = name;
-      p.business = business;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      closeModal("loginModal");
+      showPage("account");
+      showToast("Logged in");
+    } catch(err) {
+      showToast("Incorrect email or password");
+    } finally {
+      btn.disabled = false;
     }
-  });
+  };
 
-  saveApp();
+  window.logout = async function(){
+    if(!confirm("Log out of AVYRA?")) return;
+    await signOut(auth);
+    showPage("home");
+    showToast("Logged out");
+  };
 
-  closeModal("profileModal");
+  window.openEditProfile = function(){
+    const p = app.profile;
+    document.getElementById("editName").value = p.name || "";
+    document.getElementById("editUsername").value = p.username || "";
+    document.getElementById("editBusiness").value = p.business || "";
+    document.getElementById("editCode").value = p.code || "+254";
+    document.getElementById("editPhone").value = p.phone || "";
+    document.getElementById("editCountry").value = p.country || "Kenya";
+    document.getElementById("profileModal").classList.add("show");
+  };
 
-  updateHeader();
-  renderAccount();
+  window.saveProfile = async function(){
+    const name = document.getElementById("editName").value.trim();
+    const username = document.getElementById("editUsername").value.trim().replace(/\s+/g,"_");
+    const business = document.getElementById("editBusiness").value.trim();
+    const code = document.getElementById("editCode").value;
+    const phone = document.getElementById("editPhone").value.trim();
+    const country = document.getElementById("editCountry").value;
 
-  showToast("Profile updated");
-}
+    if(!name || !username || !phone){
+      showToast("Name, username and phone are required");
+      return;
+    }
 
+    const btn = document.getElementById("editProfileBtn");
+    btn.disabled = true;
 
-/* SETTINGS */
+    try {
+      const updated = { name, username, business, code, phone, country };
+      await updateDoc(doc(db, "users", app.profile.uid), updated);
+      app.profile = { ...app.profile, ...updated };
+      closeModal("profileModal");
+      renderAccount();
+      showToast("Profile updated");
+    } catch(err) {
+      showToast(err.message);
+    } finally {
+      btn.disabled = false;
+    }
+  };
 
-function renderSettings(){
-
-  document.getElementById("settingCountry").value =
-    app.settings.country || app.profile.country || "Kenya";
-
-  document.getElementById("settingLocation").value =
-    app.settings.location || "";
-}
-
-function saveSettings(){
-
-  app.settings.country =
-    document.getElementById("settingCountry").value;
-
-  app.settings.location =
-    document.getElementById("settingLocation").value.trim();
-
-  saveApp();
-
-  showToast("Settings saved");
-}
-
-function clearData(){
-
-  if(!confirm("This will remove all accounts, products and pictures stored in this browser. Continue?")){
-    return;
+  function renderSettings(){
+    document.getElementById("settingCountry").value = app.settings.country || app.profile.country || "Kenya";
+    document.getElementById("settingLocation").value = app.settings.location || "";
   }
 
-  localStorage.removeItem(STORAGE_KEY);
-  location.reload();
-}
+  window.saveSettings = function(){
+    app.settings.country = document.getElementById("settingCountry").value;
+    app.settings.location = document.getElementById("settingLocation").value.trim();
+    showToast("Settings saved");
+  };
 
+  function updateHeader(){
+    document.getElementById("headerUser").textContent = app.profile.loggedIn ? (app.profile.name || "Account") : "Account";
+  }
 
-/* HEADER */
+  window.closeModal = function(id){
+    document.getElementById(id).classList.remove("show");
+  };
 
-function updateHeader(){
+  function formatMoney(number){
+    return Number(number || 0).toLocaleString();
+  }
 
-  document.getElementById("headerUser").textContent =
-    app.profile.loggedIn
-    ? app.profile.name
-    : "Account";
-}
+  function escapeHTML(value){
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+  }
 
+  let toastTimer;
+  function showToast(message){
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ toast.classList.remove("show"); }, 2500);
+  }
 
-/* MODALS */
+  // Auto-search listener
+  document.getElementById("searchInput").addEventListener("input", function(){
+    const text = this.value.trim().toLowerCase();
+    const box = document.getElementById("searchResults");
+    box.innerHTML = "";
+    if(!text){
+      box.style.display = "none";
+      return;
+    }
+    const results = app.products.filter(p => p.name.toLowerCase().includes(text)).slice(0,6);
+    if(results.length === 0){
+      box.style.display = "none";
+      return;
+    }
+    results.forEach(product => {
+      const item = document.createElement("div");
+      item.className = "searchResult";
+      item.textContent = product.name;
+      item.onclick = function(){
+        document.getElementById("searchInput").value = product.name;
+        box.style.display = "none";
+        openProduct(product.id);
+      };
+      box.appendChild(item);
+    });
+    box.style.display = "block";
+  });
 
-function closeModal(id){
-  document.getElementById(id).classList.remove("show");
-}
+  document.getElementById("searchInput").addEventListener("keydown", function(e){
+    if(e.key === "Enter") searchProducts();
+  });
 
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".searchBox")){
+      document.getElementById("searchResults").style.display = "none";
+    }
+  });
 
-/* HELPERS */
-
-function makeID(){
-  return Date.now().toString(36) +
-    Math.random().toString(36).substring(2,8);
-}
-
-function formatMoney(number){
-  return Number(number || 0).toLocaleString();
-}
-
-function escapeHTML(value){
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-let toastTimer;
-
-function showToast(message){
-
-  const toast = document.getElementById("toast");
-
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(()=>{
-    toast.classList.remove("show");
-  },2500);
-}
-
-
-init();
+  populateSelects();
 </script>
 
 </body>
