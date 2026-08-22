@@ -2,39 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AVYRA</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+  -webkit-tap-highlight-color:transparent;
 }
 
 :root{
   --black:#09090b;
-  --black-2:#111114;
-  --dark:#18181c;
-  --line:#2a2a30;
+  --dark:#111114;
+  --card:#16161b;
+  --line:#2a2a32;
+  --text:#ffffff;
+  --muted:#a0a0ad;
+  --red:#ff365f;
+  --purple:#9747ff;
+  --bg:#f5f5f7;
   --white:#ffffff;
-  --text:#16161a;
-  --muted:#777780;
-  --red:#ff355e;
-  --purple:#8b5cf6;
-  --gradient:linear-gradient(135deg,#ff355e,#9b5cff);
+  --gradient:linear-gradient(135deg,#ff365f 0%,#9747ff 100%);
 }
 
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:#f6f6f8;
-  color:var(--text);
-  padding-bottom:78px;
+  font-family:"Inter",Arial,sans-serif;
+  background:var(--bg);
+  color:#16161b;
+  padding-bottom:85px;
 }
 
-button,input,textarea,select{
+button,input,select,textarea{
   font:inherit;
 }
 
@@ -42,9 +44,8 @@ button{
   cursor:pointer;
 }
 
-button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
+button:active{
+  transform:scale(.98);
 }
 
 /* HEADER */
@@ -53,120 +54,113 @@ header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(9,9,11,.97);
-  border-bottom:1px solid #232328;
+  background:rgba(9,9,11,.96);
+  border-bottom:1px solid #25252d;
+  backdrop-filter:blur(20px);
 }
 
 .header{
+  width:100%;
+  max-width:1400px;
   min-height:68px;
-  width:94%;
-  max-width:1350px;
   margin:auto;
+  padding:10px 18px;
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:18px;
 }
 
 .logo{
-  color:white;
+  color:#fff;
   font-size:22px;
   font-weight:800;
-  letter-spacing:-1px;
-  white-space:nowrap;
+  letter-spacing:-1.5px;
 }
 
 .logo span{
   background:var(--gradient);
-  -webkit-background-clip:text;
   color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
 }
 
-.searchWrap{
-  position:relative;
+.searchBox{
   flex:1;
+  max-width:700px;
+  position:relative;
 }
 
 .search{
-  display:flex;
   height:44px;
-  overflow:hidden;
-  border:1px solid #303037;
+  border:1px solid #30303a;
+  background:#17171c;
   border-radius:13px;
-  background:#17171b;
+  display:flex;
+  overflow:hidden;
 }
 
 .search input{
   flex:1;
+  min-width:0;
   border:0;
   outline:0;
+  padding:0 15px;
   background:transparent;
-  color:white;
-  padding:0 14px;
-  min-width:0;
+  color:#fff;
 }
 
 .search input::placeholder{
-  color:#888892;
+  color:#777782;
 }
 
 .search button{
-  min-width:70px;
+  width:80px;
   border:0;
-  background:var(--gradient);
-  color:white;
+  color:#fff;
   font-weight:700;
+  background:var(--gradient);
 }
 
 .searchResults{
   display:none;
   position:absolute;
-  top:51px;
+  top:52px;
   left:0;
   right:0;
-  z-index:300;
-  overflow:hidden;
-  background:#16161a;
-  border:1px solid #313139;
+  background:#17171c;
+  border:1px solid #30303a;
   border-radius:14px;
+  overflow:hidden;
+  z-index:500;
 }
 
-.searchResults.show{
-  display:block;
-}
-
-.suggestion{
+.searchResult{
   padding:14px;
-  color:white;
-  border-bottom:1px solid #292930;
+  color:#fff;
+  border-bottom:1px solid #28282f;
 }
 
-.suggestion:last-child{
+.searchResult:last-child{
   border-bottom:0;
 }
 
-.suggestion:hover{
-  background:#222229;
+.searchResult:active{
+  background:#24242c;
 }
 
 .headerAccount{
-  border:0;
+  color:#fff;
   background:transparent;
-  color:white;
+  border:0;
+  font-weight:700;
   white-space:nowrap;
-  font-weight:600;
-}
-
-.headerAccount small{
-  display:block;
-  color:#8c8c95;
-  font-size:10px;
 }
 
 /* PAGES */
 
 .page{
   display:none;
-  min-height:80vh;
+  min-height:calc(100vh - 70px);
 }
 
 .page.active{
@@ -176,63 +170,65 @@ header{
 /* HERO */
 
 .hero{
-  min-height:450px;
+  min-height:520px;
   display:flex;
   align-items:center;
-  color:white;
+  color:#fff;
   background:
-    radial-gradient(circle at 80% 30%,rgba(139,92,246,.26),transparent 32%),
-    radial-gradient(circle at 15% 65%,rgba(255,53,94,.2),transparent 35%),
-    var(--black);
+  radial-gradient(circle at 80% 20%,rgba(151,71,255,.28),transparent 30%),
+  radial-gradient(circle at 15% 80%,rgba(255,54,95,.22),transparent 30%),
+  var(--black);
 }
 
-.heroInner{
+.heroContent{
   width:92%;
   max-width:1250px;
   margin:auto;
-  padding:75px 0;
+  padding:70px 0;
 }
 
-.badge{
-  display:inline-block;
+.tag{
+  display:inline-flex;
+  align-items:center;
   padding:8px 12px;
-  margin-bottom:20px;
-  border:1px solid #393941;
+  border:1px solid #393940;
+  background:#15151a;
   border-radius:100px;
-  background:#151519;
-  color:#b4b4bd;
   font-size:11px;
-  font-weight:700;
-  letter-spacing:.5px;
+  letter-spacing:.6px;
+  color:#b8b8c1;
 }
 
 .hero h1{
   max-width:800px;
-  font-size:clamp(43px,8vw,78px);
-  line-height:1;
+  margin-top:20px;
+  font-size:clamp(42px,8vw,88px);
+  line-height:.95;
   letter-spacing:-4px;
 }
 
-.gradientText{
+.gradient{
   background:var(--gradient);
-  -webkit-background-clip:text;
   color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
 }
 
 .hero p{
   max-width:590px;
-  margin:20px 0 28px;
-  color:#a5a5ae;
+  margin:22px 0 28px;
+  color:#a5a5b0;
   line-height:1.7;
+  font-size:15px;
 }
 
 .heroButtons{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
+  gap:10px;
 }
 
-/* LAYOUT */
+/* GENERAL */
 
 .container{
   width:92%;
@@ -241,45 +237,67 @@ header{
 }
 
 .section{
-  padding:34px 0;
+  padding:35px 0;
 }
 
-.sectionTitle{
+.sectionHeader{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:12px;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
-.sectionTitle h1,
-.sectionTitle h2{
+.sectionHeader h1,
+.sectionHeader h2{
   letter-spacing:-1px;
+}
+
+.muted{
+  color:#777783;
+  margin-top:6px;
+  font-size:13px;
 }
 
 .btn{
   border:1px solid #d9d9df;
-  border-radius:11px;
+  background:#fff;
+  color:#15151a;
   padding:11px 16px;
-  background:white;
-  color:#16161a;
+  border-radius:11px;
   font-weight:700;
 }
 
-.primary{
-  color:white;
+.btnPrimary{
+  color:#fff;
   border:0;
   background:var(--gradient);
 }
 
-.darkBtn{
-  color:white;
-  border-color:#35353c;
-  background:#151519;
+.btnDark{
+  color:#fff;
+  background:#17171c;
+  border-color:#34343d;
 }
 
-.danger{
-  color:#d72c48;
+.btnDanger{
+  color:#e03154;
+}
+
+.empty{
+  width:100%;
+  grid-column:1/-1;
+  background:#fff;
+  border:1px dashed #d2d2da;
+  border-radius:18px;
+  padding:60px 20px;
+  text-align:center;
+  color:#777783;
+}
+
+.empty h3{
+  color:#18181d;
+  margin-bottom:7px;
 }
 
 /* CATEGORIES */
@@ -288,7 +306,6 @@ header{
   display:flex;
   gap:10px;
   overflow-x:auto;
-  padding-bottom:4px;
   scrollbar-width:none;
 }
 
@@ -298,22 +315,20 @@ header{
 
 .category{
   min-width:150px;
-  padding:18px;
   text-align:left;
-  background:white;
-  border:1px solid #e5e5ea;
-  border-radius:16px;
-  color:#15151a;
+  padding:17px;
+  border:1px solid #e1e1e6;
+  background:#fff;
+  border-radius:15px;
 }
 
 .category strong{
   display:block;
-  margin-bottom:6px;
+  margin-bottom:5px;
 }
 
-.category span{
-  color:#888891;
-  font-size:12px;
+.category small{
+  color:#858590;
 }
 
 /* PRODUCTS */
@@ -326,168 +341,98 @@ header{
 
 .product{
   overflow:hidden;
-  padding:11px;
-  background:white;
-  border:1px solid #e5e5ea;
+  background:#fff;
+  border:1px solid #e1e1e6;
   border-radius:17px;
 }
 
-.productImage,
-.productPlaceholder{
-  width:100%;
-  height:210px;
-  border-radius:12px;
-  background:#f0f0f3;
-}
-
 .productImage{
-  object-fit:contain;
+  width:100%;
+  height:230px;
+  display:block;
+  object-fit:cover;
+  background:#eeeef2;
 }
 
-.productPlaceholder{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#9b9ba2;
-  font-size:12px;
+.productBody{
+  padding:13px;
 }
 
-.product h3{
-  margin:12px 2px 5px;
+.productBody h3{
   font-size:15px;
+  line-height:1.4;
 }
 
-.seller{
-  margin:0 2px;
-  color:#81818a;
+.productSeller{
+  color:#858590;
   font-size:12px;
+  margin-top:6px;
 }
 
-.price{
-  margin:11px 2px;
+.productPrice{
+  margin:10px 0;
   font-size:18px;
   font-weight:800;
 }
 
-.productButtons{
+.productActions{
   display:flex;
   gap:7px;
 }
 
-.productButtons button{
+.productActions button{
   flex:1;
-  padding:9px 5px;
-  border:1px solid #dddde2;
+  padding:9px;
   border-radius:9px;
-  background:#fafafa;
+  border:1px solid #dddde3;
+  background:#fff;
   font-weight:700;
 }
 
-.productButtons button:last-child{
+.productActions .viewBtn{
   border:0;
-  color:white;
+  color:#fff;
   background:var(--gradient);
-}
-
-/* EMPTY */
-
-.empty{
-  grid-column:1/-1;
-  padding:55px 20px;
-  text-align:center;
-  background:white;
-  border:1px dashed #d5d5dc;
-  border-radius:18px;
-  color:#808089;
-}
-
-.empty h3{
-  margin-bottom:7px;
-  color:#202025;
-}
-
-/* SELLER */
-
-.sellerHero{
-  min-height:calc(100vh - 70px);
-  padding:65px 0;
-  background:var(--black);
-  color:white;
-}
-
-.sellerHero h1{
-  font-size:clamp(40px,7vw,68px);
-  line-height:1;
-  letter-spacing:-4px;
-}
-
-.sellerHero p{
-  max-width:600px;
-  margin:18px 0 28px;
-  color:#9a9aa3;
-  line-height:1.7;
-}
-
-.sellerGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:30px;
-}
-
-.sellerCard{
-  padding:20px;
-  border:1px solid #2c2c33;
-  border-radius:17px;
-  background:#151519;
-}
-
-.sellerCard strong{
-  display:block;
-  margin-bottom:7px;
-}
-
-.sellerCard span{
-  color:#8c8c95;
-  font-size:13px;
 }
 
 /* FORMS */
 
-.form{
-  max-width:640px;
+.formPage{
+  max-width:620px;
   margin:35px auto;
-  padding:25px;
-  background:white;
-  border:1px solid #e1e1e7;
-  border-radius:20px;
+  background:#fff;
+  border:1px solid #e0e0e6;
+  border-radius:22px;
+  padding:24px;
 }
 
-.form h2{
-  margin-bottom:7px;
+.formPage h1,
+.formPage h2{
   letter-spacing:-1px;
 }
 
 .formIntro{
-  margin-bottom:22px;
-  color:#777780;
+  margin:7px 0 24px;
+  color:#777783;
   font-size:13px;
+  line-height:1.6;
 }
 
-.form label{
-  display:block;
-  margin-bottom:6px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.form input,
-.form textarea,
-.form select,
-.setting input,
-.setting select{
-  width:100%;
+.field{
   margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
   padding:13px;
   border:1px solid #d8d8df;
   border-radius:11px;
@@ -495,212 +440,128 @@ header{
   background:#fafafa;
 }
 
-.form input:focus,
-.form textarea:focus,
-.form select:focus,
-.setting input:focus{
-  border-color:#9b5cff;
-  box-shadow:0 0 0 3px rgba(155,92,255,.1);
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#9747ff;
+  box-shadow:0 0 0 3px rgba(151,71,255,.1);
 }
-
-.form button{
-  width:100%;
-}
-
-/* PHONE */
 
 .phoneRow{
   display:flex;
   gap:8px;
-  margin-bottom:15px;
 }
 
 .phoneRow select{
-  width:125px;
-  margin-bottom:0;
-  flex-shrink:0;
+  width:130px;
 }
 
 .phoneRow input{
   flex:1;
-  min-width:0;
-  margin-bottom:0;
 }
 
-/* ACCOUNT */
-
-.accountCard{
-  margin-bottom:15px;
-  padding:22px;
-  background:white;
-  border:1px solid #e2e2e8;
-  border-radius:19px;
+.full{
+  width:100%;
 }
 
-.profile{
+/* PROFILE */
+
+.profileCard{
+  background:#fff;
+  border:1px solid #e0e0e6;
+  border-radius:22px;
+  padding:24px;
+}
+
+.profileTop{
   display:flex;
   align-items:center;
   gap:16px;
 }
 
-.avatarWrap{
+.avatarUpload{
   position:relative;
-  width:72px;
-  height:72px;
-  flex-shrink:0;
-}
-
-.avatar,
-.avatarText{
-  width:72px;
-  height:72px;
-  border-radius:50%;
+  width:82px;
+  height:82px;
+  flex:none;
 }
 
 .avatar{
+  width:82px;
+  height:82px;
+  border-radius:50%;
   object-fit:cover;
-  background:#eeeef1;
-}
-
-.avatarText{
+  background:var(--gradient);
+  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--gradient);
-  color:white;
-  font-size:25px;
+  font-size:27px;
   font-weight:800;
+  border:3px solid #f3f3f5;
 }
 
-.avatarAdd{
+.avatarPlus{
   position:absolute;
-  right:-3px;
-  bottom:-3px;
-  width:27px;
-  height:27px;
-  border:2px solid white;
+  right:-2px;
+  bottom:-2px;
+  width:28px;
+  height:28px;
   border-radius:50%;
+  border:3px solid #fff;
+  color:#fff;
   background:var(--gradient);
-  color:white;
-  font-size:19px;
-  line-height:20px;
-}
-
-.profile p{
-  margin-top:4px;
-  color:#777780;
-  font-size:13px;
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:20px;
-}
-
-/* SETTINGS */
-
-.setting{
-  margin-bottom:12px;
-  padding:20px;
-  background:white;
-  border:1px solid #e2e2e8;
-  border-radius:16px;
-}
-
-.setting h3{
-  margin-bottom:6px;
-}
-
-.setting p{
-  margin-bottom:14px;
-  color:#777780;
-  font-size:13px;
-}
-
-/* CART */
-
-.cartItem{
-  display:flex;
-  gap:14px;
-  margin-bottom:10px;
-  padding:13px;
-  background:white;
-  border:1px solid #e2e2e8;
-  border-radius:16px;
-}
-
-.cartImage{
-  width:95px;
-  height:95px;
-  flex-shrink:0;
-  object-fit:contain;
-  border-radius:10px;
-  background:#f1f1f3;
-}
-
-.cartInfo{
-  flex:1;
-}
-
-.qty{
   display:flex;
   align-items:center;
-  gap:8px;
-  margin-top:12px;
+  justify-content:center;
+  font-size:21px;
+  font-weight:400;
 }
 
-.qty button{
-  width:32px;
-  height:32px;
-  border:1px solid #d5d5db;
-  border-radius:8px;
-  background:white;
+.avatarUpload input{
+  display:none;
 }
 
-.total{
-  padding:20px;
-  background:white;
-  border:1px solid #e2e2e8;
-  border-radius:16px;
-  text-align:right;
-  font-size:20px;
-  font-weight:800;
+.profileTop h2{
+  letter-spacing:-1px;
 }
 
-/* ORDERS */
-
-.order{
-  margin-bottom:12px;
-  padding:18px;
-  background:white;
-  border:1px solid #e2e2e8;
-  border-radius:16px;
+.profileTop p{
+  margin-top:5px;
+  color:#777783;
+  font-size:13px;
 }
 
-.orderStatus{
-  display:inline-block;
-  margin-top:9px;
-  padding:6px 9px;
-  border-radius:8px;
-  background:#f0eaff;
-  color:#7042d8;
-  font-size:12px;
-  font-weight:700;
+.accountInfo{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid #ededf0;
 }
 
-/* MODALS */
+.accountInfo p{
+  margin:10px 0;
+  color:#60606a;
+  font-size:13px;
+}
+
+.accountButtons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:22px;
+}
+
+/* MODAL */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  z-index:500;
+  z-index:1000;
   padding:15px;
+  background:rgba(0,0,0,.72);
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.68);
 }
 
 .modal.show{
@@ -709,19 +570,19 @@ header{
 
 .modalBox{
   width:100%;
-  max-width:550px;
+  max-width:520px;
   max-height:92vh;
-  overflow:auto;
+  overflow-y:auto;
+  background:#fff;
+  border-radius:23px;
   padding:22px;
-  background:white;
-  border-radius:22px;
 }
 
-.modalHeader{
+.modalHead{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
 
 .close{
@@ -729,56 +590,159 @@ header{
   height:36px;
   border:0;
   border-radius:50%;
-  background:#f0f0f3;
-  font-size:21px;
+  background:#f1f1f4;
+  font-size:22px;
+}
+
+/* PRODUCT DETAILS */
+
+.detailImage{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  background:#eeeef2;
+  border-radius:18px;
+}
+
+.detailCard{
+  background:#fff;
+  border:1px solid #e0e0e6;
+  border-radius:20px;
+  padding:20px;
+  margin-top:15px;
+}
+
+.detailCard h1{
+  letter-spacing:-1.5px;
+}
+
+.detailPrice{
+  margin:14px 0;
+  font-size:25px;
+  font-weight:800;
+}
+
+.detailDescription{
+  color:#686872;
+  line-height:1.7;
 }
 
 /* BOTTOM NAV */
 
-.bottom{
+.bottomNav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  z-index:200;
-  height:70px;
+  z-index:300;
+  height:72px;
   display:flex;
-  background:rgba(9,9,11,.98);
-  border-top:1px solid #29292f;
+  background:rgba(9,9,11,.97);
+  border-top:1px solid #292931;
+  backdrop-filter:blur(20px);
 }
 
-.bottom button{
+.bottomNav button{
   flex:1;
   border:0;
   background:transparent;
-  color:#898993;
+  color:#858590;
   font-size:11px;
   font-weight:700;
 }
 
-.bottom button.active{
-  color:white;
+.bottomNav button.active{
+  color:#fff;
 }
 
 .navDot{
   width:5px;
   height:5px;
-  margin:7px auto 5px;
+  margin:5px auto;
   border-radius:50%;
   background:transparent;
 }
 
-.bottom button.active .navDot{
+.bottomNav button.active .navDot{
   background:var(--red);
 }
 
-/* MOBILE */
+/* SELLER */
 
-@media(max-width:750px){
+.sellerHero{
+  color:#fff;
+  background:
+  radial-gradient(circle at 80% 20%,rgba(151,71,255,.22),transparent 30%),
+  #09090b;
+  padding:70px 0;
+}
+
+.sellerHero h1{
+  margin-top:18px;
+  font-size:clamp(40px,7vw,70px);
+  letter-spacing:-3px;
+}
+
+.sellerHero p{
+  max-width:600px;
+  margin:15px 0 25px;
+  color:#a0a0aa;
+  line-height:1.7;
+}
+
+.sellerStats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:30px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid #e1e1e6;
+  padding:20px;
+  border-radius:17px;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+}
+
+.stat span{
+  color:#777783;
+  font-size:12px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:95px;
+  z-index:2000;
+  transform:translateX(-50%) translateY(20px);
+  padding:11px 16px;
+  border-radius:100px;
+  color:#fff;
+  background:#19191f;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+@media(max-width:700px){
 
   .header{
-    width:96%;
-    gap:8px;
+    padding:10px 12px;
+    gap:9px;
   }
 
   .logo{
@@ -790,65 +754,53 @@ header{
   }
 
   .search button{
-    min-width:58px;
-    font-size:11px;
+    width:58px;
+    font-size:12px;
   }
 
   .hero{
-    min-height:420px;
+    min-height:450px;
   }
 
   .hero h1{
-    letter-spacing:-2px;
-  }
-
-  .sellerGrid{
-    grid-template-columns:1fr;
+    letter-spacing:-2.5px;
   }
 
   .products{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,1fr);
     gap:9px;
   }
 
-  .product{
-    padding:8px;
-    border-radius:14px;
+  .productImage{
+    height:155px;
   }
 
-  .productImage,
-  .productPlaceholder{
-    height:145px;
-  }
-
-  .product h3{
-    font-size:13px;
-  }
-
-  .price{
-    font-size:15px;
-  }
-
-  .productButtons button{
-    font-size:11px;
-  }
-
-  .form{
-    margin:20px auto;
-    padding:18px;
-  }
-
-  .phoneRow select{
-    width:105px;
-  }
-
-  .cartItem{
+  .productBody{
     padding:10px;
   }
 
-  .cartImage{
-    width:78px;
-    height:78px;
+  .productBody h3{
+    font-size:13px;
+  }
+
+  .productPrice{
+    font-size:16px;
+  }
+
+  .productActions{
+    flex-direction:column;
+  }
+
+  .sellerStats{
+    grid-template-columns:1fr;
+  }
+
+  .phoneRow{
+    gap:5px;
+  }
+
+  .phoneRow select{
+    width:120px;
   }
 }
 </style>
@@ -859,34 +811,36 @@ header{
 <header>
   <div class="header">
 
-    <div class="logo">AVY<span>RA</span></div>
+    <div class="logo">AV<span>YRA</span></div>
 
-    <div class="searchWrap">
+    <div class="searchBox">
       <div class="search">
-        <input id="searchInput" type="search" placeholder="Search products">
-        <button type="button" onclick="searchProducts()">Search</button>
+        <input id="searchInput" placeholder="Search products">
+        <button onclick="searchProducts()">Search</button>
       </div>
       <div id="searchResults" class="searchResults"></div>
     </div>
 
-    <button class="headerAccount" type="button" onclick="showPage('account')">
-      <small>Account</small>
-      <span id="headerUser">Log in</span>
+    <button class="headerAccount" onclick="showPage('account')" id="headerUser">
+      Account
     </button>
 
   </div>
 </header>
 
+
+<!-- HOME -->
+
 <section id="home" class="page active">
 
   <div class="hero">
-    <div class="heroInner">
+    <div class="heroContent">
 
-      <span class="badge">AVYRA MARKETPLACE</span>
+      <div class="tag">AVYRA MARKETPLACE</div>
 
       <h1>
-        Shop better.
-        <span class="gradientText">Sell smarter.</span>
+        Shop better.<br>
+        <span class="gradient">Sell smarter.</span>
       </h1>
 
       <p>
@@ -894,8 +848,8 @@ header{
       </p>
 
       <div class="heroButtons">
-        <button class="btn primary" onclick="showPage('shop')">Explore products</button>
-        <button class="btn darkBtn" onclick="showPage('seller')">Join as a seller</button>
+        <button class="btn btnPrimary" onclick="showPage('shop')">Explore products</button>
+        <button class="btn btnDark" onclick="showPage('seller')">Become a seller</button>
       </div>
 
     </div>
@@ -905,33 +859,39 @@ header{
 
     <section class="section">
 
-      <div class="sectionTitle">
+      <div class="sectionHeader">
         <h2>Categories</h2>
       </div>
 
       <div class="categories">
         <button class="category" onclick="categorySearch('Phones')">
-          <strong>Phones</strong><span>Mobile devices</span>
+          <strong>Phones</strong>
+          <small>Mobile devices</small>
         </button>
 
         <button class="category" onclick="categorySearch('Computers')">
-          <strong>Computers</strong><span>Laptops and more</span>
+          <strong>Computers</strong>
+          <small>Laptops and more</small>
         </button>
 
         <button class="category" onclick="categorySearch('Gaming')">
-          <strong>Gaming</strong><span>Games and gear</span>
+          <strong>Gaming</strong>
+          <small>Games and gear</small>
         </button>
 
         <button class="category" onclick="categorySearch('Fashion')">
-          <strong>Fashion</strong><span>Clothing and style</span>
+          <strong>Fashion</strong>
+          <small>Clothing and style</small>
         </button>
 
         <button class="category" onclick="categorySearch('Home')">
-          <strong>Home</strong><span>Home essentials</span>
+          <strong>Home</strong>
+          <small>Home essentials</small>
         </button>
 
-        <button class="category" onclick="categorySearch('Beauty')">
-          <strong>Beauty</strong><span>Beauty products</span>
+        <button class="category" onclick="categorySearch('Other')">
+          <strong>Other</strong>
+          <small>More products</small>
         </button>
       </div>
 
@@ -939,9 +899,9 @@ header{
 
     <section class="section">
 
-      <div class="sectionTitle">
+      <div class="sectionHeader">
         <h2>Latest products</h2>
-        <button style="border:0;background:none;color:#7544df;font-weight:700" onclick="showPage('shop')">View all</button>
+        <button class="btn" onclick="showPage('shop')">View all</button>
       </div>
 
       <div id="featuredProducts" class="products"></div>
@@ -949,18 +909,23 @@ header{
     </section>
 
   </main>
+
 </section>
 
+
+<!-- SHOP -->
+
 <section id="shop" class="page">
+
   <main class="container section">
 
-    <div class="sectionTitle">
+    <div class="sectionHeader">
       <div>
         <h1>Products</h1>
-        <p style="color:#777780;margin-top:5px;font-size:13px">Products listed by AVYRA sellers</p>
+        <p class="muted">Products added by AVYRA sellers</p>
       </div>
 
-      <select id="sortSelect" onchange="renderShop()" style="width:auto;margin:0;padding:10px">
+      <select id="sortProducts" onchange="renderShop()">
         <option value="new">Newest</option>
         <option value="low">Lowest price</option>
         <option value="high">Highest price</option>
@@ -970,354 +935,355 @@ header{
     <div id="shopProducts" class="products"></div>
 
   </main>
+
 </section>
+
+
+<!-- PRODUCT DETAILS -->
 
 <section id="details" class="page">
   <main class="container section">
-    <div id="productDetails"></div>
+    <div id="detailsContent"></div>
   </main>
 </section>
 
+
+<!-- SELL -->
+
 <section id="seller" class="page">
+
   <div class="sellerHero">
     <div class="container">
 
-      <span class="badge">SELL ON AVYRA</span>
+      <div class="tag">SELL ON AVYRA</div>
 
       <h1>
-        Turn your products<br>
-        into <span class="gradientText">sales.</span>
+        Your products.<br>
+        <span class="gradient">Your business.</span>
       </h1>
 
       <p>
-        Create a seller account, add your business name and manage your products from one place.
+        Create your seller account and add your own products and product pictures.
       </p>
 
-      <div class="heroButtons">
-        <button class="btn primary" onclick="startSeller()">Become a seller</button>
-        <button class="btn darkBtn" onclick="openLogin()">Log in</button>
-      </div>
-
-      <div class="sellerGrid">
-        <div class="sellerCard">
-          <strong>Create your store</strong>
-          <span>Set up your business profile.</span>
-        </div>
-        <div class="sellerCard">
-          <strong>List products</strong>
-          <span>Add your own products and prices.</span>
-        </div>
-        <div class="sellerCard">
-          <strong>Manage products</strong>
-          <span>Control your listings from Seller Hub.</span>
-        </div>
-      </div>
+      <button class="btn btnPrimary" onclick="startSeller()">Become a seller</button>
 
     </div>
   </div>
+
 </section>
 
+
+<!-- SELLER DASHBOARD -->
+
 <section id="sellerDashboard" class="page">
+
   <main class="container section">
 
-    <div class="sectionTitle">
+    <div class="sectionHeader">
       <div>
-        <h1 id="sellerHubTitle">Seller Hub</h1>
-        <p style="color:#777780;margin-top:5px;font-size:13px">Manage your AVYRA store</p>
+        <h1>Seller Hub</h1>
+        <p class="muted" id="businessNameText"></p>
       </div>
-      <button class="btn primary" onclick="showPage('addProduct')">Add product</button>
+
+      <button class="btn btnPrimary" onclick="showPage('addProduct')">
+        Add product
+      </button>
     </div>
 
-    <div id="sellerStats"></div>
+    <div id="sellerStats" class="sellerStats"></div>
 
-    <div class="sectionTitle" style="margin-top:30px">
+    <div class="sectionHeader">
       <h2>Your products</h2>
     </div>
 
     <div id="sellerProducts" class="products"></div>
 
   </main>
+
 </section>
+
+
+<!-- ADD PRODUCT -->
 
 <section id="addProduct" class="page">
-  <div class="container">
-    <div class="form">
 
-      <h2>Add a product</h2>
-      <p class="formIntro">Add the details customers will see on your listing.</p>
+  <main class="container">
 
-      <label>Product name</label>
-      <input id="sellName" placeholder="Product name">
+    <div class="formPage">
 
-      <label>Category</label>
-      <select id="sellCategory">
-        <option>Phones</option>
-        <option>Computers</option>
-        <option>Gaming</option>
-        <option>Fashion</option>
-        <option>Home</option>
-        <option>Beauty</option>
-        <option>Other</option>
-      </select>
+      <h1>Add product</h1>
 
-      <label>Price</label>
-      <input id="sellPrice" type="number" min="1" placeholder="10000">
+      <p class="formIntro">
+        Only sellers can publish products. Your product and picture will appear on the marketplace.
+      </p>
 
-      <label>Currency</label>
-      <input id="sellCurrency" value="KES" placeholder="KES">
+      <div class="field">
+        <label>Product name</label>
+        <input id="productName" placeholder="Enter product name">
+      </div>
 
-      <label>Location</label>
-      <input id="sellLocation" placeholder="Location">
+      <div class="field">
+        <label>Category</label>
+        <select id="productCategory">
+          <option>Phones</option>
+          <option>Computers</option>
+          <option>Gaming</option>
+          <option>Fashion</option>
+          <option>Home</option>
+          <option>Beauty</option>
+          <option>Other</option>
+        </select>
+      </div>
 
-      <label>Description</label>
-      <textarea id="sellDescription" rows="5" placeholder="Describe your product"></textarea>
+      <div class="field">
+        <label>Price</label>
+        <input id="productPrice" type="number" placeholder="Enter price">
+      </div>
 
-      <label>Product image</label>
-      <input id="sellImage" type="file" accept="image/*">
+      <div class="field">
+        <label>Currency</label>
+        <select id="productCurrency">
+          <option>KES</option>
+          <option>USD</option>
+          <option>EUR</option>
+          <option>GBP</option>
+          <option>NGN</option>
+          <option>ZAR</option>
+        </select>
+      </div>
 
-      <button class="btn primary" onclick="addProduct()">Publish product</button>
+      <div class="field">
+        <label>Location</label>
+        <input id="productLocation" placeholder="City, Country">
+      </div>
 
-      <p id="sellStatus" style="margin-top:12px;text-align:center"></p>
+      <div class="field">
+        <label>Description</label>
+        <textarea id="productDescription" rows="5" placeholder="Describe your product"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Product picture</label>
+        <input id="productImageInput" type="file" accept="image/*">
+      </div>
+
+      <button class="btn btnPrimary full" onclick="addProduct()">
+        Publish product
+      </button>
 
     </div>
-  </div>
+
+  </main>
+
 </section>
 
-<section id="cart" class="page">
-  <main class="container section">
-    <h1 style="margin-bottom:18px">Cart</h1>
-    <div id="cartItems"></div>
-    <div id="cartTotal"></div>
-  </main>
-</section>
 
-<section id="orders" class="page">
-  <main class="container section">
-    <h1 style="margin-bottom:18px">Orders</h1>
-    <div id="ordersList"></div>
-  </main>
-</section>
+<!-- ACCOUNT -->
 
 <section id="account" class="page">
+
   <main class="container section">
-    <h1 style="margin-bottom:18px">Account</h1>
+
+    <div class="sectionHeader">
+      <h1>Account</h1>
+    </div>
+
     <div id="accountContent"></div>
+
   </main>
+
 </section>
+
+
+<!-- SETTINGS -->
 
 <section id="settings" class="page">
+
   <main class="container section">
 
-    <h1 style="margin-bottom:18px">Settings</h1>
-
-    <div class="setting">
-      <h3>Delivery location</h3>
-      <p>Used as your default shopping location.</p>
-      <input id="settingLocation" placeholder="Location">
-      <button class="btn primary" style="margin-top:10px" onclick="saveLocation()">Save</button>
+    <div class="sectionHeader">
+      <h1>Settings</h1>
     </div>
 
-    <div class="setting">
-      <h3>Notifications</h3>
-      <p>Control shopping notifications.</p>
-      <label>
-        <input id="notificationsSetting" type="checkbox" onchange="saveSettings()" style="width:auto;margin:0 7px 0 0">
-        Enable notifications
-      </label>
-    </div>
+    <div class="profileCard">
 
-    <div class="setting">
-      <h3>Local data</h3>
-      <p>Remove all AVYRA data stored on this device.</p>
-      <button class="btn danger" onclick="clearLocalData()">Clear app data</button>
+      <div class="field">
+        <label>Country</label>
+        <select id="settingCountry"></select>
+      </div>
+
+      <div class="field">
+        <label>Default location</label>
+        <input id="settingLocation" placeholder="Enter your location">
+      </div>
+
+      <button class="btn btnPrimary" onclick="saveSettings()">Save settings</button>
+
+      <button class="btn btnDanger" style="margin-left:8px" onclick="clearData()">
+        Clear app data
+      </button>
+
     </div>
 
   </main>
+
 </section>
 
-<!-- LOGIN -->
+
+<!-- LOGIN MODAL -->
 
 <div id="loginModal" class="modal">
+
   <div class="modalBox">
 
-    <div class="modalHeader">
+    <div class="modalHead">
       <h2>Log in</h2>
       <button class="close" onclick="closeModal('loginModal')">×</button>
     </div>
 
-    <div class="form" style="margin:0;padding:0;border:0">
-
+    <div class="field">
       <label>Email</label>
       <input id="loginEmail" type="email" placeholder="you@example.com">
+    </div>
 
+    <div class="field">
       <label>Password</label>
       <input id="loginPassword" type="password" placeholder="Your password">
-
-      <button class="btn primary" onclick="login()">Log in</button>
-
-      <button class="btn" style="margin-top:8px" onclick="openSignup()">Create account</button>
-
-      <p id="loginStatus" style="margin-top:12px;text-align:center;color:#d72c48"></p>
-
     </div>
+
+    <button class="btn btnPrimary full" onclick="login()">Log in</button>
+
+    <button class="btn full" style="margin-top:10px" onclick="openSignup(false)">
+      Create account
+    </button>
+
   </div>
+
 </div>
 
-<!-- SIGN UP -->
+
+<!-- SIGNUP MODAL -->
 
 <div id="signupModal" class="modal">
+
   <div class="modalBox">
 
-    <div class="modalHeader">
-      <h2>Create account</h2>
+    <div class="modalHead">
+      <h2 id="signupTitle">Create account</h2>
       <button class="close" onclick="closeModal('signupModal')">×</button>
     </div>
 
-    <div class="form" style="margin:0;padding:0;border:0">
-
+    <div class="field">
       <label>Full name</label>
-      <input id="signupName" placeholder="Your name">
+      <input id="signupName" placeholder="Your full name">
+    </div>
 
+    <div class="field">
       <label>Username</label>
-      <input id="signupUsername" placeholder="username">
+      <input id="signupUsername" placeholder="Choose a username">
+    </div>
 
+    <div id="businessField" class="field" style="display:none">
+      <label>Business name</label>
+      <input id="signupBusiness" placeholder="Your business name">
+    </div>
+
+    <div class="field">
       <label>Email</label>
       <input id="signupEmail" type="email" placeholder="you@example.com">
+    </div>
 
+    <div class="field">
       <label>Phone number</label>
+
       <div class="phoneRow">
-        <select id="signupCode" class="countryCode"></select>
+        <select id="signupCode"></select>
         <input id="signupPhone" type="tel" placeholder="Phone number">
       </div>
+    </div>
 
+    <div class="field">
+      <label>Country</label>
+      <select id="signupCountry"></select>
+    </div>
+
+    <div class="field">
       <label>Password</label>
       <input id="signupPassword" type="password" placeholder="Create a password">
+    </div>
 
+    <div class="field">
       <label>Confirm password</label>
       <input id="signupConfirmPassword" type="password" placeholder="Confirm your password">
-
-      <label>Country</label>
-      <select id="signupCountry" class="countrySelect"></select>
-
-      <button class="btn primary" onclick="createAccount()">Create account</button>
-
-      <p id="signupStatus" style="margin-top:12px;text-align:center;color:#d72c48"></p>
-
     </div>
+
+    <button class="btn btnPrimary full" onclick="createAccount()">
+      Create account
+    </button>
+
   </div>
+
 </div>
+
 
 <!-- EDIT PROFILE -->
 
 <div id="profileModal" class="modal">
+
   <div class="modalBox">
 
-    <div class="modalHeader">
+    <div class="modalHead">
       <h2>Edit profile</h2>
       <button class="close" onclick="closeModal('profileModal')">×</button>
     </div>
 
-    <div class="form" style="margin:0;padding:0;border:0">
-
-      <label>Profile picture</label>
-      <input id="profileImageInput" type="file" accept="image/*">
-
-      <label>Name</label>
-      <input id="profileName">
-
-      <label>Username</label>
-      <input id="profileUsername">
-
-      <label>Email</label>
-      <input id="profileEmail" type="email">
-
-      <label>Phone number</label>
-      <div class="phoneRow">
-        <select id="profileCode" class="countryCode"></select>
-        <input id="profilePhone" type="tel">
-      </div>
-
-      <label>Country</label>
-      <select id="profileCountry" class="countrySelect"></select>
-
-      <div id="businessNameBox" style="display:none">
-        <label>Business name</label>
-        <input id="profileBusinessName" placeholder="Business name">
-      </div>
-
-      <button class="btn primary" onclick="saveProfile()">Save changes</button>
-
-    </div>
-  </div>
-</div>
-
-<!-- SELLER SETUP -->
-
-<div id="sellerSetupModal" class="modal">
-  <div class="modalBox">
-
-    <div class="modalHeader">
-      <h2>Seller setup</h2>
-      <button class="close" onclick="closeModal('sellerSetupModal')">×</button>
-    </div>
-
-    <div class="form" style="margin:0;padding:0;border:0">
-
-      <label>Business name</label>
-      <input id="sellerBusinessName" placeholder="Your business name">
-
-      <p class="formIntro">
-        This is the name customers will see on your products.
-      </p>
-
-      <button class="btn primary" onclick="finishSellerSetup()">Continue</button>
-
-      <p id="sellerSetupStatus" style="margin-top:12px;text-align:center;color:#d72c48"></p>
-
-    </div>
-  </div>
-</div>
-
-<!-- CHECKOUT -->
-
-<div id="checkoutModal" class="modal">
-  <div class="modalBox">
-
-    <div class="modalHeader">
-      <h2>Checkout</h2>
-      <button class="close" onclick="closeModal('checkoutModal')">×</button>
-    </div>
-
-    <div class="form" style="margin:0;padding:0;border:0">
-
+    <div class="field">
       <label>Full name</label>
-      <input id="checkoutName">
-
-      <label>Phone number</label>
-      <div class="phoneRow">
-        <select id="checkoutCode" class="countryCode"></select>
-        <input id="checkoutPhone" type="tel">
-      </div>
-
-      <label>Delivery address</label>
-      <textarea id="checkoutAddress" rows="4"></textarea>
-
-      <label>Payment method</label>
-      <select id="paymentMethod">
-        <option>Cash on delivery</option>
-        <option>Mobile money</option>
-        <option>Card</option>
-      </select>
-
-      <button class="btn primary" onclick="placeOrder()">Place order</button>
-
+      <input id="editName">
     </div>
+
+    <div class="field">
+      <label>Username</label>
+      <input id="editUsername">
+    </div>
+
+    <div class="field">
+      <label>Business name</label>
+      <input id="editBusiness" placeholder="Only for sellers">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="editEmail" type="email">
+    </div>
+
+    <div class="field">
+      <label>Phone number</label>
+
+      <div class="phoneRow">
+        <select id="editCode"></select>
+        <input id="editPhone">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Country</label>
+      <select id="editCountry"></select>
+    </div>
+
+    <button class="btn btnPrimary full" onclick="saveProfile()">
+      Save changes
+    </button>
+
   </div>
+
 </div>
+
 
 <!-- BOTTOM NAV -->
 
-<nav class="bottom">
+<nav class="bottomNav">
 
   <button id="navHome" class="active" onclick="showPage('home')">
     <div class="navDot"></div>
@@ -1329,14 +1295,9 @@ header{
     Shop
   </button>
 
-  <button id="navSeller" onclick="showPage('seller')">
+  <button id="navSell" onclick="showPage('seller')">
     <div class="navDot"></div>
     Sell
-  </button>
-
-  <button id="navOrders" onclick="showPage('orders')">
-    <div class="navDot"></div>
-    Orders
   </button>
 
   <button id="navAccount" onclick="showPage('account')">
@@ -1346,166 +1307,193 @@ header{
 
 </nav>
 
+
+<div id="toast" class="toast"></div>
+
+
 <script>
+const STORAGE_KEY = "avyra_final_marketplace";
 
-const KEY="avyra_modern_v2";
-
-const countries=[
-  ["Afghanistan","+93"],["Albania","+355"],["Algeria","+213"],
-  ["Andorra","+376"],["Angola","+244"],["Antigua and Barbuda","+1"],
-  ["Argentina","+54"],["Armenia","+374"],["Australia","+61"],
-  ["Austria","+43"],["Azerbaijan","+994"],["Bahamas","+1"],
-  ["Bahrain","+973"],["Bangladesh","+880"],["Barbados","+1"],
-  ["Belarus","+375"],["Belgium","+32"],["Belize","+501"],
-  ["Benin","+229"],["Bhutan","+975"],["Bolivia","+591"],
-  ["Bosnia and Herzegovina","+387"],["Botswana","+267"],["Brazil","+55"],
-  ["Brunei","+673"],["Bulgaria","+359"],["Burkina Faso","+226"],
-  ["Burundi","+257"],["Cambodia","+855"],["Cameroon","+237"],
-  ["Canada","+1"],["Cape Verde","+238"],["Central African Republic","+236"],
-  ["Chad","+235"],["Chile","+56"],["China","+86"],
-  ["Colombia","+57"],["Comoros","+269"],["Congo","+242"],
-  ["Costa Rica","+506"],["Croatia","+385"],["Cuba","+53"],
-  ["Cyprus","+357"],["Czech Republic","+420"],["Denmark","+45"],
-  ["Djibouti","+253"],["Dominica","+1"],["Dominican Republic","+1"],
-  ["Ecuador","+593"],["Egypt","+20"],["El Salvador","+503"],
-  ["Equatorial Guinea","+240"],["Eritrea","+291"],["Estonia","+372"],
-  ["Eswatini","+268"],["Ethiopia","+251"],["Fiji","+679"],
-  ["Finland","+358"],["France","+33"],["Gabon","+241"],
-  ["Gambia","+220"],["Georgia","+995"],["Germany","+49"],
-  ["Ghana","+233"],["Greece","+30"],["Grenada","+1"],
-  ["Guatemala","+502"],["Guinea","+224"],["Guinea-Bissau","+245"],
-  ["Guyana","+592"],["Haiti","+509"],["Honduras","+504"],
-  ["Hungary","+36"],["Iceland","+354"],["India","+91"],
-  ["Indonesia","+62"],["Iran","+98"],["Iraq","+964"],
-  ["Ireland","+353"],["Israel","+972"],["Italy","+39"],
-  ["Ivory Coast","+225"],["Jamaica","+1"],["Japan","+81"],
-  ["Jordan","+962"],["Kazakhstan","+7"],["Kenya","+254"],
-  ["Kiribati","+686"],["Kuwait","+965"],["Kyrgyzstan","+996"],
-  ["Laos","+856"],["Latvia","+371"],["Lebanon","+961"],
-  ["Lesotho","+266"],["Liberia","+231"],["Libya","+218"],
-  ["Liechtenstein","+423"],["Lithuania","+370"],["Luxembourg","+352"],
-  ["Madagascar","+261"],["Malawi","+265"],["Malaysia","+60"],
-  ["Maldives","+960"],["Mali","+223"],["Malta","+356"],
-  ["Marshall Islands","+692"],["Mauritania","+222"],["Mauritius","+230"],
-  ["Mexico","+52"],["Micronesia","+691"],["Moldova","+373"],
-  ["Monaco","+377"],["Mongolia","+976"],["Montenegro","+382"],
-  ["Morocco","+212"],["Mozambique","+258"],["Myanmar","+95"],
-  ["Namibia","+264"],["Nauru","+674"],["Nepal","+977"],
-  ["Netherlands","+31"],["New Zealand","+64"],["Nicaragua","+505"],
-  ["Niger","+227"],["Nigeria","+234"],["North Korea","+850"],
-  ["North Macedonia","+389"],["Norway","+47"],["Oman","+968"],
-  ["Pakistan","+92"],["Palau","+680"],["Panama","+507"],
-  ["Papua New Guinea","+675"],["Paraguay","+595"],["Peru","+51"],
-  ["Philippines","+63"],["Poland","+48"],["Portugal","+351"],
-  ["Qatar","+974"],["Romania","+40"],["Russia","+7"],
-  ["Rwanda","+250"],["Saint Kitts and Nevis","+1"],
-  ["Saint Lucia","+1"],["Saint Vincent and the Grenadines","+1"],
-  ["Samoa","+685"],["San Marino","+378"],["Sao Tome and Principe","+239"],
-  ["Saudi Arabia","+966"],["Senegal","+221"],["Serbia","+381"],
-  ["Seychelles","+248"],["Sierra Leone","+232"],["Singapore","+65"],
-  ["Slovakia","+421"],["Slovenia","+386"],["Solomon Islands","+677"],
-  ["Somalia","+252"],["South Africa","+27"],["South Korea","+82"],
-  ["South Sudan","+211"],["Spain","+34"],["Sri Lanka","+94"],
-  ["Sudan","+249"],["Suriname","+597"],["Sweden","+46"],
-  ["Switzerland","+41"],["Syria","+963"],["Taiwan","+886"],
-  ["Tajikistan","+992"],["Tanzania","+255"],["Thailand","+66"],
-  ["Timor-Leste","+670"],["Togo","+228"],["Tonga","+676"],
-  ["Trinidad and Tobago","+1"],["Tunisia","+216"],["Turkey","+90"],
-  ["Turkmenistan","+993"],["Tuvalu","+688"],["Uganda","+256"],
-  ["Ukraine","+380"],["United Arab Emirates","+971"],["United Kingdom","+44"],
-  ["United States","+1"],["Uruguay","+598"],["Uzbekistan","+998"],
-  ["Vanuatu","+678"],["Vatican City","+379"],["Venezuela","+58"],
-  ["Vietnam","+84"],["Yemen","+967"],["Zambia","+260"],["Zimbabwe","+263"]
-];
-
-let data={
-  products:[],
-  cart:[],
-  orders:[],
+let app = {
   profile:{
     loggedIn:false,
     name:"",
     username:"",
+    business:"",
     email:"",
     phone:"",
+    code:"+254",
     country:"Kenya",
-    phoneCode:"+254",
-    image:"",
     isSeller:false,
-    businessName:""
+    avatar:""
   },
+
   settings:{
-    location:"Kenya",
-    notifications:true
-  }
+    country:"Kenya",
+    location:""
+  },
+
+  products:[],
+
+  users:[]
 };
 
-function loadData(){
+let signupSeller = false;
+
+
+/* COUNTRIES AND COUNTRY CODES */
+
+const countries = [
+["Afghanistan","+93"],["Albania","+355"],["Algeria","+213"],
+["Andorra","+376"],["Angola","+244"],["Argentina","+54"],
+["Armenia","+374"],["Australia","+61"],["Austria","+43"],
+["Azerbaijan","+994"],["Bahamas","+1"],["Bahrain","+973"],
+["Bangladesh","+880"],["Barbados","+1"],["Belarus","+375"],
+["Belgium","+32"],["Belize","+501"],["Benin","+229"],
+["Bhutan","+975"],["Bolivia","+591"],["Bosnia and Herzegovina","+387"],
+["Botswana","+267"],["Brazil","+55"],["Brunei","+673"],
+["Bulgaria","+359"],["Burkina Faso","+226"],["Burundi","+257"],
+["Cambodia","+855"],["Cameroon","+237"],["Canada","+1"],
+["Cape Verde","+238"],["Central African Republic","+236"],
+["Chad","+235"],["Chile","+56"],["China","+86"],
+["Colombia","+57"],["Comoros","+269"],["Congo","+242"],
+["Costa Rica","+506"],["Croatia","+385"],["Cuba","+53"],
+["Cyprus","+357"],["Czech Republic","+420"],["Denmark","+45"],
+["Djibouti","+253"],["Dominica","+1"],["Dominican Republic","+1"],
+["Ecuador","+593"],["Egypt","+20"],["El Salvador","+503"],
+["Equatorial Guinea","+240"],["Eritrea","+291"],["Estonia","+372"],
+["Eswatini","+268"],["Ethiopia","+251"],["Fiji","+679"],
+["Finland","+358"],["France","+33"],["Gabon","+241"],
+["Gambia","+220"],["Georgia","+995"],["Germany","+49"],
+["Ghana","+233"],["Greece","+30"],["Grenada","+1"],
+["Guatemala","+502"],["Guinea","+224"],["Guinea-Bissau","+245"],
+["Guyana","+592"],["Haiti","+509"],["Honduras","+504"],
+["Hungary","+36"],["Iceland","+354"],["India","+91"],
+["Indonesia","+62"],["Iran","+98"],["Iraq","+964"],
+["Ireland","+353"],["Israel","+972"],["Italy","+39"],
+["Jamaica","+1"],["Japan","+81"],["Jordan","+962"],
+["Kazakhstan","+7"],["Kenya","+254"],["Kiribati","+686"],
+["Kuwait","+965"],["Kyrgyzstan","+996"],["Laos","+856"],
+["Latvia","+371"],["Lebanon","+961"],["Lesotho","+266"],
+["Liberia","+231"],["Libya","+218"],["Liechtenstein","+423"],
+["Lithuania","+370"],["Luxembourg","+352"],["Madagascar","+261"],
+["Malawi","+265"],["Malaysia","+60"],["Maldives","+960"],
+["Mali","+223"],["Malta","+356"],["Marshall Islands","+692"],
+["Mauritania","+222"],["Mauritius","+230"],["Mexico","+52"],
+["Micronesia","+691"],["Moldova","+373"],["Monaco","+377"],
+["Mongolia","+976"],["Montenegro","+382"],["Morocco","+212"],
+["Mozambique","+258"],["Myanmar","+95"],["Namibia","+264"],
+["Nauru","+674"],["Nepal","+977"],["Netherlands","+31"],
+["New Zealand","+64"],["Nicaragua","+505"],["Niger","+227"],
+["Nigeria","+234"],["North Korea","+850"],["North Macedonia","+389"],
+["Norway","+47"],["Oman","+968"],["Pakistan","+92"],
+["Palau","+680"],["Panama","+507"],["Papua New Guinea","+675"],
+["Paraguay","+595"],["Peru","+51"],["Philippines","+63"],
+["Poland","+48"],["Portugal","+351"],["Qatar","+974"],
+["Romania","+40"],["Russia","+7"],["Rwanda","+250"],
+["Saint Kitts and Nevis","+1"],["Saint Lucia","+1"],
+["Saint Vincent and the Grenadines","+1"],["Samoa","+685"],
+["San Marino","+378"],["Sao Tome and Principe","+239"],
+["Saudi Arabia","+966"],["Senegal","+221"],["Serbia","+381"],
+["Seychelles","+248"],["Sierra Leone","+232"],["Singapore","+65"],
+["Slovakia","+421"],["Slovenia","+386"],["Solomon Islands","+677"],
+["Somalia","+252"],["South Africa","+27"],["South Korea","+82"],
+["South Sudan","+211"],["Spain","+34"],["Sri Lanka","+94"],
+["Sudan","+249"],["Suriname","+597"],["Sweden","+46"],
+["Switzerland","+41"],["Syria","+963"],["Taiwan","+886"],
+["Tajikistan","+992"],["Tanzania","+255"],["Thailand","+66"],
+["Timor-Leste","+670"],["Togo","+228"],["Tonga","+676"],
+["Trinidad and Tobago","+1"],["Tunisia","+216"],["Turkey","+90"],
+["Turkmenistan","+993"],["Tuvalu","+688"],["Uganda","+256"],
+["Ukraine","+380"],["United Arab Emirates","+971"],
+["United Kingdom","+44"],["United States","+1"],
+["Uruguay","+598"],["Uzbekistan","+998"],["Vanuatu","+678"],
+["Vatican City","+379"],["Venezuela","+58"],["Vietnam","+84"],
+["Yemen","+967"],["Zambia","+260"],["Zimbabwe","+263"]
+];
+
+
+/* SAVE / LOAD */
+
+function loadApp(){
   try{
-    const saved=localStorage.getItem(KEY);
+    const saved = localStorage.getItem(STORAGE_KEY);
     if(saved){
-      const loaded=JSON.parse(saved);
-      data=Object.assign(data,loaded);
-      data.profile=Object.assign({
-        loggedIn:false,name:"",username:"",email:"",
-        phone:"",country:"Kenya",phoneCode:"+254",
-        image:"",isSeller:false,businessName:""
-      },loaded.profile||{});
-      data.settings=Object.assign({
-        location:"Kenya",notifications:true
-      },loaded.settings||{});
+      const parsed = JSON.parse(saved);
+      app = {
+        ...app,
+        ...parsed,
+        profile:{...app.profile,...parsed.profile},
+        settings:{...app.settings,...parsed.settings}
+      };
     }
   }catch(e){}
-
-  if(!Array.isArray(data.products))data.products=[];
-  if(!Array.isArray(data.cart))data.cart=[];
-  if(!Array.isArray(data.orders))data.orders=[];
 }
 
-function saveData(){
-  localStorage.setItem(KEY,JSON.stringify(data));
+function saveApp(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(app));
 }
 
-function makeID(){
-  return Date.now().toString(36)+Math.random().toString(36).slice(2);
-}
 
-function escapeHTML(value){
-  return String(value??"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
+/* START */
 
-function formatMoney(n){
-  return Number(n||0).toLocaleString();
-}
+function populateSelects(){
 
-/* COUNTRY INPUTS */
+  const countrySelects = [
+    "signupCountry",
+    "editCountry",
+    "settingCountry"
+  ];
 
-function fillCountryInputs(){
-  const countryHTML=countries.map(c=>
-    `<option value="${escapeHTML(c[0])}">${escapeHTML(c[0])}</option>`
-  ).join("");
+  const codeSelects = [
+    "signupCode",
+    "editCode"
+  ];
 
-  const codeHTML=countries.map(c=>
-    `<option value="${c[1]}">${escapeHTML(c[0])} ${c[1]}</option>`
-  ).join("");
+  countrySelects.forEach(id=>{
+    const select = document.getElementById(id);
+    select.innerHTML = "";
 
-  document.querySelectorAll(".countrySelect").forEach(select=>{
-    select.innerHTML=countryHTML;
+    countries.forEach(c=>{
+      const option = document.createElement("option");
+      option.value = c[0];
+      option.textContent = c[0];
+
+      if(c[0] === "Kenya"){
+        option.selected = true;
+      }
+
+      select.appendChild(option);
+    });
   });
 
-  document.querySelectorAll(".countryCode").forEach(select=>{
-    select.innerHTML=codeHTML;
-  });
+  codeSelects.forEach(id=>{
+    const select = document.getElementById(id);
+    select.innerHTML = "";
 
-  document.getElementById("signupCountry").value="Kenya";
-  document.getElementById("signupCode").value="+254";
-  document.getElementById("checkoutCode").value="+254";
+    countries.forEach(c=>{
+      const option = document.createElement("option");
+      option.value = c[1];
+      option.textContent = c[0] + " (" + c[1] + ")";
+
+      if(c[0] === "Kenya"){
+        option.selected = true;
+      }
+
+      select.appendChild(option);
+    });
+  });
 }
+
+function init(){
+  loadApp();
+  populateSelects();
+  updateHeader();
+  renderFeatured();
+  renderShop();
+  renderAccount();
+}
+
 
 /* NAVIGATION */
 
@@ -1515,1080 +1503,834 @@ function showPage(page){
     p.classList.remove("active");
   });
 
-  const target=document.getElementById(page);
+  const target = document.getElementById(page);
 
-  if(target)target.classList.add("active");
+  if(target){
+    target.classList.add("active");
+  }
 
-  if(page==="home")renderFeatured();
-  if(page==="shop")renderShop();
-  if(page==="cart")renderCart();
-  if(page==="orders")renderOrders();
-  if(page==="account")renderAccount();
-  if(page==="settings")renderSettings();
-  if(page==="sellerDashboard")renderSellerDashboard();
+  if(page === "home") renderFeatured();
+  if(page === "shop") renderShop();
+  if(page === "account") renderAccount();
+  if(page === "sellerDashboard") renderSellerDashboard();
+  if(page === "settings") renderSettings();
 
   updateNav(page);
 
-  window.scrollTo({top:0,behavior:"smooth"});
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 function updateNav(page){
 
-  document.querySelectorAll(".bottom button").forEach(b=>{
+  document.querySelectorAll(".bottomNav button").forEach(b=>{
     b.classList.remove("active");
   });
 
-  const map={
-    home:"navHome",
-    shop:"navShop",
-    seller:"navSeller",
-    orders:"navOrders",
-    account:"navAccount"
-  };
+  let nav = null;
 
-  if(map[page]){
-    document.getElementById(map[page]).classList.add("active");
+  if(page === "home") nav = "navHome";
+  if(page === "shop" || page === "details") nav = "navShop";
+  if(page === "seller" || page === "sellerDashboard" || page === "addProduct") nav = "navSell";
+  if(page === "account" || page === "settings") nav = "navAccount";
+
+  if(nav){
+    document.getElementById(nav).classList.add("active");
   }
 }
 
-function updateHeader(){
-  document.getElementById("headerUser").textContent=
-    data.profile.loggedIn
-    ?data.profile.name
-    :"Log in";
-}
 
 /* SEARCH */
 
-function productMatches(product,text){
-  const query=text.toLowerCase();
-
-  return [
-    product.name,
-    product.category,
-    product.description,
-    product.location,
-    product.seller
-  ].join(" ").toLowerCase().includes(query);
-}
-
 function searchProducts(){
 
-  const input=document.getElementById("searchInput");
-  const text=input.value.trim();
+  const text = document.getElementById("searchInput").value.trim().toLowerCase();
 
-  document.getElementById("searchResults").classList.remove("show");
+  showPage("shop");
 
   if(!text){
-    showPage("shop");
     renderShop();
     return;
   }
 
-  const results=data.products.filter(p=>productMatches(p,text));
+  const results = app.products.filter(p=>
+    p.name.toLowerCase().includes(text) ||
+    p.category.toLowerCase().includes(text) ||
+    p.description.toLowerCase().includes(text) ||
+    p.location.toLowerCase().includes(text) ||
+    p.business.toLowerCase().includes(text)
+  );
 
-  showPage("shop");
-
-  renderProducts(results);
-
-  document.getElementById("searchInput").value=text;
+  renderProductList(results, "shopProducts");
 }
 
-function liveSearch(){
+document.getElementById("searchInput").addEventListener("input", function(){
 
-  const input=document.getElementById("searchInput");
-  const box=document.getElementById("searchResults");
-  const text=input.value.trim();
+  const text = this.value.trim().toLowerCase();
+  const box = document.getElementById("searchResults");
 
-  box.innerHTML="";
+  box.innerHTML = "";
 
   if(!text){
-    box.classList.remove("show");
+    box.style.display = "none";
     return;
   }
 
-  const results=data.products
-    .filter(p=>productMatches(p,text))
-    .slice(0,6);
+  const results = app.products.filter(p=>
+    p.name.toLowerCase().includes(text)
+  ).slice(0,6);
 
-  if(!results.length){
-    box.innerHTML=`<div class="suggestion">No products found</div>`;
-    box.classList.add("show");
+  if(results.length === 0){
+    box.style.display = "none";
     return;
   }
 
-  results.forEach(p=>{
+  results.forEach(product=>{
+    const item = document.createElement("div");
 
-    const div=document.createElement("div");
-    div.className="suggestion";
-    div.textContent=p.name;
+    item.className = "searchResult";
+    item.textContent = product.name;
 
-    div.onclick=()=>{
-      input.value=p.name;
-      box.classList.remove("show");
-      openProduct(p.id);
+    item.onclick = function(){
+      document.getElementById("searchInput").value = product.name;
+      box.style.display = "none";
+      openProduct(product.id);
     };
 
-    box.appendChild(div);
+    box.appendChild(item);
   });
 
-  box.classList.add("show");
-}
+  box.style.display = "block";
+});
 
-document.getElementById("searchInput").addEventListener("input",liveSearch);
-
-document.getElementById("searchInput").addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-    e.preventDefault();
+document.getElementById("searchInput").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
     searchProducts();
   }
 });
 
-document.addEventListener("click",e=>{
-  if(!e.target.closest(".searchWrap")){
-    document.getElementById("searchResults").classList.remove("show");
+document.addEventListener("click", function(e){
+  if(!e.target.closest(".searchBox")){
+    document.getElementById("searchResults").style.display = "none";
   }
 });
 
 function categorySearch(category){
 
-  document.getElementById("searchInput").value=category;
+  document.getElementById("searchInput").value = category;
 
-  const results=data.products.filter(
-    p=>String(p.category).toLowerCase()===category.toLowerCase()
+  const results = app.products.filter(p=>
+    p.category.toLowerCase() === category.toLowerCase()
   );
 
   showPage("shop");
-  renderProducts(results);
+  renderProductList(results, "shopProducts");
 }
+
 
 /* PRODUCTS */
 
-function productHTML(p){
-
-  const image=p.image
-    ?`<img class="productImage" src="${p.image}" alt="">`
-    :`<div class="productPlaceholder">No image</div>`;
-
-  const sellerName=p.businessName||p.seller||"Seller";
+function productCardHTML(p){
 
   return `
-    ${image}
-    <h3>${escapeHTML(p.name)}</h3>
-    <div class="seller">Sold by ${escapeHTML(sellerName)}</div>
-    <div class="price">${escapeHTML(p.currency)} ${formatMoney(p.price)}</div>
-    <div class="productButtons">
-      <button onclick="addToCart('${p.id}')">Add to cart</button>
-      <button onclick="openProduct('${p.id}')">View</button>
-    </div>
+    <article class="product">
+
+      <img class="productImage" src="${p.image}" alt="Product image">
+
+      <div class="productBody">
+
+        <h3>${escapeHTML(p.name)}</h3>
+
+        <div class="productSeller">
+          ${escapeHTML(p.business || p.seller)}
+        </div>
+
+        <div class="productPrice">
+          ${escapeHTML(p.currency)} ${formatMoney(p.price)}
+        </div>
+
+        <div class="productActions">
+          <button onclick="openProduct('${p.id}')" class="viewBtn">View</button>
+        </div>
+
+      </div>
+
+    </article>
   `;
 }
 
-function renderFeatured(){
+function renderProductList(products, targetId){
 
-  const box=document.getElementById("featuredProducts");
+  const box = document.getElementById(targetId);
 
-  if(!data.products.length){
-    box.innerHTML=`
+  if(products.length === 0){
+
+    box.innerHTML = `
       <div class="empty">
         <h3>No products yet</h3>
-        <p>Products added by sellers will appear here.</p>
+        <p>Sellers will add products and pictures here.</p>
       </div>
     `;
+
     return;
   }
 
-  box.innerHTML="";
+  box.innerHTML = products.map(productCardHTML).join("");
+}
 
-  data.products.slice(0,8).forEach(p=>{
-    const card=document.createElement("article");
-    card.className="product";
-    card.innerHTML=productHTML(p);
-    box.appendChild(card);
-  });
+function renderFeatured(){
+  renderProductList(app.products.slice(0,8), "featuredProducts");
 }
 
 function renderShop(){
 
-  const sort=document.getElementById("sortSelect").value;
-  let products=[...data.products];
+  let products = [...app.products];
 
-  if(sort==="new"){
-    products.sort((a,b)=>(b.created||0)-(a.created||0));
+  const sort = document.getElementById("sortProducts").value;
+
+  if(sort === "low"){
+    products.sort((a,b)=>a.price-b.price);
   }
 
-  if(sort==="low"){
-    products.sort((a,b)=>Number(a.price)-Number(b.price));
+  if(sort === "high"){
+    products.sort((a,b)=>b.price-a.price);
   }
 
-  if(sort==="high"){
-    products.sort((a,b)=>Number(b.price)-Number(a.price));
-  }
-
-  renderProducts(products);
-}
-
-function renderProducts(products){
-
-  const box=document.getElementById("shopProducts");
-
-  if(!products.length){
-    box.innerHTML=`
-      <div class="empty">
-        <h3>No products found</h3>
-        <p>Try another search or check back later.</p>
-      </div>
-    `;
-    return;
-  }
-
-  box.innerHTML="";
-
-  products.forEach(p=>{
-    const card=document.createElement("article");
-    card.className="product";
-    card.innerHTML=productHTML(p);
-    box.appendChild(card);
-  });
+  renderProductList(products, "shopProducts");
 }
 
 function openProduct(id){
 
-  const p=data.products.find(x=>x.id===id);
-  if(!p)return;
+  const p = app.products.find(product=>product.id === id);
+
+  if(!p) return;
 
   showPage("details");
 
-  const sellerName=p.businessName||p.seller||"Seller";
+  document.getElementById("detailsContent").innerHTML = `
 
-  document.getElementById("productDetails").innerHTML=`
+    <img class="detailImage" src="${p.image}" alt="Product image">
 
-    <div class="accountCard">
+    <div class="detailCard">
 
-      ${
-        p.image
-        ?`<img src="${p.image}" alt="" style="width:100%;height:400px;object-fit:contain;background:#f2f2f4;border-radius:15px">`
-        :`<div class="productPlaceholder" style="height:400px">No image</div>`
-      }
+      <h1>${escapeHTML(p.name)}</h1>
 
-      <h1 style="margin-top:20px">${escapeHTML(p.name)}</h1>
+      <div class="detailPrice">
+        ${escapeHTML(p.currency)} ${formatMoney(p.price)}
+      </div>
 
-      <div class="price">${escapeHTML(p.currency)} ${formatMoney(p.price)}</div>
-
-      <p style="color:#777780;line-height:1.7">${escapeHTML(p.description)}</p>
-
-      <p style="margin-top:12px;color:#777780">${escapeHTML(p.location)}</p>
-
-      <p style="margin-top:8px">
-        Sold by <b>${escapeHTML(sellerName)}</b>
+      <p class="detailDescription">
+        ${escapeHTML(p.description)}
       </p>
 
-      <div class="actions">
-        <button class="btn primary" onclick="addToCart('${p.id}')">Add to cart</button>
-        <button class="btn" onclick="buyNow('${p.id}')">Buy now</button>
-      </div>
+      <p style="margin-top:15px;color:#777783;font-size:13px">
+        Location: ${escapeHTML(p.location)}
+      </p>
+
+      <p style="margin-top:7px;color:#777783;font-size:13px">
+        Seller: ${escapeHTML(p.business || p.seller)}
+      </p>
 
     </div>
   `;
 }
 
-/* CART */
-
-function addToCart(productId){
-
-  if(!data.profile.loggedIn){
-    alert("Log in before adding products to your cart.");
-    openLogin();
-    return;
-  }
-
-  const item=data.cart.find(x=>x.productId===productId);
-
-  if(item){
-    item.quantity++;
-  }else{
-    data.cart.push({productId,quantity:1});
-  }
-
-  saveData();
-  alert("Added to cart.");
-}
-
-function buyNow(id){
-
-  if(!data.profile.loggedIn){
-    openLogin();
-    return;
-  }
-
-  data.cart=[{productId:id,quantity:1}];
-  saveData();
-  openCheckout();
-}
-
-function renderCart(){
-
-  const box=document.getElementById("cartItems");
-  const totalBox=document.getElementById("cartTotal");
-
-  if(!data.cart.length){
-    box.innerHTML=`
-      <div class="empty">
-        <h3>Your cart is empty</h3>
-        <p>Add products to see them here.</p>
-      </div>
-    `;
-    totalBox.innerHTML="";
-    return;
-  }
-
-  box.innerHTML="";
-  let total=0;
-  let currency="";
-
-  data.cart.forEach(item=>{
-
-    const p=data.products.find(x=>x.id===item.productId);
-    if(!p)return;
-
-    total+=Number(p.price)*Number(item.quantity);
-    currency=p.currency;
-
-    const div=document.createElement("div");
-    div.className="cartItem";
-
-    div.innerHTML=`
-      ${
-        p.image
-        ?`<img class="cartImage" src="${p.image}" alt="">`
-        :`<div class="cartImage" style="display:flex;align-items:center;justify-content:center;color:#999">No image</div>`
-      }
-
-      <div class="cartInfo">
-        <h3>${escapeHTML(p.name)}</h3>
-        <p style="margin-top:6px">${escapeHTML(p.currency)} ${formatMoney(p.price)}</p>
-
-        <div class="qty">
-          <button onclick="changeQuantity('${p.id}',-1)">−</button>
-          <b>${item.quantity}</b>
-          <button onclick="changeQuantity('${p.id}',1)">+</button>
-          <button class="btn danger" style="width:auto;padding:7px 10px" onclick="removeFromCart('${p.id}')">Remove</button>
-        </div>
-      </div>
-    `;
-
-    box.appendChild(div);
-  });
-
-  totalBox.innerHTML=`
-    <div class="total">
-      Total: ${escapeHTML(currency)} ${formatMoney(total)}
-      <br>
-      <button class="btn primary" style="margin-top:12px" onclick="openCheckout()">Checkout</button>
-    </div>
-  `;
-}
-
-function changeQuantity(id,change){
-
-  const item=data.cart.find(x=>x.productId===id);
-  if(!item)return;
-
-  item.quantity+=change;
-
-  if(item.quantity<=0){
-    data.cart=data.cart.filter(x=>x.productId!==id);
-  }
-
-  saveData();
-  renderCart();
-}
-
-function removeFromCart(id){
-  data.cart=data.cart.filter(x=>x.productId!==id);
-  saveData();
-  renderCart();
-}
-
-/* CHECKOUT */
-
-function openCheckout(){
-
-  if(!data.cart.length){
-    alert("Your cart is empty.");
-    return;
-  }
-
-  if(!data.profile.loggedIn){
-    openLogin();
-    return;
-  }
-
-  document.getElementById("checkoutName").value=data.profile.name||"";
-  document.getElementById("checkoutPhone").value=data.profile.phone||"";
-  document.getElementById("checkoutCode").value=data.profile.phoneCode||"+254";
-
-  document.getElementById("checkoutModal").classList.add("show");
-}
-
-function placeOrder(){
-
-  const name=document.getElementById("checkoutName").value.trim();
-  const phone=document.getElementById("checkoutPhone").value.trim();
-  const code=document.getElementById("checkoutCode").value;
-  const address=document.getElementById("checkoutAddress").value.trim();
-  const payment=document.getElementById("paymentMethod").value;
-
-  if(!name||!phone||!address){
-    alert("Complete all delivery details.");
-    return;
-  }
-
-  const items=data.cart.map(item=>{
-
-    const p=data.products.find(x=>x.id===item.productId);
-
-    return {
-      productId:p.id,
-      name:p.name,
-      price:p.price,
-      currency:p.currency,
-      quantity:item.quantity,
-      seller:p.businessName||p.seller
-    };
-  });
-
-  const total=items.reduce((sum,item)=>{
-    return sum+Number(item.price)*Number(item.quantity);
-  },0);
-
-  data.orders.unshift({
-    id:makeID(),
-    date:Date.now(),
-    status:"Order placed",
-    name,
-    phone:code+" "+phone,
-    address,
-    payment,
-    items,
-    total
-  });
-
-  data.cart=[];
-  saveData();
-
-  closeModal("checkoutModal");
-  showPage("orders");
-}
-
-function renderOrders(){
-
-  const box=document.getElementById("ordersList");
-
-  if(!data.orders.length){
-    box.innerHTML=`
-      <div class="empty">
-        <h3>No orders yet</h3>
-        <p>Your purchases will appear here.</p>
-      </div>
-    `;
-    return;
-  }
-
-  box.innerHTML="";
-
-  data.orders.forEach(order=>{
-
-    const div=document.createElement("div");
-    div.className="order";
-
-    div.innerHTML=`
-      <strong>Order #${order.id.slice(-6)}</strong>
-
-      <p style="color:#777780;font-size:12px;margin-top:6px">
-        ${new Date(order.date).toLocaleString()}
-      </p>
-
-      <span class="orderStatus">${escapeHTML(order.status)}</span>
-
-      <div style="margin:15px 0">
-        ${order.items.map(item=>`
-          <p style="margin:7px 0">
-            ${escapeHTML(item.name)} × ${item.quantity}
-          </p>
-        `).join("")}
-      </div>
-
-      <strong>Total: ${formatMoney(order.total)}</strong>
-
-      <p style="color:#777780;margin-top:10px">
-        Delivery: ${escapeHTML(order.address)}
-      </p>
-    `;
-
-    box.appendChild(div);
-  });
-}
 
 /* SELLER */
 
 function startSeller(){
 
-  if(!data.profile.loggedIn){
-    openSignup();
+  if(!app.profile.loggedIn){
+    openSignup(true);
     return;
   }
 
-  if(data.profile.isSeller){
-    showPage("sellerDashboard");
-    return;
+  if(!app.profile.isSeller){
+    app.profile.isSeller = true;
+    saveApp();
   }
-
-  document.getElementById("sellerBusinessName").value=
-    data.profile.businessName||"";
-
-  document.getElementById("sellerSetupModal").classList.add("show");
-}
-
-function finishSellerSetup(){
-
-  const businessName=document
-    .getElementById("sellerBusinessName")
-    .value.trim();
-
-  if(!businessName){
-    document.getElementById("sellerSetupStatus").textContent=
-      "Enter your business name.";
-    return;
-  }
-
-  data.profile.isSeller=true;
-  data.profile.businessName=businessName;
-
-  saveData();
-
-  closeModal("sellerSetupModal");
 
   showPage("sellerDashboard");
 }
 
 function renderSellerDashboard(){
 
-  if(!data.profile.loggedIn||!data.profile.isSeller){
+  if(!app.profile.loggedIn || !app.profile.isSeller){
     showPage("seller");
     return;
   }
 
-  document.getElementById("sellerHubTitle").textContent=
-    data.profile.businessName||"Seller Hub";
-
-  const username=data.profile.username;
-
-  const products=data.products.filter(
-    p=>p.sellerUsername===username
+  const products = app.products.filter(p=>
+    p.sellerUsername === app.profile.username
   );
 
-  document.getElementById("sellerStats").innerHTML=`
-    <div class="sellerGrid">
+  document.getElementById("businessNameText").textContent =
+    app.profile.business || app.profile.name;
 
-      <div class="sellerCard" style="background:white;color:#15151a;border:1px solid #e1e1e6">
-        <strong>${products.length}</strong>
-        <span>Your products</span>
-      </div>
+  document.getElementById("sellerStats").innerHTML = `
+    <div class="stat">
+      <strong>${products.length}</strong>
+      <span>Your products</span>
+    </div>
 
-      <div class="sellerCard" style="background:white;color:#15151a;border:1px solid #e1e1e6">
-        <strong>${data.orders.length}</strong>
-        <span>Total orders</span>
-      </div>
+    <div class="stat">
+      <strong>${app.profile.business || "My Store"}</strong>
+      <span>Business</span>
+    </div>
 
-      <div class="sellerCard" style="background:white;color:#15151a;border:1px solid #e1e1e6">
-        <strong>Active</strong>
-        <span>Store status</span>
-      </div>
-
+    <div class="stat">
+      <strong>Active</strong>
+      <span>Store status</span>
     </div>
   `;
 
-  const box=document.getElementById("sellerProducts");
+  const box = document.getElementById("sellerProducts");
 
-  if(!products.length){
-    box.innerHTML=`
+  if(products.length === 0){
+
+    box.innerHTML = `
       <div class="empty">
         <h3>Your store is empty</h3>
-        <p>Add your first product to start selling.</p>
+        <p>Only you can add products and product pictures.</p>
       </div>
     `;
+
     return;
   }
 
-  box.innerHTML="";
+  box.innerHTML = products.map(p=>`
+    <article class="product">
 
-  products.forEach(p=>{
+      <img class="productImage" src="${p.image}">
 
-    const div=document.createElement("div");
-    div.className="product";
+      <div class="productBody">
 
-    div.innerHTML=`
-      ${productHTML(p)}
-      <button class="btn danger" style="width:100%;margin-top:8px" onclick="deleteProduct('${p.id}')">
-        Delete product
-      </button>
-    `;
+        <h3>${escapeHTML(p.name)}</h3>
 
-    box.appendChild(div);
-  });
+        <div class="productPrice">
+          ${escapeHTML(p.currency)} ${formatMoney(p.price)}
+        </div>
+
+        <div class="productActions">
+          <button onclick="openProduct('${p.id}')">View</button>
+          <button class="btnDanger" onclick="deleteProduct('${p.id}')">Delete</button>
+        </div>
+
+      </div>
+
+    </article>
+  `).join("");
 }
+
+
+/* ADD PRODUCT - SELLERS ONLY */
 
 function addProduct(){
 
-  if(!data.profile.loggedIn){
-    openLogin();
+  if(!app.profile.loggedIn || !app.profile.isSeller){
+    showToast("Only sellers can add products");
     return;
   }
 
-  if(!data.profile.isSeller){
-    startSeller();
+  const name = document.getElementById("productName").value.trim();
+  const category = document.getElementById("productCategory").value;
+  const price = Number(document.getElementById("productPrice").value);
+  const currency = document.getElementById("productCurrency").value;
+  const location = document.getElementById("productLocation").value.trim();
+  const description = document.getElementById("productDescription").value.trim();
+  const imageFile = document.getElementById("productImageInput").files[0];
+
+  if(!name || !price || !location || !description || !imageFile){
+    showToast("Complete every field and add a product picture");
     return;
   }
 
-  const name=document.getElementById("sellName").value.trim();
-  const category=document.getElementById("sellCategory").value;
-  const price=Number(document.getElementById("sellPrice").value);
-  const currency=document.getElementById("sellCurrency").value.trim();
-  const location=document.getElementById("sellLocation").value.trim();
-  const description=document.getElementById("sellDescription").value.trim();
-  const file=document.getElementById("sellImage").files[0];
+  const reader = new FileReader();
 
-  if(!name||!price||!currency){
-    document.getElementById("sellStatus").textContent=
-      "Product name, price and currency are required.";
-    return;
-  }
+  reader.onload = function(e){
 
-  if(file){
-
-    const reader=new FileReader();
-
-    reader.onload=e=>{
-      finishProduct(name,category,price,currency,location,description,e.target.result);
+    const product = {
+      id:makeID(),
+      name:name,
+      category:category,
+      price:price,
+      currency:currency,
+      location:location,
+      description:description,
+      image:e.target.result,
+      seller:app.profile.name,
+      business:app.profile.business,
+      sellerUsername:app.profile.username,
+      created:Date.now()
     };
 
-    reader.readAsDataURL(file);
+    app.products.unshift(product);
 
-  }else{
-    finishProduct(name,category,price,currency,location,description,"");
-  }
-}
+    saveApp();
 
-function finishProduct(name,category,price,currency,location,description,image){
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productLocation").value = "";
+    document.getElementById("productDescription").value = "";
+    document.getElementById("productImageInput").value = "";
 
-  data.products.unshift({
-    id:makeID(),
-    name,
-    category,
-    price,
-    currency,
-    location:location||data.settings.location||data.profile.country||"",
-    description,
-    image,
-    seller:data.profile.name,
-    businessName:data.profile.businessName||data.profile.name,
-    sellerUsername:data.profile.username,
-    created:Date.now()
-  });
+    showToast("Product published");
 
-  saveData();
+    setTimeout(()=>{
+      showPage("sellerDashboard");
+    },500);
+  };
 
-  document.getElementById("sellStatus").style.color="#159447";
-  document.getElementById("sellStatus").textContent=
-    "Product published successfully.";
-
-  document.getElementById("sellName").value="";
-  document.getElementById("sellPrice").value="";
-  document.getElementById("sellLocation").value="";
-  document.getElementById("sellDescription").value="";
-  document.getElementById("sellImage").value="";
-
-  setTimeout(()=>{
-    showPage("sellerDashboard");
-  },500);
+  reader.readAsDataURL(imageFile);
 }
 
 function deleteProduct(id){
 
-  if(!confirm("Delete this product?"))return;
+  const product = app.products.find(p=>p.id === id);
 
-  data.products=data.products.filter(p=>p.id!==id);
-  data.cart=data.cart.filter(x=>x.productId!==id);
+  if(!product || product.sellerUsername !== app.profile.username){
+    return;
+  }
 
-  saveData();
+  if(!confirm("Delete this product?")){
+    return;
+  }
+
+  app.products = app.products.filter(p=>p.id !== id);
+
+  saveApp();
   renderSellerDashboard();
   renderFeatured();
 }
+
 
 /* ACCOUNT */
 
 function renderAccount(){
 
-  const box=document.getElementById("accountContent");
+  const box = document.getElementById("accountContent");
 
-  if(!data.profile.loggedIn){
+  if(!app.profile.loggedIn){
 
-    box.innerHTML=`
-      <div class="accountCard">
+    box.innerHTML = `
+      <div class="profileCard">
+
         <h2>Welcome to AVYRA</h2>
-        <p style="color:#777780;margin-top:8px">
-          Log in to manage your account, orders and shopping cart.
+
+        <p class="formIntro">
+          Create an account to build your profile or become a seller.
         </p>
 
-        <div class="actions">
-          <button class="btn primary" onclick="openLogin()">Log in</button>
-          <button class="btn" onclick="openSignup()">Create account</button>
+        <div class="accountButtons">
+          <button class="btn btnPrimary" onclick="openLogin()">Log in</button>
+          <button class="btn" onclick="openSignup(false)">Create account</button>
         </div>
-      </div>
 
-      <div class="accountCard">
-        <h2>Want to sell?</h2>
-        <p style="color:#777780;margin-top:8px">
-          Join AVYRA as a seller and list your products.
-        </p>
-        <button class="btn primary" style="margin-top:15px" onclick="showPage('seller')">
-          Join as a seller
-        </button>
       </div>
     `;
 
     return;
   }
 
-  const p=data.profile;
+  const p = app.profile;
 
-  const avatar=p.image
-    ?`<img class="avatar" src="${p.image}" alt="">`
-    :`<div class="avatarText">${escapeHTML((p.name||"A").charAt(0).toUpperCase())}</div>`;
+  const avatarContent = p.avatar
+    ? `<img src="${p.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+    : escapeHTML((p.name || "A").charAt(0).toUpperCase());
 
-  box.innerHTML=`
-    <div class="accountCard">
+  box.innerHTML = `
 
-      <div class="profile">
+    <div class="profileCard">
 
-        <div class="avatarWrap">
-          ${avatar}
-          <button class="avatarAdd" onclick="openEditProfile()">+</button>
-        </div>
+      <div class="profileTop">
+
+        <label class="avatarUpload">
+
+          <div class="avatar" id="avatarDisplay">
+            ${avatarContent}
+          </div>
+
+          <div class="avatarPlus">+</div>
+
+          <input type="file" accept="image/*" onchange="changeProfilePicture(this)">
+
+        </label>
 
         <div>
           <h2>${escapeHTML(p.name)}</h2>
           <p>@${escapeHTML(p.username)}</p>
+          ${p.isSeller ? `<p>${escapeHTML(p.business || "Seller")}</p>` : ``}
         </div>
 
       </div>
 
-      ${
-        p.isSeller
-        ?`<p style="margin-top:18px;color:#777780;font-size:13px">
-          Business: ${escapeHTML(p.businessName)}
-        </p>`
-        :""
-      }
-
-      <div style="margin-top:18px;color:#666;font-size:13px">
+      <div class="accountInfo">
         <p>Email: ${escapeHTML(p.email)}</p>
-        <p style="margin-top:7px">Phone: ${escapeHTML(p.phoneCode||"")} ${escapeHTML(p.phone)}</p>
-        <p style="margin-top:7px">Country: ${escapeHTML(p.country)}</p>
+        <p>Phone: ${escapeHTML(p.code)} ${escapeHTML(p.phone)}</p>
+        <p>Country: ${escapeHTML(p.country)}</p>
       </div>
 
-      <div class="actions">
-        <button class="btn primary" onclick="openEditProfile()">Edit profile</button>
+      <div class="accountButtons">
+
+        <button class="btn btnPrimary" onclick="openEditProfile()">
+          Edit profile
+        </button>
 
         ${
           p.isSeller
-          ?`<button class="btn" onclick="showPage('sellerDashboard')">Seller Hub</button>`
-          :`<button class="btn" onclick="startSeller()">Join as a seller</button>`
+          ? `<button class="btn" onclick="showPage('sellerDashboard')">Seller Hub</button>`
+          : `<button class="btn" onclick="showPage('seller')">Become a seller</button>`
         }
 
-        <button class="btn" onclick="showPage('settings')">Settings</button>
+        <button class="btn" onclick="showPage('settings')">
+          Settings
+        </button>
 
-        <button class="btn danger" onclick="logout()">Log out</button>
+        <button class="btn btnDanger" onclick="logout()">
+          Log out
+        </button>
+
       </div>
 
     </div>
   `;
 }
 
-/* AUTH */
+
+/* PROFILE PICTURE */
+
+function changeProfilePicture(input){
+
+  const file = input.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    app.profile.avatar = e.target.result;
+
+    saveApp();
+    renderAccount();
+
+    showToast("Profile picture updated");
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
+/* LOGIN / SIGNUP */
 
 function openLogin(){
-
   closeModal("signupModal");
-
-  document.getElementById("loginStatus").textContent="";
   document.getElementById("loginModal").classList.add("show");
 }
 
-function openSignup(){
+function openSignup(isSeller){
+
+  signupSeller = isSeller;
 
   closeModal("loginModal");
 
-  document.getElementById("signupStatus").textContent="";
+  document.getElementById("signupTitle").textContent =
+    isSeller ? "Create seller account" : "Create account";
+
+  document.getElementById("businessField").style.display =
+    isSeller ? "block" : "none";
+
   document.getElementById("signupModal").classList.add("show");
+}
+
+function createAccount(){
+
+  const name = document.getElementById("signupName").value.trim();
+  const username = document.getElementById("signupUsername").value.trim().replace(/\s+/g,"_");
+  const business = document.getElementById("signupBusiness").value.trim();
+  const email = document.getElementById("signupEmail").value.trim();
+  const code = document.getElementById("signupCode").value;
+  const phone = document.getElementById("signupPhone").value.trim();
+  const country = document.getElementById("signupCountry").value;
+  const password = document.getElementById("signupPassword").value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+  if(!name || !username || !email || !phone || !password){
+    showToast("Complete all required fields");
+    return;
+  }
+
+  if(signupSeller && !business){
+    showToast("Enter your business name");
+    return;
+  }
+
+  if(password !== confirmPassword){
+    showToast("Passwords do not match");
+    return;
+  }
+
+  const userExists = app.users.some(u=>u.email.toLowerCase() === email.toLowerCase());
+
+  if(userExists){
+    showToast("An account with this email already exists");
+    return;
+  }
+
+  const user = {
+    name:name,
+    username:username,
+    business:business,
+    email:email,
+    phone:phone,
+    code:code,
+    country:country,
+    password:password,
+    isSeller:signupSeller,
+    avatar:""
+  };
+
+  app.users.push(user);
+
+  app.profile = {
+    loggedIn:true,
+    ...user
+  };
+
+  saveApp();
+
+  closeModal("signupModal");
+
+  updateHeader();
+  renderAccount();
+
+  showToast("Account created");
+
+  if(signupSeller){
+    showPage("sellerDashboard");
+  }else{
+    showPage("account");
+  }
 }
 
 function login(){
 
-  const email=document.getElementById("loginEmail").value.trim();
-  const password=document.getElementById("loginPassword").value;
+  const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+  const password = document.getElementById("loginPassword").value;
 
-  if(!email||!password){
-    document.getElementById("loginStatus").textContent=
-      "Enter your email and password.";
+  const user = app.users.find(u=>
+    u.email.toLowerCase() === email &&
+    u.password === password
+  );
+
+  if(!user){
+    showToast("Incorrect email or password");
     return;
   }
 
-  if(!data.profile.email){
-    data.profile.email=email;
-    data.profile.name=email.split("@")[0];
-    data.profile.username=email.split("@")[0]
-      .replace(/[^a-zA-Z0-9_]/g,"");
-  }
+  app.profile = {
+    loggedIn:true,
+    ...user
+  };
 
-  data.profile.loggedIn=true;
-
-  saveData();
+  saveApp();
 
   closeModal("loginModal");
 
   updateHeader();
   renderAccount();
-
   showPage("account");
+
+  showToast("Logged in");
 }
 
-function createAccount(){
+function logout(){
 
-  const name=document.getElementById("signupName").value.trim();
-
-  const username=document
-    .getElementById("signupUsername")
-    .value.trim()
-    .replace(/\s+/g,"_");
-
-  const email=document.getElementById("signupEmail").value.trim();
-  const phone=document.getElementById("signupPhone").value.trim();
-  const code=document.getElementById("signupCode").value;
-  const password=document.getElementById("signupPassword").value;
-  const confirmPassword=document.getElementById("signupConfirmPassword").value;
-  const country=document.getElementById("signupCountry").value;
-
-  if(!name||!username||!email||!phone||!password||!confirmPassword){
-    document.getElementById("signupStatus").textContent=
-      "Complete all required fields.";
+  if(!confirm("Log out of AVYRA?")){
     return;
   }
 
-  if(password!==confirmPassword){
-    document.getElementById("signupStatus").textContent=
-      "Passwords do not match.";
-    return;
-  }
+  app.profile.loggedIn = false;
 
-  if(password.length<6){
-    document.getElementById("signupStatus").textContent=
-      "Password must be at least 6 characters.";
-    return;
-  }
-
-  data.profile={
-    loggedIn:true,
-    name,
-    username,
-    email,
-    phone,
-    phoneCode:code,
-    country,
-    image:"",
-    isSeller:false,
-    businessName:""
-  };
-
-  saveData();
-
-  closeModal("signupModal");
-
+  saveApp();
   updateHeader();
 
-  showPage("account");
+  showPage("home");
+  showToast("Logged out");
 }
 
-/* PROFILE */
+
+/* EDIT PROFILE */
 
 function openEditProfile(){
 
-  const p=data.profile;
+  const p = app.profile;
 
-  document.getElementById("profileName").value=p.name||"";
-  document.getElementById("profileUsername").value=p.username||"";
-  document.getElementById("profileEmail").value=p.email||"";
-  document.getElementById("profilePhone").value=p.phone||"";
-  document.getElementById("profileCode").value=p.phoneCode||"+254";
-  document.getElementById("profileCountry").value=p.country||"Kenya";
-  document.getElementById("profileBusinessName").value=p.businessName||"";
-  document.getElementById("profileImageInput").value="";
-
-  document.getElementById("businessNameBox").style.display=
-    p.isSeller?"block":"none";
+  document.getElementById("editName").value = p.name || "";
+  document.getElementById("editUsername").value = p.username || "";
+  document.getElementById("editBusiness").value = p.business || "";
+  document.getElementById("editEmail").value = p.email || "";
+  document.getElementById("editCode").value = p.code || "+254";
+  document.getElementById("editPhone").value = p.phone || "";
+  document.getElementById("editCountry").value = p.country || "Kenya";
 
   document.getElementById("profileModal").classList.add("show");
 }
 
 function saveProfile(){
 
-  const name=document.getElementById("profileName").value.trim();
+  const oldUsername = app.profile.username;
 
-  const username=document
-    .getElementById("profileUsername")
-    .value.trim()
-    .replace(/\s+/g,"_");
+  const name = document.getElementById("editName").value.trim();
+  const username = document.getElementById("editUsername").value.trim().replace(/\s+/g,"_");
+  const business = document.getElementById("editBusiness").value.trim();
+  const email = document.getElementById("editEmail").value.trim();
+  const code = document.getElementById("editCode").value;
+  const phone = document.getElementById("editPhone").value.trim();
+  const country = document.getElementById("editCountry").value;
 
-  const email=document.getElementById("profileEmail").value.trim();
-  const phone=document.getElementById("profilePhone").value.trim();
-  const phoneCode=document.getElementById("profileCode").value;
-  const country=document.getElementById("profileCountry").value;
-  const businessName=document.getElementById("profileBusinessName").value.trim();
-  const file=document.getElementById("profileImageInput").files[0];
-
-  if(!name||!username||!phone){
-    alert("Name, username and phone number are required.");
+  if(!name || !username || !phone){
+    showToast("Name, username and phone are required");
     return;
   }
 
-  const oldUsername=data.profile.username;
+  app.profile.name = name;
+  app.profile.username = username;
+  app.profile.business = business;
+  app.profile.email = email;
+  app.profile.code = code;
+  app.profile.phone = phone;
+  app.profile.country = country;
 
-  function finish(image){
-
-    data.profile.name=name;
-    data.profile.username=username;
-    data.profile.email=email;
-    data.profile.phone=phone;
-    data.profile.phoneCode=phoneCode;
-    data.profile.country=country;
-
-    if(data.profile.isSeller&&businessName){
-      data.profile.businessName=businessName;
+  app.users = app.users.map(u=>{
+    if(u.email === app.profile.email || u.username === oldUsername){
+      return {
+        ...u,
+        name:name,
+        username:username,
+        business:business,
+        email:email,
+        code:code,
+        phone:phone,
+        country:country
+      };
     }
 
-    if(image!==null){
-      data.profile.image=image;
+    return u;
+  });
+
+  app.products.forEach(p=>{
+    if(p.sellerUsername === oldUsername){
+      p.sellerUsername = username;
+      p.seller = name;
+      p.business = business;
     }
+  });
 
-    data.products.forEach(p=>{
-      if(p.sellerUsername===oldUsername){
-        p.seller=name;
-        p.sellerUsername=username;
-        p.businessName=data.profile.businessName||name;
-      }
-    });
+  saveApp();
 
-    saveData();
+  closeModal("profileModal");
 
-    closeModal("profileModal");
+  updateHeader();
+  renderAccount();
 
-    updateHeader();
-    renderAccount();
-  }
-
-  if(file){
-
-    const reader=new FileReader();
-
-    reader.onload=e=>{
-      finish(e.target.result);
-    };
-
-    reader.readAsDataURL(file);
-
-  }else{
-    finish(null);
-  }
+  showToast("Profile updated");
 }
+
 
 /* SETTINGS */
 
 function renderSettings(){
 
-  document.getElementById("settingLocation").value=
-    data.settings.location||"";
+  document.getElementById("settingCountry").value =
+    app.settings.country || app.profile.country || "Kenya";
 
-  document.getElementById("notificationsSetting").checked=
-    data.settings.notifications!==false;
-}
-
-function saveLocation(){
-
-  data.settings.location=
-    document.getElementById("settingLocation").value.trim()||
-    data.profile.country||
-    "Kenya";
-
-  saveData();
-  alert("Location saved.");
+  document.getElementById("settingLocation").value =
+    app.settings.location || "";
 }
 
 function saveSettings(){
 
-  data.settings.notifications=
-    document.getElementById("notificationsSetting").checked;
+  app.settings.country =
+    document.getElementById("settingCountry").value;
 
-  saveData();
+  app.settings.location =
+    document.getElementById("settingLocation").value.trim();
+
+  saveApp();
+
+  showToast("Settings saved");
 }
 
-function clearLocalData(){
+function clearData(){
 
-  if(!confirm("Clear all AVYRA data stored on this device?"))return;
+  if(!confirm("This will remove all accounts, products and pictures stored in this browser. Continue?")){
+    return;
+  }
 
-  localStorage.removeItem(KEY);
+  localStorage.removeItem(STORAGE_KEY);
   location.reload();
 }
 
-function logout(){
 
-  if(!confirm("Log out of AVYRA?"))return;
+/* HEADER */
 
-  data.profile.loggedIn=false;
+function updateHeader(){
 
-  saveData();
-
-  updateHeader();
-
-  showPage("home");
+  document.getElementById("headerUser").textContent =
+    app.profile.loggedIn
+    ? app.profile.name
+    : "Account";
 }
 
-/* MODAL */
+
+/* MODALS */
 
 function closeModal(id){
   document.getElementById(id).classList.remove("show");
 }
 
-document.querySelectorAll(".modal").forEach(modal=>{
-  modal.addEventListener("click",e=>{
-    if(e.target===modal){
-      modal.classList.remove("show");
-    }
-  });
-});
 
-/* START */
+/* HELPERS */
 
-loadData();
-fillCountryInputs();
-updateHeader();
-renderFeatured();
-renderShop();
-renderCart();
-renderOrders();
-renderAccount();
-renderSettings();
+function makeID(){
+  return Date.now().toString(36) +
+    Math.random().toString(36).substring(2,8);
+}
 
+function formatMoney(number){
+  return Number(number || 0).toLocaleString();
+}
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(()=>{
+    toast.classList.remove("show");
+  },2500);
+}
+
+
+init();
 </script>
 
 </body>
