@@ -2,42 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AVYRA — Buy • Sell • Connect</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AVYRA</title>
 
 <style>
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
  --red:#ff1744;
  --bg:#080808;
  --card:#151515;
- --card2:#1d1d1d;
+ --card2:#202020;
  --border:#292929;
  --muted:#999;
 }
-
 body{
  background:var(--bg);
  color:white;
- font-family:Arial,Helvetica,sans-serif;
+ font-family:Arial,sans-serif;
  padding-bottom:70px;
 }
-
-button,input,textarea{
- font:inherit;
-}
-
-button{
- cursor:pointer;
-}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
 
 header{
- height:65px;
+ height:64px;
  background:#101010;
  border-bottom:1px solid var(--border);
  display:flex;
@@ -46,128 +34,78 @@ header{
  padding:0 5%;
  position:sticky;
  top:0;
- z-index:50;
+ z-index:20;
 }
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--red)}
 
-.logo{
- font-size:25px;
- font-weight:900;
- letter-spacing:2px;
-}
-
-.logo span{
- color:var(--red);
-}
-
-.headerButtons{
- display:flex;
- gap:8px;
-}
-
-.headerButtons button{
- background:none;
+.headerBtns{display:flex;gap:7px}
+.headerBtns button{
+ background:#171717;
+ border:1px solid #333;
  color:white;
- border:1px solid var(--red);
- padding:8px 12px;
- border-radius:8px;
+ padding:8px 10px;
+ border-radius:9px;
 }
 
 .hero{
  text-align:center;
- padding:55px 20px;
- background:
- radial-gradient(
-  circle at top,
-  #3b0a17,
-  #080808 60%
- );
+ padding:45px 18px;
+ background:radial-gradient(circle at top,#400817,#080808 65%);
 }
-
-.hero h1{
- font-size:clamp(42px,10vw,70px);
- font-weight:900;
-}
-
-.hero h1 span{
- color:var(--red);
-}
-
-.hero p{
- color:var(--muted);
- margin:12px 0 25px;
-}
+.hero h1{font-size:clamp(40px,10vw,68px)}
+.hero h1 span{color:var(--red)}
+.hero p{color:#aaa;margin:10px 0 22px}
 
 .search{
- max-width:680px;
- margin:auto;
  display:flex;
- background:var(--card);
+ max-width:700px;
+ margin:auto;
+ background:#151515;
  border:1px solid #333;
  border-radius:12px;
  overflow:hidden;
 }
-
 .search input{
  flex:1;
  min-width:0;
- padding:15px;
+ padding:14px;
+ background:none;
  border:0;
  outline:0;
- background:none;
  color:white;
 }
-
 .search button{
+ border:0;
  background:var(--red);
  color:white;
- border:0;
- padding:0 20px;
+ padding:0 18px;
 }
 
-.container{
- width:90%;
- max-width:1200px;
- margin:auto;
-}
-
-.section{
- padding:30px 0;
-}
-
-.title{
- margin-bottom:17px;
-}
+.container{width:90%;max-width:1200px;margin:auto}
+.section{padding:28px 0}
+.title{margin-bottom:15px}
 
 .categories{
  display:flex;
- gap:10px;
+ gap:9px;
  overflow-x:auto;
 }
-
 .category{
- min-width:105px;
+ min-width:100px;
  background:var(--card);
  border:1px solid var(--border);
  border-radius:12px;
- padding:15px 8px;
+ padding:14px 8px;
  text-align:center;
 }
-
-.category div{
- font-size:27px;
- margin-bottom:7px;
-}
-
-.category p{
- color:#ccc;
- font-size:13px;
-}
+.category div{font-size:25px;margin-bottom:5px}
+.category p{font-size:12px;color:#bbb}
 
 .products{
  display:grid;
- grid-template-columns:
- repeat(auto-fill,minmax(185px,1fr));
- gap:15px;
+ grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+ gap:14px;
 }
 
 .product{
@@ -176,71 +114,56 @@ header{
  border-radius:14px;
  overflow:hidden;
 }
-
-.product img{
+.product img,.productPlaceholder{
  width:100%;
  height:180px;
  object-fit:cover;
- background:#202020;
 }
-
-.productEmoji{
- height:180px;
+.productPlaceholder{
  display:flex;
  align-items:center;
  justify-content:center;
- background:#202020;
- font-size:60px;
+ font-size:55px;
+ background:#222;
 }
-
-.productInfo{
- padding:13px;
-}
-
-.productInfo h3{
- font-size:16px;
- margin-bottom:7px;
-}
-
-.price{
- color:var(--red);
- font-weight:bold;
-}
-
-.location{
- color:#777;
+.productInfo{padding:12px}
+.productInfo h3{margin-bottom:6px}
+.price{color:var(--red);font-weight:bold}
+.location,.sellerName{
+ color:#888;
  font-size:12px;
- margin-top:7px;
+ margin-top:6px;
 }
-
-.description{
+.desc{
  color:#aaa;
  font-size:13px;
  margin-top:8px;
  line-height:1.4;
 }
-
-.cardBtn{
- width:100%;
- background:var(--red);
- color:white;
- border:0;
- padding:10px;
- border-radius:8px;
- margin-top:12px;
+.cardBtns{
+ display:flex;
+ gap:6px;
+ margin-top:10px;
 }
+.cardBtns button{
+ flex:1;
+ padding:9px 5px;
+ border-radius:7px;
+ border:0;
+}
+.messageBtn{background:var(--red);color:white}
+.deleteBtn{background:#292929;color:#ff5270}
 
 .seller{
  display:flex;
  align-items:center;
- gap:12px;
+ gap:11px;
+ padding:12px;
+ margin-bottom:9px;
  background:var(--card);
  border:1px solid var(--border);
  border-radius:13px;
- padding:13px;
- margin-bottom:10px;
 }
-
 .avatar{
  width:48px;
  height:48px;
@@ -253,107 +176,37 @@ header{
  overflow:hidden;
  flex-shrink:0;
 }
-
-.avatar img{
- width:100%;
- height:100%;
- object-fit:cover;
-}
-
-.sellerInfo{
- flex:1;
-}
-
-.sellerInfo small{
- color:#888;
-}
-
+.avatar img{width:100%;height:100%;object-fit:cover}
+.sellerInfo{flex:1}
+.sellerInfo small{display:block;color:#777;margin-top:4px}
 .follow{
  background:none;
- border:1px solid var(--red);
  color:var(--red);
- padding:8px 12px;
+ border:1px solid var(--red);
+ padding:8px 11px;
  border-radius:8px;
-}
-
-.account{
- display:none;
-}
-
-.accountCard{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:15px;
- padding:20px;
-}
-
-.profilePhoto{
- width:100px;
- height:100px;
- border-radius:50%;
- object-fit:cover;
- background:#252525;
- display:block;
- margin-bottom:12px;
-}
-
-.photoPicker{
- display:none;
-}
-
-.photoBtn{
- background:#292929;
- color:white;
- border:0;
- padding:10px 14px;
- border-radius:8px;
-}
-
-.accountCard p{
- color:#999;
- margin-top:8px;
-}
-
-.primary{
- width:100%;
- background:var(--red);
- color:white;
- border:0;
- padding:12px;
- border-radius:8px;
- margin-top:15px;
-}
-
-.logout{
- width:100%;
- background:#292929;
- color:white;
- border:0;
- padding:12px;
- border-radius:8px;
- margin-top:10px;
 }
 
 .bottomNav{
  position:fixed;
- bottom:0;
  left:0;
  right:0;
+ bottom:0;
  height:65px;
  background:#101010;
- border-top:1px solid var(--border);
+ border-top:1px solid #292929;
  display:flex;
  justify-content:space-around;
  align-items:center;
- z-index:50;
+ z-index:30;
 }
-
 .bottomNav button{
  background:none;
  border:0;
  color:#aaa;
  font-size:11px;
 }
+.bottomNav button span{font-size:19px}
 
 .modal{
  display:none;
@@ -365,10 +218,9 @@ header{
  justify-content:center;
  padding:15px;
 }
-
 .box{
  width:100%;
- max-width:430px;
+ max-width:470px;
  max-height:92vh;
  overflow-y:auto;
  background:#181818;
@@ -376,125 +228,121 @@ header{
  border-radius:17px;
  padding:20px;
 }
-
-.box h2{
- margin-bottom:10px;
-}
-
-.box input,
-.box textarea{
+.box h2{margin-bottom:10px}
+.box input,.box textarea{
  width:100%;
- padding:13px;
+ padding:12px;
  margin:6px 0;
  background:#090909;
  border:1px solid #333;
  color:white;
  border-radius:8px;
- outline:none;
+ outline:0;
 }
-
-.box textarea{
- min-height:90px;
- resize:vertical;
-}
-
-.box button{
+.box textarea{min-height:85px;resize:vertical}
+.primary,.secondary{
  width:100%;
  padding:12px;
  margin-top:8px;
  border-radius:8px;
-}
-
-.google{
- background:white;
- color:black;
  border:0;
 }
+.primary{background:var(--red);color:white}
+.secondary{background:#292929;color:white}
+.google{background:white;color:black;width:100%;padding:12px;margin-top:8px;border:0;border-radius:8px}
 
-.secondary{
+.profilePage{display:none}
+.profileCard{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:15px;
+ padding:20px;
+}
+.profileTop{
+ display:flex;
+ align-items:center;
+ gap:15px;
+}
+.bigAvatar{
+ width:90px;
+ height:90px;
+ border-radius:50%;
+ object-fit:cover;
+ background:#222;
+}
+.profileStats{
+ display:flex;
+ gap:20px;
+ margin-top:18px;
+}
+.profileStats div{text-align:center}
+.profileStats b{display:block;font-size:18px}
+.profileStats span{font-size:12px;color:#888}
+.bio{color:#aaa;margin-top:14px;line-height:1.5}
+.editBtn{
+ margin-left:auto;
  background:#292929;
  color:white;
  border:0;
+ padding:9px 11px;
+ border-radius:8px;
 }
 
-#status,
-#itemStatus{
- color:#aaa;
- font-size:13px;
- margin-top:10px;
+.profileProducts{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+ margin-top:15px;
 }
 
-
-/* MESSAGING */
+.notification{
+ padding:12px;
+ border-bottom:1px solid #292929;
+}
+.notification small{color:#777}
+.rating{color:#ffd000}
+.review{
+ background:#202020;
+ padding:12px;
+ border-radius:10px;
+ margin-top:8px;
+}
+.review small{color:#777}
 
 .messageBox{
- width:100%;
  max-width:500px;
  height:85vh;
- max-height:700px;
  padding:0;
  overflow:hidden;
  display:flex;
  flex-direction:column;
 }
-
 .messageHeader{
- height:62px;
- padding:10px 15px;
+ height:60px;
  display:flex;
  align-items:center;
  gap:10px;
- border-bottom:1px solid var(--border);
- background:#151515;
+ padding:10px 14px;
+ border-bottom:1px solid #292929;
 }
-
 .messageHeader button{
- width:auto;
- margin:0;
  background:none;
- color:white;
  border:0;
- font-size:20px;
+ color:white;
+ width:auto;
+ padding:5px;
 }
-
-.messageHeaderInfo{
- flex:1;
-}
-
-.messageHeaderInfo b{
- display:block;
-}
-
-.messageHeaderInfo small{
- color:#777;
-}
-
-.conversationList{
- flex:1;
- overflow-y:auto;
-}
-
+.messageHeaderInfo{flex:1}
+.messageHeaderInfo small{display:block;color:#777}
+.conversationList{flex:1;overflow-y:auto}
 .conversation{
  display:flex;
  align-items:center;
- gap:12px;
- padding:13px 15px;
- border-bottom:1px solid #202020;
+ gap:10px;
+ padding:13px;
+ border-bottom:1px solid #222;
 }
-
-.conversation:hover{
- background:#191919;
-}
-
-.conversationText{
- flex:1;
- min-width:0;
-}
-
-.conversationText b{
- display:block;
-}
-
+.conversationText{flex:1;min-width:0}
 .conversationText p{
  color:#888;
  white-space:nowrap;
@@ -502,535 +350,325 @@ header{
  text-overflow:ellipsis;
  margin-top:4px;
 }
-
 .chatScreen{
  display:none;
  flex:1;
  flex-direction:column;
  min-height:0;
 }
-
 .chatMessages{
  flex:1;
  overflow-y:auto;
- padding:15px;
+ padding:14px;
  display:flex;
  flex-direction:column;
  gap:6px;
 }
-
 .chatMessage{
  max-width:78%;
  padding:9px 12px;
- border-radius:17px;
  background:#292929;
+ border-radius:17px;
  align-self:flex-start;
- word-wrap:break-word;
+ word-break:break-word;
 }
-
 .chatMessage.mine{
  background:var(--red);
  align-self:flex-end;
 }
-
-.chatTime{
- font-size:9px;
- opacity:.6;
- margin-top:3px;
-}
-
+.chatTime{font-size:9px;opacity:.6;margin-top:3px}
 .messageComposer{
  display:flex;
  gap:7px;
- padding:10px;
- border-top:1px solid var(--border);
- background:#151515;
+ padding:9px;
+ border-top:1px solid #292929;
 }
-
-.messageComposer input{
- flex:1;
- margin:0;
-}
-
+.messageComposer input{flex:1;margin:0}
 .messageComposer button{
  width:auto;
  margin:0;
- padding:10px 15px;
  background:var(--red);
  color:white;
  border:0;
+ padding:10px 15px;
+ border-radius:8px;
 }
 
 .empty{
- padding:20px;
  color:#777;
  text-align:center;
+ padding:20px;
 }
 
-@media(max-width:650px){
-
- .products{
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
- }
-
- .product img,
- .productEmoji{
-  height:135px;
- }
-
+@media(max-width:600px){
+ .products{grid-template-columns:repeat(2,1fr);gap:8px}
+ .product img,.productPlaceholder{height:135px}
 }
 </style>
 </head>
 
 <body>
 
-
 <header>
+ <div class="logo"><span>AV</span>YRA</div>
 
- <div class="logo">
-  <span>AV</span>YRA
+ <div class="headerBtns">
+  <button onclick="openNotifications()">🔔</button>
+  <button onclick="openAccount()">👤 <span id="headerName">Sign in</span></button>
  </div>
-
- <div class="headerButtons">
-
-  <button onclick="openNotifications()">
-   🔔
-  </button>
-
-  <button onclick="openAccount()">
-   <span id="headerName">
-    Sign in
-   </span>
-  </button>
-
- </div>
-
 </header>
 
-
 <section class="hero">
-
- <h1>
-  Welcome to <span>AVYRA</span>
- </h1>
-
- <p>
-  Buy. Sell. Connect. Worldwide. 🌍
- </p>
+ <h1>Welcome to <span>AVYRA</span></h1>
+ <p>Buy. Sell. Connect. Worldwide. 🌍</p>
 
  <div class="search">
-
-  <input
-   id="searchInput"
-   placeholder="Search products or sellers..."
-  >
-
-  <button onclick="searchProducts()">
-   Search
-  </button>
-
+  <input id="searchInput" placeholder="Search products, sellers or locations...">
+  <button onclick="searchProducts()">Search</button>
  </div>
-
 </section>
-
 
 <main class="container">
 
-
 <section class="section">
-
- <div class="title">
-  <h2>Explore Categories</h2>
- </div>
+ <div class="title"><h2>Explore Categories</h2></div>
 
  <div class="categories">
-
-  <div class="category">
-   <div>📱</div>
-   <p>Phones</p>
-  </div>
-
-  <div class="category">
-   <div>💻</div>
-   <p>Computers</p>
-  </div>
-
-  <div class="category">
-   <div>🎮</div>
-   <p>Gaming</p>
-  </div>
-
-  <div class="category">
-   <div>👕</div>
-   <p>Fashion</p>
-  </div>
-
-  <div class="category">
-   <div>🚗</div>
-   <p>Vehicles</p>
-  </div>
-
-  <div class="category">
-   <div>🏠</div>
-   <p>Home</p>
-  </div>
-
+  <div class="category"><div>📱</div><p>Phones</p></div>
+  <div class="category"><div>💻</div><p>Computers</p></div>
+  <div class="category"><div>🎮</div><p>Gaming</p></div>
+  <div class="category"><div>👕</div><p>Fashion</p></div>
+  <div class="category"><div>🚗</div><p>Vehicles</p></div>
+  <div class="category"><div>🏠</div><p>Home</p></div>
  </div>
-
 </section>
-
 
 <section class="section">
-
- <div class="title">
-  <h2>🔥 AVYRA Marketplace</h2>
+ <div class="title"><h2>🔥 Marketplace</h2></div>
+ <div id="products" class="products">
+  <div class="empty">Loading...</div>
  </div>
-
- <div
-  id="products"
-  class="products">
-
-  <div class="empty">
-   Loading products...
-  </div>
-
- </div>
-
 </section>
-
 
 <section class="section">
-
- <div class="title">
-  <h2>⭐ Sellers</h2>
- </div>
-
- <div id="sellers">
-
-  <div class="empty">
-   Loading sellers...
-  </div>
-
- </div>
-
+ <div class="title"><h2>⭐ Sellers</h2></div>
+ <div id="sellers"><div class="empty">Loading...</div></div>
 </section>
 
+<section class="section profilePage" id="profilePage">
 
-<section
- class="section account"
- id="accountSection">
+ <div class="title"><h2>Your Profile</h2></div>
 
- <div class="title">
-  <h2>Your AVYRA Account</h2>
- </div>
+ <div class="profileCard">
 
- <div class="accountCard">
+  <div class="profileTop">
 
-  <img
-   id="profilePhoto"
-   class="profilePhoto"
-   alt="Profile picture"
-  >
+   <img id="profilePhoto" class="bigAvatar">
 
-  <input
-   id="photoPicker"
-   class="photoPicker"
-   type="file"
-   accept="image/*"
-  >
+   <div style="flex:1">
+    <h2 id="profileName">AVYRA User</h2>
+    <p id="profileEmail" style="color:#777"></p>
+   </div>
 
-  <button
-   class="photoBtn"
-   onclick="choosePhoto()">
-   📷 Change Profile Picture
-  </button>
+   <button class="editBtn" onclick="openEditProfile()">✏️</button>
 
-  <h2
-   id="profileName"
-   style="margin-top:18px">
-   AVYRA User
-  </h2>
+  </div>
 
-  <p id="profileEmail"></p>
+  <div class="profileStats">
+   <div>
+    <b id="myFollowers">0</b>
+    <span>Followers</span>
+   </div>
 
-  <p>
-   Followers:
-   <b id="myFollowers">0</b>
-  </p>
+   <div>
+    <b id="myFollowing">0</b>
+    <span>Following</span>
+   </div>
 
-  <p>
-   Following:
-   <b id="myFollowing">0</b>
-  </p>
+   <div>
+    <b id="myItems">0</b>
+    <span>Listings</span>
+   </div>
+  </div>
 
-  <button
-   class="primary"
-   onclick="openAddItem()">
-   ➕ Add Item
-  </button>
+  <div class="bio" id="profileBio">
+   No bio yet.
+  </div>
 
-  <button
-   class="primary"
-   onclick="openMessages()">
-   💬 Messages
-  </button>
+  <button class="primary" onclick="openAddItem()">➕ Sell Something</button>
+  <button class="primary" onclick="openMessages()">💬 Messages</button>
+  <button class="secondary" onclick="logout()">Sign Out</button>
 
-  <button
-   class="logout"
-   onclick="logout()">
-   Sign Out
-  </button>
+  <h3 style="margin-top:25px">Your Listings</h3>
+  <div id="myProducts" class="profileProducts"></div>
 
  </div>
-
 </section>
 
 </main>
 
-
 <nav class="bottomNav">
-
- <button>🏠<br>Home</button>
-
- <button onclick="
-  document.getElementById('searchInput').focus()
- ">
-  🔎<br>Search
- </button>
-
- <button onclick="openAddItem()">
-  ➕<br>Sell
- </button>
-
- <button onclick="openMessages()">
-  💬<br>Messages
- </button>
-
- <button onclick="openAccount()">
-  👤<br>Account
- </button>
-
+ <button onclick="scrollTopPage()"><span>🏠</span><br>Home</button>
+ <button onclick="focusSearch()"><span>🔎</span><br>Search</button>
+ <button onclick="openAddItem()"><span>➕</span><br>Sell</button>
+ <button onclick="openMessages()"><span>💬</span><br>Messages</button>
+ <button onclick="openAccount()"><span>👤</span><br>Profile</button>
 </nav>
 
 
 <!-- LOGIN -->
 
-<div
- class="modal"
- id="loginModal">
+<div class="modal" id="loginModal">
+<div class="box">
 
- <div class="box">
+<h2>Welcome to AVYRA</h2>
+<p style="color:#888">Sign in to buy, sell and connect.</p>
 
-  <h2>Welcome to AVYRA</h2>
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
 
-  <p style="color:#888">
-   Sign in to buy, sell and connect.
-  </p>
+<button class="primary" onclick="emailLogin()">Sign In</button>
+<button class="google" onclick="googleLogin()">Continue with Google</button>
+<button class="secondary" onclick="closeModal('loginModal')">Close</button>
 
-  <input
-   id="email"
-   type="email"
-   placeholder="Email address"
-  >
+<div id="status" style="color:#aaa;margin-top:10px"></div>
 
-  <input
-   id="password"
-   type="password"
-   placeholder="Password"
-  >
+</div>
+</div>
 
-  <button
-   class="primary"
-   onclick="emailLogin()">
-   Sign In
-  </button>
 
-  <button
-   class="google"
-   onclick="googleLogin()">
-   Continue with Google
-  </button>
+<!-- EDIT PROFILE -->
 
-  <button
-   class="secondary"
-   onclick="closeModal('loginModal')">
-   Close
-  </button>
+<div class="modal" id="editModal">
+<div class="box">
 
-  <div id="status"></div>
+<h2>Edit Profile</h2>
 
- </div>
+<input id="editName" placeholder="Your name">
 
+<textarea id="editBio" placeholder="Write your bio..."></textarea>
+
+<label style="display:block;margin-top:10px;color:#aaa">
+Profile picture
+</label>
+
+<input id="editPhoto" type="file" accept="image/*">
+
+<button class="primary" onclick="saveProfile()">Save Changes</button>
+<button class="secondary" onclick="closeModal('editModal')">Cancel</button>
+
+<div id="editStatus" style="color:#aaa;margin-top:10px"></div>
+
+</div>
 </div>
 
 
 <!-- ADD ITEM -->
 
-<div
- class="modal"
- id="itemModal">
+<div class="modal" id="itemModal">
+<div class="box">
 
- <div class="box">
+<h2>Add Item</h2>
 
-  <h2>Add an Item</h2>
+<input id="itemName" placeholder="Product name">
+<input id="itemPrice" type="number" placeholder="Price">
 
-  <input
-   id="itemName"
-   placeholder="Product name"
-  >
+<input id="itemCurrency" placeholder="Currency — e.g. KES, USD, EUR, GBP">
 
-  <input
-   id="itemPrice"
-   type="number"
-   placeholder="Price"
-  >
+<input id="itemLocation" placeholder="Location">
 
-  <input
-   id="itemCurrency"
-   value="USD"
-   placeholder="Currency"
-  >
+<textarea id="itemDescription" placeholder="Description"></textarea>
 
-  <input
-   id="itemLocation"
-   placeholder="Location"
-  >
+<input id="itemPhoto" type="file" accept="image/*">
 
-  <textarea
-   id="itemDescription"
-   placeholder="Describe your item..."
-  ></textarea>
+<button class="primary" onclick="addItem()">Publish Item</button>
+<button class="secondary" onclick="closeModal('itemModal')">Cancel</button>
 
-  <input
-   id="itemPhoto"
-   type="file"
-   accept="image/*"
-  >
+<div id="itemStatus" style="color:#aaa;margin-top:10px"></div>
 
-  <button
-   class="primary"
-   onclick="addItem()">
-   Publish Item
-  </button>
-
-  <button
-   class="secondary"
-   onclick="closeModal('itemModal')">
-   Cancel
-  </button>
-
-  <div id="itemStatus"></div>
-
- </div>
-
+</div>
 </div>
 
 
-<!-- MESSAGING -->
+<!-- REVIEW -->
 
-<div
- class="modal"
- id="messageModal">
+<div class="modal" id="reviewModal">
+<div class="box">
 
- <div class="box messageBox">
+<h2>Leave a Review</h2>
 
-  <div class="messageHeader">
+<div id="reviewSellerName" style="color:#aaa"></div>
 
-   <button
-    id="backMessages"
-    onclick="showConversationList()">
-    ←
-   </button>
+<select id="reviewRating"
+ style="width:100%;padding:12px;margin-top:8px;background:#090909;color:white;border:1px solid #333;border-radius:8px">
+ <option value="5">⭐⭐⭐⭐⭐ — 5</option>
+ <option value="4">⭐⭐⭐⭐ — 4</option>
+ <option value="3">⭐⭐⭐ — 3</option>
+ <option value="2">⭐⭐ — 2</option>
+ <option value="1">⭐ — 1</option>
+</select>
 
-   <div class="messageHeaderInfo">
+<textarea id="reviewText" placeholder="Write your review..."></textarea>
 
-    <b id="chatName">
-     Messages
-    </b>
+<button class="primary" onclick="submitReview()">Submit Review</button>
+<button class="secondary" onclick="closeModal('reviewModal')">Cancel</button>
 
-    <small id="chatStatus">
-     AVYRA
-    </small>
-
-   </div>
-
-   <button
-    onclick="closeModal('messageModal')">
-    ✕
-   </button>
-
-  </div>
-
-
-  <!-- conversation list -->
-
-  <div
-   id="conversationList"
-   class="conversationList">
-
-   <div class="empty">
-    Loading conversations...
-   </div>
-
-  </div>
-
-
-  <!-- actual chat -->
-
-  <div
-   id="chatScreen"
-   class="chatScreen">
-
-   <div
-    id="chatMessages"
-    class="chatMessages">
-   </div>
-
-   <div class="messageComposer">
-
-    <input
-     id="messageInput"
-     placeholder="Message..."
-     autocomplete="off"
-    >
-
-    <button
-     onclick="sendMessage()">
-     ➤
-    </button>
-
-   </div>
-
-  </div>
-
- </div>
-
+</div>
 </div>
 
 
 <!-- NOTIFICATIONS -->
 
-<div
- class="modal"
- id="notificationModal">
+<div class="modal" id="notificationModal">
+<div class="box">
 
- <div class="box">
+<h2>🔔 Notifications</h2>
 
-  <h2>🔔 Notifications</h2>
+<div id="notifications">
+ <div class="empty">Loading...</div>
+</div>
 
-  <div class="empty">
-   Notifications will appear here.
-  </div>
+<button class="secondary" onclick="closeModal('notificationModal')">Close</button>
 
-  <button
-   class="secondary"
-   onclick="closeModal('notificationModal')">
-   Close
-  </button>
+</div>
+</div>
 
- </div>
 
+<!-- MESSAGES -->
+
+<div class="modal" id="messageModal">
+<div class="box messageBox">
+
+<div class="messageHeader">
+
+<button onclick="showConversationList()">←</button>
+
+<div class="messageHeaderInfo">
+<b id="chatName">Messages</b>
+<small id="chatStatus">AVYRA</small>
+</div>
+
+<button onclick="closeModal('messageModal')">✕</button>
+
+</div>
+
+<div id="conversationList" class="conversationList"></div>
+
+<div id="chatScreen" class="chatScreen">
+
+<div id="chatMessages" class="chatMessages"></div>
+
+<div class="messageComposer">
+
+<input id="messageInput" placeholder="Message...">
+
+<button onclick="sendMessage()">➤</button>
+
+</div>
+
+</div>
+
+</div>
 </div>
 
 
@@ -1059,168 +697,85 @@ import {
  where,
  onSnapshot,
  serverTimestamp,
- increment
+ increment,
+ orderBy
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 let currentUser=null;
 let activeChatUser=null;
+let reviewSellerId=null;
 let unsubscribeChat=null;
-let unsubscribeConversations=null;
+let unsubscribeNotifications=null;
+let allProducts=[];
 
 
-/* =========================
-   LOGIN
-========================= */
+/* AUTH */
 
 window.googleLogin=async()=>{
+ try{
+  await signInWithPopup(auth,googleProvider);
+ }catch(e){
+  document.getElementById("status").innerText=e.message;
+ }
+};
+
+window.emailLogin=async()=>{
+ const email=document.getElementById("email").value.trim();
+ const password=document.getElementById("password").value;
 
  try{
-
-  await signInWithPopup(
-   auth,
-   googleProvider
-  );
-
- }catch(error){
-
-  document.getElementById(
-   "status"
-  ).innerText=
-   error.message;
-
+  await signInWithEmailAndPassword(auth,email,password);
+ }catch(e){
+  document.getElementById("status").innerText=e.message;
  }
-
 };
 
 
-window.emailLogin=async()=>{
+onAuthStateChanged(auth,async user=>{
 
- const email=
-  document.getElementById("email")
-  .value.trim();
+ currentUser=user;
 
- const password=
-  document.getElementById("password")
-  .value;
-
- if(!email||!password){
-
-  document.getElementById(
-   "status"
-  ).innerText=
-   "Enter your email and password.";
-
+ if(!user){
+  document.getElementById("headerName").innerText="Sign in";
   return;
  }
 
- try{
+ document.getElementById("loginModal").style.display="none";
 
-  await signInWithEmailAndPassword(
-   auth,
-   email,
-   password
-  );
+ document.getElementById("headerName").innerText=
+  user.displayName||"Account";
 
- }catch(error){
+ await createProfile(user);
+ await loadProfile();
+ loadProducts();
+ loadSellers();
+ loadMyProducts();
+ loadNotifications();
 
-  document.getElementById(
-   "status"
-  ).innerText=
-   error.message;
-
- }
-
-};
+});
 
 
-/* =========================
-   AUTH
-========================= */
-
-onAuthStateChanged(
- auth,
- async user=>{
-
-  currentUser=user;
-
-  if(!user){
-
-   document.getElementById(
-    "headerName"
-   ).innerText="Sign in";
-
-   return;
-  }
-
-
-  document.getElementById(
-   "loginModal"
-  ).style.display="none";
-
-
-  document.getElementById(
-   "headerName"
-  ).innerText=
-   user.displayName||
-   "Account";
-
-
-  await createProfile(user);
-
-  await loadProfile();
-
-  loadProducts();
-
-  loadSellers();
-
-  loadConversations();
-
- }
-);
-
-
-/* =========================
-   PROFILE
-========================= */
+/* PROFILE */
 
 async function createProfile(user){
 
- const ref=
-  doc(
-   db,
-   "users",
-   user.uid
-  );
-
-
- const snap=
-  await getDoc(ref);
-
+ const ref=doc(db,"users",user.uid);
+ const snap=await getDoc(ref);
 
  if(!snap.exists()){
-
-  await setDoc(
-   ref,
-   {
-    uid:user.uid,
-    name:
-     user.displayName||
-     "AVYRA User",
-    email:
-     user.email||"",
-    photo:
-     user.photoURL||"",
-    followers:0,
-    following:0,
-    createdAt:
-     serverTimestamp()
-   }
-  );
-
+  await setDoc(ref,{
+   uid:user.uid,
+   name:user.displayName||"AVYRA User",
+   email:user.email||"",
+   photo:user.photoURL||"",
+   bio:"",
+   followers:0,
+   following:0,
+   createdAt:serverTimestamp()
+  });
  }
-
 }
 
 
@@ -1228,1541 +783,1001 @@ async function loadProfile(){
 
  if(!currentUser)return;
 
- const snap=
-  await getDoc(
-   doc(
-    db,
-    "users",
-    currentUser.uid
-   )
-  );
-
+ const snap=await getDoc(
+  doc(db,"users",currentUser.uid)
+ );
 
  if(!snap.exists()){
-
-  await createProfile(
-   currentUser
-  );
-
+  await createProfile(currentUser);
   return loadProfile();
  }
 
+ const d=snap.data();
 
- const data=snap.data();
+ document.getElementById("profileName").innerText=d.name||"AVYRA User";
+ document.getElementById("profileEmail").innerText=d.email||"";
+ document.getElementById("profileBio").innerText=d.bio||"No bio yet.";
+ document.getElementById("myFollowers").innerText=d.followers||0;
+ document.getElementById("myFollowing").innerText=d.following||0;
 
-
- document.getElementById(
-  "profileName"
- ).innerText=
-  data.name||
-  "AVYRA User";
-
-
- document.getElementById(
-  "profileEmail"
- ).innerText=
-  data.email||"";
-
-
- document.getElementById(
-  "myFollowers"
- ).innerText=
-  data.followers||0;
-
-
- document.getElementById(
-  "myFollowing"
- ).innerText=
-  data.following||0;
-
-
- if(data.photo){
-
-  document.getElementById(
-   "profilePhoto"
-  ).src=data.photo;
-
+ if(d.photo){
+  document.getElementById("profilePhoto").src=d.photo;
+ }else{
+  document.getElementById("profilePhoto").src=
+   "https://placehold.co/200x200/222/fff?text=AVYRA";
  }
-
 }
 
 
-/* =========================
-   PROFILE PHOTO
-========================= */
+/* EDIT PROFILE */
 
-window.choosePhoto=()=>{
+window.openEditProfile=async()=>{
 
  if(!currentUser){
-
   openLogin();
-
   return;
  }
 
- document.getElementById(
-  "photoPicker"
- ).click();
-
-};
-
-
-document.getElementById(
- "photoPicker"
-).addEventListener(
- "change",
- async event=>{
-
-  const file=
-   event.target.files[0];
-
-  if(!file)return;
-
-
-  try{
-
-   const image=
-    await compressImage(
-     file,
-     500,
-     500
-    );
-
-
-   /*
-    IMPORTANT FIX:
-    setDoc with merge creates the
-    document if it doesn't exist.
-   */
-
-   await setDoc(
-    doc(
-     db,
-     "users",
-     currentUser.uid
-    ),
-    {
-     uid:
-      currentUser.uid,
-
-     name:
-      currentUser.displayName||
-      "AVYRA User",
-
-     email:
-      currentUser.email||
-      "",
-
-     photo:image,
-
-     followers:0,
-
-     following:0
-
-    },
-    {
-     merge:true
-    }
-   );
-
-
-   document.getElementById(
-    "profilePhoto"
-   ).src=image;
-
-
-   alert(
-    "Profile picture saved!"
-   );
-
-
-   await loadProfile();
-
-
-  }catch(error){
-
-   console.error(error);
-
-   alert(
-    "Could not save photo: "+
-    error.message
-   );
-
-  }
-
- }
-);
-
-
-/* =========================
-   IMAGE COMPRESSION
-========================= */
-
-function compressImage(
- file,
- maxWidth,
- maxHeight
-){
-
- return new Promise(
-  (resolve,reject)=>{
-
-   const reader=
-    new FileReader();
-
-
-   reader.onload=e=>{
-
-    const img=
-     new Image();
-
-
-    img.onload=()=>{
-
-     let width=
-      img.width;
-
-     let height=
-      img.height;
-
-
-     if(width>maxWidth){
-
-      height=
-       height*
-       maxWidth/
-       width;
-
-      width=maxWidth;
-
-     }
-
-
-     if(height>maxHeight){
-
-      width=
-       width*
-       maxHeight/
-       height;
-
-      height=maxHeight;
-
-     }
-
-
-     const canvas=
-      document.createElement(
-       "canvas"
-      );
-
-
-     canvas.width=width;
-     canvas.height=height;
-
-
-     canvas
-      .getContext("2d")
-      .drawImage(
-       img,
-       0,
-       0,
-       width,
-       height
-      );
-
-
-     resolve(
-      canvas.toDataURL(
-       "image/jpeg",
-       .7
-      )
-     );
-
-    };
-
-
-    img.onerror=reject;
-
-    img.src=e.target.result;
-
-   };
-
-
-   reader.onerror=reject;
-
-   reader.readAsDataURL(file);
-
-  }
+ const snap=await getDoc(
+  doc(db,"users",currentUser.uid)
  );
 
-}
+ const d=snap.data()||{};
 
+ document.getElementById("editName").value=d.name||"";
+ document.getElementById("editBio").value=d.bio||"";
 
-/* =========================
-   FOLLOWERS
-========================= */
-
-window.followSeller=
-async sellerId=>{
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
-
- if(
-  sellerId===
-  currentUser.uid
- ){
-
-  alert(
-   "You cannot follow yourself."
-  );
-
-  return;
- }
-
-
- const followId=
-  currentUser.uid+
-  "_"+
-  sellerId;
-
-
- const followRef=
-  doc(
-   db,
-   "follows",
-   followId
-  );
-
-
- const existing=
-  await getDoc(followRef);
-
-
- const sellerRef=
-  doc(
-   db,
-   "users",
-   sellerId
-  );
-
-
- if(existing.exists()){
-
-  await deleteDoc(
-   followRef
-  );
-
-
-  await updateDoc(
-   sellerRef,
-   {
-    followers:
-     increment(-1)
-   }
-  );
-
-
-  await updateDoc(
-   doc(
-    db,
-    "users",
-    currentUser.uid
-   ),
-   {
-    following:
-     increment(-1)
-   }
-  );
-
- }else{
-
-  await setDoc(
-   followRef,
-   {
-    followerId:
-     currentUser.uid,
-    sellerId:
-     sellerId,
-    createdAt:
-     serverTimestamp()
-   }
-  );
-
-
-  await updateDoc(
-   sellerRef,
-   {
-    followers:
-     increment(1)
-   }
-  );
-
-
-  await updateDoc(
-   doc(
-    db,
-    "users",
-    currentUser.uid
-   ),
-   {
-    following:
-     increment(1)
-   }
-  );
-
- }
-
-
- await loadSellers();
-
- await loadProfile();
-
+ document.getElementById("editModal").style.display="flex";
 };
 
 
-/* =========================
-   SELLERS
-========================= */
+window.saveProfile=async()=>{
 
-async function loadSellers(){
+ try{
 
- const box=
-  document.getElementById(
-   "sellers"
-  );
+  let photo;
 
+  const file=document.getElementById("editPhoto").files[0];
 
- box.innerHTML=
-  "Loading sellers...";
-
-
- const snapshot=
-  await getDocs(
-   collection(
-    db,
-    "users"
-   )
-  );
-
-
- box.innerHTML="";
-
-
- for(
-  const userDoc of snapshot.docs
- ){
-
-  const user=
-   userDoc.data();
-
-
-  if(
-   !user.uid||
-   user.uid===
-   currentUser?.uid
-  ){
-
-   continue;
+  if(file){
+   photo=await compressImage(file,500,500);
   }
 
+  const data={
+   name:
+    document.getElementById("editName").value.trim()||
+    "AVYRA User",
 
-  let following=false;
+   bio:
+    document.getElementById("editBio").value.trim()
+  };
 
+  if(photo)data.photo=photo;
 
-  if(currentUser){
+  await setDoc(
+   doc(db,"users",currentUser.uid),
+   data,
+   {merge:true}
+  );
 
-   const followSnap=
-    await getDoc(
-     doc(
-      db,
-      "follows",
-      currentUser.uid+
-      "_"+
-      user.uid
-     )
-    );
+  closeModal("editModal");
 
+  await loadProfile();
+  loadSellers();
 
-   following=
-    followSnap.exists();
-
-  }
-
-
-  const div=
-   document.createElement(
-    "div"
-   );
-
-
-  div.className="seller";
-
-
-  const avatar=
-   user.photo
-   ?
-   `<div class="avatar">
-      <img src="${user.photo}">
-    </div>`
-   :
-   `<div class="avatar">
-      ${(user.name||"A")
-       .charAt(0)
-       .toUpperCase()}
-    </div>`;
-
-
-  div.innerHTML=`
-
-   ${avatar}
-
-   <div class="sellerInfo">
-
-    <b>
-     ${escapeHTML(
-      user.name||
-      "AVYRA Seller"
-     )}
-    </b>
-
-    <small>
-     ${user.followers||0}
-     followers
-    </small>
-
-   </div>
-
-   <button
-    class="follow"
-    onclick="
-     followSeller(
-      '${user.uid}'
-     )
-    ">
-
-    ${following
-     ?"Following"
-     :"Follow"}
-
-   </button>
-  `;
-
-
-  box.appendChild(div);
-
+ }catch(e){
+  document.getElementById("editStatus").innerText=e.message;
  }
+};
 
+
+/* IMAGE */
+
+function compressImage(file,maxWidth,maxHeight){
+
+ return new Promise((resolve,reject)=>{
+
+  const reader=new FileReader();
+
+  reader.onload=e=>{
+
+   const img=new Image();
+
+   img.onload=()=>{
+
+    let w=img.width;
+    let h=img.height;
+
+    if(w>maxWidth){
+     h=h*maxWidth/w;
+     w=maxWidth;
+    }
+
+    if(h>maxHeight){
+     w=w*maxHeight/h;
+     h=maxHeight;
+    }
+
+    const canvas=document.createElement("canvas");
+
+    canvas.width=w;
+    canvas.height=h;
+
+    canvas.getContext("2d").drawImage(img,0,0,w,h);
+
+    resolve(canvas.toDataURL("image/jpeg",.7));
+   };
+
+   img.onerror=reject;
+   img.src=e.target.result;
+  };
+
+  reader.onerror=reject;
+  reader.readAsDataURL(file);
+ });
 }
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 function loadProducts(){
 
- onSnapshot(
-  collection(
-   db,
-   "products"
-  ),
-  snapshot=>{
+ onSnapshot(collection(db,"products"),snapshot=>{
 
-   const box=
-    document.getElementById(
-     "products"
-    );
+  allProducts=[];
 
+  snapshot.forEach(d=>{
+   allProducts.push({
+    id:d.id,
+    ...d.data()
+   });
+  });
 
-   box.innerHTML="";
+  renderProducts(allProducts);
+  loadMyProducts();
 
-
-   if(snapshot.empty){
-
-    box.innerHTML=
-     `<div class="empty">
-       No products yet.
-      </div>`;
-
-    return;
-   }
-
-
-   snapshot.forEach(
-    productDoc=>{
-
-     const p=
-      productDoc.data();
-
-
-     const card=
-      document.createElement(
-       "article"
-      );
-
-
-     card.className=
-      "product";
-
-
-     const image=
-      p.photo
-      ?
-      `<img
-        src="${p.photo}"
-        alt="Product">
-      `
-      :
-      `<div class="productEmoji">
-        🛍️
-       </div>`;
-
-
-     card.innerHTML=`
-
-      ${image}
-
-      <div class="productInfo">
-
-       <h3>
-        ${escapeHTML(
-         p.name||
-         "Unnamed item"
-        )}
-       </h3>
-
-       <div class="price">
-        ${escapeHTML(
-         p.currency||
-         "USD"
-        )}
-        ${p.price||0}
-       </div>
-
-       <div class="location">
-        📍
-        ${escapeHTML(
-         p.location||
-         "Worldwide"
-        )}
-       </div>
-
-       <div class="description">
-        ${escapeHTML(
-         p.description||
-         ""
-        )}
-       </div>
-
-       <button
-        class="cardBtn"
-        onclick="
-         openSellerMessage(
-          '${p.sellerId}'
-         )
-        ">
-        Message Seller
-       </button>
-
-      </div>
-     `;
-
-
-     box.appendChild(card);
-
-    }
-   );
-
-  }
- );
-
+ });
 }
 
 
-/* =========================
-   ADD ITEM
-========================= */
+function renderProducts(products){
+
+ const box=document.getElementById("products");
+
+ box.innerHTML="";
+
+ if(!products.length){
+  box.innerHTML='<div class="empty">No products found.</div>';
+  return;
+ }
+
+ products.forEach(p=>{
+
+  const card=document.createElement("article");
+  card.className="product";
+
+  const image=p.photo
+   ?`<img src="${p.photo}">`
+   :`<div class="productPlaceholder">🛍️</div>`;
+
+  card.innerHTML=`
+
+   ${image}
+
+   <div class="productInfo">
+
+    <h3>${escapeHTML(p.name||"Item")}</h3>
+
+    <div class="price">
+     ${escapeHTML(p.currency||"")}
+     ${escapeHTML(String(p.price||0))}
+    </div>
+
+    <div class="location">
+     📍 ${escapeHTML(p.location||"Worldwide")}
+    </div>
+
+    <div class="sellerName">
+     Seller: ${escapeHTML(p.sellerName||"AVYRA Seller")}
+    </div>
+
+    <div class="desc">
+     ${escapeHTML(p.description||"")}
+    </div>
+
+    <div class="cardBtns">
+
+     <button class="messageBtn"
+      onclick="messageSeller('${p.sellerId}')">
+      💬 Message
+     </button>
+
+     ${
+      currentUser &&
+      p.sellerId===currentUser.uid
+      ?
+      `<button class="deleteBtn"
+       onclick="deleteProduct('${p.id}')">
+       🗑️
+      </button>`
+      :
+      ""
+     }
+
+    </div>
+
+    ${
+     currentUser &&
+     p.sellerId!==currentUser.uid
+     ?
+     `<button
+      class="secondary"
+      style="width:100%;margin-top:6px"
+      onclick="openReview('${p.sellerId}','${escapeHTML(p.sellerName||"Seller")}')">
+      ⭐ Review Seller
+     </button>`
+     :
+     ""
+    }
+
+   </div>
+  `;
+
+  box.appendChild(card);
+ });
+}
+
+
+/* SEARCH */
+
+window.searchProducts=()=>{
+
+ const text=document.getElementById("searchInput")
+  .value
+  .trim()
+  .toLowerCase();
+
+ if(!text){
+  renderProducts(allProducts);
+  return;
+ }
+
+ const results=allProducts.filter(p=>{
+
+  return (
+   String(p.name||"").toLowerCase().includes(text) ||
+   String(p.description||"").toLowerCase().includes(text) ||
+   String(p.location||"").toLowerCase().includes(text) ||
+   String(p.sellerName||"").toLowerCase().includes(text) ||
+   String(p.currency||"").toLowerCase().includes(text)
+  );
+
+ });
+
+ renderProducts(results);
+};
+
+
+document.getElementById("searchInput")
+.addEventListener("input",()=>searchProducts());
+
+
+/* DELETE ITEM */
+
+window.deleteProduct=async id=>{
+
+ if(!currentUser)return;
+
+ if(!confirm("Delete this listing?"))return;
+
+ try{
+
+  const ref=doc(db,"products",id);
+  const snap=await getDoc(ref);
+
+  if(!snap.exists()){
+   alert("Listing no longer exists.");
+   return;
+  }
+
+  if(snap.data().sellerId!==currentUser.uid){
+   alert("You can only delete your own listings.");
+   return;
+  }
+
+  await deleteDoc(ref);
+
+  await addNotification(
+   currentUser.uid,
+   "Your listing was deleted."
+  );
+
+ }catch(e){
+  alert("Could not delete: "+e.message);
+ }
+};
+
+
+/* ADD ITEM */
 
 window.openAddItem=()=>{
 
  if(!currentUser){
-
   openLogin();
-
   return;
  }
 
-
- document.getElementById(
-  "itemModal"
- ).style.display="flex";
-
+ document.getElementById("itemModal").style.display="flex";
 };
 
 
 window.addItem=async()=>{
 
  if(!currentUser){
-
   openLogin();
-
   return;
  }
 
+ const name=document.getElementById("itemName").value.trim();
+ const price=document.getElementById("itemPrice").value;
+ const currency=document.getElementById("itemCurrency").value.trim();
+ const location=document.getElementById("itemLocation").value.trim();
+ const description=document.getElementById("itemDescription").value.trim();
+ const file=document.getElementById("itemPhoto").files[0];
 
- const name=
-  document.getElementById(
-   "itemName"
-  ).value.trim();
-
-
- const price=
-  document.getElementById(
-   "itemPrice"
-  ).value;
-
-
- const currency=
-  document.getElementById(
-   "itemCurrency"
-  ).value.trim()||
-  "USD";
-
-
- const location=
-  document.getElementById(
-   "itemLocation"
-  ).value.trim();
-
-
- const description=
-  document.getElementById(
-   "itemDescription"
-  ).value.trim();
-
-
- const file=
-  document.getElementById(
-   "itemPhoto"
-  ).files[0];
-
-
- if(!name||!price){
-
-  document.getElementById(
-   "itemStatus"
-  ).innerText=
-   "Name and price are required.";
-
+ if(!name||!price||!currency){
+  document.getElementById("itemStatus").innerText=
+   "Name, price and currency are required.";
   return;
  }
-
 
  try{
 
   let photo="";
 
-
   if(file){
-
-   photo=
-    await compressImage(
-     file,
-     700,
-     700
-    );
-
+   photo=await compressImage(file,700,700);
   }
 
+  await addDoc(collection(db,"products"),{
+   sellerId:currentUser.uid,
+   sellerName:currentUser.displayName||"AVYRA Seller",
+   name,
+   price:Number(price),
+   currency,
+   location,
+   description,
+   photo,
+   createdAt:serverTimestamp()
+  });
 
-  await addDoc(
-   collection(
-    db,
-    "products"
-   ),
-   {
-    sellerId:
-     currentUser.uid,
+  document.getElementById("itemStatus").innerText=
+   "Published successfully!";
 
-    sellerName:
-     currentUser.displayName||
-     "AVYRA Seller",
+  setTimeout(()=>{
+   closeModal("itemModal");
+  },700);
 
-    name:name,
-
-    price:Number(price),
-
-    currency:currency,
-
-    location:location,
-
-    description:description,
-
-    photo:photo,
-
-    createdAt:
-     serverTimestamp()
-   }
-  );
-
-
-  document.getElementById(
-   "itemStatus"
-  ).innerText=
-   "Item published successfully!";
-
-
-  document.getElementById(
-   "itemName"
-  ).value="";
-
-  document.getElementById(
-   "itemPrice"
-  ).value="";
-
-  document.getElementById(
-   "itemLocation"
-  ).value="";
-
-  document.getElementById(
-   "itemDescription"
-  ).value="";
-
-  document.getElementById(
-   "itemPhoto"
-  ).value="";
-
-
- }catch(error){
-
-  console.error(error);
-
-  document.getElementById(
-   "itemStatus"
-  ).innerText=
-   "Could not add item: "+
-   error.message;
-
+ }catch(e){
+  document.getElementById("itemStatus").innerText=e.message;
  }
-
 };
 
 
-/* =========================
-   INSTAGRAM/TIKTOK STYLE
-   MESSAGING
-========================= */
+/* MY PRODUCTS */
+
+function loadMyProducts(){
+
+ if(!currentUser)return;
+
+ const box=document.getElementById("myProducts");
+
+ const mine=allProducts.filter(
+  p=>p.sellerId===currentUser.uid
+ );
+
+ document.getElementById("myItems").innerText=mine.length;
+
+ box.innerHTML="";
+
+ if(!mine.length){
+  box.innerHTML='<div class="empty">You have no listings yet.</div>';
+  return;
+ }
+
+ mine.forEach(p=>{
+
+  const div=document.createElement("div");
+  div.className="product";
+
+  div.innerHTML=`
+
+   ${
+    p.photo
+    ?`<img src="${p.photo}">`
+    :`<div class="productPlaceholder">🛍️</div>`
+   }
+
+   <div class="productInfo">
+
+    <h3>${escapeHTML(p.name)}</h3>
+
+    <div class="price">
+     ${escapeHTML(p.currency)}
+     ${p.price}
+    </div>
+
+    <button
+     class="deleteBtn"
+     style="width:100%;padding:9px;margin-top:8px"
+     onclick="deleteProduct('${p.id}')">
+     🗑️ Delete
+    </button>
+
+   </div>
+  `;
+
+  box.appendChild(div);
+ });
+}
+
+
+/* SELLERS */
+
+async function loadSellers(){
+
+ const box=document.getElementById("sellers");
+
+ box.innerHTML="Loading...";
+
+ const snap=await getDocs(collection(db,"users"));
+
+ box.innerHTML="";
+
+ for(const d of snap.docs){
+
+  const u=d.data();
+
+  if(!u.uid)continue;
+
+  if(currentUser && u.uid===currentUser.uid)continue;
+
+  let following=false;
+
+  if(currentUser){
+
+   const f=await getDoc(
+    doc(
+     db,
+     "follows",
+     currentUser.uid+"_"+u.uid
+    )
+   );
+
+   following=f.exists();
+  }
+
+  const div=document.createElement("div");
+  div.className="seller";
+
+  const avatar=u.photo
+   ?`<div class="avatar"><img src="${u.photo}"></div>`
+   :`<div class="avatar">${(u.name||"A")[0].toUpperCase()}</div>`;
+
+  div.innerHTML=`
+
+   ${avatar}
+
+   <div class="sellerInfo">
+    <b>${escapeHTML(u.name||"AVYRA User")}</b>
+    <small>
+     ${u.followers||0} followers
+    </small>
+   </div>
+
+   <button class="follow"
+    onclick="followSeller('${u.uid}')">
+    ${following?"Following":"Follow"}
+   </button>
+  `;
+
+  box.appendChild(div);
+ }
+}
+
+
+/* FOLLOW */
+
+window.followSeller=async sellerId=>{
+
+ if(!currentUser){
+  openLogin();
+  return;
+ }
+
+ if(sellerId===currentUser.uid)return;
+
+ const id=currentUser.uid+"_"+sellerId;
+
+ const ref=doc(db,"follows",id);
+ const existing=await getDoc(ref);
+
+ try{
+
+  if(existing.exists()){
+
+   await deleteDoc(ref);
+
+   await updateDoc(
+    doc(db,"users",sellerId),
+    {followers:increment(-1)}
+   );
+
+   await updateDoc(
+    doc(db,"users",currentUser.uid),
+    {following:increment(-1)}
+   );
+
+  }else{
+
+   await setDoc(ref,{
+    followerId:currentUser.uid,
+    sellerId,
+    createdAt:serverTimestamp()
+   });
+
+   await updateDoc(
+    doc(db,"users",sellerId),
+    {followers:increment(1)}
+   );
+
+   await updateDoc(
+    doc(db,"users",currentUser.uid),
+    {following:increment(1)}
+   );
+
+   await addNotification(
+    sellerId,
+    `${currentUser.displayName||"Someone"} followed you.`
+   );
+  }
+
+  loadSellers();
+  loadProfile();
+
+ }catch(e){
+  alert("Follow failed: "+e.message);
+ }
+};
+
+
+/* NOTIFICATIONS */
+
+async function addNotification(userId,text){
+
+ await addDoc(collection(db,"notifications"),{
+  userId,
+  text,
+  read:false,
+  createdAt:serverTimestamp()
+ });
+}
+
+
+function loadNotifications(){
+
+ if(!currentUser)return;
+
+ if(unsubscribeNotifications){
+  unsubscribeNotifications();
+ }
+
+ const q=query(
+  collection(db,"notifications"),
+  where("userId","==",currentUser.uid)
+ );
+
+ unsubscribeNotifications=onSnapshot(q,snapshot=>{
+
+  const box=document.getElementById("notifications");
+
+  box.innerHTML="";
+
+  const list=[];
+
+  snapshot.forEach(d=>{
+   list.push(d.data());
+  });
+
+  list.sort(
+   (a,b)=>
+   (b.createdAt?.seconds||0)-
+   (a.createdAt?.seconds||0)
+  );
+
+  if(!list.length){
+   box.innerHTML='<div class="empty">No notifications yet.</div>';
+   return;
+  }
+
+  list.forEach(n=>{
+
+   const div=document.createElement("div");
+   div.className="notification";
+
+   div.innerHTML=`
+    <div>🔔 ${escapeHTML(n.text||"Notification")}</div>
+    <small>AVYRA</small>
+   `;
+
+   box.appendChild(div);
+  });
+ });
+}
+
+
+window.openNotifications=()=>{
+
+ if(!currentUser){
+  openLogin();
+  return;
+ }
+
+ document.getElementById("notificationModal").style.display="flex";
+ loadNotifications();
+};
+
+
+/* REVIEWS */
+
+window.openReview=(sellerId,sellerName)=>{
+
+ if(!currentUser){
+  openLogin();
+  return;
+ }
+
+ reviewSellerId=sellerId;
+
+ document.getElementById("reviewSellerName").innerText=
+  "Reviewing "+sellerName;
+
+ document.getElementById("reviewModal").style.display="flex";
+};
+
+
+window.submitReview=async()=>{
+
+ if(!currentUser||!reviewSellerId)return;
+
+ const rating=Number(
+  document.getElementById("reviewRating").value
+ );
+
+ const text=document.getElementById("reviewText").value.trim();
+
+ if(!text){
+  alert("Write a review first.");
+  return;
+ }
+
+ try{
+
+  await addDoc(collection(db,"reviews"),{
+   sellerId:reviewSellerId,
+   buyerId:currentUser.uid,
+   buyerName:currentUser.displayName||"Buyer",
+   rating,
+   text,
+   createdAt:serverTimestamp()
+  });
+
+  await addNotification(
+   reviewSellerId,
+   `${currentUser.displayName||"A buyer"} left you a ${rating}-star review.`
+  );
+
+  document.getElementById("reviewText").value="";
+
+  closeModal("reviewModal");
+
+  alert("Review submitted!");
+
+ }catch(e){
+  alert("Could not submit review: "+e.message);
+ }
+};
+
+
+/* MESSAGES */
+
+window.messageSeller=async sellerId=>{
+
+ if(!currentUser){
+  openLogin();
+  return;
+ }
+
+ const snap=await getDoc(doc(db,"users",sellerId));
+
+ const user=snap.exists()
+  ?snap.data()
+  :{name:"Seller"};
+
+ document.getElementById("messageModal").style.display="flex";
+
+ openChat(sellerId,user);
+};
+
 
 window.openMessages=()=>{
 
  if(!currentUser){
-
   openLogin();
-
   return;
  }
 
-
- document.getElementById(
-  "messageModal"
- ).style.display=
-  "flex";
-
+ document.getElementById("messageModal").style.display="flex";
 
  showConversationList();
-
  loadConversations();
-
 };
 
 
 function showConversationList(){
 
+ document.getElementById("conversationList").style.display="block";
+ document.getElementById("chatScreen").style.display="none";
+ document.getElementById("chatName").innerText="Messages";
+ document.getElementById("chatStatus").innerText="AVYRA";
  activeChatUser=null;
-
-
- document.getElementById(
-  "conversationList"
- ).style.display=
-  "block";
-
-
- document.getElementById(
-  "chatScreen"
- ).style.display=
-  "none";
-
-
- document.getElementById(
-  "chatName"
- ).innerText=
-  "Messages";
-
-
- document.getElementById(
-  "chatStatus"
- ).innerText=
-  "AVYRA";
-
 }
 
 
-function loadConversations(){
-
- if(!currentUser)return;
-
-
- if(unsubscribeConversations){
-
-  unsubscribeConversations();
-
- }
-
-
- const q=
-  query(
-   collection(
-    db,
-    "messages"
-   ),
-   where(
-    "participants",
-    "array-contains",
-    currentUser.uid
-   )
-  );
-
-
- unsubscribeConversations=
-  onSnapshot(
-   q,
-   async snapshot=>{
-
-    const box=
-     document.getElementById(
-      "conversationList"
-     );
-
-
-    const latest={};
-
-
-    snapshot.forEach(
-     messageDoc=>{
-
-      const m=
-       messageDoc.data();
-
-
-      const other=
-       m.senderId===
-       currentUser.uid
-       ?m.receiverId
-       :m.senderId;
-
-
-      if(
-       !latest[other]||
-       (m.createdAt?.seconds||0)>
-       (latest[other].createdAt?.seconds||0)
-      ){
-
-       latest[other]={
-        ...m,
-        otherUserId:other
-       };
-
-      }
-
-     }
-    );
-
-
-    box.innerHTML="";
-
-
-    const users=
-     Object.values(latest);
-
-
-    if(!users.length){
-
-     box.innerHTML=
-      `<div class="empty">
-        No conversations yet.<br><br>
-        Message a seller to start chatting.
-       </div>`;
-
-     return;
-    }
-
-
-    for(
-     const conversation of users
-    ){
-
-     const userSnap=
-      await getDoc(
-       doc(
-        db,
-        "users",
-        conversation.otherUserId
-       )
-      );
-
-
-     const user=
-      userSnap.exists()
-      ?userSnap.data()
-      :{
-       name:"AVYRA User",
-       photo:""
-      };
-
-
-     const div=
-      document.createElement(
-       "div"
-      );
-
-
-     div.className=
-      "conversation";
-
-
-     const avatar=
-      user.photo
-      ?
-      `<div class="avatar">
-        <img src="${user.photo}">
-       </div>`
-      :
-      `<div class="avatar">
-        ${(user.name||"A")
-         .charAt(0)
-         .toUpperCase()}
-       </div>`;
-
-
-     div.innerHTML=`
-
-      ${avatar}
-
-      <div class="conversationText">
-
-       <b>
-        ${escapeHTML(
-         user.name||
-         "AVYRA User"
-        )}
-       </b>
-
-       <p>
-        ${escapeHTML(
-         conversation.text||
-         ""
-        )}
-       </p>
-
-      </div>
-
-     `;
-
-
-     div.onclick=()=>{
-
-      openChat(
-       conversation.otherUserId,
-       user
-      );
-
-     };
-
-
-     box.appendChild(div);
-
-    }
-
-   }
-  );
-
-}
-
-
-/* OPEN A CHAT */
-
-window.openSellerMessage=
-async sellerId=>{
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
-
- const snap=
-  await getDoc(
-   doc(
-    db,
-    "users",
-    sellerId
-   )
-  );
-
-
- const user=
-  snap.exists()
-  ?snap.data()
-  :{
-   name:"AVYRA Seller",
-   photo:""
-  };
-
-
- document.getElementById(
-  "messageModal"
- ).style.display=
-  "flex";
-
-
- openChat(
-  sellerId,
-  user
+async function loadConversations(){
+
+ const q=query(
+  collection(db,"messages"),
+  where("participants","array-contains",currentUser.uid)
  );
 
-};
+ onSnapshot(q,async snapshot=>{
+
+  const box=document.getElementById("conversationList");
+  box.innerHTML="";
+
+  const latest={};
+
+  snapshot.forEach(d=>{
+
+   const m=d.data();
+
+   const other=
+    m.senderId===currentUser.uid
+    ?m.receiverId
+    :m.senderId;
+
+   if(
+    !latest[other]||
+    (m.createdAt?.seconds||0)>
+    (latest[other].createdAt?.seconds||0)
+   ){
+    latest[other]={...m,other};
+   }
+  });
+
+  const conversations=Object.values(latest);
+
+  if(!conversations.length){
+   box.innerHTML=
+    '<div class="empty">No conversations yet.</div>';
+   return;
+  }
+
+  for(const c of conversations){
+
+   const snap=await getDoc(doc(db,"users",c.other));
+
+   const u=snap.exists()?snap.data():{name:"AVYRA User"};
+
+   const div=document.createElement("div");
+   div.className="conversation";
+
+   div.innerHTML=`
+
+    <div class="avatar">
+     ${
+      u.photo
+      ?`<img src="${u.photo}">`
+      :(u.name||"A")[0].toUpperCase()
+     }
+    </div>
+
+    <div class="conversationText">
+     <b>${escapeHTML(u.name||"User")}</b>
+     <p>${escapeHTML(c.text||"")}</p>
+    </div>
+   `;
+
+   div.onclick=()=>openChat(c.other,u);
+
+   box.appendChild(div);
+  }
+ });
+}
 
 
-function openChat(
- userId,
- user
-){
+function openChat(userId,user){
 
  activeChatUser=userId;
 
+ document.getElementById("conversationList").style.display="none";
+ document.getElementById("chatScreen").style.display="flex";
 
- document.getElementById(
-  "conversationList"
- ).style.display=
-  "none";
+ document.getElementById("chatName").innerText=
+  user.name||"AVYRA User";
 
-
- const chat=
-  document.getElementById(
-   "chatScreen"
-  );
-
-
- chat.style.display=
-  "flex";
-
-
- document.getElementById(
-  "chatName"
- ).innerText=
-  user.name||
-  "AVYRA User";
-
-
- document.getElementById(
-  "chatStatus"
- ).innerText=
-  "Message";
-
-
- loadChatMessages(
-  userId
- );
-
-
- setTimeout(
-  ()=>{
-   document.getElementById(
-    "messageInput"
-   ).focus();
-  },
-  100
- );
-
+ loadChatMessages(userId);
 }
 
 
-function loadChatMessages(
- otherUserId
-){
+function loadChatMessages(other){
 
- if(unsubscribeChat){
+ if(unsubscribeChat)unsubscribeChat();
 
-  unsubscribeChat();
+ const q=query(
+  collection(db,"messages"),
+  where("participants","array-contains",currentUser.uid)
+ );
 
- }
+ unsubscribeChat=onSnapshot(q,snapshot=>{
 
+  const box=document.getElementById("chatMessages");
 
- const q=
-  query(
-   collection(
-    db,
-    "messages"
-   ),
-   where(
-    "participants",
-    "array-contains",
-    currentUser.uid
-   )
-  );
+  box.innerHTML="";
 
+  const messages=[];
 
- unsubscribeChat=
-  onSnapshot(
-   q,
-   snapshot=>{
+  snapshot.forEach(d=>{
 
-    const box=
-     document.getElementById(
-      "chatMessages"
-     );
+   const m=d.data();
 
-
-    box.innerHTML="";
-
-
-    const messages=[];
-
-
-    snapshot.forEach(
-     messageDoc=>{
-
-      const m=
-       messageDoc.data();
-
-
-      if(
-       m.participants.includes(
-        otherUserId
-       )
-      ){
-
-       messages.push(m);
-
-      }
-
-     }
-    );
-
-
-    messages.sort(
-     (a,b)=>
-      (a.createdAt?.seconds||0)-
-      (b.createdAt?.seconds||0)
-    );
-
-
-    messages.forEach(
-     m=>{
-
-      const div=
-       document.createElement(
-        "div"
-       );
-
-
-      div.className=
-       "chatMessage"+
-       (
-        m.senderId===
-        currentUser.uid
-        ?" mine"
-        :""
-       );
-
-
-      const date=
-       m.createdAt
-       ?new Date(
-        m.createdAt.seconds*
-        1000
-       ).toLocaleTimeString(
-        [],
-        {
-         hour:"2-digit",
-         minute:"2-digit"
-        }
-       )
-       :"";
-
-
-      div.innerHTML=`
-
-       <div>
-        ${escapeHTML(
-         m.text||
-         ""
-        )}
-       </div>
-
-       <div class="chatTime">
-        ${date}
-       </div>
-
-      `;
-
-
-      box.appendChild(div);
-
-     }
-    );
-
-
-    box.scrollTop=
-     box.scrollHeight;
-
+   if(m.participants.includes(other)){
+    messages.push(m);
    }
+  });
+
+  messages.sort(
+   (a,b)=>
+   (a.createdAt?.seconds||0)-
+   (b.createdAt?.seconds||0)
   );
 
+  messages.forEach(m=>{
+
+   const div=document.createElement("div");
+
+   div.className=
+    "chatMessage"+
+    (m.senderId===currentUser.uid?" mine":"");
+
+   div.innerHTML=`
+    <div>${escapeHTML(m.text||"")}</div>
+    <div class="chatTime">
+     ${m.createdAt
+      ?new Date(m.createdAt.seconds*1000)
+       .toLocaleTimeString([],{
+        hour:"2-digit",
+        minute:"2-digit"
+       })
+      :""
+     }
+    </div>
+   `;
+
+   box.appendChild(div);
+  });
+
+  box.scrollTop=box.scrollHeight;
+ });
 }
 
 
-/* SEND MESSAGE */
+window.sendMessage=async()=>{
 
-window.sendMessage=
-async()=>{
+ if(!currentUser||!activeChatUser)return;
 
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
-
- if(!activeChatUser){
-
-  return;
- }
-
-
- const input=
-  document.getElementById(
-   "messageInput"
-  );
-
-
- const text=
-  input.value.trim();
-
+ const input=document.getElementById("messageInput");
+ const text=input.value.trim();
 
  if(!text)return;
 
-
  input.value="";
-
 
  try{
 
-  await addDoc(
-   collection(
-    db,
-    "messages"
-   ),
-   {
-
-    senderId:
-     currentUser.uid,
-
-    receiverId:
-     activeChatUser,
-
-    text:text,
-
-    participants:[
-     currentUser.uid,
-     activeChatUser
-    ],
-
-    createdAt:
-     serverTimestamp()
-
-   }
-  );
-
- }catch(error){
-
-  console.error(error);
-
-  alert(
-   "Message failed: "+
-   error.message
-  );
-
- }
-
-};
-
-
-/* ENTER TO SEND */
-
-document.getElementById(
- "messageInput"
-).addEventListener(
- "keydown",
- event=>{
-
-  if(
-   event.key==="Enter"
-  ){
-
-   event.preventDefault();
-
-   sendMessage();
-
-  }
-
- }
-);
-
-
-/* =========================
-   SEARCH
-========================= */
-
-window.searchProducts=()=>{
-
- const value=
-  document.getElementById(
-   "searchInput"
-  )
-  .value
-  .toLowerCase();
-
-
- document
-  .querySelectorAll(
-   ".product"
-  )
-  .forEach(card=>{
-
-   card.style.display=
-    card.innerText
-     .toLowerCase()
-     .includes(value)
-    ?""
-    :"none";
-
+  await addDoc(collection(db,"messages"),{
+   senderId:currentUser.uid,
+   receiverId:activeChatUser,
+   text,
+   participants:[
+    currentUser.uid,
+    activeChatUser
+   ],
+   createdAt:serverTimestamp()
   });
 
+  await addNotification(
+   activeChatUser,
+   `${currentUser.displayName||"Someone"} sent you a message.`
+  );
+
+ }catch(e){
+  alert("Message failed: "+e.message);
+ }
 };
 
 
-/* =========================
-   ACCOUNT
-========================= */
+document.getElementById("messageInput")
+.addEventListener("keydown",e=>{
+ if(e.key==="Enter"){
+  e.preventDefault();
+  sendMessage();
+ }
+});
+
+
+/* ACCOUNT */
 
 window.openAccount=()=>{
 
  if(!currentUser){
-
   openLogin();
-
   return;
  }
 
+ document.getElementById("profilePage").style.display="block";
 
- const section=
-  document.getElementById(
-   "accountSection"
-  );
+ loadProfile();
+ loadMyProducts();
 
-
- section.style.display=
-  "block";
-
-
- section.scrollIntoView({
-  behavior:"smooth"
- });
-
+ document.getElementById("profilePage")
+  .scrollIntoView({behavior:"smooth"});
 };
 
-
-window.openLogin=()=>{
-
- document.getElementById(
-  "loginModal"
- ).style.display=
-  "flex";
-
-};
-
-
-window.closeModal=id=>{
-
- document.getElementById(
-  id
- ).style.display=
-  "none";
-
-};
-
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-window.openNotifications=()=>{
-
- if(!currentUser){
-
-  openLogin();
-
-  return;
- }
-
-
- document.getElementById(
-  "notificationModal"
- ).style.display=
-  "flex";
-
-};
-
-
-/* =========================
-   LOGOUT
-========================= */
 
 window.logout=async()=>{
-
  await signOut(auth);
-
- document.getElementById(
-  "accountSection"
- ).style.display=
-  "none";
-
+ location.reload();
 };
 
 
-/* =========================
-   HTML SECURITY
-========================= */
+/* HELPERS */
+
+window.openLogin=()=>{
+ document.getElementById("loginModal").style.display="flex";
+};
+
+window.closeModal=id=>{
+ document.getElementById(id).style.display="none";
+};
+
+window.focusSearch=()=>{
+ document.getElementById("searchInput").focus();
+ window.scrollTo({top:0,behavior:"smooth"});
+};
+
+window.scrollTopPage=()=>{
+ window.scrollTo({top:0,behavior:"smooth"});
+};
 
 function escapeHTML(value){
-
  return String(value)
   .replace(/&/g,"&amp;")
   .replace(/</g,"&lt;")
   .replace(/>/g,"&gt;")
   .replace(/"/g,"&quot;")
   .replace(/'/g,"&#039;");
-
 }
 
 </script>
